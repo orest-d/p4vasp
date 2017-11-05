@@ -1,0 +1,1258 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.util</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        Module&nbsp;util
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.util-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="p4vasp.util-module.html">Module p4vasp.util</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># HappyDoc:docStringFormat='ClassicStructuredText'</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">#  p4vasp is a GUI-program and a library for processing outputs of the</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#  Vienna Ab-inition Simulation Package (VASP)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#  Copyright (C) 2003  Orest Dubay &lt;odubay@users.sourceforge.net&gt;</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#  This program is free software; you can redistribute it and/or modify</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#  it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#  the Free Software Foundation; either version 2 of the License, or</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#  (at your option) any later version.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#  This program is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">#  GNU General Public License for more details.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#   You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#  along with this program; if not, write to the Free Software</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment">#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">This module contains various utilities and functions that do not fit</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">into other modules.</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">UserDict</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">UserList</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">string</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">sys</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module p4vasp.matrix=p4vasp.matrix-module.html"><a title="p4vasp.matrix" class="py-name" href="#" onclick="return doclink('link-0', 'matrix', 'link-0');">matrix</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name" targets="Package p4vasp=p4vasp-module.html"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-1', 'p4vasp', 'link-1');">p4vasp</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">cStringIO</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringIO</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">StringIO</tt> <tt class="py-keyword">import</tt> <tt class="py-name">StringIO</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-2', 'p4vasp', 'link-1');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Module p4vasp.ODPdom=p4vasp.ODPdom-module.html"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-3', 'ODPdom', 'link-3');">ODPdom</a></tt> <tt class="py-keyword">as</tt> <tt id="link-4" class="py-name"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-4', 'ODPdom', 'link-3');">ODPdom</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Variable p4vasp.Array.use_odpdom=p4vasp.Array-module.html#use_odpdom,Variable p4vasp.Dictionary.use_odpdom=p4vasp.Dictionary-module.html#use_odpdom,Variable p4vasp.Structure.use_odpdom=p4vasp.Structure-module.html#use_odpdom,Variable p4vasp.util.use_odpdom=p4vasp.util-module.html#use_odpdom"><a title="p4vasp.Array.use_odpdom
+p4vasp.Dictionary.use_odpdom
+p4vasp.Structure.use_odpdom
+p4vasp.util.use_odpdom" class="py-name" href="#" onclick="return doclink('link-5', 'use_odpdom', 'link-5');">use_odpdom</a></tt><tt class="py-op">=</tt><tt class="py-number">2</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt id="link-6" class="py-name"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-6', 'ODPdom', 'link-3');">ODPdom</a></tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt id="link-7" class="py-name"><a title="p4vasp.Array.use_odpdom
+p4vasp.Dictionary.use_odpdom
+p4vasp.Structure.use_odpdom
+p4vasp.util.use_odpdom" class="py-name" href="#" onclick="return doclink('link-7', 'use_odpdom', 'link-5');">use_odpdom</a></tt><tt class="py-op">=</tt><tt class="py-number">1</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">            <tt class="py-keyword">import</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">dom</tt><tt class="py-op">.</tt><tt class="py-name">minidom</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">            <tt class="py-keyword">print</tt> <tt class="py-string">"There is neither ODPdom, nor xml.dom.minidom."</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt id="link-8" class="py-name"><a title="p4vasp.Array.use_odpdom
+p4vasp.Dictionary.use_odpdom
+p4vasp.Structure.use_odpdom
+p4vasp.util.use_odpdom" class="py-name" href="#" onclick="return doclink('link-8', 'use_odpdom', 'link-5');">use_odpdom</a></tt><tt class="py-op">=</tt><tt class="py-number">0</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line"><tt class="py-comment">#use_odpdom=0</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line"> </tt>
+<a name="XMLParseException"></a><div id="XMLParseException-def"><a name="L60"></a><tt class="py-lineno"> 60</tt> <a class="py-toggle" href="#" id="XMLParseException-toggle" onclick="return toggle('XMLParseException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.XMLParseException-class.html">XMLParseException</a><tt class="py-op">:</tt> </tt>
+</div><div id="XMLParseException-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="XMLParseException-expanded"><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">    <tt class="py-docstring">"""This exception can be raised while parsing xml-document."""</tt> </tt>
+<a name="XMLParseException.__init__"></a><div id="XMLParseException.__init__-def"><a name="L62"></a><tt class="py-lineno"> 62</tt> <a class="py-toggle" href="#" id="XMLParseException.__init__-toggle" onclick="return toggle('XMLParseException.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.XMLParseException-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">val</tt><tt class="py-op">,</tt><tt class="py-param">node</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">exc_info</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XMLParseException.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XMLParseException.__init__-expanded"><a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">value</tt> <tt class="py-op">=</tt> <tt class="py-name">val</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">node</tt>  <tt class="py-op">=</tt> <tt class="py-name">node</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">exc_info</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">            <tt class="py-name">exc_info</tt><tt class="py-op">=</tt><tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">exc_info</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">exc_info</tt> <tt class="py-op">=</tt> <tt class="py-name">exc_info</tt> </tt>
+</div><a name="XMLParseException.__str__"></a><div id="XMLParseException.__str__-def"><a name="L68"></a><tt class="py-lineno"> 68</tt> <a class="py-toggle" href="#" id="XMLParseException.__str__-toggle" onclick="return toggle('XMLParseException.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.XMLParseException-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="XMLParseException.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="XMLParseException.__str__-expanded"><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"%s (%s)"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">node</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="ParseException"></a><div id="ParseException-def"><a name="L71"></a><tt class="py-lineno"> 71</tt> <a class="py-toggle" href="#" id="ParseException-toggle" onclick="return toggle('ParseException');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.ParseException-class.html">ParseException</a><tt class="py-op">:</tt> </tt>
+</div><div id="ParseException-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ParseException-expanded"><a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-docstring">"This exception is thrown when parsing-error occures."</tt> </tt>
+<a name="ParseException.__init__"></a><div id="ParseException.__init__-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="ParseException.__init__-toggle" onclick="return toggle('ParseException.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ParseException-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">value</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ParseException.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ParseException.__init__-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">value</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt> </tt>
+</div><a name="ParseException.__str__"></a><div id="ParseException.__str__-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="ParseException.__str__-toggle" onclick="return toggle('ParseException.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ParseException-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ParseException.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ParseException.__str__-expanded"><a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">value</tt> </tt>
+</div></div><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line"> </tt>
+<a name="UnknownType"></a><div id="UnknownType-def"><a name="L78"></a><tt class="py-lineno"> 78</tt> <a class="py-toggle" href="#" id="UnknownType-toggle" onclick="return toggle('UnknownType');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.UnknownType-class.html">UnknownType</a><tt class="py-op">:</tt> </tt>
+</div><div id="UnknownType-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="UnknownType-expanded"><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">    <tt class="py-docstring">"""This exception is raised when unknown an type is found.</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-docstring">    (Types are defined in p4vasp.)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="UnknownType.__init__"></a><div id="UnknownType.__init__-def"><a name="L82"></a><tt class="py-lineno"> 82</tt> <a class="py-toggle" href="#" id="UnknownType.__init__-toggle" onclick="return toggle('UnknownType.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.UnknownType-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UnknownType.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="UnknownType.__init__-expanded"><a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">type</tt><tt class="py-op">=</tt><tt class="py-name">t</tt> </tt>
+</div><a name="UnknownType.__str__"></a><div id="UnknownType.__str__-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="UnknownType.__str__-toggle" onclick="return toggle('UnknownType.__str__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.UnknownType-class.html#__str__">__str__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="UnknownType.__str__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="UnknownType.__str__-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-string">"UnknownType: %s"</tt><tt class="py-op">%</tt><tt class="py-name">repr</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">type</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line"> </tt>
+<a name="indent"></a><div id="indent-def"><a name="L87"></a><tt class="py-lineno"> 87</tt> <a class="py-toggle" href="#" id="indent-toggle" onclick="return toggle('indent');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#indent">indent</a><tt class="py-op">(</tt><tt class="py-param">s</tt><tt class="py-op">,</tt><tt class="py-param">istring</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="indent-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="indent-expanded"><a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">    <tt class="py-docstring">"""Intend *s* by *istring*.</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line"><tt class="py-docstring">    If istring is an iteger, istring is changed to istring*INDENT</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line"><tt class="py-docstring">    (INDENT contains two whitespaces by default).</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"><tt class="py-docstring">    Then *istring* is added to the beginning of every line of *s*.</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">istring</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">IntType</tt><tt class="py-op">:</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name">istring</tt><tt class="py-op">=</tt><tt class="py-name">istring</tt><tt class="py-op">*</tt><tt id="link-9" class="py-name" targets="Variable p4vasp.Array.INDENT=p4vasp.Array-module.html#INDENT,Variable p4vasp.Dictionary.INDENT=p4vasp.Dictionary-module.html#INDENT,Variable p4vasp.GraphCanvas.INDENT=p4vasp.GraphCanvas-module.html#INDENT,Variable p4vasp.GraphPM.INDENT=p4vasp.GraphPM-module.html#INDENT,Variable p4vasp.INDENT=p4vasp-module.html#INDENT,Variable p4vasp.Property.INDENT=p4vasp.Property-module.html#INDENT,Variable p4vasp.Structure.INDENT=p4vasp.Structure-module.html#INDENT,Variable p4vasp.graph.INDENT=p4vasp.graph-module.html#INDENT,Variable p4vasp.repository.INDENT=p4vasp.repository-module.html#INDENT,Variable p4vasp.store.INDENT=p4vasp.store-module.html#INDENT,Variable p4vasp.util.INDENT=p4vasp.util-module.html#INDENT"><a title="p4vasp.Array.INDENT
+p4vasp.Dictionary.INDENT
+p4vasp.GraphCanvas.INDENT
+p4vasp.GraphPM.INDENT
+p4vasp.INDENT
+p4vasp.Property.INDENT
+p4vasp.Structure.INDENT
+p4vasp.graph.INDENT
+p4vasp.repository.INDENT
+p4vasp.store.INDENT
+p4vasp.util.INDENT" class="py-name" href="#" onclick="return doclink('link-9', 'INDENT', 'link-9');">INDENT</a></tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-10" class="py-name" targets="Variable p4vasp.paint3d.OpenGLPaint3D.i=p4vasp.paint3d.OpenGLPaint3D-module.html#i"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-10', 'i', 'link-10');">i</a></tt><tt class="py-op">=</tt><tt class="py-name">istring</tt><tt class="py-op">:</tt><tt id="link-11" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-11', 'i', 'link-10');">i</a></tt><tt class="py-op">+</tt><tt class="py-name">x</tt><tt class="py-op">,</tt> <tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-string">"\n"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line"> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="Parseable"></a><div id="Parseable-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="Parseable-toggle" onclick="return toggle('Parseable');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.Parseable-class.html">Parseable</a><tt class="py-op">:</tt> </tt>
+</div><div id="Parseable-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Parseable-expanded"><a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">    <tt class="py-docstring">"""Defines the *parse* method as a wrapper to *read*."""</tt> </tt>
+<a name="Parseable.parse"></a><div id="Parseable.parse-def"><a name="L100"></a><tt class="py-lineno">100</tt> <a class="py-toggle" href="#" id="Parseable.parse-toggle" onclick="return toggle('Parseable.parse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.Parseable-class.html#parse">parse</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">string</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Parseable.parse-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Parseable.parse-expanded"><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"><tt class="py-docstring">        Parse the *string*.</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line"><tt class="py-docstring">        The *read* method is used to parse the file-like object containing the *string*.</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">=</tt><tt class="py-name">StringIO</tt><tt class="py-op">(</tt><tt class="py-name">string</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name" targets="Method p4vasp.Dictionary.Incar.read()=p4vasp.Dictionary.Incar-class.html#read,Method p4vasp.GraphPM.GraphProperty.read()=p4vasp.GraphPM.GraphProperty-class.html#read,Method p4vasp.Property.Property.read()=p4vasp.Property.Property-class.html#read,Method p4vasp.Structure.Structure.read()=p4vasp.Structure.Structure-class.html#read,Method p4vasp.cStructure.Structure.read()=p4vasp.cStructure.Structure-class.html#read,Method p4vasp.util.Parseable.read()=p4vasp.util.Parseable-class.html#read"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-12', 'read', 'link-12');">read</a></tt><tt class="py-op">(</tt><tt class="py-name">sio</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Method p4vasp.GraphCanvas.GraphCanvasWindow.close()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#close,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.close()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#close,Method p4vasp.message.DummyFile.close()=p4vasp.message.DummyFile-class.html#close,Method p4vasp.message.PrintFile.close()=p4vasp.message.PrintFile-class.html#close"><a title="p4vasp.GraphCanvas.GraphCanvasWindow.close
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.close
+p4vasp.message.DummyFile.close
+p4vasp.message.PrintFile.close" class="py-name" href="#" onclick="return doclink('link-13', 'close', 'link-13');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="Parseable.read"></a><div id="Parseable.read-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="Parseable.read-toggle" onclick="return toggle('Parseable.read');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.Parseable-class.html#read">read</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">f</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Parseable.read-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Parseable.read-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-string">"read() method not implemented"</tt> </tt>
+</div></div><a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line"> </tt>
+<a name="ToString"></a><div id="ToString-def"><a name="L111"></a><tt class="py-lineno">111</tt> <a class="py-toggle" href="#" id="ToString-toggle" onclick="return toggle('ToString');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.ToString-class.html">ToString</a><tt class="py-op">:</tt> </tt>
+</div><div id="ToString-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ToString-expanded"><a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">    <tt class="py-docstring">"""Defines the *toString* method as a wrapper to *write*."""</tt> </tt>
+<a name="ToString.toString"></a><div id="ToString.toString-def"><a name="L113"></a><tt class="py-lineno">113</tt> <a class="py-toggle" href="#" id="ToString.toString-toggle" onclick="return toggle('ToString.toString');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ToString-class.html#toString">toString</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ToString.toString-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ToString.toString-expanded"><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-docstring">        Convert object to string.</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-docstring">        Output of the *write* method is returned as a string.</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">=</tt><tt class="py-name">StringIO</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-14" class="py-name" targets="Method p4vasp.Dictionary.Incar.write()=p4vasp.Dictionary.Incar-class.html#write,Method p4vasp.Structure.Structure.write()=p4vasp.Structure.Structure-class.html#write,Method p4vasp.SystemPM.SetupPM.write()=p4vasp.SystemPM.SetupPM-class.html#write,Method p4vasp.cStructure.Structure.write()=p4vasp.cStructure.Structure-class.html#write,Method p4vasp.cmatrix.Vector.write()=p4vasp.cmatrix.Vector-class.html#write,Method p4vasp.matrix.Vector.write()=p4vasp.matrix.Vector-class.html#write,Method p4vasp.message.DummyFile.write()=p4vasp.message.DummyFile-class.html#write,Method p4vasp.message.PrintFile.write()=p4vasp.message.PrintFile-class.html#write,Method p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write()=p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D-class.html#write,Method p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write()=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#write,Method p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write()=p4vasp.paint3d.Paint3DInterface.Paint3DInterface-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write()=p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame-class.html#write,Method p4vasp.store.AttributeProfile.write()=p4vasp.store.AttributeProfile-class.html#write,Method p4vasp.store.Profile.write()=p4vasp.store.Profile-class.html#write"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-14', 'write', 'link-14');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">sio</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">sio</tt><tt class="py-op">.</tt><tt class="py-name">getvalue</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name"><a title="p4vasp.GraphCanvas.GraphCanvasWindow.close
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.close
+p4vasp.message.DummyFile.close
+p4vasp.message.PrintFile.close" class="py-name" href="#" onclick="return doclink('link-15', 'close', 'link-13');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div></div><a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line"> </tt>
+<a name="guessType"></a><div id="guessType-def"><a name="L124"></a><tt class="py-lineno">124</tt> <a class="py-toggle" href="#" id="guessType-toggle" onclick="return toggle('guessType');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#guessType">guessType</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="guessType-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="guessType-expanded"><a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">    <tt class="py-docstring">"""Try to guess the type from the python type.</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line"><tt class="py-docstring">  This maps *float* to *FLOAT_TYPE*, *int* to *INT_TYPE* and everything else</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line"><tt class="py-docstring">  to *STRING_TYPE* .</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">FloatType</tt><tt class="py-op">:</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-16" class="py-name" targets="Variable p4vasp.Array.FLOAT_TYPE=p4vasp.Array-module.html#FLOAT_TYPE,Variable p4vasp.Dictionary.FLOAT_TYPE=p4vasp.Dictionary-module.html#FLOAT_TYPE,Variable p4vasp.FLOAT_TYPE=p4vasp-module.html#FLOAT_TYPE,Variable p4vasp.GraphCanvas.FLOAT_TYPE=p4vasp.GraphCanvas-module.html#FLOAT_TYPE,Variable p4vasp.GraphPM.FLOAT_TYPE=p4vasp.GraphPM-module.html#FLOAT_TYPE,Variable p4vasp.Property.FLOAT_TYPE=p4vasp.Property-module.html#FLOAT_TYPE,Variable p4vasp.Structure.FLOAT_TYPE=p4vasp.Structure-module.html#FLOAT_TYPE,Variable p4vasp.graph.FLOAT_TYPE=p4vasp.graph-module.html#FLOAT_TYPE,Variable p4vasp.repository.FLOAT_TYPE=p4vasp.repository-module.html#FLOAT_TYPE,Variable p4vasp.util.FLOAT_TYPE=p4vasp.util-module.html#FLOAT_TYPE"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-16', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">IntType</tt><tt class="py-op">:</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-17" class="py-name" targets="Variable p4vasp.Array.INT_TYPE=p4vasp.Array-module.html#INT_TYPE,Variable p4vasp.Dictionary.INT_TYPE=p4vasp.Dictionary-module.html#INT_TYPE,Variable p4vasp.GraphCanvas.INT_TYPE=p4vasp.GraphCanvas-module.html#INT_TYPE,Variable p4vasp.GraphPM.INT_TYPE=p4vasp.GraphPM-module.html#INT_TYPE,Variable p4vasp.INT_TYPE=p4vasp-module.html#INT_TYPE,Variable p4vasp.Property.INT_TYPE=p4vasp.Property-module.html#INT_TYPE,Variable p4vasp.Structure.INT_TYPE=p4vasp.Structure-module.html#INT_TYPE,Variable p4vasp.graph.INT_TYPE=p4vasp.graph-module.html#INT_TYPE,Variable p4vasp.repository.INT_TYPE=p4vasp.repository-module.html#INT_TYPE,Variable p4vasp.util.INT_TYPE=p4vasp.util-module.html#INT_TYPE"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-17', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-18" class="py-name" targets="Variable p4vasp.Array.STRING_TYPE=p4vasp.Array-module.html#STRING_TYPE,Variable p4vasp.Dictionary.STRING_TYPE=p4vasp.Dictionary-module.html#STRING_TYPE,Variable p4vasp.GraphCanvas.STRING_TYPE=p4vasp.GraphCanvas-module.html#STRING_TYPE,Variable p4vasp.GraphPM.STRING_TYPE=p4vasp.GraphPM-module.html#STRING_TYPE,Variable p4vasp.Property.STRING_TYPE=p4vasp.Property-module.html#STRING_TYPE,Variable p4vasp.STRING_TYPE=p4vasp-module.html#STRING_TYPE,Variable p4vasp.Structure.STRING_TYPE=p4vasp.Structure-module.html#STRING_TYPE,Variable p4vasp.graph.STRING_TYPE=p4vasp.graph-module.html#STRING_TYPE,Variable p4vasp.repository.STRING_TYPE=p4vasp.repository-module.html#STRING_TYPE,Variable p4vasp.util.STRING_TYPE=p4vasp.util-module.html#STRING_TYPE"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-18', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt> </tt>
+</div><a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"> </tt>
+<a name="retype"></a><div id="retype-def"><a name="L135"></a><tt class="py-lineno">135</tt> <a class="py-toggle" href="#" id="retype-toggle" onclick="return toggle('retype');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#retype">retype</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="retype-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="retype-expanded"><a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return x converted to a scalar of</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt class="py-docstring">    type t.</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"><tt class="py-docstring">    For *LOGICAL_TYPE*</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt class="py-docstring">    this converts</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line"><tt class="py-docstring">    * integers to (*x* != 0),</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line"><tt class="py-docstring">    * ".TRUE." and strings starting with "T, "1", "Y" to 1 (case insensitive),</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line"><tt class="py-docstring">    * other values to 0.</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-19" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-19', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-20" class="py-name" targets="Class float=float-class.html"><a title="float" class="py-name" href="#" onclick="return doclink('link-20', 'float', 'link-20');">float</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-number">0.0</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-21" class="py-name"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-21', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-22" class="py-name"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-22', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-23" class="py-name" targets="Variable p4vasp.Array.LOGICAL_TYPE=p4vasp.Array-module.html#LOGICAL_TYPE,Variable p4vasp.Dictionary.LOGICAL_TYPE=p4vasp.Dictionary-module.html#LOGICAL_TYPE,Variable p4vasp.GraphCanvas.LOGICAL_TYPE=p4vasp.GraphCanvas-module.html#LOGICAL_TYPE,Variable p4vasp.GraphPM.LOGICAL_TYPE=p4vasp.GraphPM-module.html#LOGICAL_TYPE,Variable p4vasp.LOGICAL_TYPE=p4vasp-module.html#LOGICAL_TYPE,Variable p4vasp.Property.LOGICAL_TYPE=p4vasp.Property-module.html#LOGICAL_TYPE,Variable p4vasp.Structure.LOGICAL_TYPE=p4vasp.Structure-module.html#LOGICAL_TYPE,Variable p4vasp.graph.LOGICAL_TYPE=p4vasp.graph-module.html#LOGICAL_TYPE,Variable p4vasp.repository.LOGICAL_TYPE=p4vasp.repository-module.html#LOGICAL_TYPE,Variable p4vasp.util.LOGICAL_TYPE=p4vasp.util-module.html#LOGICAL_TYPE"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-23', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">IntType</tt><tt class="py-op">:</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">t</tt><tt class="py-op">!=</tt><tt class="py-number">0</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">        <tt class="py-name">uv</tt><tt class="py-op">=</tt><tt class="py-name">upper</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">uv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">"T"</tt><tt class="py-op">,</tt><tt class="py-string">"1"</tt><tt class="py-op">,</tt><tt class="py-string">"Y"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-op">(</tt><tt class="py-name">uv</tt><tt class="py-op">==</tt><tt class="py-string">".TRUE."</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-24" class="py-name" targets="Class p4vasp.util.UnknownType=p4vasp.util.UnknownType-class.html"><a title="p4vasp.util.UnknownType" class="py-name" href="#" onclick="return doclink('link-24', 'UnknownType', 'link-24');">UnknownType</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="retypeVec"></a><div id="retypeVec-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="retypeVec-toggle" onclick="return toggle('retypeVec');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#retypeVec">retypeVec</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="retypeVec-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="retypeVec-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">    <tt class="py-docstring">"""Return x converted to a vector of type t.</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line"><tt class="py-docstring">    This is the same as *retype()* function applied to all elements of *x*.</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-25" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-25', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt id="link-26" class="py-name"><a title="float" class="py-name" href="#" onclick="return doclink('link-26', 'float', 'link-20');">float</a></tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-27" class="py-name"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-27', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-28" class="py-name"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-28', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">int</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-29" class="py-name"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-29', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">xx</tt><tt class="py-op">:</tt><tt class="py-op">(</tt><tt class="py-name">xx</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">"T"</tt><tt class="py-op">,</tt><tt class="py-string">"1"</tt><tt class="py-op">,</tt><tt class="py-string">"Y"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-keyword">or</tt> <tt class="py-op">(</tt><tt class="py-name">xx</tt><tt class="py-op">==</tt><tt class="py-string">".TRUE."</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">upper</tt><tt class="py-op">,</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt id="link-30" class="py-name"><a title="p4vasp.util.UnknownType" class="py-name" href="#" onclick="return doclink('link-30', 'UnknownType', 'link-24');">UnknownType</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line"> </tt>
+<a name="xmlrepr"></a><div id="xmlrepr-def"><a name="L180"></a><tt class="py-lineno">180</tt> <a class="py-toggle" href="#" id="xmlrepr-toggle" onclick="return toggle('xmlrepr');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#xmlrepr">xmlrepr</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">=</tt><tt id="link-31" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-31', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">,</tt><tt class="py-param">format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">float_format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">string_format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">logical_format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">int_format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="xmlrepr-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="xmlrepr-expanded"><a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">    <tt class="py-docstring">"""Represent *x* of type *t* as a string using</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line"><tt class="py-docstring">    *format*, or if *format* is None, using default formats ( *xxx_format* )</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line"><tt class="py-docstring">    for particular type.</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line"><tt class="py-docstring">    If the *format* (or *xxx_format*) is *None*, *str()* function is used for converting.</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line"><tt class="py-docstring">    LOGICAL_TYPE is first converted</tt> </tt>
+<a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"><tt class="py-docstring">    to "T" or "F".</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line"><tt class="py-docstring">    If *x* is an array, the format is applied ao all elements</tt> </tt>
+<a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"><tt class="py-docstring">    and the result is joined using the whitespace as a separator.</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt id="link-32" class="py-name"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-32', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-33" class="py-name" targets="Function p4vasp.util.isArray()=p4vasp.util-module.html#isArray"><a title="p4vasp.util.isArray" class="py-name" href="#" onclick="return doclink('link-33', 'isArray', 'link-33');">isArray</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">            <tt class="py-name">xx</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">a</tt><tt class="py-op">:</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">                    <tt class="py-name">xx</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method p4vasp.Structure.AtomInfo.append()=p4vasp.Structure.AtomInfo-class.html#append,Method p4vasp.Structure.Structure.append()=p4vasp.Structure.Structure-class.html#append,Method p4vasp.cStructure.AtomInfo.append()=p4vasp.cStructure.AtomInfo-class.html#append,Method p4vasp.cStructure.Structure.append()=p4vasp.cStructure.Structure-class.html#append,Method p4vasp.graph.Graph.append()=p4vasp.graph.Graph-class.html#append,Method p4vasp.graph.World.append()=p4vasp.graph.World-class.html#append,Method p4vasp.repository.Repository.append()=p4vasp.repository.Repository-class.html#append"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-34', 'append', 'link-34');">append</a></tt><tt class="py-op">(</tt><tt class="py-string">"T"</tt><tt class="py-op">)</tt> </tt>
+<a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L199"></a><tt class="py-lineno">199</tt>  <tt class="py-line">                    <tt class="py-name">xx</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-35', 'append', 'link-34');">append</a></tt><tt class="py-op">(</tt><tt class="py-string">"F"</tt><tt class="py-op">)</tt> </tt>
+<a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">            <tt class="py-name">x</tt><tt class="py-op">=</tt><tt class="py-name">xx</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">                <tt class="py-name">x</tt><tt class="py-op">=</tt><tt class="py-string">"T"</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line">                <tt class="py-name">x</tt><tt class="py-op">=</tt><tt class="py-string">"F"</tt> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">format</tt><tt class="py-op">:</tt> </tt>
+<a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt id="link-36" class="py-name"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-36', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">            <tt class="py-name">format</tt><tt class="py-op">=</tt><tt id="link-37" class="py-name" targets="Variable p4vasp.util.ToXMLHelper.logical_format=p4vasp.util.ToXMLHelper-class.html#logical_format"><a title="p4vasp.util.ToXMLHelper.logical_format" class="py-name" href="#" onclick="return doclink('link-37', 'logical_format', 'link-37');">logical_format</a></tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt id="link-38" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-38', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-name">format</tt><tt class="py-op">=</tt><tt id="link-39" class="py-name" targets="Variable p4vasp.util.ToXMLHelper.float_format=p4vasp.util.ToXMLHelper-class.html#float_format"><a title="p4vasp.util.ToXMLHelper.float_format" class="py-name" href="#" onclick="return doclink('link-39', 'float_format', 'link-39');">float_format</a></tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt id="link-40" class="py-name"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-40', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-name">format</tt><tt class="py-op">=</tt><tt id="link-41" class="py-name" targets="Variable p4vasp.util.ToXMLHelper.string_format=p4vasp.util.ToXMLHelper-class.html#string_format"><a title="p4vasp.util.ToXMLHelper.string_format" class="py-name" href="#" onclick="return doclink('link-41', 'string_format', 'link-41');">string_format</a></tt> </tt>
+<a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt id="link-42" class="py-name"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-42', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">            <tt class="py-name">format</tt><tt class="py-op">=</tt><tt id="link-43" class="py-name" targets="Variable p4vasp.util.ToXMLHelper.int_format=p4vasp.util.ToXMLHelper-class.html#int_format"><a title="p4vasp.util.ToXMLHelper.int_format" class="py-name" href="#" onclick="return doclink('link-43', 'int_format', 'link-43');">int_format</a></tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">format</tt><tt class="py-op">:</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-44" class="py-name"><a title="p4vasp.util.isArray" class="py-name" href="#" onclick="return doclink('link-44', 'isArray', 'link-33');">isArray</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">a</tt><tt class="py-op">,</tt><tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-name">format</tt><tt class="py-op">:</tt><tt class="py-name">f</tt><tt class="py-op">%</tt><tt class="py-name">a</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">format</tt><tt class="py-op">%</tt><tt class="py-name">x</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-45" class="py-name"><a title="p4vasp.util.isArray" class="py-name" href="#" onclick="return doclink('link-45', 'isArray', 'link-33');">isArray</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line"> </tt>
+<a name="removeNewline"></a><div id="removeNewline-def"><a name="L226"></a><tt class="py-lineno">226</tt> <a class="py-toggle" href="#" id="removeNewline-toggle" onclick="return toggle('removeNewline');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#removeNewline">removeNewline</a><tt class="py-op">(</tt><tt class="py-param">s</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="removeNewline-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="removeNewline-expanded"><a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">    <tt class="py-docstring">"""Remove newlines and cr ("\\n","\\r") from string."""</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-string">"\n"</tt><tt class="py-op">,</tt><tt class="py-string">""</tt><tt class="py-op">)</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">    <tt class="py-name">s</tt> <tt class="py-op">=</tt> <tt class="py-name">replace</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-string">"\r"</tt><tt class="py-op">,</tt><tt class="py-string">""</tt><tt class="py-op">)</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line"> </tt>
+<a name="getChildrenByTagName"></a><div id="getChildrenByTagName-def"><a name="L232"></a><tt class="py-lineno">232</tt> <a class="py-toggle" href="#" id="getChildrenByTagName-toggle" onclick="return toggle('getChildrenByTagName');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getChildrenByTagName">getChildrenByTagName</a><tt class="py-op">(</tt><tt class="py-param">elem</tt><tt class="py-op">,</tt><tt class="py-param">tag</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getChildrenByTagName-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getChildrenByTagName-expanded"><a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line"><tt class="py-docstring">    Searches the children of *elem* for element nodes</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line"><tt class="py-docstring">    with the tagname *tag* and optionaly with the attribute "name"</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line"><tt class="py-docstring">    having the value *name*.</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">        <tt class="py-name">r</tt><tt class="py-op">=</tt><tt id="link-46" class="py-name"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-46', 'ODPdom', 'link-3');">ODPdom</a></tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Class p4vasp.ODPdom.ChildrenByTagNameList=p4vasp.ODPdom.ChildrenByTagNameList-class.html"><a title="p4vasp.ODPdom.ChildrenByTagNameList" class="py-name" href="#" onclick="return doclink('link-47', 'ChildrenByTagNameList', 'link-47');">ChildrenByTagNameList</a></tt><tt class="py-op">(</tt><tt class="py-name">elem</tt><tt class="py-op">,</tt><tt class="py-name">tag</tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-48" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.name=p4vasp.applet.Applet.Applet-class.html#name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-48', 'name', 'link-48');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line"><tt class="py-comment">#      print "return filtered ODPdom.ChildrenByTagNameList"</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-49" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-49', 'name', 'link-48');">name</a></tt><tt class="py-op">=</tt><tt id="link-50" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-50', 'name', 'link-48');">name</a></tt><tt class="py-op">:</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-51" class="py-name" targets="Method p4vasp.ODPdom.Element.getAttribute()=p4vasp.ODPdom.Element-class.html#getAttribute"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-51', 'getAttribute', 'link-51');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt id="link-52" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-52', 'name', 'link-48');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">r</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">r</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line"><tt class="py-comment">#    print "ODPdom.ChildrenByTagNameList failed"</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-53" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-53', 'name', 'link-48');">name</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">tag</tt><tt class="py-op">=</tt><tt class="py-name">tag</tt><tt class="py-op">,</tt><tt id="link-54" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-54', 'name', 'link-48');">name</a></tt><tt class="py-op">=</tt><tt id="link-55" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-55', 'name', 'link-48');">name</a></tt><tt class="py-op">:</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name" targets="Variable p4vasp.ODPdom.DocumentFragment.nodeName=p4vasp.ODPdom.DocumentFragment-class.html#nodeName"><a title="p4vasp.ODPdom.DocumentFragment.nodeName" class="py-name" href="#" onclick="return doclink('link-56', 'nodeName', 'link-56');">nodeName</a></tt><tt class="py-op">==</tt><tt class="py-name">tag</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt>\ </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">                                         <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-57" class="py-name" targets="Variable p4vasp.ODPdom.DocumentFragment.nodeType=p4vasp.ODPdom.DocumentFragment-class.html#nodeType"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-57', 'nodeType', 'link-57');">nodeType</a></tt><tt class="py-op">==</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Variable p4vasp.ODPdom.Node.ELEMENT_NODE=p4vasp.ODPdom.Node-class.html#ELEMENT_NODE"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-58', 'ELEMENT_NODE', 'link-58');">ELEMENT_NODE</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt>\ </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">                                         <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-59', 'getAttribute', 'link-51');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt id="link-60" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-60', 'name', 'link-48');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">tag</tt><tt class="py-op">=</tt><tt class="py-name">tag</tt><tt class="py-op">:</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeName" class="py-name" href="#" onclick="return doclink('link-61', 'nodeName', 'link-56');">nodeName</a></tt><tt class="py-op">==</tt><tt class="py-name">tag</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-62', 'nodeType', 'link-57');">nodeType</a></tt><tt class="py-op">==</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-63', 'ELEMENT_NODE', 'link-58');">ELEMENT_NODE</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">,</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">childNodes</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line"> </tt>
+<a name="getInheritedElementsByTagName"></a><div id="getInheritedElementsByTagName-def"><a name="L255"></a><tt class="py-lineno">255</tt> <a class="py-toggle" href="#" id="getInheritedElementsByTagName-toggle" onclick="return toggle('getInheritedElementsByTagName');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getInheritedElementsByTagName">getInheritedElementsByTagName</a><tt class="py-op">(</tt><tt class="py-param">elem</tt><tt class="py-op">,</tt><tt class="py-param">tag</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getInheritedElementsByTagName-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getInheritedElementsByTagName-expanded"><a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line"><tt class="py-docstring">    Searches the children of *elem* and (direct) children of the predecesors</tt> </tt>
+<a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"><tt class="py-docstring">    until element nodes with the tagname *tag* and optionaly with the attribute "name"</tt> </tt>
+<a name="L259"></a><tt class="py-lineno">259</tt>  <tt class="py-line"><tt class="py-docstring">    having the value *name* are is (are) found.</tt> </tt>
+<a name="L260"></a><tt class="py-lineno">260</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">elem</tt><tt class="py-op">:</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">        <tt id="link-64" class="py-name" targets="Variable p4vasp.GraphCanvas.e=p4vasp.GraphCanvas-module.html#e,Variable p4vasp.GraphPM.e=p4vasp.GraphPM-module.html#e,Variable p4vasp.graph.e=p4vasp.graph-module.html#e,Variable p4vasp.paint3d.ColladaPaint3D.e=p4vasp.paint3d.ColladaPaint3D-module.html#e,Variable p4vasp.paint3d.MeshTools.e=p4vasp.paint3d.MeshTools-module.html#e,Variable p4vasp.paint3d.OpenGLPaint3D.e=p4vasp.paint3d.OpenGLPaint3D-module.html#e"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-64', 'e', 'link-64');">e</a></tt><tt class="py-op">=</tt><tt id="link-65" class="py-name" targets="Function p4vasp.util.getChildrenByTagName()=p4vasp.util-module.html#getChildrenByTagName"><a title="p4vasp.util.getChildrenByTagName" class="py-name" href="#" onclick="return doclink('link-65', 'getChildrenByTagName', 'link-65');">getChildrenByTagName</a></tt><tt class="py-op">(</tt><tt class="py-name">elem</tt><tt class="py-op">,</tt><tt class="py-name">tag</tt><tt class="py-op">,</tt><tt id="link-66" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-66', 'name', 'link-48');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-67" class="py-name" targets="Method p4vasp.cStructure.Structure.len()=p4vasp.cStructure.Structure-class.html#len"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-67', 'len', 'link-67');">len</a></tt><tt class="py-op">(</tt><tt id="link-68" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-68', 'e', 'link-64');">e</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-69" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-69', 'e', 'link-64');">e</a></tt> </tt>
+<a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line">        <tt class="py-name">elem</tt><tt class="py-op">=</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-70" class="py-name" targets="Variable p4vasp.ODPdom.DocumentFragment.parentNode=p4vasp.ODPdom.DocumentFragment-class.html#parentNode"><a title="p4vasp.ODPdom.DocumentFragment.parentNode" class="py-name" href="#" onclick="return doclink('link-70', 'parentNode', 'link-70');">parentNode</a></tt> </tt>
+<a name="L266"></a><tt class="py-lineno">266</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line"> </tt>
+<a name="getTextFromElement"></a><div id="getTextFromElement-def"><a name="L268"></a><tt class="py-lineno">268</tt> <a class="py-toggle" href="#" id="getTextFromElement-toggle" onclick="return toggle('getTextFromElement');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getTextFromElement">getTextFromElement</a><tt class="py-op">(</tt><tt class="py-param">elem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getTextFromElement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getTextFromElement-expanded"><a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">    <tt class="py-docstring">"""Extracts all texts and CDATA sections from the element *elem* and returns them</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line"><tt class="py-docstring">  joined as one string.</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line"><tt class="py-docstring">  Note: The returntype is the ordinary string, not unicode."""</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">    <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-71" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-71', 'nodeType', 'link-57');">nodeType</a></tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name" targets="Variable p4vasp.ODPdom.Node.TEXT_NODE=p4vasp.ODPdom.Node-class.html#TEXT_NODE"><a title="p4vasp.ODPdom.Node.TEXT_NODE" class="py-name" href="#" onclick="return doclink('link-72', 'TEXT_NODE', 'link-72');">TEXT_NODE</a></tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name" targets="Variable p4vasp.ODPdom.Node.CDATA_SECTION_NODE=p4vasp.ODPdom.Node-class.html#CDATA_SECTION_NODE"><a title="p4vasp.ODPdom.Node.CDATA_SECTION_NODE" class="py-name" href="#" onclick="return doclink('link-73', 'CDATA_SECTION_NODE', 'link-73');">CDATA_SECTION_NODE</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name" targets="Module p4vasp.paint3d.data=p4vasp.paint3d.data-module.html"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-74', 'data', 'link-74');">data</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">filter</tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">,</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">childNodes</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-string">""</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line"> </tt>
+<a name="getTypeFromElement"></a><div id="getTypeFromElement-def"><a name="L275"></a><tt class="py-lineno">275</tt> <a class="py-toggle" href="#" id="getTypeFromElement-toggle" onclick="return toggle('getTypeFromElement');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getTypeFromElement">getTypeFromElement</a><tt class="py-op">(</tt><tt class="py-param">elem</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getTypeFromElement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getTypeFromElement-expanded"><a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">    <tt class="py-docstring">"""Extracts the type from "type" attribute of elem and returns the type:</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line"><tt class="py-docstring">    || **returned type** || **type attribute**             ||</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line"><tt class="py-docstring">    || INTEGER_TYPE      || "int", "integer"               ||</tt> </tt>
+<a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"><tt class="py-docstring">    || STRING_TYPE       || "string"                       ||</tt> </tt>
+<a name="L281"></a><tt class="py-lineno">281</tt>  <tt class="py-line"><tt class="py-docstring">    || LOGICAL_TYPE      || "logical", "bollean", "bool"   ||</tt> </tt>
+<a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line"><tt class="py-docstring">    || FLOAT_TYPE        || in other cases                 ||</tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">        <tt class="py-name">t</tt><tt class="py-op">=</tt><tt class="py-name">lower</tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-75" class="py-name"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-75', 'getAttribute', 'link-51');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"type"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-76" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-76', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-op">(</tt><tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">"int"</tt><tt class="py-op">,</tt><tt class="py-string">"integer"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-77" class="py-name"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-77', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-op">(</tt><tt class="py-name">t</tt> <tt class="py-op">==</tt> <tt class="py-string">"string"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-78" class="py-name"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-78', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-op">(</tt><tt class="py-name">t</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-string">"logical"</tt><tt class="py-op">,</tt><tt class="py-string">"boolean"</tt><tt class="py-op">,</tt><tt class="py-string">"bool"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-79" class="py-name"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-79', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-80" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-80', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt> </tt>
+</div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt>
+<a name="resolveItemElement"></a><div id="resolveItemElement-def"><a name="L298"></a><tt class="py-lineno">298</tt> <a class="py-toggle" href="#" id="resolveItemElement-toggle" onclick="return toggle('resolveItemElement');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#resolveItemElement">resolveItemElement</a><tt class="py-op">(</tt><tt class="py-param">e</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="resolveItemElement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="resolveItemElement-expanded"><a name="L299"></a><tt class="py-lineno">299</tt>  <tt class="py-line">    <tt class="py-docstring">"""Reads the &lt;i&gt; tag and returns a tuple containing ( *name* , *value* , *type* ),</tt> </tt>
+<a name="L300"></a><tt class="py-lineno">300</tt>  <tt class="py-line"><tt class="py-docstring">  where the *value* is a scalar of type *type* ."""</tt> </tt>
+<a name="L301"></a><tt class="py-lineno">301</tt>  <tt class="py-line">    <tt class="py-name">key</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-81" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-81', 'e', 'link-64');">e</a></tt><tt class="py-op">.</tt><tt id="link-82" class="py-name"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-82', 'getAttribute', 'link-51');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L302"></a><tt class="py-lineno">302</tt>  <tt class="py-line">    <tt class="py-name">value</tt><tt class="py-op">=</tt><tt id="link-83" class="py-name" targets="Function p4vasp.store.getTextFromElement()=p4vasp.store-module.html#getTextFromElement,Function p4vasp.util.getTextFromElement()=p4vasp.util-module.html#getTextFromElement"><a title="p4vasp.store.getTextFromElement
+p4vasp.util.getTextFromElement" class="py-name" href="#" onclick="return doclink('link-83', 'getTextFromElement', 'link-83');">getTextFromElement</a></tt><tt class="py-op">(</tt><tt id="link-84" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-84', 'e', 'link-64');">e</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L303"></a><tt class="py-lineno">303</tt>  <tt class="py-line">    <tt class="py-name">t</tt><tt class="py-op">=</tt><tt id="link-85" class="py-name" targets="Function p4vasp.util.getTypeFromElement()=p4vasp.util-module.html#getTypeFromElement"><a title="p4vasp.util.getTypeFromElement" class="py-name" href="#" onclick="return doclink('link-85', 'getTypeFromElement', 'link-85');">getTypeFromElement</a></tt><tt class="py-op">(</tt><tt id="link-86" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-86', 'e', 'link-64');">e</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L304"></a><tt class="py-lineno">304</tt>  <tt class="py-line">    <tt class="py-name">value</tt><tt class="py-op">=</tt><tt id="link-87" class="py-name" targets="Function p4vasp.util.retype()=p4vasp.util-module.html#retype"><a title="p4vasp.util.retype" class="py-name" href="#" onclick="return doclink('link-87', 'retype', 'link-87');">retype</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L305"></a><tt class="py-lineno">305</tt>  <tt class="py-line"> </tt>
+<a name="L306"></a><tt class="py-lineno">306</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt><tt class="py-name">value</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L307"></a><tt class="py-lineno">307</tt>  <tt class="py-line"> </tt>
+<a name="resolveVectorElement"></a><div id="resolveVectorElement-def"><a name="L308"></a><tt class="py-lineno">308</tt> <a class="py-toggle" href="#" id="resolveVectorElement-toggle" onclick="return toggle('resolveVectorElement');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#resolveVectorElement">resolveVectorElement</a><tt class="py-op">(</tt><tt class="py-param">e</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="resolveVectorElement-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="resolveVectorElement-expanded"><a name="L309"></a><tt class="py-lineno">309</tt>  <tt class="py-line">    <tt class="py-docstring">"""Reads the &lt;v&gt; tag and returns a tuple containing ( *name* , *value* , *type* ),</tt> </tt>
+<a name="L310"></a><tt class="py-lineno">310</tt>  <tt class="py-line"><tt class="py-docstring">  where the *value* is an array of type *type* ."""</tt> </tt>
+<a name="L311"></a><tt class="py-lineno">311</tt>  <tt class="py-line">    <tt class="py-name">key</tt><tt class="py-op">=</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt id="link-88" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-88', 'e', 'link-64');">e</a></tt><tt class="py-op">.</tt><tt id="link-89" class="py-name"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-89', 'getAttribute', 'link-51');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"name"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L312"></a><tt class="py-lineno">312</tt>  <tt class="py-line">    <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt id="link-90" class="py-name"><a title="p4vasp.store.getTextFromElement
+p4vasp.util.getTextFromElement" class="py-name" href="#" onclick="return doclink('link-90', 'getTextFromElement', 'link-83');">getTextFromElement</a></tt><tt class="py-op">(</tt><tt id="link-91" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-91', 'e', 'link-64');">e</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L313"></a><tt class="py-lineno">313</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">t</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L314"></a><tt class="py-lineno">314</tt>  <tt class="py-line">        <tt class="py-name">t</tt><tt class="py-op">=</tt><tt id="link-92" class="py-name"><a title="p4vasp.util.getTypeFromElement" class="py-name" href="#" onclick="return doclink('link-92', 'getTypeFromElement', 'link-85');">getTypeFromElement</a></tt><tt class="py-op">(</tt><tt id="link-93" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-93', 'e', 'link-64');">e</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L315"></a><tt class="py-lineno">315</tt>  <tt class="py-line">    <tt class="py-name">value</tt><tt class="py-op">=</tt><tt id="link-94" class="py-name" targets="Function p4vasp.util.retypeVec()=p4vasp.util-module.html#retypeVec"><a title="p4vasp.util.retypeVec" class="py-name" href="#" onclick="return doclink('link-94', 'retypeVec', 'link-94');">retypeVec</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L316"></a><tt class="py-lineno">316</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">key</tt><tt class="py-op">,</tt><tt class="py-name">value</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L317"></a><tt class="py-lineno">317</tt>  <tt class="py-line"> </tt>
+<a name="isNumericArray"></a><div id="isNumericArray-def"><a name="L318"></a><tt class="py-lineno">318</tt> <a class="py-toggle" href="#" id="isNumericArray-toggle" onclick="return toggle('isNumericArray');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#isNumericArray">isNumericArray</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="isNumericArray-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="isNumericArray-expanded"><a name="L319"></a><tt class="py-lineno">319</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns true if x is an *array* object from the *numpy* library."""</tt> </tt>
+<a name="L320"></a><tt class="py-lineno">320</tt>  <tt class="py-line">    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L321"></a><tt class="py-lineno">321</tt>  <tt class="py-line">        <tt class="py-keyword">from</tt> <tt class="py-name">numpy</tt> <tt class="py-keyword">import</tt> <tt class="py-name">ndarray</tt> </tt>
+<a name="L322"></a><tt class="py-lineno">322</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">ndarray</tt> </tt>
+<a name="L323"></a><tt class="py-lineno">323</tt>  <tt class="py-line">    <tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L324"></a><tt class="py-lineno">324</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-number">0</tt> </tt>
+</div><a name="L325"></a><tt class="py-lineno">325</tt>  <tt class="py-line"> </tt>
+<a name="isArray"></a><div id="isArray-def"><a name="L326"></a><tt class="py-lineno">326</tt> <a class="py-toggle" href="#" id="isArray-toggle" onclick="return toggle('isArray');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#isArray">isArray</a><tt class="py-op">(</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="isArray-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="isArray-expanded"><a name="L327"></a><tt class="py-lineno">327</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns true</tt> </tt>
+<a name="L328"></a><tt class="py-lineno">328</tt>  <tt class="py-line"><tt class="py-docstring">    for</tt> </tt>
+<a name="L329"></a><tt class="py-lineno">329</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L330"></a><tt class="py-lineno">330</tt>  <tt class="py-line"><tt class="py-docstring">    * python *lists*,</tt> </tt>
+<a name="L331"></a><tt class="py-lineno">331</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L332"></a><tt class="py-lineno">332</tt>  <tt class="py-line"><tt class="py-docstring">    * *tuples*,</tt> </tt>
+<a name="L333"></a><tt class="py-lineno">333</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L334"></a><tt class="py-lineno">334</tt>  <tt class="py-line"><tt class="py-docstring">    * *UserList* instances,</tt> </tt>
+<a name="L335"></a><tt class="py-lineno">335</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L336"></a><tt class="py-lineno">336</tt>  <tt class="py-line"><tt class="py-docstring">    * *Vector* instances (from the matrix library),</tt> </tt>
+<a name="L337"></a><tt class="py-lineno">337</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L338"></a><tt class="py-lineno">338</tt>  <tt class="py-line"><tt class="py-docstring">    * *array* objects from the *numpy* library.</tt> </tt>
+<a name="L339"></a><tt class="py-lineno">339</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L340"></a><tt class="py-lineno">340</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L341"></a><tt class="py-lineno">341</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">(</tt><tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-name">ListType</tt><tt class="py-op">,</tt> <tt class="py-name">TupleType</tt><tt class="py-op">)</tt><tt class="py-op">)</tt>\ </tt>
+<a name="L342"></a><tt class="py-lineno">342</tt>  <tt class="py-line">            <tt class="py-keyword">or</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">UserList</tt><tt class="py-op">)</tt>\ </tt>
+<a name="L343"></a><tt class="py-lineno">343</tt>  <tt class="py-line">            <tt class="py-keyword">or</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-95" class="py-name" targets="Class p4vasp.cmatrix.Vector=p4vasp.cmatrix.Vector-class.html,Class p4vasp.matrix.Vector=p4vasp.matrix.Vector-class.html"><a title="p4vasp.cmatrix.Vector
+p4vasp.matrix.Vector" class="py-name" href="#" onclick="return doclink('link-95', 'Vector', 'link-95');">Vector</a></tt><tt class="py-op">)</tt>\ </tt>
+<a name="L344"></a><tt class="py-lineno">344</tt>  <tt class="py-line">            <tt class="py-keyword">or</tt> <tt id="link-96" class="py-name" targets="Function p4vasp.util.isNumericArray()=p4vasp.util-module.html#isNumericArray"><a title="p4vasp.util.isNumericArray" class="py-name" href="#" onclick="return doclink('link-96', 'isNumericArray', 'link-96');">isNumericArray</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L345"></a><tt class="py-lineno">345</tt>  <tt class="py-line"> </tt>
+<a name="arrayShape"></a><div id="arrayShape-def"><a name="L346"></a><tt class="py-lineno">346</tt> <a class="py-toggle" href="#" id="arrayShape-toggle" onclick="return toggle('arrayShape');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#arrayShape">arrayShape</a><tt class="py-op">(</tt><tt class="py-param">l</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="arrayShape-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="arrayShape-expanded"><a name="L347"></a><tt class="py-lineno">347</tt>  <tt class="py-line">    <tt class="py-docstring">"""Returns the *shape* (i.e. list of dimensions) of the array l.</tt> </tt>
+<a name="L348"></a><tt class="py-lineno">348</tt>  <tt class="py-line"><tt class="py-docstring">    For *Numeric* array object this function simply returns array.shape.</tt> </tt>
+<a name="L349"></a><tt class="py-lineno">349</tt>  <tt class="py-line"><tt class="py-docstring">    For other objects a tuple containing (len(l), len(l[0]), len(l[0][0]) ...)</tt> </tt>
+<a name="L350"></a><tt class="py-lineno">350</tt>  <tt class="py-line"><tt class="py-docstring">    is returned.</tt> </tt>
+<a name="L351"></a><tt class="py-lineno">351</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L352"></a><tt class="py-lineno">352</tt>  <tt class="py-line">    <tt class="py-name">sh</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L353"></a><tt class="py-lineno">353</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-97" class="py-name"><a title="p4vasp.util.isNumericArray" class="py-name" href="#" onclick="return doclink('link-97', 'isNumericArray', 'link-96');">isNumericArray</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L354"></a><tt class="py-lineno">354</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-98" class="py-name" targets="Method p4vasp.Array.TopArray.shape()=p4vasp.Array.TopArray-class.html#shape"><a title="p4vasp.Array.TopArray.shape" class="py-name" href="#" onclick="return doclink('link-98', 'shape', 'link-98');">shape</a></tt> </tt>
+<a name="L355"></a><tt class="py-lineno">355</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt id="link-99" class="py-name"><a title="p4vasp.util.isArray" class="py-name" href="#" onclick="return doclink('link-99', 'isArray', 'link-33');">isArray</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L356"></a><tt class="py-lineno">356</tt>  <tt class="py-line">        <tt class="py-name">sh</tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-100', 'append', 'link-34');">append</a></tt><tt class="py-op">(</tt><tt id="link-101" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-101', 'len', 'link-67');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L357"></a><tt class="py-lineno">357</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-102" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-102', 'len', 'link-67');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L358"></a><tt class="py-lineno">358</tt>  <tt class="py-line">            <tt class="py-name">sh</tt><tt class="py-op">.</tt><tt id="link-103" class="py-name" targets="Method p4vasp.Structure.AtomInfo.extend()=p4vasp.Structure.AtomInfo-class.html#extend,Method p4vasp.Structure.Structure.extend()=p4vasp.Structure.Structure-class.html#extend,Method p4vasp.cStructure.AtomInfo.extend()=p4vasp.cStructure.AtomInfo-class.html#extend,Method p4vasp.cStructure.Structure.extend()=p4vasp.cStructure.Structure-class.html#extend,Method p4vasp.graph.Graph.extend()=p4vasp.graph.Graph-class.html#extend,Method p4vasp.graph.World.extend()=p4vasp.graph.World-class.html#extend"><a title="p4vasp.Structure.AtomInfo.extend
+p4vasp.Structure.Structure.extend
+p4vasp.cStructure.AtomInfo.extend
+p4vasp.cStructure.Structure.extend
+p4vasp.graph.Graph.extend
+p4vasp.graph.World.extend" class="py-name" href="#" onclick="return doclink('link-103', 'extend', 'link-103');">extend</a></tt><tt class="py-op">(</tt><tt id="link-104" class="py-name" targets="Function p4vasp.util.arrayShape()=p4vasp.util-module.html#arrayShape"><a title="p4vasp.util.arrayShape" class="py-name" href="#" onclick="return doclink('link-104', 'arrayShape', 'link-104');">arrayShape</a></tt><tt class="py-op">(</tt><tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L359"></a><tt class="py-lineno">359</tt>  <tt class="py-line"> </tt>
+<a name="L360"></a><tt class="py-lineno">360</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-name">tuple</tt><tt class="py-op">(</tt><tt class="py-name">sh</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L361"></a><tt class="py-lineno">361</tt>  <tt class="py-line"> </tt>
+<a name="ToXMLHelper"></a><div id="ToXMLHelper-def"><a name="L362"></a><tt class="py-lineno">362</tt> <a class="py-toggle" href="#" id="ToXMLHelper-toggle" onclick="return toggle('ToXMLHelper');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.util.ToXMLHelper-class.html">ToXMLHelper</a><tt class="py-op">:</tt> </tt>
+</div><div id="ToXMLHelper-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="ToXMLHelper-expanded"><a name="L363"></a><tt class="py-lineno">363</tt>  <tt class="py-line">    <tt class="py-docstring">"""This class encapsulates the formating properties for basic types</tt> </tt>
+<a name="L364"></a><tt class="py-lineno">364</tt>  <tt class="py-line"><tt class="py-docstring">    and some useful functions.</tt> </tt>
+<a name="L365"></a><tt class="py-lineno">365</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L366"></a><tt class="py-lineno">366</tt>  <tt class="py-line"><tt class="py-docstring">      Formating variables</tt> </tt>
+<a name="L367"></a><tt class="py-lineno">367</tt>  <tt class="py-line"><tt class="py-docstring">      contain the format-string:</tt> </tt>
+<a name="L368"></a><tt class="py-lineno">368</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L369"></a><tt class="py-lineno">369</tt>  <tt class="py-line"><tt class="py-docstring">              || **type**       || **variable**   || **default** ||</tt> </tt>
+<a name="L370"></a><tt class="py-lineno">370</tt>  <tt class="py-line"><tt class="py-docstring">              || *FLOAT_TYPE*   || float_format   || "%+14.10f"  ||</tt> </tt>
+<a name="L371"></a><tt class="py-lineno">371</tt>  <tt class="py-line"><tt class="py-docstring">              || *INT_TYPE*     || int_format     || "%3d"       ||</tt> </tt>
+<a name="L372"></a><tt class="py-lineno">372</tt>  <tt class="py-line"><tt class="py-docstring">              || *STRING_TYPE*  || string_format  || *None*      ||</tt> </tt>
+<a name="L373"></a><tt class="py-lineno">373</tt>  <tt class="py-line"><tt class="py-docstring">              || *LOGICAL_TYPE* || logical_format || " %s "      ||</tt> </tt>
+<a name="L374"></a><tt class="py-lineno">374</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L375"></a><tt class="py-lineno">375</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L376"></a><tt class="py-lineno">376</tt>  <tt class="py-line"><tt class="py-docstring">    If the value is None, python *str()* function is used to format the type.</tt> </tt>
+<a name="L377"></a><tt class="py-lineno">377</tt>  <tt class="py-line"><tt class="py-docstring">    *LOGICAL_TYPE* is first transformed into "T" (for 1) or "F" (for 0) and then</tt> </tt>
+<a name="L378"></a><tt class="py-lineno">378</tt>  <tt class="py-line"><tt class="py-docstring">    the format is applied.</tt> </tt>
+<a name="L379"></a><tt class="py-lineno">379</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L380"></a><tt class="py-lineno">380</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L381"></a><tt class="py-lineno">381</tt>  <tt class="py-line">    <tt id="link-105" class="py-name"><a title="p4vasp.util.ToXMLHelper.float_format" class="py-name" href="#" onclick="return doclink('link-105', 'float_format', 'link-39');">float_format</a></tt>  <tt class="py-op">=</tt><tt class="py-string">"%+14.10f"</tt> </tt>
+<a name="L382"></a><tt class="py-lineno">382</tt>  <tt class="py-line">    <tt id="link-106" class="py-name"><a title="p4vasp.util.ToXMLHelper.int_format" class="py-name" href="#" onclick="return doclink('link-106', 'int_format', 'link-43');">int_format</a></tt>    <tt class="py-op">=</tt><tt class="py-string">"%3d"</tt> </tt>
+<a name="L383"></a><tt class="py-lineno">383</tt>  <tt class="py-line">    <tt id="link-107" class="py-name"><a title="p4vasp.util.ToXMLHelper.string_format" class="py-name" href="#" onclick="return doclink('link-107', 'string_format', 'link-41');">string_format</a></tt> <tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L384"></a><tt class="py-lineno">384</tt>  <tt class="py-line">    <tt id="link-108" class="py-name"><a title="p4vasp.util.ToXMLHelper.logical_format" class="py-name" href="#" onclick="return doclink('link-108', 'logical_format', 'link-37');">logical_format</a></tt><tt class="py-op">=</tt><tt class="py-string">" %s "</tt> </tt>
+<a name="ToXMLHelper.toxml"></a><div id="ToXMLHelper.toxml-def"><a name="L385"></a><tt class="py-lineno">385</tt> <a class="py-toggle" href="#" id="ToXMLHelper.toxml-toggle" onclick="return toggle('ToXMLHelper.toxml');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ToXMLHelper-class.html#toxml">toxml</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">indent</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ToXMLHelper.toxml-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ToXMLHelper.toxml-expanded"><a name="L386"></a><tt class="py-lineno">386</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L387"></a><tt class="py-lineno">387</tt>  <tt class="py-line"><tt class="py-docstring">        Returns the xml representation of an object as a string.</tt> </tt>
+<a name="L388"></a><tt class="py-lineno">388</tt>  <tt class="py-line"><tt class="py-docstring">        This is a wrapper to the *writexml* method.</tt> </tt>
+<a name="L389"></a><tt class="py-lineno">389</tt>  <tt class="py-line"><tt class="py-docstring">        The content, that would be written by *writexml* to the file</tt> </tt>
+<a name="L390"></a><tt class="py-lineno">390</tt>  <tt class="py-line"><tt class="py-docstring">        is returned as a string.</tt> </tt>
+<a name="L391"></a><tt class="py-lineno">391</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L392"></a><tt class="py-lineno">392</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">=</tt><tt class="py-name">StringIO</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L393"></a><tt class="py-lineno">393</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-109" class="py-name" targets="Method p4vasp.Array.Array.writexml()=p4vasp.Array.Array-class.html#writexml,Method p4vasp.Array.VArray.writexml()=p4vasp.Array.VArray-class.html#writexml,Method p4vasp.Dictionary.Dictionary.writexml()=p4vasp.Dictionary.Dictionary-class.html#writexml,Method p4vasp.Dictionary.StructuredDictionary.writexml()=p4vasp.Dictionary.StructuredDictionary-class.html#writexml,Method p4vasp.Structure.AtomInfo.writexml()=p4vasp.Structure.AtomInfo-class.html#writexml,Method p4vasp.Structure.Structure.writexml()=p4vasp.Structure.Structure-class.html#writexml"><a title="p4vasp.Array.Array.writexml
+p4vasp.Array.VArray.writexml
+p4vasp.Dictionary.Dictionary.writexml
+p4vasp.Dictionary.StructuredDictionary.writexml
+p4vasp.Structure.AtomInfo.writexml
+p4vasp.Structure.Structure.writexml" class="py-name" href="#" onclick="return doclink('link-109', 'writexml', 'link-109');">writexml</a></tt><tt class="py-op">(</tt><tt class="py-name">sio</tt><tt class="py-op">,</tt><tt id="link-110" class="py-name" targets="Function p4vasp.message.indent()=p4vasp.message-module.html#indent,Function p4vasp.util.indent()=p4vasp.util-module.html#indent"><a title="p4vasp.message.indent
+p4vasp.util.indent" class="py-name" href="#" onclick="return doclink('link-110', 'indent', 'link-110');">indent</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L394"></a><tt class="py-lineno">394</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">sio</tt><tt class="py-op">.</tt><tt class="py-name">getvalue</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L395"></a><tt class="py-lineno">395</tt>  <tt class="py-line">        <tt class="py-name">sio</tt><tt class="py-op">.</tt><tt id="link-111" class="py-name"><a title="p4vasp.GraphCanvas.GraphCanvasWindow.close
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.close
+p4vasp.message.DummyFile.close
+p4vasp.message.PrintFile.close" class="py-name" href="#" onclick="return doclink('link-111', 'close', 'link-13');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L396"></a><tt class="py-lineno">396</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="ToXMLHelper.getDefaultFormat"></a><div id="ToXMLHelper.getDefaultFormat-def"><a name="L397"></a><tt class="py-lineno">397</tt> <a class="py-toggle" href="#" id="ToXMLHelper.getDefaultFormat-toggle" onclick="return toggle('ToXMLHelper.getDefaultFormat');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ToXMLHelper-class.html#getDefaultFormat">getDefaultFormat</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ToXMLHelper.getDefaultFormat-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ToXMLHelper.getDefaultFormat-expanded"><a name="L398"></a><tt class="py-lineno">398</tt>  <tt class="py-line">        <tt class="py-docstring">"""Returns the format string for type t."""</tt> </tt>
+<a name="L399"></a><tt class="py-lineno">399</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-112" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-112', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L400"></a><tt class="py-lineno">400</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-113" class="py-name"><a title="p4vasp.util.ToXMLHelper.float_format" class="py-name" href="#" onclick="return doclink('link-113', 'float_format', 'link-39');">float_format</a></tt> </tt>
+<a name="L401"></a><tt class="py-lineno">401</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-114" class="py-name"><a title="p4vasp.Array.INT_TYPE
+p4vasp.Dictionary.INT_TYPE
+p4vasp.GraphCanvas.INT_TYPE
+p4vasp.GraphPM.INT_TYPE
+p4vasp.INT_TYPE
+p4vasp.Property.INT_TYPE
+p4vasp.Structure.INT_TYPE
+p4vasp.graph.INT_TYPE
+p4vasp.repository.INT_TYPE
+p4vasp.util.INT_TYPE" class="py-name" href="#" onclick="return doclink('link-114', 'INT_TYPE', 'link-17');">INT_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L402"></a><tt class="py-lineno">402</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-115" class="py-name"><a title="p4vasp.util.ToXMLHelper.int_format" class="py-name" href="#" onclick="return doclink('link-115', 'int_format', 'link-43');">int_format</a></tt> </tt>
+<a name="L403"></a><tt class="py-lineno">403</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-116" class="py-name"><a title="p4vasp.Array.LOGICAL_TYPE
+p4vasp.Dictionary.LOGICAL_TYPE
+p4vasp.GraphCanvas.LOGICAL_TYPE
+p4vasp.GraphPM.LOGICAL_TYPE
+p4vasp.LOGICAL_TYPE
+p4vasp.Property.LOGICAL_TYPE
+p4vasp.Structure.LOGICAL_TYPE
+p4vasp.graph.LOGICAL_TYPE
+p4vasp.repository.LOGICAL_TYPE
+p4vasp.util.LOGICAL_TYPE" class="py-name" href="#" onclick="return doclink('link-116', 'LOGICAL_TYPE', 'link-23');">LOGICAL_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L404"></a><tt class="py-lineno">404</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-117" class="py-name"><a title="p4vasp.util.ToXMLHelper.logical_format" class="py-name" href="#" onclick="return doclink('link-117', 'logical_format', 'link-37');">logical_format</a></tt> </tt>
+<a name="L405"></a><tt class="py-lineno">405</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-name">t</tt><tt class="py-op">==</tt><tt id="link-118" class="py-name"><a title="p4vasp.Array.STRING_TYPE
+p4vasp.Dictionary.STRING_TYPE
+p4vasp.GraphCanvas.STRING_TYPE
+p4vasp.GraphPM.STRING_TYPE
+p4vasp.Property.STRING_TYPE
+p4vasp.STRING_TYPE
+p4vasp.Structure.STRING_TYPE
+p4vasp.graph.STRING_TYPE
+p4vasp.repository.STRING_TYPE
+p4vasp.util.STRING_TYPE" class="py-name" href="#" onclick="return doclink('link-118', 'STRING_TYPE', 'link-18');">STRING_TYPE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L406"></a><tt class="py-lineno">406</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-119" class="py-name"><a title="p4vasp.util.ToXMLHelper.string_format" class="py-name" href="#" onclick="return doclink('link-119', 'string_format', 'link-41');">string_format</a></tt> </tt>
+<a name="L407"></a><tt class="py-lineno">407</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L408"></a><tt class="py-lineno">408</tt>  <tt class="py-line">            <tt class="py-keyword">raise</tt> <tt id="link-120" class="py-name"><a title="p4vasp.util.UnknownType" class="py-name" href="#" onclick="return doclink('link-120', 'UnknownType', 'link-24');">UnknownType</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+</div><a name="ToXMLHelper.xmlrepr"></a><div id="ToXMLHelper.xmlrepr-def"><a name="L409"></a><tt class="py-lineno">409</tt> <a class="py-toggle" href="#" id="ToXMLHelper.xmlrepr-toggle" onclick="return toggle('ToXMLHelper.xmlrepr');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util.ToXMLHelper-class.html#xmlrepr">xmlrepr</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">t</tt><tt class="py-op">=</tt><tt id="link-121" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-121', 'FLOAT_TYPE', 'link-16');">FLOAT_TYPE</a></tt><tt class="py-op">,</tt><tt class="py-param">format</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="ToXMLHelper.xmlrepr-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="ToXMLHelper.xmlrepr-expanded"><a name="L410"></a><tt class="py-lineno">410</tt>  <tt class="py-line">        <tt class="py-docstring">"""</tt> </tt>
+<a name="L411"></a><tt class="py-lineno">411</tt>  <tt class="py-line"><tt class="py-docstring">        Convert *x* of type *t* by using *format* (if is not *None*)</tt> </tt>
+<a name="L412"></a><tt class="py-lineno">412</tt>  <tt class="py-line"><tt class="py-docstring">        or use the default format.</tt> </tt>
+<a name="L413"></a><tt class="py-lineno">413</tt>  <tt class="py-line"><tt class="py-docstring">        If *x* is an array (see *isArray()*), *format* is applied to all</tt> </tt>
+<a name="L414"></a><tt class="py-lineno">414</tt>  <tt class="py-line"><tt class="py-docstring">        elements and the result is joined using whitespace as a separator.</tt> </tt>
+<a name="L415"></a><tt class="py-lineno">415</tt>  <tt class="py-line"><tt class="py-docstring">        """</tt> </tt>
+<a name="L416"></a><tt class="py-lineno">416</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">format</tt><tt class="py-op">:</tt> </tt>
+<a name="L417"></a><tt class="py-lineno">417</tt>  <tt class="py-line">            <tt class="py-name">format</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-122" class="py-name" targets="Method p4vasp.util.ToXMLHelper.getDefaultFormat()=p4vasp.util.ToXMLHelper-class.html#getDefaultFormat"><a title="p4vasp.util.ToXMLHelper.getDefaultFormat" class="py-name" href="#" onclick="return doclink('link-122', 'getDefaultFormat', 'link-122');">getDefaultFormat</a></tt><tt class="py-op">(</tt><tt class="py-name">t</tt><tt class="py-op">)</tt> </tt>
+<a name="L418"></a><tt class="py-lineno">418</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-123" class="py-name" targets="Method p4vasp.util.ToXMLHelper.xmlrepr()=p4vasp.util.ToXMLHelper-class.html#xmlrepr,Function p4vasp.util.xmlrepr()=p4vasp.util-module.html#xmlrepr"><a title="p4vasp.util.ToXMLHelper.xmlrepr
+p4vasp.util.xmlrepr" class="py-name" href="#" onclick="return doclink('link-123', 'xmlrepr', 'link-123');">xmlrepr</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">t</tt><tt class="py-op">,</tt><tt class="py-name">format</tt><tt class="py-op">=</tt><tt class="py-name">format</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L419"></a><tt class="py-lineno">419</tt>  <tt class="py-line"> </tt>
+<a name="parseXML"></a><div id="parseXML-def"><a name="L420"></a><tt class="py-lineno">420</tt> <a class="py-toggle" href="#" id="parseXML-toggle" onclick="return toggle('parseXML');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#parseXML">parseXML</a><tt class="py-op">(</tt><tt class="py-param">path</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="parseXML-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="parseXML-expanded"><a name="L421"></a><tt class="py-lineno">421</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L422"></a><tt class="py-lineno">422</tt>  <tt class="py-line"><tt class="py-docstring">    Return DOM Document object for xml file given by path.</tt> </tt>
+<a name="L423"></a><tt class="py-lineno">423</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L424"></a><tt class="py-lineno">424</tt>  <tt class="py-line"><tt class="py-docstring">    This is a wrapper to parsing function for some DOM parser.</tt> </tt>
+<a name="L425"></a><tt class="py-lineno">425</tt>  <tt class="py-line"><tt class="py-docstring">    ODPdom is used by default.</tt> </tt>
+<a name="L426"></a><tt class="py-lineno">426</tt>  <tt class="py-line"><tt class="py-docstring">    Change parseXML and parseXMLString if you want to use a different DOM parser.</tt> </tt>
+<a name="L427"></a><tt class="py-lineno">427</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L428"></a><tt class="py-lineno">428</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-124" class="py-name" targets="Variable p4vasp.Array.path=p4vasp.Array-module.html#path,Variable p4vasp.Dictionary.path=p4vasp.Dictionary-module.html#path,Variable p4vasp.Structure.path=p4vasp.Structure-module.html#path,Variable p4vasp.applet.Applet.path=p4vasp.applet.Applet-module.html#path,Variable p4vasp.message.path=p4vasp.message-module.html#path,Variable p4vasp.repository.path=p4vasp.repository-module.html#path,Variable p4vasp.schedule'.path=p4vasp.schedule%27-module.html#path,Variable p4vasp.store.path=p4vasp.store-module.html#path,Variable p4vasp.util.path=p4vasp.util-module.html#path"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-124', 'path', 'link-124');">path</a></tt> </tt>
+<a name="L429"></a><tt class="py-lineno">429</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-keyword">not</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-125" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-125', 'path', 'link-124');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">exists</tt><tt class="py-op">(</tt><tt id="link-126" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-126', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L430"></a><tt class="py-lineno">430</tt>  <tt class="py-line">        <tt class="py-keyword">raise</tt> <tt class="py-name">IOError</tt><tt class="py-op">,</tt><tt class="py-string">"No such file or directory: '%s'"</tt><tt class="py-op">%</tt><tt id="link-127" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-127', 'path', 'link-124');">path</a></tt> </tt>
+<a name="L431"></a><tt class="py-lineno">431</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-128" class="py-name"><a title="p4vasp.Array.use_odpdom
+p4vasp.Dictionary.use_odpdom
+p4vasp.Structure.use_odpdom
+p4vasp.util.use_odpdom" class="py-name" href="#" onclick="return doclink('link-128', 'use_odpdom', 'link-5');">use_odpdom</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L432"></a><tt class="py-lineno">432</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-129" class="py-name"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-129', 'ODPdom', 'link-3');">ODPdom</a></tt><tt class="py-op">.</tt><tt id="link-130" class="py-name" targets="Function p4vasp.ODPdom.parseFile()=p4vasp.ODPdom-module.html#parseFile"><a title="p4vasp.ODPdom.parseFile" class="py-name" href="#" onclick="return doclink('link-130', 'parseFile', 'link-130');">parseFile</a></tt><tt class="py-op">(</tt><tt id="link-131" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-131', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L433"></a><tt class="py-lineno">433</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L434"></a><tt class="py-lineno">434</tt>  <tt class="py-line">        <tt id="link-132" class="py-name" targets="Function p4vasp.msg()=p4vasp-module.html#msg"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-132', 'msg', 'link-132');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-133" class="py-name" targets="Module p4vasp.message=p4vasp.message-module.html,Method p4vasp.message.MessageDriver.message()=p4vasp.message.MessageDriver-class.html#message"><a title="p4vasp.message
+p4vasp.message.MessageDriver.message" class="py-name" href="#" onclick="return doclink('link-133', 'message', 'link-133');">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"WARNING: ODPdom is not working, using minidom."</tt><tt class="py-op">)</tt> </tt>
+<a name="L435"></a><tt class="py-lineno">435</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">dom</tt><tt class="py-op">.</tt><tt class="py-name">minidom</tt><tt class="py-op">.</tt><tt id="link-134" class="py-name" targets="Method p4vasp.Array.SetLateList.parse()=p4vasp.Array.SetLateList-class.html#parse,Method p4vasp.Array.rRecordSetLateList.parse()=p4vasp.Array.rRecordSetLateList-class.html#parse,Method p4vasp.Array.rcRecordSetLateList.parse()=p4vasp.Array.rcRecordSetLateList-class.html#parse,Function p4vasp.ODPdom.parse()=p4vasp.ODPdom-module.html#parse,Method p4vasp.SQLSystemPM.SQLForcesSequenceLateList.parse()=p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#parse,Method p4vasp.SQLSystemPM.SQLStructuresLL.parse()=p4vasp.SQLSystemPM.SQLStructuresLL-class.html#parse,Method p4vasp.SQLSystemPM.SQLcStructuresLL.parse()=p4vasp.SQLSystemPM.SQLcStructuresLL-class.html#parse,Method p4vasp.SystemPM.ChgcarStatisticsLateList.parse()=p4vasp.SystemPM.ChgcarStatisticsLateList-class.html#parse,Method p4vasp.SystemPM.ForcesSequenceLateList.parse()=p4vasp.SystemPM.ForcesSequenceLateList-class.html#parse,Method p4vasp.SystemPM.StructureSequenceLateList.parse()=p4vasp.SystemPM.StructureSequenceLateList-class.html#parse,Method p4vasp.SystemPM.VelocitiesSequenceLateList.parse()=p4vasp.SystemPM.VelocitiesSequenceLateList-class.html#parse,Method p4vasp.SystemPM.cStructureSequenceLateList.parse()=p4vasp.SystemPM.cStructureSequenceLateList-class.html#parse,Method p4vasp.cStructure.Structure.parse()=p4vasp.cStructure.Structure-class.html#parse,Method p4vasp.util.Parseable.parse()=p4vasp.util.Parseable-class.html#parse"><a title="p4vasp.Array.SetLateList.parse
+p4vasp.Array.rRecordSetLateList.parse
+p4vasp.Array.rcRecordSetLateList.parse
+p4vasp.ODPdom.parse
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.parse
+p4vasp.SQLSystemPM.SQLStructuresLL.parse
+p4vasp.SQLSystemPM.SQLcStructuresLL.parse
+p4vasp.SystemPM.ChgcarStatisticsLateList.parse
+p4vasp.SystemPM.ForcesSequenceLateList.parse
+p4vasp.SystemPM.StructureSequenceLateList.parse
+p4vasp.SystemPM.VelocitiesSequenceLateList.parse
+p4vasp.SystemPM.cStructureSequenceLateList.parse
+p4vasp.cStructure.Structure.parse
+p4vasp.util.Parseable.parse" class="py-name" href="#" onclick="return doclink('link-134', 'parse', 'link-134');">parse</a></tt><tt class="py-op">(</tt><tt id="link-135" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-135', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L436"></a><tt class="py-lineno">436</tt>  <tt class="py-line"> </tt>
+<a name="L437"></a><tt class="py-lineno">437</tt>  <tt class="py-line"><tt class="py-comment">#  from xml.dom.ext.reader import PyExpat</tt> </tt>
+<a name="L438"></a><tt class="py-lineno">438</tt>  <tt class="py-line"><tt class="py-comment">#  return PyExpat.Reader().fromUri(path)</tt> </tt>
+<a name="L439"></a><tt class="py-lineno">439</tt>  <tt class="py-line"> </tt>
+<a name="L440"></a><tt class="py-lineno">440</tt>  <tt class="py-line"><tt class="py-comment">#  from xml.dom.ext.reader.Sax import FromXmlFile</tt> </tt>
+<a name="L441"></a><tt class="py-lineno">441</tt>  <tt class="py-line"><tt class="py-comment">#  return FromXmlFile(path)</tt> </tt>
+<a name="L442"></a><tt class="py-lineno">442</tt>  <tt class="py-line"> </tt>
+<a name="parseXMLString"></a><div id="parseXMLString-def"><a name="L443"></a><tt class="py-lineno">443</tt> <a class="py-toggle" href="#" id="parseXMLString-toggle" onclick="return toggle('parseXMLString');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#parseXMLString">parseXMLString</a><tt class="py-op">(</tt><tt class="py-param">txt</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="parseXMLString-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="parseXMLString-expanded"><a name="L444"></a><tt class="py-lineno">444</tt>  <tt class="py-line">    <tt class="py-docstring">"""</tt> </tt>
+<a name="L445"></a><tt class="py-lineno">445</tt>  <tt class="py-line"><tt class="py-docstring">    Return DOM Document object for xml string *txt* .</tt> </tt>
+<a name="L446"></a><tt class="py-lineno">446</tt>  <tt class="py-line"><tt class="py-docstring"></tt> </tt>
+<a name="L447"></a><tt class="py-lineno">447</tt>  <tt class="py-line"><tt class="py-docstring">    This is a wrapper to parsing function for some DOM parser.</tt> </tt>
+<a name="L448"></a><tt class="py-lineno">448</tt>  <tt class="py-line"><tt class="py-docstring">    ODPdom is used by default.</tt> </tt>
+<a name="L449"></a><tt class="py-lineno">449</tt>  <tt class="py-line"><tt class="py-docstring">    Change parseXML and parseXMLString if you want to use a different DOM parser.</tt> </tt>
+<a name="L450"></a><tt class="py-lineno">450</tt>  <tt class="py-line"><tt class="py-docstring">    """</tt> </tt>
+<a name="L451"></a><tt class="py-lineno">451</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-136" class="py-name"><a title="p4vasp.Array.use_odpdom
+p4vasp.Dictionary.use_odpdom
+p4vasp.Structure.use_odpdom
+p4vasp.util.use_odpdom" class="py-name" href="#" onclick="return doclink('link-136', 'use_odpdom', 'link-5');">use_odpdom</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L452"></a><tt class="py-lineno">452</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-137" class="py-name"><a title="p4vasp.ODPdom" class="py-name" href="#" onclick="return doclink('link-137', 'ODPdom', 'link-3');">ODPdom</a></tt><tt class="py-op">.</tt><tt id="link-138" class="py-name" targets="Function p4vasp.ODPdom.parseString()=p4vasp.ODPdom-module.html#parseString"><a title="p4vasp.ODPdom.parseString" class="py-name" href="#" onclick="return doclink('link-138', 'parseString', 'link-138');">parseString</a></tt><tt class="py-op">(</tt><tt class="py-name">txt</tt><tt class="py-op">)</tt> </tt>
+<a name="L453"></a><tt class="py-lineno">453</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L454"></a><tt class="py-lineno">454</tt>  <tt class="py-line">        <tt id="link-139" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-139', 'msg', 'link-132');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-140" class="py-name"><a title="p4vasp.message
+p4vasp.message.MessageDriver.message" class="py-name" href="#" onclick="return doclink('link-140', 'message', 'link-133');">message</a></tt><tt class="py-op">(</tt><tt class="py-string">"WARNING: ODPdom is not working, using minidom."</tt><tt class="py-op">)</tt> </tt>
+<a name="L455"></a><tt class="py-lineno">455</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">dom</tt><tt class="py-op">.</tt><tt class="py-name">minidom</tt><tt class="py-op">.</tt><tt id="link-141" class="py-name"><a title="p4vasp.ODPdom.parseString" class="py-name" href="#" onclick="return doclink('link-141', 'parseString', 'link-138');">parseString</a></tt><tt class="py-op">(</tt><tt class="py-name">txt</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L456"></a><tt class="py-lineno">456</tt>  <tt class="py-line"> </tt>
+<a name="parseXMLfromURL"></a><div id="parseXMLfromURL-def"><a name="L457"></a><tt class="py-lineno">457</tt> <a class="py-toggle" href="#" id="parseXMLfromURL-toggle" onclick="return toggle('parseXMLfromURL');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#parseXMLfromURL">parseXMLfromURL</a><tt class="py-op">(</tt><tt class="py-param">url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="parseXMLfromURL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="parseXMLfromURL-expanded"><a name="L458"></a><tt class="py-lineno">458</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">urllib</tt> </tt>
+<a name="L459"></a><tt class="py-lineno">459</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-string">":"</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">url</tt><tt class="py-op">:</tt> </tt>
+<a name="L460"></a><tt class="py-lineno">460</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-142" class="py-name" targets="Function p4vasp.util.parseXML()=p4vasp.util-module.html#parseXML"><a title="p4vasp.util.parseXML" class="py-name" href="#" onclick="return doclink('link-142', 'parseXML', 'link-142');">parseXML</a></tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+<a name="L461"></a><tt class="py-lineno">461</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"http:"</tt> <tt class="py-keyword">or</tt> <tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"ftp:"</tt><tt class="py-op">:</tt> </tt>
+<a name="L462"></a><tt class="py-lineno">462</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">=</tt><tt class="py-name">urllib</tt><tt class="py-op">.</tt><tt class="py-name">urlopen</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+<a name="L463"></a><tt class="py-lineno">463</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-143" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-143', 'read', 'link-12');">read</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L464"></a><tt class="py-lineno">464</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-144" class="py-name"><a title="p4vasp.GraphCanvas.GraphCanvasWindow.close
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.close
+p4vasp.message.DummyFile.close
+p4vasp.message.PrintFile.close" class="py-name" href="#" onclick="return doclink('link-144', 'close', 'link-13');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L465"></a><tt class="py-lineno">465</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-145" class="py-name" targets="Function p4vasp.util.parseXMLString()=p4vasp.util-module.html#parseXMLString"><a title="p4vasp.util.parseXMLString" class="py-name" href="#" onclick="return doclink('link-145', 'parseXMLString', 'link-145');">parseXMLString</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L466"></a><tt class="py-lineno">466</tt>  <tt class="py-line">    <tt class="py-keyword">elif</tt> <tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"file:"</tt><tt class="py-op">:</tt> </tt>
+<a name="L467"></a><tt class="py-lineno">467</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-146" class="py-name"><a title="p4vasp.util.parseXML" class="py-name" href="#" onclick="return doclink('link-146', 'parseXML', 'link-142');">parseXML</a></tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-number">5</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L468"></a><tt class="py-lineno">468</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L469"></a><tt class="py-lineno">469</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-147" class="py-name"><a title="p4vasp.util.parseXML" class="py-name" href="#" onclick="return doclink('link-147', 'parseXML', 'link-142');">parseXML</a></tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L470"></a><tt class="py-lineno">470</tt>  <tt class="py-line"> </tt>
+<a name="getDirFromURL"></a><div id="getDirFromURL-def"><a name="L471"></a><tt class="py-lineno">471</tt> <a class="py-toggle" href="#" id="getDirFromURL-toggle" onclick="return toggle('getDirFromURL');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getDirFromURL">getDirFromURL</a><tt class="py-op">(</tt><tt class="py-param">url</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getDirFromURL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getDirFromURL-expanded"><a name="L472"></a><tt class="py-lineno">472</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">urlparse</tt> </tt>
+<a name="L473"></a><tt class="py-lineno">473</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-148" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-148', 'path', 'link-124');">path</a></tt> </tt>
+<a name="L474"></a><tt class="py-lineno">474</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L475"></a><tt class="py-lineno">475</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">5</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"http:"</tt> <tt class="py-keyword">or</tt> <tt class="py-name">url</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-number">4</tt><tt class="py-op">]</tt><tt class="py-op">==</tt><tt class="py-string">"ftp:"</tt><tt class="py-op">:</tt> </tt>
+<a name="L476"></a><tt class="py-lineno">476</tt>  <tt class="py-line">        <tt class="py-name">scheme</tt><tt class="py-op">,</tt><tt class="py-name">address</tt><tt class="py-op">,</tt><tt id="link-149" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-149', 'path', 'link-124');">path</a></tt><tt class="py-op">,</tt><tt class="py-name">param</tt><tt class="py-op">,</tt><tt id="link-150" class="py-name" targets="Method p4vasp.db.DBIContainer.query()=p4vasp.db.DBIContainer-class.html#query"><a title="p4vasp.db.DBIContainer.query" class="py-name" href="#" onclick="return doclink('link-150', 'query', 'link-150');">query</a></tt><tt class="py-op">,</tt><tt class="py-name">fragment</tt><tt class="py-op">=</tt><tt class="py-name">urlparse</tt><tt class="py-op">.</tt><tt class="py-name">urlparse</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+<a name="L477"></a><tt class="py-lineno">477</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">urlparse</tt><tt class="py-op">.</tt><tt class="py-name">urlunparse</tt><tt class="py-op">(</tt><tt class="py-op">(</tt><tt class="py-name">scheme</tt><tt class="py-op">,</tt><tt class="py-name">address</tt><tt class="py-op">,</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt id="link-151" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-151', 'path', 'link-124');">path</a></tt><tt class="py-op">,</tt><tt class="py-string">"/"</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-string">"/"</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-string">"/"</tt><tt class="py-op">,</tt><tt class="py-string">""</tt><tt class="py-op">,</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L478"></a><tt class="py-lineno">478</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L479"></a><tt class="py-lineno">479</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-152" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-152', 'path', 'link-124');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">url</tt><tt class="py-op">)</tt> </tt>
+<a name="L480"></a><tt class="py-lineno">480</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-153" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-153', 'len', 'link-67');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">!=</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L481"></a><tt class="py-lineno">481</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">s</tt><tt class="py-op">+</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt> </tt>
+<a name="L482"></a><tt class="py-lineno">482</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">s</tt> </tt>
+</div><a name="L483"></a><tt class="py-lineno">483</tt>  <tt class="py-line"> </tt>
+<a name="loadGlade_old"></a><div id="loadGlade_old-def"><a name="L484"></a><tt class="py-lineno">484</tt> <a class="py-toggle" href="#" id="loadGlade_old-toggle" onclick="return toggle('loadGlade_old');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#loadGlade_old">loadGlade_old</a><tt class="py-op">(</tt><tt class="py-param">path</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="loadGlade_old-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="loadGlade_old-expanded"><a name="L485"></a><tt class="py-lineno">485</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">libglade</tt> </tt>
+<a name="L486"></a><tt class="py-lineno">486</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L487"></a><tt class="py-lineno">487</tt>  <tt class="py-line">    <tt id="link-154" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-154', 'path', 'link-124');">path</a></tt><tt class="py-op">=</tt><tt id="link-155" class="py-name" targets="Variable p4vasp.Array.p4vasp_home=p4vasp.Array-module.html#p4vasp_home,Variable p4vasp.Dictionary.p4vasp_home=p4vasp.Dictionary-module.html#p4vasp_home,Variable p4vasp.GraphCanvas.p4vasp_home=p4vasp.GraphCanvas-module.html#p4vasp_home,Variable p4vasp.GraphPM.p4vasp_home=p4vasp.GraphPM-module.html#p4vasp_home,Variable p4vasp.Property.p4vasp_home=p4vasp.Property-module.html#p4vasp_home,Variable p4vasp.Structure.p4vasp_home=p4vasp.Structure-module.html#p4vasp_home,Variable p4vasp.graph.p4vasp_home=p4vasp.graph-module.html#p4vasp_home,Variable p4vasp.p4vasp_home=p4vasp-module.html#p4vasp_home,Variable p4vasp.repository.p4vasp_home=p4vasp.repository-module.html#p4vasp_home,Variable p4vasp.util.p4vasp_home=p4vasp.util-module.html#p4vasp_home"><a title="p4vasp.Array.p4vasp_home
+p4vasp.Dictionary.p4vasp_home
+p4vasp.GraphCanvas.p4vasp_home
+p4vasp.GraphPM.p4vasp_home
+p4vasp.Property.p4vasp_home
+p4vasp.Structure.p4vasp_home
+p4vasp.graph.p4vasp_home
+p4vasp.p4vasp_home
+p4vasp.repository.p4vasp_home
+p4vasp.util.p4vasp_home" class="py-name" href="#" onclick="return doclink('link-155', 'p4vasp_home', 'link-155');">p4vasp_home</a></tt><tt class="py-op">+</tt><tt class="py-string">"%sdata%sglade%s%s"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt id="link-156" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-156', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L488"></a><tt class="py-lineno">488</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-157" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-157', 'name', 'link-48');">name</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L489"></a><tt class="py-lineno">489</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">libglade</tt><tt class="py-op">.</tt><tt class="py-name">GladeXML</tt><tt class="py-op">(</tt><tt id="link-158" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-158', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L490"></a><tt class="py-lineno">490</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L491"></a><tt class="py-lineno">491</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">libglade</tt><tt class="py-op">.</tt><tt class="py-name">GladeXML</tt><tt class="py-op">(</tt><tt id="link-159" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-159', 'path', 'link-124');">path</a></tt><tt class="py-op">,</tt><tt id="link-160" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-160', 'name', 'link-48');">name</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L492"></a><tt class="py-lineno">492</tt>  <tt class="py-line"> </tt>
+<a name="loadGlade"></a><div id="loadGlade-def"><a name="L493"></a><tt class="py-lineno">493</tt> <a class="py-toggle" href="#" id="loadGlade-toggle" onclick="return toggle('loadGlade');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#loadGlade">loadGlade</a><tt class="py-op">(</tt><tt class="py-param">path</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="loadGlade-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="loadGlade-expanded"><a name="L494"></a><tt class="py-lineno">494</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">glade</tt> </tt>
+<a name="L495"></a><tt class="py-lineno">495</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L496"></a><tt class="py-lineno">496</tt>  <tt class="py-line">    <tt id="link-161" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-161', 'path', 'link-124');">path</a></tt><tt class="py-op">=</tt><tt id="link-162" class="py-name"><a title="p4vasp.Array.p4vasp_home
+p4vasp.Dictionary.p4vasp_home
+p4vasp.GraphCanvas.p4vasp_home
+p4vasp.GraphPM.p4vasp_home
+p4vasp.Property.p4vasp_home
+p4vasp.Structure.p4vasp_home
+p4vasp.graph.p4vasp_home
+p4vasp.p4vasp_home
+p4vasp.repository.p4vasp_home
+p4vasp.util.p4vasp_home" class="py-name" href="#" onclick="return doclink('link-162', 'p4vasp_home', 'link-155');">p4vasp_home</a></tt><tt class="py-op">+</tt><tt class="py-string">"%sdata%sglade2%s%s"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">sep</tt><tt class="py-op">,</tt><tt id="link-163" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-163', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L497"></a><tt class="py-lineno">497</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-164" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-164', 'name', 'link-48');">name</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L498"></a><tt class="py-lineno">498</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">glade</tt><tt class="py-op">.</tt><tt class="py-name">XML</tt><tt class="py-op">(</tt><tt id="link-165" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-165', 'path', 'link-124');">path</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L499"></a><tt class="py-lineno">499</tt>  <tt class="py-line">    <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L500"></a><tt class="py-lineno">500</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">gtk</tt><tt class="py-op">.</tt><tt class="py-name">glade</tt><tt class="py-op">.</tt><tt class="py-name">XML</tt><tt class="py-op">(</tt><tt id="link-166" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-166', 'path', 'link-124');">path</a></tt><tt class="py-op">,</tt><tt id="link-167" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-167', 'name', 'link-48');">name</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L501"></a><tt class="py-lineno">501</tt>  <tt class="py-line"> </tt>
+<a name="getPathChain"></a><div id="getPathChain-def"><a name="L502"></a><tt class="py-lineno">502</tt> <a class="py-toggle" href="#" id="getPathChain-toggle" onclick="return toggle('getPathChain');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getPathChain">getPathChain</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getPathChain-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getPathChain-expanded"><a name="L503"></a><tt class="py-lineno">503</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-168" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-168', 'path', 'link-124');">path</a></tt> </tt>
+<a name="L504"></a><tt class="py-lineno">504</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt class="py-name">sep</tt> </tt>
+<a name="L505"></a><tt class="py-lineno">505</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt class="py-op">[</tt><tt id="link-169" class="py-name"><a title="p4vasp.Array.p4vasp_home
+p4vasp.Dictionary.p4vasp_home
+p4vasp.GraphCanvas.p4vasp_home
+p4vasp.GraphPM.p4vasp_home
+p4vasp.Property.p4vasp_home
+p4vasp.Structure.p4vasp_home
+p4vasp.graph.p4vasp_home
+p4vasp.p4vasp_home
+p4vasp.repository.p4vasp_home
+p4vasp.util.p4vasp_home" class="py-name" href="#" onclick="return doclink('link-169', 'p4vasp_home', 'link-155');">p4vasp_home</a></tt><tt class="py-op">+</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"data"</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-170" class="py-name"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-170', 'path', 'link-124');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">expanduser</tt><tt class="py-op">(</tt><tt class="py-string">"~"</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">".p4vasp"</tt><tt class="py-op">,</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">getcwd</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L506"></a><tt class="py-lineno">506</tt>  <tt class="py-line"> </tt>
+<a name="L507"></a><tt class="py-lineno">507</tt>  <tt class="py-line"><tt id="link-171" class="py-name" targets="Variable p4vasp.Array.atomtypes_=p4vasp.Array-module.html#atomtypes_,Variable p4vasp.Dictionary.atomtypes_=p4vasp.Dictionary-module.html#atomtypes_,Variable p4vasp.Structure.atomtypes_=p4vasp.Structure-module.html#atomtypes_,Variable p4vasp.util.atomtypes_=p4vasp.util-module.html#atomtypes_"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-171', 'atomtypes_', 'link-171');">atomtypes_</a></tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L508"></a><tt class="py-lineno">508</tt>  <tt class="py-line"> </tt>
+<a name="getAtomtypes"></a><div id="getAtomtypes-def"><a name="L509"></a><tt class="py-lineno">509</tt> <a class="py-toggle" href="#" id="getAtomtypes-toggle" onclick="return toggle('getAtomtypes');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.util-module.html#getAtomtypes">getAtomtypes</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="getAtomtypes-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="getAtomtypes-expanded"><a name="L510"></a><tt class="py-lineno">510</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt id="link-172" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-172', 'p4vasp', 'link-1');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-173" class="py-name" targets="Module p4vasp.Structure=p4vasp.Structure-module.html,Class p4vasp.Structure.Structure=p4vasp.Structure.Structure-class.html,Class p4vasp.cStructure.Structure=p4vasp.cStructure.Structure-class.html"><a title="p4vasp.Structure
+p4vasp.Structure.Structure
+p4vasp.cStructure.Structure" class="py-name" href="#" onclick="return doclink('link-173', 'Structure', 'link-173');">Structure</a></tt> </tt>
+<a name="L511"></a><tt class="py-lineno">511</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">os</tt> <tt class="py-keyword">import</tt> <tt class="py-name">sep</tt> </tt>
+<a name="L512"></a><tt class="py-lineno">512</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-174" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-174', 'atomtypes_', 'link-171');">atomtypes_</a></tt> </tt>
+<a name="L513"></a><tt class="py-lineno">513</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-175" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-175', 'atomtypes_', 'link-171');">atomtypes_</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L514"></a><tt class="py-lineno">514</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-176" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-176', 'atomtypes_', 'link-171');">atomtypes_</a></tt> </tt>
+<a name="L515"></a><tt class="py-lineno">515</tt>  <tt class="py-line">    <tt class="py-name">p</tt><tt class="py-op">=</tt><tt id="link-177" class="py-name" targets="Function p4vasp.util.getPathChain()=p4vasp.util-module.html#getPathChain"><a title="p4vasp.util.getPathChain" class="py-name" href="#" onclick="return doclink('link-177', 'getPathChain', 'link-177');">getPathChain</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L516"></a><tt class="py-lineno">516</tt>  <tt class="py-line">    <tt id="link-178" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-178', 'atomtypes_', 'link-171');">atomtypes_</a></tt><tt class="py-op">=</tt><tt id="link-179" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-179', 'p4vasp', 'link-1');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-180" class="py-name"><a title="p4vasp.Structure
+p4vasp.Structure.Structure
+p4vasp.cStructure.Structure" class="py-name" href="#" onclick="return doclink('link-180', 'Structure', 'link-173');">Structure</a></tt><tt class="py-op">.</tt><tt id="link-181" class="py-name" targets="Class p4vasp.Structure.AtomInfo=p4vasp.Structure.AtomInfo-class.html,Class p4vasp.cStructure.AtomInfo=p4vasp.cStructure.AtomInfo-class.html"><a title="p4vasp.Structure.AtomInfo
+p4vasp.cStructure.AtomInfo" class="py-name" href="#" onclick="return doclink('link-181', 'AtomInfo', 'link-181');">AtomInfo</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L517"></a><tt class="py-lineno">517</tt>  <tt class="py-line">    <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">p</tt><tt class="py-op">:</tt> </tt>
+<a name="L518"></a><tt class="py-lineno">518</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L519"></a><tt class="py-lineno">519</tt>  <tt class="py-line">            <tt class="py-name">a</tt><tt class="py-op">=</tt><tt id="link-182" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-182', 'p4vasp', 'link-1');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-183" class="py-name"><a title="p4vasp.Structure
+p4vasp.Structure.Structure
+p4vasp.cStructure.Structure" class="py-name" href="#" onclick="return doclink('link-183', 'Structure', 'link-173');">Structure</a></tt><tt class="py-op">.</tt><tt id="link-184" class="py-name"><a title="p4vasp.Structure.AtomInfo
+p4vasp.cStructure.AtomInfo" class="py-name" href="#" onclick="return doclink('link-184', 'AtomInfo', 'link-181');">AtomInfo</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">+</tt><tt class="py-name">sep</tt><tt class="py-op">+</tt><tt class="py-string">"atomtypes.xml"</tt><tt class="py-op">)</tt> </tt>
+<a name="L520"></a><tt class="py-lineno">520</tt>  <tt class="py-line">            <tt id="link-185" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-185', 'atomtypes_', 'link-171');">atomtypes_</a></tt><tt class="py-op">.</tt><tt id="link-186" class="py-name" targets="Method p4vasp.Structure.AtomInfo.updateAttributes()=p4vasp.Structure.AtomInfo-class.html#updateAttributes"><a title="p4vasp.Structure.AtomInfo.updateAttributes" class="py-name" href="#" onclick="return doclink('link-186', 'updateAttributes', 'link-186');">updateAttributes</a></tt><tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">)</tt> </tt>
+<a name="L521"></a><tt class="py-lineno">521</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt> <tt class="py-name">IOError</tt><tt class="py-op">:</tt> </tt>
+<a name="L522"></a><tt class="py-lineno">522</tt>  <tt class="py-line">            <tt class="py-keyword">pass</tt> </tt>
+<a name="L523"></a><tt class="py-lineno">523</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-187" class="py-name"><a title="p4vasp.Array.atomtypes_
+p4vasp.Dictionary.atomtypes_
+p4vasp.Structure.atomtypes_
+p4vasp.util.atomtypes_" class="py-name" href="#" onclick="return doclink('link-187', 'atomtypes_', 'link-171');">atomtypes_</a></tt> </tt>
+</div><a name="L524"></a><tt class="py-lineno">524</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:14 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

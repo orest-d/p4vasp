@@ -1,0 +1,13 @@
+BODY {background: #dce0f7;
+      background-image: url(border.png);
+      background-repeat: repeat-y;
+      margin-left:110px;
+      color:black;
+     }
+H1   {margin-left:0px;
+      margin-right:25px;
+      color:green;
+      background:white;
+      border: 3px solid black;
+      padding:5px;
+     }

@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.util</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        Module&nbsp;util
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.util-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module util</h1><p class="nomargin-top"><span class="codelink"><a href="p4vasp.util-pysrc.html">source&nbsp;code</a></span></p>
+<p>This module contains various utilities and functions that do not fit 
+  into other modules.</p>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.XMLParseException-class.html" class="summary-name">XMLParseException</a><br />
+      This exception can be raised while parsing xml-document.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.ParseException-class.html" class="summary-name">ParseException</a><br />
+      This exception is thrown when parsing-error occures.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.UnknownType-class.html" class="summary-name">UnknownType</a><br />
+      This exception is raised when unknown an type is found.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.Parseable-class.html" class="summary-name">Parseable</a><br />
+      Defines the *parse* method as a wrapper to *read*.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.ToString-class.html" class="summary-name">ToString</a><br />
+      Defines the *toString* method as a wrapper to *write*.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util.ToXMLHelper-class.html" class="summary-name">ToXMLHelper</a><br />
+      This class encapsulates the formating properties for basic types
+and some useful functions.
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#indent" class="summary-sig-name">indent</a>(<span class="summary-sig-arg">s</span>,
+        <span class="summary-sig-arg">istring</span>)</span><br />
+      Intend *s* by *istring*.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#indent">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#guessType" class="summary-sig-name">guessType</a>(<span class="summary-sig-arg">x</span>)</span><br />
+      Try to guess the type from the python type.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#guessType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#retype" class="summary-sig-name">retype</a>(<span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      Return x converted to a scalar of type t.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#retype">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#retypeVec" class="summary-sig-name">retypeVec</a>(<span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      Return x converted to a vector of type t.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#retypeVec">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#xmlrepr" class="summary-sig-name">xmlrepr</a>(<span class="summary-sig-arg">x</span>,
+        <span class="summary-sig-arg">t</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">format</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">float_format</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">string_format</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">logical_format</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">int_format</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Represent *x* of type *t* as a string using *format*, or if *format* 
+      is None, using default formats ( *xxx_format* ) for particular type.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#xmlrepr">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="removeNewline"></a><span class="summary-sig-name">removeNewline</span>(<span class="summary-sig-arg">s</span>)</span><br />
+      Remove newlines and cr (&quot;\n&quot;,&quot;\r&quot;) from string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#removeNewline">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getChildrenByTagName"></a><span class="summary-sig-name">getChildrenByTagName</span>(<span class="summary-sig-arg">elem</span>,
+        <span class="summary-sig-arg">tag</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Searches the children of *elem* for element nodes with the tagname 
+      *tag* and optionaly with the attribute &quot;name&quot; having the 
+      value *name*.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getChildrenByTagName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getInheritedElementsByTagName"></a><span class="summary-sig-name">getInheritedElementsByTagName</span>(<span class="summary-sig-arg">elem</span>,
+        <span class="summary-sig-arg">tag</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Searches the children of *elem* and (direct) children of the 
+      predecesors until element nodes with the tagname *tag* and optionaly 
+      with the attribute &quot;name&quot; having the value *name* are is 
+      (are) found.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getInheritedElementsByTagName">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#getTextFromElement" class="summary-sig-name">getTextFromElement</a>(<span class="summary-sig-arg">elem</span>)</span><br />
+      Extracts all texts and CDATA sections from the element *elem* and 
+      returns them joined as one string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getTextFromElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#getTypeFromElement" class="summary-sig-name">getTypeFromElement</a>(<span class="summary-sig-arg">elem</span>)</span><br />
+      Extracts the type from &quot;type&quot; attribute of elem and returns
+      the type:</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getTypeFromElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resolveItemElement"></a><span class="summary-sig-name">resolveItemElement</span>(<span class="summary-sig-arg">e</span>)</span><br />
+      Reads the &lt;i&gt; tag and returns a tuple containing ( *name* , 
+      *value* , *type* ), where the *value* is a scalar of type *type* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#resolveItemElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resolveVectorElement"></a><span class="summary-sig-name">resolveVectorElement</span>(<span class="summary-sig-arg">e</span>,
+        <span class="summary-sig-arg">t</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Reads the &lt;v&gt; tag and returns a tuple containing ( *name* , 
+      *value* , *type* ), where the *value* is an array of type *type* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#resolveVectorElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="isNumericArray"></a><span class="summary-sig-name">isNumericArray</span>(<span class="summary-sig-arg">x</span>)</span><br />
+      Returns true if x is an *array* object from the *numpy* library.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#isNumericArray">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#isArray" class="summary-sig-name">isArray</a>(<span class="summary-sig-arg">x</span>)</span><br />
+      Returns true for</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#isArray">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#arrayShape" class="summary-sig-name">arrayShape</a>(<span class="summary-sig-arg">l</span>)</span><br />
+      Returns the *shape* (i.e.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#arrayShape">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#parseXML" class="summary-sig-name">parseXML</a>(<span class="summary-sig-arg">path</span>)</span><br />
+      Return DOM Document object for xml file given by path.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#parseXML">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.util-module.html#parseXMLString" class="summary-sig-name">parseXMLString</a>(<span class="summary-sig-arg">txt</span>)</span><br />
+      Return DOM Document object for xml string *txt* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#parseXMLString">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="parseXMLfromURL"></a><span class="summary-sig-name">parseXMLfromURL</span>(<span class="summary-sig-arg">url</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#parseXMLfromURL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getDirFromURL"></a><span class="summary-sig-name">getDirFromURL</span>(<span class="summary-sig-arg">url</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getDirFromURL">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadGlade_old"></a><span class="summary-sig-name">loadGlade_old</span>(<span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#loadGlade_old">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="loadGlade"></a><span class="summary-sig-name">loadGlade</span>(<span class="summary-sig-arg">path</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#loadGlade">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getPathChain"></a><span class="summary-sig-name">getPathChain</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getPathChain">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getAtomtypes"></a><span class="summary-sig-name">getAtomtypes</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.util-pysrc.html#getAtomtypes">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="use_odpdom"></a><span class="summary-name">use_odpdom</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="atomtypes_"></a><span class="summary-name">atomtypes_</span> = <code title="None">None</code><br />
+      hash(x)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FLOAT_TYPE"></a><span class="summary-name">FLOAT_TYPE</span> = <code title="'float'"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INDENT"></a><span class="summary-name">INDENT</span> = <code title="'  '"><code class="variable-quote">'</code><code class="variable-string">  </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INT_TYPE"></a><span class="summary-name">INT_TYPE</span> = <code title="'int'"><code class="variable-quote">'</code><code class="variable-string">int</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOGICAL_TYPE"></a><span class="summary-name">LOGICAL_TYPE</span> = <code title="'logical'"><code class="variable-quote">'</code><code class="variable-string">logical</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="STRING_TYPE"></a><span class="summary-name">STRING_TYPE</span> = <code title="'string'"><code class="variable-quote">'</code><code class="variable-string">string</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'p4vasp'"><code class="variable-quote">'</code><code class="variable-string">p4vasp</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="api_version"></a><span class="summary-name">api_version</span> = <code title="1013">1013</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="argv"></a><span class="summary-name">argv</span> = <code title="['(imported)']"><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">(imported)</code><code class="variable-quote">'</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#builtin_module_names" class="summary-name">builtin_module_names</a> = <code title="('__builtin__',
+ '__main__',
+ '_ast',
+ '_bisect',
+ '_codecs',
+ '_collections',
+ '_functools',
+ '_heapq',
+..."><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">__builtin__</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">__main__</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">_ast</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">_b</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="byteorder"></a><span class="summary-name">byteorder</span> = <code title="'little'"><code class="variable-quote">'</code><code class="variable-string">little</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#copyright" class="summary-name">copyright</a> = <code title="'''Copyright (c) 2001-2014 Python Software Foundation.
+All Rights Reserved.
+
+Copyright (c) 2000 BeOpen.com.
+All Rights Reserved.
+
+Copyright (c) 1995-2001 Corporation for National Research Initiatives.
+All Rights Reserved.
+..."><code class="variable-quote">'</code><code class="variable-string">Copyright (c) 2001-2014 Python Software Foundatio</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="dont_write_bytecode"></a><span class="summary-name">dont_write_bytecode</span> = <code title="False">False</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ex"></a><span class="summary-name">ex</span> = <code title="Vector([1.0,0.0,0.0])">Vector([1.0,0.0,0.0])</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="exc_type"></a><span class="summary-name">exc_type</span> = <code title="None">None</code><br />
+      hash(x)
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="exec_prefix"></a><span class="summary-name">exec_prefix</span> = <code title="'/usr'"><code class="variable-quote">'</code><code class="variable-string">/usr</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="executable"></a><span class="summary-name">executable</span> = <code title="'/usr/bin/python'"><code class="variable-quote">'</code><code class="variable-string">/usr/bin/python</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ey"></a><span class="summary-name">ey</span> = <code title="Vector([0.0,1.0,0.0])">Vector([0.0,1.0,0.0])</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ez"></a><span class="summary-name">ez</span> = <code title="Vector([0.0,0.0,1.0])">Vector([0.0,0.0,1.0])</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#flags" class="summary-name">flags</a> = <code title="sys.flags(debug=0, py3k_warning=0, division_warning=0, division_new=0,\
+ inspect=0, interactive=0, optimize=0, dont_write_bytecode=0, no_user_\
+site=0, no_site=0, ignore_environment=0, tabcheck=0, verbose=0, unicod\
+e=0, bytes_warning=0, hash_randomization=0)">sys.flags(debug=0, py3k_warning=0, division_warning=0,<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#float_info" class="summary-name">float_info</a> = <code title="sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=3\
+08, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=1\
+5, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)">sys.float_info(max=1.7976931348623157e+308, max_e<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="float_repr_style"></a><span class="summary-name">float_repr_style</span> = <code title="'short'"><code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="hexversion"></a><span class="summary-name">hexversion</span> = <code title="34014960">34014960</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="long_info"></a><span class="summary-name">long_info</span> = <code title="sys.long_info(bits_per_digit=30, sizeof_digit=4)">sys.long_info(bits_per_digit=30, sizeof_digit=4)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="maxint"></a><span class="summary-name">maxint</span> = <code title="9223372036854775807">9223372036854775807</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="maxsize"></a><span class="summary-name">maxsize</span> = <code title="9223372036854775807">9223372036854775807</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="maxunicode"></a><span class="summary-name">maxunicode</span> = <code title="1114111">1114111</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="meta_path"></a><span class="summary-name">meta_path</span> = <code title="[]"><code class="variable-group">[</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#modules" class="summary-name">modules</a> = <code title="{'ConfigParser': &lt;module 'ConfigParser' from '/usr/lib/python2.7/Confi\
+gParser.pyc'&gt;,
+ 'OpenGL': &lt;module 'OpenGL' from '/usr/lib/python2.7/dist-packages/Ope\
+nGL/__init__.pyc'&gt;,
+ 'OpenGL.GL': &lt;module 'OpenGL.GL' from '/usr/lib/python2.7/dist-packag\
+es/OpenGL/GL/__init__.pyc'&gt;,
+ 'OpenGL.GL.ARB': &lt;module 'OpenGL.GL.ARB' from '/usr/lib/python2.7/dis\
+t-packages/OpenGL/GL/ARB/__init__.pyc'&gt;,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ConfigParser</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'ConfigParser' from '/usr/l<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="msg_"></a><span class="summary-name">msg_</span> = <code title="p4vasp.message.MessageDriver()">p4vasp.message.MessageDriver()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="p4vasp_home"></a><span class="summary-name">p4vasp_home</span> = <code title="'/usr/lib/p4vasp'"><code class="variable-quote">'</code><code class="variable-string">/usr/lib/p4vasp</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#path" class="summary-name">path</a> = <code title="['/home/orest/zlos/p4vasp/fossil/p4vasp/lib',
+ '/usr/bin',
+ '/usr/lib/python2.7',
+ '/usr/lib/python2.7/plat-x86_64-linux-gnu',
+ '/usr/lib/python2.7/lib-tk',
+ '/usr/lib/python2.7/lib-old',
+ '/usr/lib/python2.7/lib-dynload',
+ '/usr/local/lib/python2.7/dist-packages',
+..."><code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">/usr/bin</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="path_hooks"></a><span class="summary-name">path_hooks</span> = <code title="[&lt;type 'zipimport.zipimporter'&gt;]"><code class="variable-group">[</code>&lt;type 'zipimport.zipimporter'&gt;<code class="variable-group">]</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#path_importer_cache" class="summary-name">path_importer_cache</a> = <code title="{'': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/applet': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/paint3d': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/piddle': None,
+ '/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/piddle/piddleGTK2p4\
+': None,
+..."><code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/foss</code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="platform"></a><span class="summary-name">platform</span> = <code title="'linux2'"><code class="variable-quote">'</code><code class="variable-string">linux2</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="prefix"></a><span class="summary-name">prefix</span> = <code title="'/usr'"><code class="variable-quote">'</code><code class="variable-string">/usr</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="py3kwarning"></a><span class="summary-name">py3kwarning</span> = <code title="False">False</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="pydebug"></a><span class="summary-name">pydebug</span> = <code title="False">False</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="scheduler_"></a><span class="summary-name">scheduler_</span> = <code title="[]">[]</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#stderr" class="summary-name">stderr</a> = <code title="&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;">&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#stdin" class="summary-name">stdin</a> = <code title="&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;">&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f31<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#stdout" class="summary-name">stdout</a> = <code title="&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;">&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="subversion"></a><span class="summary-name">subversion</span> = <code title="('CPython', '', '')"><code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">CPython</code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">, </code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-group">)</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="version"></a><span class="summary-name">version</span> = <code title="'''2.7.6 (default, Mar 22 2014, 22:59:56) 
+[GCC 4.8.2]'''"><code class="variable-quote">'</code><code class="variable-string">2.7.6 (default, Mar 22 2014, 22:59:56) \n[GCC 4.8.2]</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.util-module.html#version_info" class="summary-name">version_info</a> = <code title="sys.version_info(major=2, minor=7, micro=6, releaselevel='final', seri\
+al=0)">sys.version_info(major=2, minor=7, micro=6, rel<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="warnoptions"></a><span class="summary-name">warnoptions</span> = <code title="[]"><code class="variable-group">[</code><code class="variable-group">]</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTION DETAILS ==================== -->
+<a name="section-FunctionDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Function Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-FunctionDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="indent"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">indent</span>(<span class="sig-arg">s</span>,
+        <span class="sig-arg">istring</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#indent">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Intend *s* by *istring*. If istring is an iteger, istring is changed 
+  to istring*INDENT (INDENT contains two whitespaces by default). Then 
+  *istring* is added to the beginning of every line of *s*.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="guessType"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">guessType</span>(<span class="sig-arg">x</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#guessType">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Try to guess the type from the python type. This maps *float* to 
+  *FLOAT_TYPE*, *int* to *INT_TYPE* and everything else to *STRING_TYPE* 
+  .</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="retype"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">retype</span>(<span class="sig-arg">x</span>,
+        <span class="sig-arg">t</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#retype">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return x converted to a scalar of type t.</p>
+  <p>For *LOGICAL_TYPE* this converts</p>
+  <p>* integers to (*x* != 0),</p>
+  <p>* &quot;.TRUE.&quot; and strings starting with &quot;T, &quot;1&quot;,
+  &quot;Y&quot; to 1 (case insensitive),</p>
+  <p>* other values to 0.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="retypeVec"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">retypeVec</span>(<span class="sig-arg">x</span>,
+        <span class="sig-arg">t</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#retypeVec">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return x converted to a vector of type t. This is the same as 
+  *retype()* function applied to all elements of *x*.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="xmlrepr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">xmlrepr</span>(<span class="sig-arg">x</span>,
+        <span class="sig-arg">t</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">format</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">float_format</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">string_format</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">logical_format</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">int_format</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#xmlrepr">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Represent *x* of type *t* as a string using *format*, or if *format* 
+  is None, using default formats ( *xxx_format* ) for particular type. If 
+  the *format* (or *xxx_format*) is *None*, *str()* function is used for 
+  converting.</p>
+  <p>LOGICAL_TYPE is first converted to &quot;T&quot; or &quot;F&quot;.</p>
+  <p>If *x* is an array, the format is applied ao all elements and the 
+  result is joined using the whitespace as a separator.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTextFromElement"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTextFromElement</span>(<span class="sig-arg">elem</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#getTextFromElement">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Extracts all texts and CDATA sections from the element *elem* and 
+  returns them joined as one string. Note: The returntype is the ordinary 
+  string, not unicode.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="getTypeFromElement"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">getTypeFromElement</span>(<span class="sig-arg">elem</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#getTypeFromElement">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Extracts the type from &quot;type&quot; attribute of elem and returns 
+  the type:</p>
+  <p>|| **returned type** || **type attribute**             || || 
+  INTEGER_TYPE      || &quot;int&quot;, &quot;integer&quot;               
+  || || STRING_TYPE       || &quot;string&quot;                       || ||
+  LOGICAL_TYPE      || &quot;logical&quot;, &quot;bollean&quot;, 
+  &quot;bool&quot;   || || FLOAT_TYPE        || in other cases
+  ||</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="isArray"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">isArray</span>(<span class="sig-arg">x</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#isArray">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns true for</p>
+  <p>* python *lists*,</p>
+  <p>* *tuples*,</p>
+  <p>* *UserList* instances,</p>
+  <p>* *Vector* instances (from the matrix library),</p>
+  <p>* *array* objects from the *numpy* library.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="arrayShape"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">arrayShape</span>(<span class="sig-arg">l</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#arrayShape">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Returns the *shape* (i.e. list of dimensions) of the array l. For 
+  *Numeric* array object this function simply returns array.shape. For 
+  other objects a tuple containing (len(l), len(l[0]), len(l[0][0]) ...) is
+  returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="parseXML"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parseXML</span>(<span class="sig-arg">path</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#parseXML">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return DOM Document object for xml file given by path.</p>
+  <p>This is a wrapper to parsing function for some DOM parser. ODPdom is 
+  used by default. Change parseXML and parseXMLString if you want to use a 
+  different DOM parser.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="parseXMLString"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">parseXMLString</span>(<span class="sig-arg">txt</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.util-pysrc.html#parseXMLString">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Return DOM Document object for xml string *txt* .</p>
+  <p>This is a wrapper to parsing function for some DOM parser. ODPdom is 
+  used by default. Change parseXML and parseXMLString if you want to use a 
+  different DOM parser.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== VARIABLES DETAILS ==================== -->
+<a name="section-VariablesDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-VariablesDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="builtin_module_names"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">builtin_module_names</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">(</code><code class="variable-quote">'</code><code class="variable-string">__builtin__</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">__main__</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_ast</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_bisect</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_codecs</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_collections</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_functools</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">_heapq</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="copyright"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">copyright</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-quote">'''</code><code class="variable-string">Copyright (c) 2001-2014 Python Software Foundation.</code>
+<code class="variable-string">All Rights Reserved.</code>
+<code class="variable-string"></code>
+<code class="variable-string">Copyright (c) 2000 BeOpen.com.</code>
+<code class="variable-string">All Rights Reserved.</code>
+<code class="variable-string"></code>
+<code class="variable-string">Copyright (c) 1995-2001 Corporation for National Research Initiatives.</code>
+<code class="variable-string">All Rights Reserved.</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="flags"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">flags</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+sys.flags(debug=0, py3k_warning=0, division_warning=0, division_new=0,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ inspect=0, interactive=0, optimize=0, dont_write_bytecode=0, no_user_<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+site=0, no_site=0, ignore_environment=0, tabcheck=0, verbose=0, unicod<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e=0, bytes_warning=0, hash_randomization=0)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="float_info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">float_info</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+sys.float_info(max=1.7976931348623157e+308, max_exp=1024, max_10_exp=3<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+08, min=2.2250738585072014e-308, min_exp=-1021, min_10_exp=-307, dig=1<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+5, mant_dig=53, epsilon=2.220446049250313e-16, radix=2, rounds=1)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="modules"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">modules</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string">ConfigParser</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'ConfigParser' from '/usr/lib/python2.7/Confi<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+gParser.pyc'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">OpenGL</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'OpenGL' from '/usr/lib/python2.7/dist-packages/Ope<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+nGL/__init__.pyc'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">OpenGL.GL</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'OpenGL.GL' from '/usr/lib/python2.7/dist-packag<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+es/OpenGL/GL/__init__.pyc'&gt;<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">OpenGL.GL.ARB</code><code class="variable-quote">'</code><code class="variable-op">: </code>&lt;module 'OpenGL.GL.ARB' from '/usr/lib/python2.7/dis<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+t-packages/OpenGL/GL/ARB/__init__.pyc'&gt;<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="path"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">path</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">[</code><code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/bin</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/lib/python2.7</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/lib/python2.7/plat-x86_64-linux-gnu</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/lib/python2.7/lib-tk</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/lib/python2.7/lib-old</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/lib/python2.7/lib-dynload</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/usr/local/lib/python2.7/dist-packages</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="path_importer_cache"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">path_importer_cache</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code><code class="variable-quote">'</code><code class="variable-string"></code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib</code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp</code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/applet</code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/paint3d</code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/piddle</code><code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+ <code class="variable-quote">'</code><code class="variable-string">/home/orest/zlos/p4vasp/fossil/p4vasp/lib/p4vasp/piddle/piddleGTK2p4</code><code class="variable-quote"></code><span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+<code class="variable-quote">'</code><code class="variable-op">: </code>None<code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="stderr"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">stderr</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="stdin"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">stdin</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="stdout"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">stdout</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+&lt;epydoc.docintrospecter._DevNull instance at 0x2b17f3177b90&gt;
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="version_info"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">version_info</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+sys.version_info(major=2, minor=7, micro=6, releaselevel='final', seri<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+al=0)
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:07 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

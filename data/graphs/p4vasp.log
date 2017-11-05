@@ -1,0 +1,76 @@
+STATUS:Searching for applets
+EXCEPT:Traceback (most recent call last):
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/applet/__init__.py", line 102, in findApplets
+           o=getClass(c)
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/applet/__init__.py", line 73, in getClass
+           exec "import %s\nc=%s\n"%(join(v[:-1],"."),c)
+          File "<string>", line 2, in ?
+        AttributeError: 'module' object has no attribute 'ToolboxApplet'
+       
+STATUS:Creating menu items
+MSG   :Add menu Edit::New
+MSG   :Add menu Structure::Window
+MSG   :Add menu Structure::Control
+MSG   :Add menu Electronic::DOS + bands
+MSG   :Add menu Electronic::Local DOS+bands control
+MSG   :Add menu Structure::Show/hide atoms
+MSG   :Add menu Convergence::Energy
+MSG   :Add menu Convergence::Forces
+MSG   :Add menu MD::VAC
+MSG   :Add menu Edit::Multiply cell
+MSG   :Add menu Convergence::Selected forces
+MSG   :Add menu Electronic::Total DOS (old)
+MSG   :Add menu Edit::Move atoms
+MSG   :Add menu Electronic::Bands (old)
+MSG   :Add menu Electronic::Local potential
+MSG   :Add menu Electronic::Local DOS (old)
+MSG   :Add menu Edit::Builder
+MSG   :Add menu Edit::Edit sub-Z-matrix
+MSG   :Add menu Edit::Rotate atoms
+MSG   :Add menu Structure::Measure
+MSG   :Add menu Structure::Show (old)
+MSG   :Add menu Electronic::STM Window
+MSG   :Add menu Electronic::Local bandstructure (old)
+MSG   :Add menu Electronic::STM Control
+STATUS:Initializing toolbar buttons
+STATUS:Initializing selection applet
+STATUS:loading setup
+ERROR : Can not read setup.xml
+STATUS:setup loaded
+STATUS:reading vasprun.xml
+ERROR : Error reading property DOM
+EXCEPT:Traceback (most recent call last):
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 158, in get
+           self.value=self.read()
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 171, in read
+           return apply(self.read_func,(self,))
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/SystemPM.py", line 349, in <lambda>
+           read=lambda x:parseXMLfromURL(x.manager.URL))
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/util.py", line 460, in parseXMLfromURL
+           return parseXML(url)
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/util.py", line 430, in parseXML
+           raise IOError,"No such file or directory: '%s'"%path
+        IOError: No such file or directory: 'vasprun.xml'
+       
+ERROR : Error reading property INCAR
+EXCEPT:Traceback (most recent call last):
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 158, in get
+           self.value=self.read()
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 171, in read
+           return apply(self.read_func,(self,))
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/SystemPM.py", line 351, in <lambda>
+           read=lambda x:Incar(x.manager.DOM.getElementsByTagName("incar")[0]))
+        AttributeError: 'NoneType' object has no attribute 'getElementsByTagName'
+       
+ERROR : Error reading property NAME
+EXCEPT:Traceback (most recent call last):
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 158, in get
+           self.value=self.read()
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/Property.py", line 171, in read
+           return apply(self.read_func,(self,))
+          File "/fs/home2/odubay/work/p4vasp/p4vasp/lib/p4vasp/SystemPM.py", line 357, in <lambda>
+           read=lambda x:x.manager.INCAR["SYSTEM"])
+        TypeError: unsubscriptable object
+       
+STATUS:reading vasprun.xml OK
+STATUS:OK

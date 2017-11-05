@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Tree name="All" classname="">
+  <item>
+    <Applet name="Structure" classname="StructureApplet.StructureApplet"/>
+  </item>
+  <item>
+    <Applet name="DOS" classname="">
+      <item>
+	<Applet name="total DOS" classname="TDOSApplet.TDOSApplet"/>
+      </item>
+      <item>
+	<Applet name="projected DOS" classname="LDOSApplet.LDOSApplet"/>
+      </item>
+    </Applet>
+  </item>
+  <item>
+    <Applet name="Bandstructure" classname="">
+      <item>
+        <Applet name="total bands." classname="EigenvalApplet.EigenvalApplet"/>
+      </item>
+      <item>
+        <Applet name="projected bands." classname="LBandsApplet.LBandsApplet"/>
+      </item>
+    </Applet>
+  </item>
+  <item>
+    <Applet name="Convergence" classname="">
+      <item>
+        <Applet name="energy" classname="EnergyConvergenceApplet.EnergyConvergenceApplet"/>
+      </item>
+      <item>
+        <Applet name="forces" classname="ForcesConvergenceApplet.ForcesConvergenceApplet"/>
+      </item>
+      <item>
+        <Applet name="forces on selected" classname="SelForcesConvergenceApplet.SelForcesConvergenceApplet"/>
+      </item>
+    </Applet>
+  </item>
+</Tree>

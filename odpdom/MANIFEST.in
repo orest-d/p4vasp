@@ -1,0 +1,5 @@
+include *.txt
+include COPYING
+include Makefile
+include ODP.i
+recursive-include include *.h

@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.SystemPM</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        Module&nbsp;SystemPM
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.SystemPM-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== MODULE DESCRIPTION ==================== -->
+<h1 class="epydoc">Module SystemPM</h1><p class="nomargin-top"><span class="codelink"><a href="p4vasp.SystemPM-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+
+This module encapsulates the access to informations in VASP calculations.
+The property is read only when it is requested. If it is not available, *None* is returned.
+For more details see the p4vasp.Property module.
+
+Following calculation properties are available:
+
+  || **property**           || **type**                                || **comment**                                      ||
+  ||URL                     || string                                  || URL pointing to the system resources             ||
+  ||PATH                    || string                                  || PATH pointing to the directory of system         ||
+  ||DOM                     || DOM Document                            || vasprun dom document                             ||
+  ||DATE                    || time.struct_time                        || date and time of creation (from generator or file modification time)||
+  ||KEYWORDS                || string                                  || keywords (currently only supported in a database ||
+  ||GENERATORINFO           || p4vasp.Dictionary.Incar                 || generator info (date, time, VASP version)        ||
+  ||INCAR                   || p4vasp.Dictionary.Incar                 || INCAR dictionary                                 ||
+  ||PARAMETERS              || p4vasp.Dictionary.Incar                 || all VASP parameters (INCAR+defaults)             ||
+  ||NAME                    || string                                  || name, typically from INCAR SYSTEM tag            ||
+  ||ATOMINFO                || p4vasp.Structure.AtomInfo               ||  AtomInfo structure                              ||
+  ||TOTAL_DOS               || p4vasp.Array.Array                      || total density of states                          ||
+  ||PARTIAL_DOS             || p4vasp.Array.Array                      || partial density of states                        ||
+  ||PARTIAL_DOS_L           || p4vasp.Array.Array (with LateLists)     || partial density of states (LateList version)     ||
+  ||INITIAL_STRUCTURE       || p4vasp.Structure.Structure              || initial structure                                ||
+  ||FINAL_STRUCTURE         || p4vasp.Structure.Structure              || final structure                                  ||
+  ||PRIMITIVE_STRUCTURE     || p4vasp.Structure.Structure              || primitive cell structure                         ||
+  ||STRUCTURE_SEQUENCE      || list of p4vasp.Structure.Structure      || structures in relaxation run                     ||
+  ||STRUCTURE_SEQUENCE_L    || LateList of p4vasp.Structure.Structure  || structures in relaxation run (LateList version)  ||
+  ||CSTRUCTURE_SEQUENCE_L   || LateList of p4vasp.cStructure.Structure || c-structures in relaxation run (LateList version)||
+  ||RELAXATION_SEQUENCE_L   || LateList of p4vasp.Structure.Structure  || structures in relaxation run (LateList version)  ||
+  ||MD_SEQUENCE_L           || LateList of p4vasp.Structure.Structure  || structures in MD run (LateList version)          ||
+  ||E_FERMI                 || float                                   || Fermi energy                                     ||
+  ||FREE_ENERGY_SEQUENCE    || list of float                           || sequence of free energies                        ||
+  ||FREE_ENERGY             || float                                   || free energy (last of the FREE_ENERGY_SEQUENCE)   ||
+  ||FORCES_SEQUENCE         || list of lists                           || sequence of forces                               ||
+  ||FORCES_SEQUENCE_L       || LateList of lists                       || sequence of forces (LateList version)            ||
+  ||FORCE_CONSTANTS         || p4vasp.Array.Array                      || force constants                                  ||
+  ||VELOCITY_SEQUENCE       || list of lists                           || sequence of velocities                           ||
+  ||VELOCITY_SEQUENCE_L     || LateList of lists                       || sequence of velocities (LateList version)        ||
+  ||EIGENVALUES             || p4vasp.Array.Array                      || eigenvalues                                      ||
+  ||EIGENVALUES_L           || p4vasp.Array.Array (with LateLists)     || eigenvalues (LateList version)                   ||
+  ||PROJECTED_EIGENVALUES   || p4vasp.Array.Array                      || projected eigenvalues                            ||
+  ||PROJECTED_EIGENVALUES_L || p4vasp.Array.Array (with LateLists)     || projected eigenvalues (LateList version)         ||
+  ||PROJECTED_EIGENVALUES_ENERGIES   || p4vasp.Array.Array                       || projected eigenvalues                            ||
+  ||PROJECTED_EIGENVALUES_ENERGIES_L || p4vasp.Array.Array (with LateLists)     || projected eigenvalues        (LateList version)         ||
+  ||KPOINT_LIST             || KpointList(VArray)                      || list of kpoints                                  ||
+  ||KPOINT_WEIGHTS          || p4vasp.Array.VArray                     || list of kpoint weights                           ||
+  ||KPOINT_DIVISIONS        || int                                     || number of divisions for listgenerated kpoints    ||
+  ||KPOINT_GENERATION       || KpointGeneration                        || Dictionary with k-point generation info          ||
+  ||KPOINTS_TEXT            || string                                  || text of the KPOINTS file                         ||
+  ||CHGCAR                  || cp4vasp.Chgcar                          || CHGCAR                                           ||
+  ||ELFCAR                  || cp4vasp.Chgcar                          || ELFCAR                                           ||
+  ||LOCPOT                  || cp4vasp.Chgcar                          || LOCPOT                                           ||
+  ||PARCHG                  || cp4vasp.Chgcar                          || PARCHG                                           ||
+  ||INCAR_FILE              || string                                  || INCAR content                                    ||
+  ||KPOINTS_FILE            || string                                  || KPOINTS content                                  ||
+  ||POTCAR_FILE             || string                                  || POTCAR content                                   ||
+  ||POSCAR_FILE             || string                                  || POSCAR content                                   ||
+  ||CONTCAR_FILE            || string                                  || CONTCAR content                                  ||
+  ||DOSCAR_FILE             || string                                    || DOSCAR content                                   ||
+  ||DIELECTRIC              || tuple of two p4vasp.p4vasp.Array          || real and imaginary part of the dielectric func.  ||
+  ||DIELECTRIC_FUNCTIONS    || list of tuples of two p4vasp.p4vasp.Array || list of dielectric functions.  ||
+  ||DIELECTRIC_FUNCTIONS_COMMENTS || list of tuples of two p4vasp.p4vasp.Array || real and imaginary part of the dielectric func.  ||
+  ||PROGRAM                 || string                                    || vasp                                             ||
+  ||VERSION                 || string                                    || vasp version                                     ||
+  ||SUBVERSION              || string                                    || subversion                                       ||
+  ||PLATFORM                || string                                    || platform                                         ||
+  ||DESCRIPTION             || string                                    || description string                               ||
+
+  Note: Elements of the LateList are parsed only when acesses, thus parsing of LateList
+  properties is fast, but it takes time to process them.
+  Use LateList version, if you do not need all the elements of the list.
+
+  example:
+
+    #!/usr/bin/python
+    from p4vasp.SystemPM import *
+    s=XMLSystemPM('vasprun.xml')
+    poscar=s.INITIAL_STRUCTURE
+    print 'POSCAR:'
+    print
+    print poscar.toString()
+    print
+    contcar=s.FINAL_STRUCTURE
+    contcar.setDirect()
+    print 'CONTCAR:'
+    print
+    print contcar.toString()
+
+</pre>
+
+<!-- ==================== CLASSES ==================== -->
+<a name="section-Classes"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Classes"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.Kpoints-class.html" class="summary-name">Kpoints</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.KpointList-class.html" class="summary-name">KpointList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.KpointGeneration-class.html" class="summary-name">KpointGeneration</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.ChgcarStatisticsLateList-class.html" class="summary-name">ChgcarStatisticsLateList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.SystemPM-class.html" class="summary-name">SystemPM</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.StructureSequenceLateList-class.html" class="summary-name">StructureSequenceLateList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.cStructureSequenceLateList-class.html" class="summary-name">cStructureSequenceLateList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.ForcesSequenceLateList-class.html" class="summary-name">ForcesSequenceLateList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.VelocitiesSequenceLateList-class.html" class="summary-name">VelocitiesSequenceLateList</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.XMLSystemPM-class.html" class="summary-name">XMLSystemPM</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.OldSystemPM-class.html" class="summary-name">OldSystemPM</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.PoscarSystemPM-class.html" class="summary-name">PoscarSystemPM</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.SystemPM_URL_Attribute-class.html" class="summary-name">SystemPM_URL_Attribute</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.SetupPM-class.html" class="summary-name">SetupPM</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.SystemListListener-class.html" class="summary-name">SystemListListener</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="p4vasp.SystemPM.SystemRepository-class.html" class="summary-name">SystemRepository</a>
+    </td>
+  </tr>
+</table>
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getCurrentSystemPM"></a><span class="summary-sig-name">getCurrentSystemPM</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.SystemPM-pysrc.html#getCurrentSystemPM">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="readDOSCAR"></a><span class="summary-sig-name">readDOSCAR</span>(<span class="summary-sig-arg">f</span>=<span class="summary-sig-default">&quot;DOSCAR&quot;</span>,
+        <span class="summary-sig-arg">closeflag</span>=<span class="summary-sig-default">0</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.SystemPM-pysrc.html#readDOSCAR">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getSystem"></a><span class="summary-sig-name">getSystem</span>(<span class="summary-sig-arg">path</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.SystemPM-pysrc.html#getSystem">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="systemlist"></a><span class="summary-sig-name">systemlist</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.SystemPM-pysrc.html#systemlist">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="c"></a><span class="summary-name">c</span> = <code title="Profile(OldSystemPM, tagname= &quot;OldSystem&quot;, disable_attr= 1)">Profile(OldSystemPM, tagname= &quot;OldSystem&quot;, disable_attr= 1)</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="systemlist_"></a><span class="summary-name">systemlist_</span> = <code title="SystemRepository()">SystemRepository()</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:07 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

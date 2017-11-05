@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.SQLSystemPM</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        Module&nbsp;SQLSystemPM
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.SQLSystemPM-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="p4vasp.SQLSystemPM-module.html">Module p4vasp.SQLSystemPM</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># HappyDoc:docStringFormat='ClassicStructuredText'</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">#  p4vasp is a GUI-program and a library for processing outputs of the</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#  Vienna Ab-inition Simulation Package (VASP)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#  Copyright (C) 2003  Orest Dubay &lt;odubay@users.sourceforge.net&gt;</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#  This program is free software; you can redistribute it and/or modify</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#  it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#  the Free Software Foundation; either version 2 of the License, or</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#  (at your option) any later version.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#  This program is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">#  GNU General Public License for more details.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#   You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#  along with this program; if not, write to the Free Software</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment">#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-docstring">SQLSystemPM - access to the data stored in a SQL database</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">__future__</tt> <tt class="py-keyword">import</tt> <tt class="py-name">generators</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package p4vasp=p4vasp-module.html"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-0', 'p4vasp', 'link-0');">p4vasp</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-1', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module p4vasp.util=p4vasp.util-module.html"><a title="p4vasp.util" class="py-name" href="#" onclick="return doclink('link-2', 'util', 'link-2');">util</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-3" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-3', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Module p4vasp.Dictionary=p4vasp.Dictionary-module.html,Class p4vasp.Dictionary.Dictionary=p4vasp.Dictionary.Dictionary-class.html"><a title="p4vasp.Dictionary
+p4vasp.Dictionary.Dictionary" class="py-name" href="#" onclick="return doclink('link-4', 'Dictionary', 'link-4');">Dictionary</a></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-5" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-5', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Module p4vasp.store=p4vasp.store-module.html"><a title="p4vasp.store" class="py-name" href="#" onclick="return doclink('link-6', 'store', 'link-6');">store</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-7" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-7', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Module p4vasp.Array=p4vasp.Array-module.html,Class p4vasp.Array.Array=p4vasp.Array.Array-class.html"><a title="p4vasp.Array
+p4vasp.Array.Array" class="py-name" href="#" onclick="return doclink('link-8', 'Array', 'link-8');">Array</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-9" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-9', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Module p4vasp.Property=p4vasp.Property-module.html,Class p4vasp.Property.Property=p4vasp.Property.Property-class.html"><a title="p4vasp.Property
+p4vasp.Property.Property" class="py-name" href="#" onclick="return doclink('link-10', 'Property', 'link-10');">Property</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Variable p4vasp.Array.path=p4vasp.Array-module.html#path,Variable p4vasp.Dictionary.path=p4vasp.Dictionary-module.html#path,Variable p4vasp.Structure.path=p4vasp.Structure-module.html#path,Variable p4vasp.applet.Applet.path=p4vasp.applet.Applet-module.html#path,Variable p4vasp.message.path=p4vasp.message-module.html#path,Variable p4vasp.repository.path=p4vasp.repository-module.html#path,Variable p4vasp.schedule'.path=p4vasp.schedule%27-module.html#path,Variable p4vasp.store.path=p4vasp.store-module.html#path,Variable p4vasp.util.path=p4vasp.util-module.html#path"><a title="p4vasp.Array.path
+p4vasp.Dictionary.path
+p4vasp.Structure.path
+p4vasp.applet.Applet.path
+p4vasp.message.path
+p4vasp.repository.path
+p4vasp.schedule'.path
+p4vasp.store.path
+p4vasp.util.path" class="py-name" href="#" onclick="return doclink('link-11', 'path', 'link-11');">path</a></tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">string</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-12" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-12', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name"><a title="p4vasp.util" class="py-name" href="#" onclick="return doclink('link-13', 'util', 'link-2');">util</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">traceback</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">cp4vasp</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-14" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-14', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Module p4vasp.Structure=p4vasp.Structure-module.html,Class p4vasp.Structure.Structure=p4vasp.Structure.Structure-class.html,Class p4vasp.cStructure.Structure=p4vasp.cStructure.Structure-class.html"><a title="p4vasp.Structure
+p4vasp.Structure.Structure
+p4vasp.cStructure.Structure" class="py-name" href="#" onclick="return doclink('link-15', 'Structure', 'link-15');">Structure</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-16" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-16', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Module p4vasp.cStructure=p4vasp.cStructure-module.html"><a title="p4vasp.cStructure" class="py-name" href="#" onclick="return doclink('link-17', 'cStructure', 'link-17');">cStructure</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-18" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-18', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Module p4vasp.repository=p4vasp.repository-module.html"><a title="p4vasp.repository" class="py-name" href="#" onclick="return doclink('link-19', 'repository', 'link-19');">repository</a></tt> <tt class="py-keyword">as</tt> <tt id="link-20" class="py-name"><a title="p4vasp.repository" class="py-name" href="#" onclick="return doclink('link-20', 'repository', 'link-19');">repository</a></tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-21" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-21', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-22" class="py-name" targets="Module p4vasp.SystemPM=p4vasp.SystemPM-module.html,Class p4vasp.SystemPM.SystemPM=p4vasp.SystemPM.SystemPM-class.html"><a title="p4vasp.SystemPM
+p4vasp.SystemPM.SystemPM" class="py-name" href="#" onclick="return doclink('link-22', 'SystemPM', 'link-22');">SystemPM</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line"> </tt>
+<a name="SQLStructuresLL"></a><div id="SQLStructuresLL-def"><a name="L51"></a><tt class="py-lineno"> 51</tt> <a class="py-toggle" href="#" id="SQLStructuresLL-toggle" onclick="return toggle('SQLStructuresLL');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLStructuresLL-class.html">SQLStructuresLL</a><tt class="py-op">(</tt><tt class="py-base-class">LateList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLStructuresLL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SQLStructuresLL-expanded"><a name="SQLStructuresLL.__init__"></a><div id="SQLStructuresLL.__init__-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="SQLStructuresLL.__init__-toggle" onclick="return toggle('SQLStructuresLL.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLStructuresLL-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">plist</tt><tt class="py-op">,</tt><tt class="py-param">dbi</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLStructuresLL.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLStructuresLL.__init__-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt id="link-23" class="py-name" targets="Class p4vasp.Array.LateList=p4vasp.Array.LateList-class.html"><a title="p4vasp.Array.LateList" class="py-name" href="#" onclick="return doclink('link-23', 'LateList', 'link-23');">LateList</a></tt><tt class="py-op">.</tt><tt id="link-24" class="py-name" targets="Method p4vasp.Array.Array.__init__()=p4vasp.Array.Array-class.html#__init__,Method p4vasp.Array.ArrayRecord.__init__()=p4vasp.Array.ArrayRecord-class.html#__init__,Method p4vasp.Array.LateList.__init__()=p4vasp.Array.LateList-class.html#__init__,Method p4vasp.Array.SetLateList.__init__()=p4vasp.Array.SetLateList-class.html#__init__,Method p4vasp.Array.VArray.__init__()=p4vasp.Array.VArray-class.html#__init__,Method p4vasp.Array.rRecordSetLateList.__init__()=p4vasp.Array.rRecordSetLateList-class.html#__init__,Method p4vasp.Array.rcRecordSetLateList.__init__()=p4vasp.Array.rcRecordSetLateList-class.html#__init__,Method p4vasp.ConvexShape.ConvexShape.__init__()=p4vasp.ConvexShape.ConvexShape-class.html#__init__,Method p4vasp.Dictionary.Dictionary.__init__()=p4vasp.Dictionary.Dictionary-class.html#__init__,Method p4vasp.Dictionary.Incar.__init__()=p4vasp.Dictionary.Incar-class.html#__init__,Method p4vasp.Dictionary.StructuredDictionary.__init__()=p4vasp.Dictionary.StructuredDictionary-class.html#__init__,Method p4vasp.FArray.FArray1D.__init__()=p4vasp.FArray.FArray1D-class.html#__init__,Method p4vasp.FArray.FArray2D.__init__()=p4vasp.FArray.FArray2D-class.html#__init__,Method p4vasp.GraphCanvas.Export.__init__()=p4vasp.GraphCanvas.Export-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvas.__init__()=p4vasp.GraphCanvas.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.Export.__init__()=p4vasp.GraphCanvas_gtk1.Export-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphPM.GraphPM.__init__()=p4vasp.GraphPM.GraphPM-class.html#__init__,Method p4vasp.GraphPM.GraphProperty.__init__()=p4vasp.GraphPM.GraphProperty-class.html#__init__,Method p4vasp.ODPdom.Attr.__init__()=p4vasp.ODPdom.Attr-class.html#__init__,Method p4vasp.ODPdom.AttributeList.__init__()=p4vasp.ODPdom.AttributeList-class.html#__init__,Method p4vasp.ODPdom.CharacterData.__init__()=p4vasp.ODPdom.CharacterData-class.html#__init__,Method p4vasp.ODPdom.ChildrenByTagNameList.__init__()=p4vasp.ODPdom.ChildrenByTagNameList-class.html#__init__,Method p4vasp.ODPdom.DOMException.__init__()=p4vasp.ODPdom.DOMException-class.html#__init__,Method p4vasp.ODPdom.Document.__init__()=p4vasp.ODPdom.Document-class.html#__init__,Method p4vasp.ODPdom.Element.__init__()=p4vasp.ODPdom.Element-class.html#__init__,Method p4vasp.ODPdom.NamedNodeMap.__init__()=p4vasp.ODPdom.NamedNodeMap-class.html#__init__,Method p4vasp.ODPdom.Node.__init__()=p4vasp.ODPdom.Node-class.html#__init__,Method p4vasp.ODPdom.NodeList.__init__()=p4vasp.ODPdom.NodeList-class.html#__init__,Method p4vasp.ODPdom.ProcessingInstruction.__init__()=p4vasp.ODPdom.ProcessingInstruction-class.html#__init__,Method p4vasp.Property.FilterPropertyManager.__init__()=p4vasp.Property.FilterPropertyManager-class.html#__init__,Method p4vasp.Property.Property.__init__()=p4vasp.Property.Property-class.html#__init__,Method p4vasp.Property.PropertyManager.__init__()=p4vasp.Property.PropertyManager-class.html#__init__,Method p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__()=p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#__init__,Method p4vasp.SQLSystemPM.SQLStructuresLL.__init__()=p4vasp.SQLSystemPM.SQLStructuresLL-class.html#__init__,Method p4vasp.SQLSystemPM.SQLSystemPM.__init__()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#__init__,Method p4vasp.Selection.Selection.__init__()=p4vasp.Selection.Selection-class.html#__init__,Method p4vasp.Structure.AtomInfo.__init__()=p4vasp.Structure.AtomInfo-class.html#__init__,Method p4vasp.Structure.AtomtypesArray.__init__()=p4vasp.Structure.AtomtypesArray-class.html#__init__,Method p4vasp.Structure.AtomtypesRecord.__init__()=p4vasp.Structure.AtomtypesRecord-class.html#__init__,Method p4vasp.Structure.Structure.__init__()=p4vasp.Structure.Structure-class.html#__init__,Method p4vasp.StructureWindow.StructureWindow.__init__()=p4vasp.StructureWindow.StructureWindow-class.html#__init__,Method p4vasp.SystemPM.ChgcarStatisticsLateList.__init__()=p4vasp.SystemPM.ChgcarStatisticsLateList-class.html#__init__,Method p4vasp.SystemPM.KpointGeneration.__init__()=p4vasp.SystemPM.KpointGeneration-class.html#__init__,Method p4vasp.SystemPM.KpointList.__init__()=p4vasp.SystemPM.KpointList-class.html#__init__,Method p4vasp.SystemPM.Kpoints.__init__()=p4vasp.SystemPM.Kpoints-class.html#__init__,Method p4vasp.SystemPM.OldSystemPM.__init__()=p4vasp.SystemPM.OldSystemPM-class.html#__init__,Method p4vasp.SystemPM.PoscarSystemPM.__init__()=p4vasp.SystemPM.PoscarSystemPM-class.html#__init__,Method p4vasp.SystemPM.SetupPM.__init__()=p4vasp.SystemPM.SetupPM-class.html#__init__,Method p4vasp.SystemPM.StructureSequenceLateList.__init__()=p4vasp.SystemPM.StructureSequenceLateList-class.html#__init__,Method p4vasp.SystemPM.SystemPM.__init__()=p4vasp.SystemPM.SystemPM-class.html#__init__,Method p4vasp.SystemPM.SystemPM_URL_Attribute.__init__()=p4vasp.SystemPM.SystemPM_URL_Attribute-class.html#__init__,Method p4vasp.SystemPM.SystemRepository.__init__()=p4vasp.SystemPM.SystemRepository-class.html#__init__,Method p4vasp.SystemPM.XMLSystemPM.__init__()=p4vasp.SystemPM.XMLSystemPM-class.html#__init__,Method p4vasp.SystemPM.cStructureSequenceLateList.__init__()=p4vasp.SystemPM.cStructureSequenceLateList-class.html#__init__,Method p4vasp.applet.Applet.Applet.__init__()=p4vasp.applet.Applet.Applet-class.html#__init__,Method p4vasp.applet.Applet.AppletProfile.__init__()=p4vasp.applet.Applet.AppletProfile-class.html#__init__,Method p4vasp.applet.Applet.GraphApplet.__init__()=p4vasp.applet.Applet.GraphApplet-class.html#__init__,Method p4vasp.applet.Applet.TextApplet.__init__()=p4vasp.applet.Applet.TextApplet-class.html#__init__,Method p4vasp.applet.Applet.Widgets.__init__()=p4vasp.applet.Applet.Widgets-class.html#__init__,Method p4vasp.applet.AppletRepositoryProfile.__init__()=p4vasp.applet.AppletRepositoryProfile-class.html#__init__,Method p4vasp.applet.AppletTree.AppletNode.__init__()=p4vasp.applet.AppletTree.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTree.__init__()=p4vasp.applet.AppletTree.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeModel.__init__()=p4vasp.applet.AppletTree.AppletTreeModel-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletNode.__init__()=p4vasp.applet.AppletTree_old.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTree.__init__()=p4vasp.applet.AppletTree_old.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree_old.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.BuilderApplet.BuilderApplet.__init__()=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#__init__,Method p4vasp.applet.BuilderApplet.StructureTreeModel.__init__()=p4vasp.applet.BuilderApplet.StructureTreeModel-class.html#__init__,Method p4vasp.applet.CommitApplet.CommitApplet.__init__()=p4vasp.applet.CommitApplet.CommitApplet-class.html#__init__,Method p4vasp.applet.DBApplet.DBApplet.__init__()=p4vasp.applet.DBApplet.DBApplet-class.html#__init__,Method p4vasp.applet.DBApplet.QueryTreeModel.__init__()=p4vasp.applet.DBApplet.QueryTreeModel-class.html#__init__,Method p4vasp.applet.DielectricApplet.DielectricApplet.__init__()=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#__init__,Method p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__()=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__()=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.Line.__init__()=p4vasp.applet.ElectronicApplet.Line-class.html#__init__,Method p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__()=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#__init__,Method p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__()=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#__init__,Method p4vasp.applet.ExportApplet.ExportApplet.__init__()=p4vasp.applet.ExportApplet.ExportApplet-class.html#__init__,Method p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__()=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#__init__,Method p4vasp.applet.InfoApplet.InfoApplet.__init__()=p4vasp.applet.InfoApplet.InfoApplet-class.html#__init__,Method p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__()=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#__init__,Method p4vasp.applet.LatticeApplet.LatticeApplet.__init__()=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#__init__,Method p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__()=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#__init__,Method p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__()=p4vasp.applet.MeasureApplet.DistanceTreeModel-class.html#__init__,Method p4vasp.applet.MeasureApplet.MeasureApplet.__init__()=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#__init__,Method p4vasp.applet.MoveApplet.MoveApplet.__init__()=p4vasp.applet.MoveApplet.MoveApplet-class.html#__init__,Method p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__()=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#__init__,Method p4vasp.applet.NewApplet.NewApplet.__init__()=p4vasp.applet.NewApplet.NewApplet-class.html#__init__,Method p4vasp.applet.RotateApplet.RotateApplet.__init__()=p4vasp.applet.RotateApplet.RotateApplet-class.html#__init__,Method p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__()=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#__init__,Method p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__()=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#__init__,Method p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__()=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.SelectionApplet.SelectionApplet.__init__()=p4vasp.applet.SelectionApplet.SelectionApplet-class.html#__init__,Method p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__()=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.Measure.__init__()=p4vasp.applet.StructureApplet.Measure-class.html#__init__,Method p4vasp.applet.StructureApplet.StructureApplet.__init__()=p4vasp.applet.StructureApplet.StructureApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.SubtrSequence.__init__()=p4vasp.applet.StructureApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__()=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__()=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__()=p4vasp.applet.StructureWindowControlApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.VACApplet.VACApplet.__init__()=p4vasp.applet.VACApplet.VACApplet-class.html#__init__,Method p4vasp.cStructure.AtomInfo.__init__()=p4vasp.cStructure.AtomInfo-class.html#__init__,Method p4vasp.cStructure.AtomtypesRecord.__init__()=p4vasp.cStructure.AtomtypesRecord-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayItemWrapper.__init__()=p4vasp.cStructure.SelectiveArrayItemWrapper-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayWrapper.__init__()=p4vasp.cStructure.SelectiveArrayWrapper-class.html#__init__,Method p4vasp.cStructure.Structure.__init__()=p4vasp.cStructure.Structure-class.html#__init__,Method p4vasp.cmatrix.Matrix.__init__()=p4vasp.cmatrix.Matrix-class.html#__init__,Method p4vasp.cmatrix.Vector.__init__()=p4vasp.cmatrix.Vector-class.html#__init__,Method p4vasp.db.DBI.__init__()=p4vasp.db.DBI-class.html#__init__,Method p4vasp.db.MySQLDBI.__init__()=p4vasp.db.MySQLDBI-class.html#__init__,Method p4vasp.db.Query.__init__()=p4vasp.db.Query-class.html#__init__,Method p4vasp.db.SQLiteDBI.__init__()=p4vasp.db.SQLiteDBI-class.html#__init__,Method p4vasp.graph.Axis.__init__()=p4vasp.graph.Axis-class.html#__init__,Method p4vasp.graph.Graph.__init__()=p4vasp.graph.Graph-class.html#__init__,Method p4vasp.graph.GraphLine.__init__()=p4vasp.graph.GraphLine-class.html#__init__,Method p4vasp.graph.Set.__init__()=p4vasp.graph.Set-class.html#__init__,Method p4vasp.graph.World.__init__()=p4vasp.graph.World-class.html#__init__,Method p4vasp.graph.XAxis.__init__()=p4vasp.graph.XAxis-class.html#__init__,Method p4vasp.graph.YAxis.__init__()=p4vasp.graph.YAxis-class.html#__init__,Method p4vasp.matrix.Matrix.__init__()=p4vasp.matrix.Matrix-class.html#__init__,Method p4vasp.matrix.Vector.__init__()=p4vasp.matrix.Vector-class.html#__init__,Method p4vasp.message.MessageDriver.__init__()=p4vasp.message.MessageDriver-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DInterface-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DRecorder-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.data.AmbientLight.__init__()=p4vasp.paint3d.data.AmbientLight-class.html#__init__,Method p4vasp.paint3d.data.Arrow.__init__()=p4vasp.paint3d.data.Arrow-class.html#__init__,Method p4vasp.paint3d.data.Background.__init__()=p4vasp.paint3d.data.Background-class.html#__init__,Method p4vasp.paint3d.data.ColorMaterial.__init__()=p4vasp.paint3d.data.ColorMaterial-class.html#__init__,Method p4vasp.paint3d.data.Cone.__init__()=p4vasp.paint3d.data.Cone-class.html#__init__,Method p4vasp.paint3d.data.Cylinder.__init__()=p4vasp.paint3d.data.Cylinder-class.html#__init__,Method p4vasp.paint3d.data.Frame.__init__()=p4vasp.paint3d.data.Frame-class.html#__init__,Method p4vasp.paint3d.data.Line.__init__()=p4vasp.paint3d.data.Line-class.html#__init__,Method p4vasp.paint3d.data.Mesh.__init__()=p4vasp.paint3d.data.Mesh-class.html#__init__,Method p4vasp.paint3d.data.OrthographicCamera.__init__()=p4vasp.paint3d.data.OrthographicCamera-class.html#__init__,Method p4vasp.paint3d.data.PerspectiveCamera.__init__()=p4vasp.paint3d.data.PerspectiveCamera-class.html#__init__,Method p4vasp.paint3d.data.PointLight.__init__()=p4vasp.paint3d.data.PointLight-class.html#__init__,Method p4vasp.paint3d.data.Sphere.__init__()=p4vasp.paint3d.data.Sphere-class.html#__init__,Method p4vasp.repository.Descriptor.__init__()=p4vasp.repository.Descriptor-class.html#__init__,Method p4vasp.repository.DescriptorProfile.__init__()=p4vasp.repository.DescriptorProfile-class.html#__init__,Method p4vasp.repository.Factory.__init__()=p4vasp.repository.Factory-class.html#__init__,Method p4vasp.repository.FactoryProfile.__init__()=p4vasp.repository.FactoryProfile-class.html#__init__,Method p4vasp.repository.Repository.__init__()=p4vasp.repository.Repository-class.html#__init__,Method p4vasp.repository.RepositoryProfile.__init__()=p4vasp.repository.RepositoryProfile-class.html#__init__,Method p4vasp.schedule'.Scheduler.__init__()=p4vasp.schedule%27.Scheduler-class.html#__init__,Method p4vasp.setupstore.SetupProfile.__init__()=p4vasp.setupstore.SetupProfile-class.html#__init__,Method p4vasp.setupstore.SetupProfile_old.__init__()=p4vasp.setupstore.SetupProfile_old-class.html#__init__,Method p4vasp.store.AttributeProfile.__init__()=p4vasp.store.AttributeProfile-class.html#__init__,Method p4vasp.store.ClassAttribute.__init__()=p4vasp.store.ClassAttribute-class.html#__init__,Method p4vasp.store.FloatAttribute.__init__()=p4vasp.store.FloatAttribute-class.html#__init__,Method p4vasp.store.FloatListAttribute.__init__()=p4vasp.store.FloatListAttribute-class.html#__init__,Method p4vasp.store.FloatTupleAttribute.__init__()=p4vasp.store.FloatTupleAttribute-class.html#__init__,Method p4vasp.store.HexMarshalAttribute.__init__()=p4vasp.store.HexMarshalAttribute-class.html#__init__,Method p4vasp.store.HexPickleAttribute.__init__()=p4vasp.store.HexPickleAttribute-class.html#__init__,Method p4vasp.store.IgnoreProfile.__init__()=p4vasp.store.IgnoreProfile-class.html#__init__,Method p4vasp.store.IntAttribute.__init__()=p4vasp.store.IntAttribute-class.html#__init__,Method p4vasp.store.IntListAttribute.__init__()=p4vasp.store.IntListAttribute-class.html#__init__,Method p4vasp.store.IntTupleAttribute.__init__()=p4vasp.store.IntTupleAttribute-class.html#__init__,Method p4vasp.store.ListAttribute.__init__()=p4vasp.store.ListAttribute-class.html#__init__,Method p4vasp.store.Profile.__init__()=p4vasp.store.Profile-class.html#__init__,Method p4vasp.store.StringAttribute.__init__()=p4vasp.store.StringAttribute-class.html#__init__,Method p4vasp.store.StringListAttribute.__init__()=p4vasp.store.StringListAttribute-class.html#__init__,Method p4vasp.util.ParseException.__init__()=p4vasp.util.ParseException-class.html#__init__,Method p4vasp.util.UnknownType.__init__()=p4vasp.util.UnknownType-class.html#__init__,Method p4vasp.util.XMLParseException.__init__()=p4vasp.util.XMLParseException-class.html#__init__,Method p4vasp.uuid.UuidGen.__init__()=p4vasp.uuid.UuidGen-class.html#__init__,Method p4vasp.uuid._GeneratorState.__init__()=p4vasp.uuid._GeneratorState-class.html#__init__"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-24', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">plist</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">=</tt><tt class="py-name">dbi</tt> </tt>
+</div><a name="SQLStructuresLL.parse"></a><div id="SQLStructuresLL.parse-def"><a name="L55"></a><tt class="py-lineno"> 55</tt> <a class="py-toggle" href="#" id="SQLStructuresLL.parse-toggle" onclick="return toggle('SQLStructuresLL.parse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLStructuresLL-class.html#parse">parse</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLStructuresLL.parse-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLStructuresLL.parse-expanded"><a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method p4vasp.db.P4VMixin.readStructure()=p4vasp.db.P4VMixin-class.html#readStructure"><a title="p4vasp.db.P4VMixin.readStructure" class="py-name" href="#" onclick="return doclink('link-25', 'readStructure', 'link-25');">readStructure</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="SQLcStructuresLL"></a><div id="SQLcStructuresLL-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="SQLcStructuresLL-toggle" onclick="return toggle('SQLcStructuresLL');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLcStructuresLL-class.html">SQLcStructuresLL</a><tt class="py-op">(</tt><tt class="py-base-class">SQLStructuresLL</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLcStructuresLL-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SQLcStructuresLL-expanded"><a name="SQLcStructuresLL.parse"></a><div id="SQLcStructuresLL.parse-def"><a name="L59"></a><tt class="py-lineno"> 59</tt> <a class="py-toggle" href="#" id="SQLcStructuresLL.parse-toggle" onclick="return toggle('SQLcStructuresLL.parse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLcStructuresLL-class.html#parse">parse</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLcStructuresLL.parse-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLcStructuresLL.parse-expanded"><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-26" class="py-name"><a title="p4vasp.db.P4VMixin.readStructure" class="py-name" href="#" onclick="return doclink('link-26', 'readStructure', 'link-25');">readStructure</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">cstructure</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line"> </tt>
+<a name="SQLForcesSequenceLateList"></a><div id="SQLForcesSequenceLateList-def"><a name="L62"></a><tt class="py-lineno"> 62</tt> <a class="py-toggle" href="#" id="SQLForcesSequenceLateList-toggle" onclick="return toggle('SQLForcesSequenceLateList');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html">SQLForcesSequenceLateList</a><tt class="py-op">(</tt><tt class="py-base-class">LateList</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLForcesSequenceLateList-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SQLForcesSequenceLateList-expanded"><a name="SQLForcesSequenceLateList.__init__"></a><div id="SQLForcesSequenceLateList.__init__-def"><a name="L63"></a><tt class="py-lineno"> 63</tt> <a class="py-toggle" href="#" id="SQLForcesSequenceLateList.__init__-toggle" onclick="return toggle('SQLForcesSequenceLateList.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">plist</tt><tt class="py-op">,</tt><tt class="py-param">dbi</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLForcesSequenceLateList.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLForcesSequenceLateList.__init__-expanded"><a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt id="link-27" class="py-name"><a title="p4vasp.Array.LateList" class="py-name" href="#" onclick="return doclink('link-27', 'LateList', 'link-23');">LateList</a></tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-28', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">plist</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">=</tt><tt class="py-name">dbi</tt> </tt>
+</div><a name="SQLForcesSequenceLateList.parse"></a><div id="SQLForcesSequenceLateList.parse-def"><a name="L66"></a><tt class="py-lineno"> 66</tt> <a class="py-toggle" href="#" id="SQLForcesSequenceLateList.parse-toggle" onclick="return toggle('SQLForcesSequenceLateList.parse');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#parse">parse</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLForcesSequenceLateList.parse-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLForcesSequenceLateList.parse-expanded"><a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-29" class="py-name" targets="Class p4vasp.Array.VArray=p4vasp.Array.VArray-class.html"><a title="p4vasp.Array.VArray" class="py-name" href="#" onclick="return doclink('link-29', 'VArray', 'link-29');">VArray</a></tt><tt class="py-op">(</tt><tt id="link-30" class="py-name" targets="Module p4vasp.paint3d.data=p4vasp.paint3d.data-module.html"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-30', 'data', 'link-30');">data</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method p4vasp.db.P4VMixin.readForce()=p4vasp.db.P4VMixin-class.html#readForce"><a title="p4vasp.db.P4VMixin.readForce" class="py-name" href="#" onclick="return doclink('link-31', 'readForce', 'link-31');">readForce</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-32" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.name=p4vasp.applet.Applet.Applet-class.html#name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-32', 'name', 'link-32');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"forces"</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM"></a><div id="SQLSystemPM-def"><a name="L69"></a><tt class="py-lineno"> 69</tt> <a class="py-toggle" href="#" id="SQLSystemPM-toggle" onclick="return toggle('SQLSystemPM');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html">SQLSystemPM</a><tt class="py-op">(</tt><tt class="py-base-class">SystemPM</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="SQLSystemPM-expanded"><a name="SQLSystemPM.__init__"></a><div id="SQLSystemPM.__init__-def"><a name="L70"></a><tt class="py-lineno"> 70</tt> <a class="py-toggle" href="#" id="SQLSystemPM.__init__-toggle" onclick="return toggle('SQLSystemPM.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">dbi</tt><tt class="py-op">,</tt><tt class="py-param">Id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.__init__-expanded"><a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt id="link-33" class="py-name"><a title="p4vasp.SystemPM
+p4vasp.SystemPM.SystemPM" class="py-name" href="#" onclick="return doclink('link-33', 'SystemPM', 'link-22');">SystemPM</a></tt><tt class="py-op">.</tt><tt id="link-34" class="py-name"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-34', '__init__', 'link-24');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">=</tt><tt class="py-name">dbi</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">=</tt><tt class="py-name">Id</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Method p4vasp.Property.PropertyManager.add()=p4vasp.Property.PropertyManager-class.html#add,Method p4vasp.applet.AppletFactory.add()=p4vasp.applet.AppletFactory-class.html#add,Method p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add()=p4vasp.paint3d.Paint3DInterface.Paint3DRecorder-class.html#add,Method p4vasp.repository.Factory.add()=p4vasp.repository.Factory-class.html#add"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-35', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"NAME"</tt><tt class="py-op">,</tt>                <tt id="link-36" class="py-name" targets="Method p4vasp.Dictionary.Incar.read()=p4vasp.Dictionary.Incar-class.html#read,Method p4vasp.GraphPM.GraphProperty.read()=p4vasp.GraphPM.GraphProperty-class.html#read,Method p4vasp.Property.Property.read()=p4vasp.Property.Property-class.html#read,Method p4vasp.Structure.Structure.read()=p4vasp.Structure.Structure-class.html#read,Method p4vasp.cStructure.Structure.read()=p4vasp.cStructure.Structure-class.html#read,Method p4vasp.util.Parseable.read()=p4vasp.util.Parseable-class.html#read"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-36', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getName()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getName,Method p4vasp.SystemPM.OldSystemPM.getName()=p4vasp.SystemPM.OldSystemPM-class.html#getName,Method p4vasp.SystemPM.PoscarSystemPM.getName()=p4vasp.SystemPM.PoscarSystemPM-class.html#getName,Method p4vasp.applet.ElectronicApplet.Line.getName()=p4vasp.applet.ElectronicApplet.Line-class.html#getName,Method p4vasp.repository.Descriptor.getName()=p4vasp.repository.Descriptor-class.html#getName"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getName
+p4vasp.SystemPM.OldSystemPM.getName
+p4vasp.SystemPM.PoscarSystemPM.getName
+p4vasp.applet.ElectronicApplet.Line.getName
+p4vasp.repository.Descriptor.getName" class="py-name" href="#" onclick="return doclink('link-37', 'getName', 'link-37');">getName</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-38', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PATH"</tt><tt class="py-op">,</tt>                <tt id="link-39" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-39', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-40" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getPath()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPath,Method p4vasp.SystemPM.OldSystemPM.getPath()=p4vasp.SystemPM.OldSystemPM-class.html#getPath,Method p4vasp.SystemPM.PoscarSystemPM.getPath()=p4vasp.SystemPM.PoscarSystemPM-class.html#getPath,Method p4vasp.SystemPM.XMLSystemPM.getPath()=p4vasp.SystemPM.XMLSystemPM-class.html#getPath,Method p4vasp.applet.AppletTree.AppletNode.getPath()=p4vasp.applet.AppletTree.AppletNode-class.html#getPath"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getPath
+p4vasp.SystemPM.OldSystemPM.getPath
+p4vasp.SystemPM.PoscarSystemPM.getPath
+p4vasp.SystemPM.XMLSystemPM.getPath
+p4vasp.applet.AppletTree.AppletNode.getPath" class="py-name" href="#" onclick="return doclink('link-40', 'getPath', 'link-40');">getPath</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-41', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"KEYWORDS"</tt><tt class="py-op">,</tt>            <tt id="link-42" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-42', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getKeywords()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getKeywords"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getKeywords" class="py-name" href="#" onclick="return doclink('link-43', 'getKeywords', 'link-43');">getKeywords</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-44" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-44', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"INITIAL_STRUCTURE"</tt><tt class="py-op">,</tt>   <tt id="link-45" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-45', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getInitialStructure()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getInitialStructure,Method p4vasp.SystemPM.XMLSystemPM.getInitialStructure()=p4vasp.SystemPM.XMLSystemPM-class.html#getInitialStructure"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getInitialStructure
+p4vasp.SystemPM.XMLSystemPM.getInitialStructure" class="py-name" href="#" onclick="return doclink('link-46', 'getInitialStructure', 'link-46');">getInitialStructure</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-47', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"FINAL_STRUCTURE"</tt><tt class="py-op">,</tt>     <tt id="link-48" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-48', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getFinalStructure()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getFinalStructure,Method p4vasp.SystemPM.XMLSystemPM.getFinalStructure()=p4vasp.SystemPM.XMLSystemPM-class.html#getFinalStructure"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getFinalStructure
+p4vasp.SystemPM.XMLSystemPM.getFinalStructure" class="py-name" href="#" onclick="return doclink('link-49', 'getFinalStructure', 'link-49');">getFinalStructure</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-50', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"STRUCTURE_SEQUENCE"</tt><tt class="py-op">,</tt>  <tt id="link-51" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-51', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getStructureSequence()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getStructureSequence,Method p4vasp.SystemPM.XMLSystemPM.getStructureSequence()=p4vasp.SystemPM.XMLSystemPM-class.html#getStructureSequence"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getStructureSequence
+p4vasp.SystemPM.XMLSystemPM.getStructureSequence" class="py-name" href="#" onclick="return doclink('link-52', 'getStructureSequence', 'link-52');">getStructureSequence</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-53" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-53', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"STRUCTURE_SEQUENCE_L"</tt><tt class="py-op">,</tt><tt id="link-54" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-54', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getStructureSequenceL()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getStructureSequenceL"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getStructureSequenceL" class="py-name" href="#" onclick="return doclink('link-55', 'getStructureSequenceL', 'link-55');">getStructureSequenceL</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-56', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"CSTRUCTURE_SEQUENCE_L"</tt><tt class="py-op">,</tt><tt id="link-57" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-57', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-58" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getCStructureSequenceL()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getCStructureSequenceL"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getCStructureSequenceL" class="py-name" href="#" onclick="return doclink('link-58', 'getCStructureSequenceL', 'link-58');">getCStructureSequenceL</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-59', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"FORCES_SEQUENCE"</tt><tt class="py-op">,</tt>     <tt id="link-60" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-60', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getForcesSequence()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getForcesSequence,Method p4vasp.SystemPM.XMLSystemPM.getForcesSequence()=p4vasp.SystemPM.XMLSystemPM-class.html#getForcesSequence"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getForcesSequence
+p4vasp.SystemPM.XMLSystemPM.getForcesSequence" class="py-name" href="#" onclick="return doclink('link-61', 'getForcesSequence', 'link-61');">getForcesSequence</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-62" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-62', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"FORCES_SEQUENCE_L"</tt><tt class="py-op">,</tt>   <tt id="link-63" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-63', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getForcesSequenceL()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getForcesSequenceL"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getForcesSequenceL" class="py-name" href="#" onclick="return doclink('link-64', 'getForcesSequenceL', 'link-64');">getForcesSequenceL</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-65', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"FREE_ENERGY_SEQUENCE"</tt><tt class="py-op">,</tt><tt id="link-66" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-66', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getFreeEnergySequence()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getFreeEnergySequence,Method p4vasp.SystemPM.XMLSystemPM.getFreeEnergySequence()=p4vasp.SystemPM.XMLSystemPM-class.html#getFreeEnergySequence"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getFreeEnergySequence
+p4vasp.SystemPM.XMLSystemPM.getFreeEnergySequence" class="py-name" href="#" onclick="return doclink('link-67', 'getFreeEnergySequence', 'link-67');">getFreeEnergySequence</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-68" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-68', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"FREE_ENERGY"</tt><tt class="py-op">,</tt>         <tt id="link-69" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-69', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-70" class="py-name" targets="Variable p4vasp.paint3d.OpenGLPaint3D.i=p4vasp.paint3d.OpenGLPaint3D-module.html#i"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-70', 'i', 'link-70');">i</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">,</tt><tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">:</tt><tt class="py-name">d</tt><tt class="py-op">.</tt><tt id="link-71" class="py-name" targets="Method p4vasp.db.DBI.fetchvalue()=p4vasp.db.DBI-class.html#fetchvalue,Method p4vasp.db.DBIContainer.fetchvalue()=p4vasp.db.DBIContainer-class.html#fetchvalue"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-71', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                                               <tt class="py-string">"SELECT free_energy FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt id="link-72" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-72', 'i', 'link-70');">i</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-73', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"E_FERMI"</tt><tt class="py-op">,</tt>             <tt id="link-74" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-74', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt> <tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-75" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-75', 'i', 'link-70');">i</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">,</tt><tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">:</tt><tt class="py-name">d</tt><tt class="py-op">.</tt><tt id="link-76" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-76', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">                                               <tt class="py-string">"SELECT fermi_energy FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt id="link-77" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-77', 'i', 'link-70');">i</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-78" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-78', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTIAL_DOS"</tt><tt class="py-op">,</tt>         <tt id="link-79" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-79', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-80" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getPartialDOS()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPartialDOS,Method p4vasp.SystemPM.XMLSystemPM.getPartialDOS()=p4vasp.SystemPM.XMLSystemPM-class.html#getPartialDOS"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getPartialDOS
+p4vasp.SystemPM.XMLSystemPM.getPartialDOS" class="py-name" href="#" onclick="return doclink('link-80', 'getPartialDOS', 'link-80');">getPartialDOS</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-81', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARTIAL_DOS_L"</tt><tt class="py-op">,</tt>       <tt id="link-82" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-82', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-83" class="py-name"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getPartialDOS
+p4vasp.SystemPM.XMLSystemPM.getPartialDOS" class="py-name" href="#" onclick="return doclink('link-83', 'getPartialDOS', 'link-80');">getPartialDOS</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-84" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-84', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"KPOINTS_TEXT"</tt><tt class="py-op">,</tt>        <tt id="link-85" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-85', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-86" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getKpointsText()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getKpointsText,Method p4vasp.SystemPM.OldSystemPM.getKpointsText()=p4vasp.SystemPM.OldSystemPM-class.html#getKpointsText,Method p4vasp.SystemPM.PoscarSystemPM.getKpointsText()=p4vasp.SystemPM.PoscarSystemPM-class.html#getKpointsText,Method p4vasp.SystemPM.XMLSystemPM.getKpointsText()=p4vasp.SystemPM.XMLSystemPM-class.html#getKpointsText"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getKpointsText
+p4vasp.SystemPM.OldSystemPM.getKpointsText
+p4vasp.SystemPM.PoscarSystemPM.getKpointsText
+p4vasp.SystemPM.XMLSystemPM.getKpointsText" class="py-name" href="#" onclick="return doclink('link-86', 'getKpointsText', 'link-86');">getKpointsText</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-87', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"INCAR"</tt><tt class="py-op">,</tt>               <tt id="link-88" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-88', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-89" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getIncar()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getIncar"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getIncar" class="py-name" href="#" onclick="return doclink('link-89', 'getIncar', 'link-89');">getIncar</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-90', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"TOTAL_DOS"</tt><tt class="py-op">,</tt>           <tt id="link-91" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-91', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-92" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getDOS()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDOS"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getDOS" class="py-name" href="#" onclick="return doclink('link-92', 'getDOS', 'link-92');">getDOS</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-93', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PARAMETERS"</tt><tt class="py-op">,</tt>          <tt id="link-94" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-94', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">:</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-95" class="py-name"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getIncar" class="py-name" href="#" onclick="return doclink('link-95', 'getIncar', 'link-89');">getIncar</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">False</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-96" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-96', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"DATE"</tt><tt class="py-op">,</tt>                <tt id="link-97" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-97', 'read', 'link-36');">read</a></tt> <tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-98" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getDate()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDate,Method p4vasp.SystemPM.SystemPM.getDate()=p4vasp.SystemPM.SystemPM-class.html#getDate,Method p4vasp.SystemPM.XMLSystemPM.getDate()=p4vasp.SystemPM.XMLSystemPM-class.html#getDate"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getDate
+p4vasp.SystemPM.SystemPM.getDate
+p4vasp.SystemPM.XMLSystemPM.getDate" class="py-name" href="#" onclick="return doclink('link-98', 'getDate', 'link-98');">getDate</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-99" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-99', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PROGRAM"</tt><tt class="py-op">,</tt>             <tt id="link-100" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-100', 'read', 'link-36');">read</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-101" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getProgram()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getProgram,Method p4vasp.SystemPM.SystemPM.getProgram()=p4vasp.SystemPM.SystemPM-class.html#getProgram,Method p4vasp.SystemPM.XMLSystemPM.getProgram()=p4vasp.SystemPM.XMLSystemPM-class.html#getProgram"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getProgram
+p4vasp.SystemPM.SystemPM.getProgram
+p4vasp.SystemPM.XMLSystemPM.getProgram" class="py-name" href="#" onclick="return doclink('link-101', 'getProgram', 'link-101');">getProgram</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-102" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-102', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"VERSION"</tt><tt class="py-op">,</tt>             <tt id="link-103" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-103', 'read', 'link-36');">read</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-104" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getVersion()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getVersion,Method p4vasp.SystemPM.SystemPM.getVersion()=p4vasp.SystemPM.SystemPM-class.html#getVersion,Method p4vasp.SystemPM.XMLSystemPM.getVersion()=p4vasp.SystemPM.XMLSystemPM-class.html#getVersion"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getVersion
+p4vasp.SystemPM.SystemPM.getVersion
+p4vasp.SystemPM.XMLSystemPM.getVersion" class="py-name" href="#" onclick="return doclink('link-104', 'getVersion', 'link-104');">getVersion</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-105" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-105', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"SUBVERSION"</tt><tt class="py-op">,</tt>          <tt id="link-106" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-106', 'read', 'link-36');">read</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-107" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getSubversion()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getSubversion,Method p4vasp.SystemPM.SystemPM.getSubversion()=p4vasp.SystemPM.SystemPM-class.html#getSubversion,Method p4vasp.SystemPM.XMLSystemPM.getSubversion()=p4vasp.SystemPM.XMLSystemPM-class.html#getSubversion"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getSubversion
+p4vasp.SystemPM.SystemPM.getSubversion
+p4vasp.SystemPM.XMLSystemPM.getSubversion" class="py-name" href="#" onclick="return doclink('link-107', 'getSubversion', 'link-107');">getSubversion</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-108" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-108', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"PLATFORM"</tt><tt class="py-op">,</tt>            <tt id="link-109" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-109', 'read', 'link-36');">read</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-110" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getPlatform()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPlatform,Method p4vasp.SystemPM.SystemPM.getPlatform()=p4vasp.SystemPM.SystemPM-class.html#getPlatform,Method p4vasp.SystemPM.XMLSystemPM.getPlatform()=p4vasp.SystemPM.XMLSystemPM-class.html#getPlatform"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getPlatform
+p4vasp.SystemPM.SystemPM.getPlatform
+p4vasp.SystemPM.XMLSystemPM.getPlatform" class="py-name" href="#" onclick="return doclink('link-110', 'getPlatform', 'link-110');">getPlatform</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-111" class="py-name"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-111', 'add', 'link-35');">add</a></tt><tt class="py-op">(</tt><tt class="py-string">"DESCRIPTION"</tt><tt class="py-op">,</tt>         <tt id="link-112" class="py-name"><a title="p4vasp.Dictionary.Incar.read
+p4vasp.GraphPM.GraphProperty.read
+p4vasp.Property.Property.read
+p4vasp.Structure.Structure.read
+p4vasp.cStructure.Structure.read
+p4vasp.util.Parseable.read" class="py-name" href="#" onclick="return doclink('link-112', 'read', 'link-36');">read</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-113" class="py-name" targets="Method p4vasp.SQLSystemPM.SQLSystemPM.getDescription()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDescription"><a title="p4vasp.SQLSystemPM.SQLSystemPM.getDescription" class="py-name" href="#" onclick="return doclink('link-113', 'getDescription', 'link-113');">getDescription</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getDate"></a><div id="SQLSystemPM.getDate-def"><a name="L103"></a><tt class="py-lineno">103</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getDate-toggle" onclick="return toggle('SQLSystemPM.getDate');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDate">getDate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getDate-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getDate-expanded"><a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-114" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-114', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT cdatetime FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">time</tt><tt class="py-op">.</tt><tt class="py-name">strptime</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt class="py-string">"%Y-%m-%d %H:%M:%S"</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getProgram"></a><div id="SQLSystemPM.getProgram-def"><a name="L108"></a><tt class="py-lineno">108</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getProgram-toggle" onclick="return toggle('SQLSystemPM.getProgram');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getProgram">getProgram</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getProgram-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getProgram-expanded"><a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-115" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-115', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT program FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getVersion"></a><div id="SQLSystemPM.getVersion-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getVersion-toggle" onclick="return toggle('SQLSystemPM.getVersion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getVersion">getVersion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getVersion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getVersion-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-116" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-116', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT version FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getSubversion"></a><div id="SQLSystemPM.getSubversion-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getSubversion-toggle" onclick="return toggle('SQLSystemPM.getSubversion');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getSubversion">getSubversion</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getSubversion-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getSubversion-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-117" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-117', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT subversion FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getPlatform"></a><div id="SQLSystemPM.getPlatform-def"><a name="L114"></a><tt class="py-lineno">114</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getPlatform-toggle" onclick="return toggle('SQLSystemPM.getPlatform');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPlatform">getPlatform</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getPlatform-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getPlatform-expanded"><a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-118" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-118', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT platform FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getDescription"></a><div id="SQLSystemPM.getDescription-def"><a name="L116"></a><tt class="py-lineno">116</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getDescription-toggle" onclick="return toggle('SQLSystemPM.getDescription');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDescription">getDescription</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getDescription-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getDescription-expanded"><a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-119" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-119', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT description FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getDOS"></a><div id="SQLSystemPM.getDOS-def"><a name="L119"></a><tt class="py-lineno">119</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getDOS-toggle" onclick="return toggle('SQLSystemPM.getDOS');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getDOS">getDOS</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getDOS-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getDOS-expanded"><a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">tdos</tt><tt class="py-op">=</tt><tt id="link-120" class="py-name"><a title="p4vasp.Array
+p4vasp.Array.Array" class="py-name" href="#" onclick="return doclink('link-120', 'Array', 'link-8');">Array</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">tdos</tt><tt class="py-op">.</tt><tt class="py-name">dimension</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">'gridpoints'</tt><tt class="py-op">,</tt><tt class="py-string">'spin'</tt><tt class="py-op">]</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-name">tdos</tt><tt class="py-op">.</tt><tt id="link-121" class="py-name" targets="Method p4vasp.Array.Array.setupFields()=p4vasp.Array.Array-class.html#setupFields"><a title="p4vasp.Array.Array.setupFields" class="py-name" href="#" onclick="return doclink('link-121', 'setupFields', 'link-121');">setupFields</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-string">'energy'</tt><tt class="py-op">,</tt><tt class="py-string">'total'</tt><tt class="py-op">,</tt><tt class="py-string">'integrated'</tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">                         <tt class="py-op">[</tt><tt id="link-122" class="py-name" targets="Variable p4vasp.Array.FLOAT_TYPE=p4vasp.Array-module.html#FLOAT_TYPE,Variable p4vasp.Dictionary.FLOAT_TYPE=p4vasp.Dictionary-module.html#FLOAT_TYPE,Variable p4vasp.FLOAT_TYPE=p4vasp-module.html#FLOAT_TYPE,Variable p4vasp.GraphCanvas.FLOAT_TYPE=p4vasp.GraphCanvas-module.html#FLOAT_TYPE,Variable p4vasp.GraphPM.FLOAT_TYPE=p4vasp.GraphPM-module.html#FLOAT_TYPE,Variable p4vasp.Property.FLOAT_TYPE=p4vasp.Property-module.html#FLOAT_TYPE,Variable p4vasp.Structure.FLOAT_TYPE=p4vasp.Structure-module.html#FLOAT_TYPE,Variable p4vasp.graph.FLOAT_TYPE=p4vasp.graph-module.html#FLOAT_TYPE,Variable p4vasp.repository.FLOAT_TYPE=p4vasp.repository-module.html#FLOAT_TYPE,Variable p4vasp.util.FLOAT_TYPE=p4vasp.util-module.html#FLOAT_TYPE"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-122', 'FLOAT_TYPE', 'link-122');">FLOAT_TYPE</a></tt><tt class="py-op">,</tt><tt id="link-123" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-123', 'FLOAT_TYPE', 'link-122');">FLOAT_TYPE</a></tt><tt class="py-op">,</tt><tt id="link-124" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-124', 'FLOAT_TYPE', 'link-122');">FLOAT_TYPE</a></tt><tt class="py-op">]</tt><tt class="py-op">,</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">                         <tt class="py-op">[</tt><tt class="py-string">'%+14.10f'</tt><tt class="py-op">,</tt><tt class="py-string">'%+14.10f'</tt><tt class="py-op">,</tt><tt class="py-string">'%+14.10f'</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-name">spins</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-125" class="py-name" targets="Method p4vasp.db.DBI.fetchvalues()=p4vasp.db.DBI-class.html#fetchvalues"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-125', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT DISTINCT spin FROM #DOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-number">1</tt> <tt class="py-keyword">in</tt> <tt class="py-name">spins</tt> <tt class="py-keyword">and</tt> <tt class="py-number">2</tt> <tt class="py-keyword">in</tt> <tt class="py-name">spins</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt class="py-name">spins</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-number">2</tt><tt class="py-op">]</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">elif</tt> <tt class="py-number">0</tt> <tt class="py-keyword">in</tt> <tt class="py-name">spins</tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">spins</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">spins</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">2</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">3</tt><tt class="py-op">,</tt><tt class="py-op">-</tt><tt class="py-number">4</tt><tt class="py-op">]</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">s</tt> <tt class="py-keyword">in</tt> <tt class="py-name">spins</tt><tt class="py-op">:</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-name">tdos</tt><tt class="py-op">.</tt><tt id="link-126" class="py-name" targets="Method p4vasp.Structure.AtomInfo.append()=p4vasp.Structure.AtomInfo-class.html#append,Method p4vasp.Structure.Structure.append()=p4vasp.Structure.Structure-class.html#append,Method p4vasp.cStructure.AtomInfo.append()=p4vasp.cStructure.AtomInfo-class.html#append,Method p4vasp.cStructure.Structure.append()=p4vasp.cStructure.Structure-class.html#append,Method p4vasp.graph.Graph.append()=p4vasp.graph.Graph-class.html#append,Method p4vasp.graph.World.append()=p4vasp.graph.World-class.html#append,Method p4vasp.repository.Repository.append()=p4vasp.repository.Repository-class.html#append"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-126', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-127" class="py-name" targets="Method p4vasp.db.DBI.fetchall()=p4vasp.db.DBI-class.html#fetchall"><a title="p4vasp.db.DBI.fetchall" class="py-name" href="#" onclick="return doclink('link-127', 'fetchall', 'link-127');">fetchall</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT energy,density,integrated "</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt class="py-string">"FROM #DOS WHERE calc_id=%d AND spin=%d ORDER BY energy"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">tdos</tt> </tt>
+</div><a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getIncar"></a><div id="SQLSystemPM.getIncar-def"><a name="L139"></a><tt class="py-lineno">139</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getIncar-toggle" onclick="return toggle('SQLSystemPM.getIncar');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getIncar">getIncar</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">,</tt><tt class="py-param">specified</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getIncar-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getIncar-expanded"><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">        <tt class="py-name">d</tt><tt class="py-op">=</tt><tt id="link-128" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-128', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-129" class="py-name"><a title="p4vasp.Dictionary
+p4vasp.Dictionary.Dictionary" class="py-name" href="#" onclick="return doclink('link-129', 'Dictionary', 'link-4');">Dictionary</a></tt><tt class="py-op">.</tt><tt id="link-130" class="py-name" targets="Class p4vasp.Dictionary.Incar=p4vasp.Dictionary.Incar-class.html"><a title="p4vasp.Dictionary.Incar" class="py-name" href="#" onclick="return doclink('link-130', 'Incar', 'link-130');">Incar</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">specified</tt><tt class="py-op">:</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">            <tt class="py-name">cond</tt><tt class="py-op">=</tt><tt class="py-string">" AND isspecified&lt;&gt;0"</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">            <tt class="py-name">cond</tt><tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-131" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-131', 'name', 'link-32');">name</a></tt><tt class="py-op">,</tt> <tt class="py-name">fieldtype</tt><tt class="py-op">,</tt> <tt class="py-name">isarray</tt><tt class="py-op">,</tt> <tt class="py-name">value</tt><tt class="py-op">,</tt> <tt class="py-name">textvalue</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-132" class="py-name"><a title="p4vasp.db.DBI.fetchall" class="py-name" href="#" onclick="return doclink('link-132', 'fetchall', 'link-127');">fetchall</a></tt><tt class="py-op">(</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">          <tt class="py-string">"SELECT name, fieldtype, isarray, value, textvalue FROM #PARAMETERS "</tt> </tt>
+<a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line">          <tt class="py-string">"WHERE calc_id=%d%s"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">,</tt><tt class="py-name">cond</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L148"></a><tt class="py-lineno">148</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">value</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line">                <tt class="py-name">value</tt><tt class="py-op">=</tt><tt class="py-name">textvalue</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-op">(</tt><tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-string">u""</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">                <tt id="link-133" class="py-name" targets="Function p4vasp.msg()=p4vasp-module.html#msg"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-133', 'msg', 'link-133');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-134" class="py-name" targets="Method p4vasp.message.MessageDriver.error()=p4vasp.message.MessageDriver-class.html#error,Method p4vasp.schedule'.Process.error()=p4vasp.schedule%27.Process-class.html#error"><a title="p4vasp.message.MessageDriver.error
+p4vasp.schedule'.Process.error" class="py-name" href="#" onclick="return doclink('link-134', 'error', 'link-134');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"Reading INCAR from a SQL database: unexpected type of %s"</tt><tt class="py-op">%</tt><tt id="link-135" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-135', 'name', 'link-32');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">                <tt class="py-keyword">continue</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isarray</tt><tt class="py-op">:</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">                        <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt id="link-136" class="py-name" targets="Function p4vasp.util.retypeVec()=p4vasp.util-module.html#retypeVec"><a title="p4vasp.util.retypeVec" class="py-name" href="#" onclick="return doclink('link-136', 'retypeVec', 'link-136');">retypeVec</a></tt><tt class="py-op">(</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">fieldtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                    <tt class="py-keyword">except</tt> <tt id="link-137" class="py-name" targets="Class p4vasp.util.UnknownType=p4vasp.util.UnknownType-class.html"><a title="p4vasp.util.UnknownType" class="py-name" href="#" onclick="return doclink('link-137', 'UnknownType', 'link-137');">UnknownType</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                        <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">)</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line">                    <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">                        <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt id="link-138" class="py-name" targets="Function p4vasp.util.retype()=p4vasp.util-module.html#retype"><a title="p4vasp.util.retype" class="py-name" href="#" onclick="return doclink('link-138', 'retype', 'link-138');">retype</a></tt><tt class="py-op">(</tt><tt class="py-name">value</tt><tt class="py-op">,</tt><tt class="py-name">fieldtype</tt><tt class="py-op">)</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                    <tt class="py-keyword">except</tt> <tt id="link-139" class="py-name"><a title="p4vasp.util.UnknownType" class="py-name" href="#" onclick="return doclink('link-139', 'UnknownType', 'link-137');">UnknownType</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">                        <tt class="py-name">val</tt> <tt class="py-op">=</tt> <tt class="py-name">value</tt> </tt>
+<a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line">                <tt class="py-name">d</tt><tt class="py-op">[</tt><tt id="link-140" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-140', 'name', 'link-32');">name</a></tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">val</tt> </tt>
+<a name="L165"></a><tt class="py-lineno">165</tt>  <tt class="py-line">            <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line">                <tt id="link-141" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-141', 'msg', 'link-133');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-142" class="py-name" targets="Method p4vasp.message.MessageDriver.exception()=p4vasp.message.MessageDriver-class.html#exception"><a title="p4vasp.message.MessageDriver.exception" class="py-name" href="#" onclick="return doclink('link-142', 'exception', 'link-142');">exception</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">d</tt> </tt>
+</div><a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getKpointsText"></a><div id="SQLSystemPM.getKpointsText-def"><a name="L169"></a><tt class="py-lineno">169</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getKpointsText-toggle" onclick="return toggle('SQLSystemPM.getKpointsText');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getKpointsText">getKpointsText</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getKpointsText-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getKpointsText-expanded"><a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-143" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-143', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT kpoints_text FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getName"></a><div id="SQLSystemPM.getName-def"><a name="L171"></a><tt class="py-lineno">171</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getName-toggle" onclick="return toggle('SQLSystemPM.getName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getName">getName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getName-expanded"><a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">        <tt id="link-144" class="py-name" targets="Variable p4vasp.cmatrix.Matrix.n=p4vasp.cmatrix.Matrix-class.html#n,Variable p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.n=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#n"><a title="p4vasp.cmatrix.Matrix.n
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.n" class="py-name" href="#" onclick="return doclink('link-144', 'n', 'link-144');">n</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-145" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-145', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT name FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-146" class="py-name"><a title="p4vasp.cmatrix.Matrix.n
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.n" class="py-name" href="#" onclick="return doclink('link-146', 'n', 'link-144');">n</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt id="link-147" class="py-name"><a title="p4vasp.cmatrix.Matrix.n
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.n" class="py-name" href="#" onclick="return doclink('link-147', 'n', 'link-144');">n</a></tt><tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-148" class="py-name"><a title="p4vasp.cmatrix.Matrix.n
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.n" class="py-name" href="#" onclick="return doclink('link-148', 'n', 'link-144');">n</a></tt> </tt>
+</div><a name="SQLSystemPM.getPath"></a><div id="SQLSystemPM.getPath-def"><a name="L176"></a><tt class="py-lineno">176</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getPath-toggle" onclick="return toggle('SQLSystemPM.getPath');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPath">getPath</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getPath-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getPath-expanded"><a name="L177"></a><tt class="py-lineno">177</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-149" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-149', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT path FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getKeywords"></a><div id="SQLSystemPM.getKeywords-def"><a name="L178"></a><tt class="py-lineno">178</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getKeywords-toggle" onclick="return toggle('SQLSystemPM.getKeywords');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getKeywords">getKeywords</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getKeywords-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getKeywords-expanded"><a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">        <tt class="py-name">v</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-150" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-150', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT keywords FROM #CALC WHERE id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">v</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">            <tt class="py-name">v</tt><tt class="py-op">=</tt><tt class="py-string">""</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">v</tt> </tt>
+</div><a name="SQLSystemPM.getInitialStructure"></a><div id="SQLSystemPM.getInitialStructure-def"><a name="L183"></a><tt class="py-lineno">183</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getInitialStructure-toggle" onclick="return toggle('SQLSystemPM.getInitialStructure');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getInitialStructure">getInitialStructure</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getInitialStructure-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getInitialStructure-expanded"><a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">        <tt class="py-name">sid</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-151" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-151', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step=-1"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-152" class="py-name"><a title="p4vasp.db.P4VMixin.readStructure" class="py-name" href="#" onclick="return doclink('link-152', 'readStructure', 'link-25');">readStructure</a></tt><tt class="py-op">(</tt><tt class="py-name">sid</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getFinalStructure"></a><div id="SQLSystemPM.getFinalStructure-def"><a name="L186"></a><tt class="py-lineno">186</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getFinalStructure-toggle" onclick="return toggle('SQLSystemPM.getFinalStructure');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getFinalStructure">getFinalStructure</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getFinalStructure-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getFinalStructure-expanded"><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line">        <tt class="py-name">sid</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-153" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-153', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step=-2"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L188"></a><tt class="py-lineno">188</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-154" class="py-name"><a title="p4vasp.db.P4VMixin.readStructure" class="py-name" href="#" onclick="return doclink('link-154', 'readStructure', 'link-25');">readStructure</a></tt><tt class="py-op">(</tt><tt class="py-name">sid</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getStructureSequence"></a><div id="SQLSystemPM.getStructureSequence-def"><a name="L189"></a><tt class="py-lineno">189</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getStructureSequence-toggle" onclick="return toggle('SQLSystemPM.getStructureSequence');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getStructureSequence">getStructureSequence</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getStructureSequence-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getStructureSequence-expanded"><a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line">        <tt class="py-name">sids</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-155" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-155', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L191"></a><tt class="py-lineno">191</tt>  <tt class="py-line">        <tt class="py-name">l</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L192"></a><tt class="py-lineno">192</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-156" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-156', 'i', 'link-70');">i</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">sids</tt><tt class="py-op">:</tt> </tt>
+<a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-157" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-157', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-158" class="py-name"><a title="p4vasp.db.P4VMixin.readStructure" class="py-name" href="#" onclick="return doclink('link-158', 'readStructure', 'link-25');">readStructure</a></tt><tt class="py-op">(</tt><tt id="link-159" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-159', 'i', 'link-70');">i</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">l</tt> </tt>
+</div><a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getFreeEnergySequence"></a><div id="SQLSystemPM.getFreeEnergySequence-def"><a name="L196"></a><tt class="py-lineno">196</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getFreeEnergySequence-toggle" onclick="return toggle('SQLSystemPM.getFreeEnergySequence');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getFreeEnergySequence">getFreeEnergySequence</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getFreeEnergySequence-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getFreeEnergySequence-expanded"><a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-160" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-160', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT energy FROM #ENERGY WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getStructureSequenceL"></a><div id="SQLSystemPM.getStructureSequenceL-def"><a name="L199"></a><tt class="py-lineno">199</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getStructureSequenceL-toggle" onclick="return toggle('SQLSystemPM.getStructureSequenceL');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getStructureSequenceL">getStructureSequenceL</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getStructureSequenceL-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getStructureSequenceL-expanded"><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-name">sids</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-161" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-161', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-162" class="py-name" targets="Class p4vasp.SQLSystemPM.SQLStructuresLL=p4vasp.SQLSystemPM.SQLStructuresLL-class.html"><a title="p4vasp.SQLSystemPM.SQLStructuresLL" class="py-name" href="#" onclick="return doclink('link-162', 'SQLStructuresLL', 'link-162');">SQLStructuresLL</a></tt><tt class="py-op">(</tt><tt class="py-name">sids</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">)</tt> </tt>
+</div><a name="SQLSystemPM.getCStructureSequenceL"></a><div id="SQLSystemPM.getCStructureSequenceL-def"><a name="L202"></a><tt class="py-lineno">202</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getCStructureSequenceL-toggle" onclick="return toggle('SQLSystemPM.getCStructureSequenceL');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getCStructureSequenceL">getCStructureSequenceL</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getCStructureSequenceL-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getCStructureSequenceL-expanded"><a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">        <tt class="py-name">sids</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-163" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-163', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-164" class="py-name" targets="Class p4vasp.SQLSystemPM.SQLcStructuresLL=p4vasp.SQLSystemPM.SQLcStructuresLL-class.html"><a title="p4vasp.SQLSystemPM.SQLcStructuresLL" class="py-name" href="#" onclick="return doclink('link-164', 'SQLcStructuresLL', 'link-164');">SQLcStructuresLL</a></tt><tt class="py-op">(</tt><tt class="py-name">sids</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L205"></a><tt class="py-lineno">205</tt>  <tt class="py-line"> </tt>
+<a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getForcesSequenceL"></a><div id="SQLSystemPM.getForcesSequenceL-def"><a name="L207"></a><tt class="py-lineno">207</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getForcesSequenceL-toggle" onclick="return toggle('SQLSystemPM.getForcesSequenceL');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getForcesSequenceL">getForcesSequenceL</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getForcesSequenceL-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getForcesSequenceL-expanded"><a name="L208"></a><tt class="py-lineno">208</tt>  <tt class="py-line">        <tt class="py-name">sids</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-165" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-165', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-166" class="py-name" targets="Class p4vasp.SQLSystemPM.SQLForcesSequenceLateList=p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html"><a title="p4vasp.SQLSystemPM.SQLForcesSequenceLateList" class="py-name" href="#" onclick="return doclink('link-166', 'SQLForcesSequenceLateList', 'link-166');">SQLForcesSequenceLateList</a></tt><tt class="py-op">(</tt><tt class="py-name">sids</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line"> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getForcesSequence"></a><div id="SQLSystemPM.getForcesSequence-def"><a name="L212"></a><tt class="py-lineno">212</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getForcesSequence-toggle" onclick="return toggle('SQLSystemPM.getForcesSequence');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getForcesSequence">getForcesSequence</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getForcesSequence-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getForcesSequence-expanded"><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line">        <tt class="py-name">sids</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-167" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-167', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT id FROM #STRUCT WHERE calc_id=%d AND step&gt;=0 ORDER BY step"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line">        <tt class="py-name">l</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt id="link-168" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-168', 'i', 'link-70');">i</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">sids</tt><tt class="py-op">:</tt> </tt>
+<a name="L216"></a><tt class="py-lineno">216</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-169" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-169', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-170" class="py-name"><a title="p4vasp.db.P4VMixin.readForce" class="py-name" href="#" onclick="return doclink('link-170', 'readForce', 'link-31');">readForce</a></tt><tt class="py-op">(</tt><tt id="link-171" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-171', 'i', 'link-70');">i</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L217"></a><tt class="py-lineno">217</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">l</tt> </tt>
+</div><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line"> </tt>
+<a name="SQLSystemPM.getPartialDOS"></a><div id="SQLSystemPM.getPartialDOS-def"><a name="L219"></a><tt class="py-lineno">219</tt> <a class="py-toggle" href="#" id="SQLSystemPM.getPartialDOS-toggle" onclick="return toggle('SQLSystemPM.getPartialDOS');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.SQLSystemPM.SQLSystemPM-class.html#getPartialDOS">getPartialDOS</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="SQLSystemPM.getPartialDOS-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="SQLSystemPM.getPartialDOS-expanded"><a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">=</tt><tt id="link-172" class="py-name"><a title="p4vasp.Array
+p4vasp.Array.Array" class="py-name" href="#" onclick="return doclink('link-172', 'Array', 'link-8');">Array</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line">        <tt class="py-name">spins</tt>    <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-173" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-173', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT DISTINCT spin    FROM #LDOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L222"></a><tt class="py-lineno">222</tt>  <tt class="py-line">        <tt id="link-174" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals=p4vasp.applet.ElectronicApplet-module.html#orbitals"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-174', 'orbitals', 'link-174');">orbitals</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-175" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-175', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT DISTINCT orbital FROM #LDOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L223"></a><tt class="py-lineno">223</tt>  <tt class="py-line">        <tt class="py-name">ions</tt>     <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-176" class="py-name"><a title="p4vasp.db.DBI.fetchvalue
+p4vasp.db.DBIContainer.fetchvalue" class="py-name" href="#" onclick="return doclink('link-176', 'fetchvalue', 'link-71');">fetchvalue</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT MAX(atomnumber)  FROM #LDOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt class="py-name">energies</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-177" class="py-name"><a title="p4vasp.db.DBI.fetchvalues" class="py-name" href="#" onclick="return doclink('link-177', 'fetchvalues', 'link-125');">fetchvalues</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT DISTINCT energy FROM #LDOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">energies</tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name">spins</tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">spins</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">&lt;</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">            <tt class="py-name">spins</tt><tt class="py-op">.</tt><tt class="py-name">reverse</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-name">sorbitals</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"s"</tt><tt class="py-op">,</tt><tt class="py-string">"p"</tt><tt class="py-op">,</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">,</tt><tt class="py-string">"d"</tt><tt class="py-op">,</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"dx2"</tt><tt class="py-op">,</tt><tt class="py-string">"f"</tt><tt class="py-op">,</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                           <tt class="py-string">"f1"</tt><tt class="py-op">,</tt><tt class="py-string">"f2"</tt><tt class="py-op">,</tt><tt class="py-string">"f3"</tt><tt class="py-op">,</tt><tt class="py-string">"f4"</tt><tt class="py-op">,</tt><tt class="py-string">"f5"</tt><tt class="py-op">,</tt><tt class="py-string">"f6"</tt><tt class="py-op">,</tt><tt class="py-string">"f7"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt id="link-178" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-178', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">x</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">sorbitals</tt><tt class="py-op">:</tt> </tt>
+<a name="L233"></a><tt class="py-lineno">233</tt>  <tt class="py-line">                <tt id="link-179" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-179', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">.</tt><tt id="link-180" class="py-name" targets="Method p4vasp.Structure.Structure.remove()=p4vasp.Structure.Structure-class.html#remove,Method p4vasp.repository.Repository.remove()=p4vasp.repository.Repository-class.html#remove"><a title="p4vasp.Structure.Structure.remove
+p4vasp.repository.Repository.remove" class="py-name" href="#" onclick="return doclink('link-180', 'remove', 'link-180');">remove</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt id="link-181" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-181', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">,</tt><tt class="py-name">so</tt><tt class="py-op">=</tt><tt class="py-name">sorbitals</tt><tt class="py-op">:</tt><tt class="py-op">(</tt><tt class="py-name">so</tt><tt class="py-op">.</tt><tt class="py-name">index</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-182" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-182', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">        <tt id="link-183" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-183', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">        <tt id="link-184" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-184', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-keyword">lambda</tt> <tt class="py-name">x</tt><tt class="py-op">:</tt><tt class="py-name">x</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt id="link-185" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-185', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">.</tt><tt class="py-name">field</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">"energy"</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt id="link-186" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-186', 'orbitals', 'link-174');">orbitals</a></tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">.</tt><tt class="py-name">type</tt> <tt class="py-op">=</tt><tt id="link-187" class="py-name" targets="Method p4vasp.cStructure.Structure.len()=p4vasp.cStructure.Structure-class.html#len"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-187', 'len', 'link-187');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">a</tt><tt class="py-op">.</tt><tt class="py-name">field</tt><tt class="py-op">)</tt><tt class="py-op">*</tt><tt class="py-op">[</tt><tt id="link-188" class="py-name"><a title="p4vasp.Array.FLOAT_TYPE
+p4vasp.Dictionary.FLOAT_TYPE
+p4vasp.FLOAT_TYPE
+p4vasp.GraphCanvas.FLOAT_TYPE
+p4vasp.GraphPM.FLOAT_TYPE
+p4vasp.Property.FLOAT_TYPE
+p4vasp.Structure.FLOAT_TYPE
+p4vasp.graph.FLOAT_TYPE
+p4vasp.repository.FLOAT_TYPE
+p4vasp.util.FLOAT_TYPE" class="py-name" href="#" onclick="return doclink('link-188', 'FLOAT_TYPE', 'link-122');">FLOAT_TYPE</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">.</tt><tt id="link-189" class="py-name" targets="Method p4vasp.Array.Array.defaultFormat()=p4vasp.Array.Array-class.html#defaultFormat"><a title="p4vasp.Array.Array.defaultFormat" class="py-name" href="#" onclick="return doclink('link-189', 'defaultFormat', 'link-189');">defaultFormat</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">.</tt><tt class="py-name">dimension</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">"gridpoints"</tt><tt class="py-op">,</tt><tt class="py-string">"spin"</tt><tt class="py-op">,</tt><tt class="py-string">"ion"</tt><tt class="py-op">]</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">        <tt class="py-name">a</tt><tt class="py-op">.</tt><tt id="link-190" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-190', 'data', 'link-30');">data</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">ion</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt class="py-name">ions</tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">            <tt class="py-name">il</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">spin</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt id="link-191" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-191', 'len', 'link-187');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">spins</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L245"></a><tt class="py-lineno">245</tt>  <tt class="py-line">                <tt class="py-name">sl</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">g</tt> <tt class="py-keyword">in</tt> <tt class="py-name">xrange</tt><tt class="py-op">(</tt><tt id="link-192" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-192', 'len', 'link-187');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">energies</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">                    <tt class="py-name">sl</tt><tt class="py-op">.</tt><tt id="link-193" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-193', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-op">[</tt><tt class="py-name">energies</tt><tt class="py-op">[</tt><tt class="py-name">g</tt><tt class="py-op">]</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-op">[</tt><tt class="py-number">0.0</tt><tt class="py-op">]</tt><tt class="py-op">*</tt><tt id="link-194" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-194', 'len', 'link-187');">len</a></tt><tt class="py-op">(</tt><tt id="link-195" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-195', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line">                <tt class="py-name">il</tt><tt class="py-op">.</tt><tt id="link-196" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-196', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">sl</tt><tt class="py-op">)</tt> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">            <tt class="py-name">a</tt><tt class="py-op">.</tt><tt id="link-197" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-197', 'data', 'link-30');">data</a></tt><tt class="py-op">.</tt><tt id="link-198" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-198', 'append', 'link-126');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">il</tt><tt class="py-op">)</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line"> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-op">(</tt><tt class="py-name">ion</tt><tt class="py-op">,</tt><tt class="py-name">s</tt><tt class="py-op">,</tt><tt id="link-199" class="py-name" targets="Variable p4vasp.GraphCanvas.e=p4vasp.GraphCanvas-module.html#e,Variable p4vasp.GraphPM.e=p4vasp.GraphPM-module.html#e,Variable p4vasp.graph.e=p4vasp.graph-module.html#e,Variable p4vasp.paint3d.ColladaPaint3D.e=p4vasp.paint3d.ColladaPaint3D-module.html#e,Variable p4vasp.paint3d.MeshTools.e=p4vasp.paint3d.MeshTools-module.html#e,Variable p4vasp.paint3d.OpenGLPaint3D.e=p4vasp.paint3d.OpenGLPaint3D-module.html#e"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-199', 'e', 'link-199');">e</a></tt><tt class="py-op">,</tt><tt class="py-name">o</tt><tt class="py-op">,</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">dbi</tt><tt class="py-op">.</tt><tt id="link-200" class="py-name" targets="Method p4vasp.db.DBI.fetchiter()=p4vasp.db.DBI-class.html#fetchiter,Method p4vasp.db.DBIContainer.fetchiter()=p4vasp.db.DBIContainer-class.html#fetchiter"><a title="p4vasp.db.DBI.fetchiter
+p4vasp.db.DBIContainer.fetchiter" class="py-name" href="#" onclick="return doclink('link-200', 'fetchiter', 'link-200');">fetchiter</a></tt><tt class="py-op">(</tt><tt class="py-string">"SELECT atomnumber,spin,energy,orbital,density FROM #LDOS WHERE calc_id=%d"</tt><tt class="py-op">%</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Id</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">            <tt class="py-name">spin</tt><tt class="py-op">=</tt><tt class="py-name">spins</tt><tt class="py-op">.</tt><tt class="py-name">index</tt><tt class="py-op">(</tt><tt class="py-name">s</tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line">            <tt id="link-201" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-201', 'i', 'link-70');">i</a></tt><tt class="py-op">=</tt><tt class="py-name">energies</tt><tt class="py-op">.</tt><tt class="py-name">index</tt><tt class="py-op">(</tt><tt id="link-202" class="py-name"><a title="p4vasp.GraphCanvas.e
+p4vasp.GraphPM.e
+p4vasp.graph.e
+p4vasp.paint3d.ColladaPaint3D.e
+p4vasp.paint3d.MeshTools.e
+p4vasp.paint3d.OpenGLPaint3D.e" class="py-name" href="#" onclick="return doclink('link-202', 'e', 'link-199');">e</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">            <tt class="py-name">j</tt><tt class="py-op">=</tt><tt id="link-203" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-203', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">.</tt><tt class="py-name">index</tt><tt class="py-op">(</tt><tt class="py-name">o</tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-number">1</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">            <tt class="py-name">a</tt><tt class="py-op">.</tt><tt id="link-204" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-204', 'data', 'link-30');">data</a></tt><tt class="py-op">[</tt><tt class="py-name">ion</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">spin</tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt id="link-205" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-205', 'i', 'link-70');">i</a></tt><tt class="py-op">]</tt><tt class="py-op">[</tt><tt class="py-name">j</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">d</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">a</tt> </tt>
+</div></div><a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:12 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

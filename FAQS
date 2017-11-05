@@ -1,0 +1,160 @@
+(0) I am not able to install p4vasp. It does not work. Can you help me ?
+
+    Yes, I will try.
+    First - run the diagnostic.py script. It might help you to solve the most common problems.
+    Second - read the documentation, at least this file, you are reading just now.
+    Third - write me a bugreport. The bugreport should contain:
+     - the output of diagnostic.py (python diagnostic.py >diagnostic.txt),
+     - the standart output and error output (or copy of the console output)
+     - p4vasp.log, if it exists.
+
+    Please, do not flood the p4vasp forum with these long boring messages.
+    Either find the relevant part (the line where the error is described), or
+    send me these files as an e-mail attachment.
+
+(1)  P4vasp works, but I do not see the graphs in external windows.
+
+     The graph is probably just badly scaled.
+     Try to press "Pos 1" (or "Home") on the keyboard to scale the graph properly.
+
+(2) p4v does not work, it shows the error message like:
+
+    Gdk-ERROR **: BadMatch (invalid parameter attributes)
+      serial 1463 error_code 8 request_code 66 minor_code
+    0
+    Gdk-ERROR **: BadMatch (invalid parameter attributes)
+      serial 1465 error_code 8 request_code 74 minor_code
+    0
+
+    This usually means, that you are in 16 bits per pixel mode or less.
+    P4v works reliably only in 24 (or 32) bits per pixel mode,
+    but not in 16 or 8. This is a very common problem    
+    for many gdk-based programs and it is hard to fix it in p4v.
+    Solution: Configure your screen to 32 bpp.
+
+(3) P4vasp window appears but I can't see any data, just empty graphs and black
+    structure window.
+    
+    The data (vasprun.xml) are not loaded for some reason.
+    Check if the vasprun.xml file is not corrupted.
+    
+    Vasp compiled with the Portland Group Fortran is known to have a problem
+    with the output.
+    For example it writes
+      <i type=""string"" nameSYSTEM"" ZnO bulk</i>
+    instead of
+      <i type="string" name="SYSTEM">ZnO bulk</i>
+
+    The easiest solution is to compile vasp with Intel Fortran Compiler (IFC),
+    which is a recommended compiler for the Linux-x86 platform.
+    The vasp executable should also have a slightly better performance,
+    than with PGF.
+    IFC can be downloaded from Intel for free for non-commercial use:
+    http://www.intel.com/software/products/compilers/flin/noncom.htm
+
+    If you can't do it for some reason, you should still be able to view
+    at least the structure from the POSCAR or CONTCAR file.
+    You can do it this way: chose File/Load system, then you chose the
+    DIRECTORY (not the file !),
+    where your POSCAR and possibly CONTCAR is (e.g. "./").
+
+(4) The instalation fails with a lot of errors containing "FL", "WisFLWindow"
+    and things like that. It might look like this:
+    
+      In file included from VisFLWindow.cpp:23:
+      include/p4vasp/VisFLWindow.h:26:29: FL/Fl_Gl_Window.H: No such file or directory
+      include/p4vasp/VisFLWindow.h:27:19: FL/gl.h: No such file or directory
+      In file included from VisFLWindow.cpp:23:
+      include/p4vasp/VisFLWindow.h:31: syntax error before `{' token
+      include/p4vasp/VisFLWindow.h:34: syntax error before `public'
+      include/p4vasp/VisFLWindow.h:40: virtual outside class declaration
+      include/p4vasp/VisFLWindow.h:41: virtual outside class declaration
+      include/p4vasp/VisFLWindow.h:42: virtual outside class declaration
+      include/p4vasp/VisFLWindow.h:43: destructors must be member functions
+      include/p4vasp/VisFLWindow.h:43: virtual outside class declaration
+      include/p4vasp/VisFLWindow.h:44: syntax error before `}' token
+      VisFLWindow.cpp:25:19: FL/Fl.H: No such file or directory
+      VisFLWindow.cpp:27: `Fl_Widget' was not declared in this scope
+    
+    This means, that you do not have FLTK installed, or you do not have the development
+    headders for FLTK. Install fltk including the headders.
+    (They are usually in a package called like "fltk-devel".)
+    Read also the point 5:
+
+    
+(5) The structure window does not appear with the message    
+    "Insufficient GL support".
+    
+    At first make sure, that other OpenGL programs work.
+    The problem is most likely in the fltk library,
+    that decides during instalation
+    or compilation whether it will support OpenGL or not.
+    
+    FLTK (Fast Light Tool-Kit) mini-troubleshooting:
+    
+      P4vasp works with fltk 1.1.x. It can be downloaded from
+      http://www.fltk.org/software.php
+
+      If you are installing a binary distribution of fltk,
+      assure, that OpenGL is installed BEFORE you install the fltk.
+      If you are compiling fltk from the sources, again,
+      assure, that OpenGL is installed BEFORE you compile the fltk.
+      In both cases, you should try the test programs from
+      the fltk distribution, e.g. "fractals" or "glpuzzle".
+      If those programs work, you should be able to compile
+      successfully also the p4vasp.
+
+      Here is one small hint:
+      Check the config.h created by the configure script of the fltk.
+      The macros
+        #define HAVE_GL 1
+      and
+        #define HAVE_GL_GLU_H 1
+      should be defined inside config.h.
+      However, if there is 
+        #define HAVE_GL 0
+      instead, it means, that the configure script did not noticed
+      the OpenGL for some reason.
+
+      The configure script of the fltk will not see the OpenGL library,
+      unless it is installed as either libGL or libMesaGL.
+      Check, that such libraries exist in your system.
+      Also check, that there are no broken symbolic
+      links to that library.
+
+(6) The instalation fails with a lot of complains about "cp4vasp_wrap.cpp"
+    It might look like this:
+
+      cp4vasp_wrap.cpp:23744: `SwigMethods' undeclared (first use this function)
+      cp4vasp_wrap.cpp:23744: `Py_InitModule' undeclared (first use this function)
+      cp4vasp_wrap.cpp:23745: `PyModule_GetDict' undeclared (first use this function)
+      cp4vasp_wrap.cpp: At top level:
+      cp4vasp_wrap.cpp:183: warning: `swig_type_info*
+      SWIG_TypeDynamicCast(swig_type_info*, void**)' defined but not used
+      cp4vasp_wrap.cpp:195: warning: `const char* SWIG_TypeName(const
+      swig_type_info*)' defined but not used
+      cp4vasp_wrap.cpp:201: warning: `swig_type_info* SWIG_TypeQuery(const char*)'
+      defined but not used
+      cp4vasp_wrap.cpp:313: warning: `int swig_varlink_print(...)' defined but not
+      used
+      cp4vasp_wrap.cpp:339: warning: `int swig_varlink_setattr(...)' defined but not
+      used
+      cp4vasp_wrap.cpp:383: warning: `int SWIG_addvarlink(...)' declared `static' but
+      never defined
+      cp4vasp_wrap.cpp:436: warning: `int SWIG_ConvertPtr(...)' defined but not used
+      cp4vasp_wrap.cpp:528: warning: `int SWIG_ConvertPacked(...)' defined but not
+      used
+      make[1]: *** [cp4vasp_wrap.o] Error 1
+      make[1]: Leaving directory `/usr/local/src/p4vasp-0.1.5/src'
+      make: *** [p4vasp] Error 2
+      
+    The errors are a consequence of the missing Python.h headder.
+    (If there are just warnings, it is OK.)
+    Install python including the headders.
+    (They are usually in a package called like "python-devel".)
+    The other possibility is, that you have python installed, but with a different paths,
+    e.g. it uses /usr/lib/python2.2 instead of /usr/lib/python.
+    In some distributions /usr/lib/python is a link to e.g. /usr/lib/python2.2.
+    If you do not have /usr/lib/python at all, then you need to adjust the Makefiles
+    (Makefile, odpdom/Makefile and src/Makefile) acording to your configuration.
+    

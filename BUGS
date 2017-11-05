@@ -1,0 +1,28 @@
+KNOWN BUGS:
+
+- (Small) memory leak in VisWindow.setTitle:
+  (actually in VisMain.cpp in VE_SET_WINDOW_TITLE event handling)
+- Memory leak in p4vasp.StructureWindow show/hide
+- 3D output is not colored correctly when using some versions of mesa
+  specular light too strong ?
+  Probably badly normalized normals in GLU quadrics.
+- Mysterious blue screen of StructureViewer -
+  blue backgroun color, and correct cell shape is vissible, but no atoms and no bonds
+  Sometimes (mainly for large inputs) ends with Segmentation Fault.
+- Hidden atoms and bonds sometimes appear when arrows are shown.
+- StructureWindow.win.saveScreenshot() does not work reliably when several StructureWindow-s
+  are open.
+  
+This seems to be working now:
+- cStructure.toString - output is wrong when selective dynamics (transformposcar.py)
+- Structure.selected can be set, but .toString result shows T T T for all atoms (transformposcar.py)
+- VisSync hangs when built with threading, but not running in thread.
+- selective is not replicated in p4vasp.Structure.replicateCell
+- Segfault on VisWindow destruction - e.g. if StructureWindow is deleted. I was not able
+  to identify the problem. The segfault occures on calling e->flwindow->hide() in VisMain
+  event handling, when the VisWindow is already deleted, but VisFLWindow still exists.
+  It happens always when closing StructureApplet in the frame, but neither in a simple
+  script using StructureWindow, nor in the c-program (viewer3).
+  Since I need to add some new features, I need to fix this quickly.
+  So I fixed it the way, that VisWindow is not destroyed, it is rather appended to
+  p4vasp.StructureWindow.zombie list. Yes, very dirty.

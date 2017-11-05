@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;p4vasp
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp-module.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PACKAGE DESCRIPTION ==================== -->
+<h1 class="epydoc">Package p4vasp</h1><p class="nomargin-top"><span class="codelink"><a href="p4vasp-pysrc.html">source&nbsp;code</a></span></p>
+<pre class="literalblock">
+
+P4VASP is a library for processing outputs from a VASP program
+(http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+It is focussed mainly on the new xml output format,
+but it offers also limited support for some older formats
+(POSCAR, INCAR).
+
+P4Vasp contains also an extensible GUI for visualisation and
+an api for (reasonably) easy creation of extension applets.
+
+For people, who want to write just a simple script rather than
+an real applet, the easiest way
+to get informations from the *vasprun.xml* file is to use
+the XMLSystemPM class defined in p4vasp.SystemPM.
+
+Here in the module root, the following things are defined:
+
+Basic types:
+
+  || **type**          || **string representation of type**  || **python type** ||
+  || INTEGER_TYPE      || &quot;int&quot;                              || int             ||
+  || STRING_TYPE       || &quot;string&quot;                           || str             ||
+  || LOGICAL_TYPE      || &quot;logical&quot;                          || int             ||
+  || FLOAT_TYPE        || &quot;float&quot;                            || float           ||
+
+</pre>
+
+<!-- ==================== SUBMODULES ==================== -->
+<a name="section-Submodules"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Submodules</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Submodules"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr><td class="summary">
+  <ul class="nomargin">
+    <li> <strong class="uidlink"><a href="p4vasp.Array-module.html">p4vasp.Array</a></strong>: <em class="summary">This module contains two basic types
+of arrays:</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.ConvexShape-module.html">p4vasp.ConvexShape</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.Dictionary-module.html">p4vasp.Dictionary</a></strong>: <em class="summary">Dictionary module
+contains classes for dictionary-like objects:</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.FArray-module.html">p4vasp.FArray</a></strong>: <em class="summary">Wrapper for two array objects written in c++: FArray1D and 
+        FArray2D.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.GraphCanvas-module.html">p4vasp.GraphCanvas</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.GraphCanvas_gtk1-module.html">p4vasp.GraphCanvas_gtk1</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.GraphPM-module.html">p4vasp.GraphPM</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.ODPdom-module.html">p4vasp.ODPdom</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.Property-module.html">p4vasp.Property</a></strong>: <em class="summary">Property module provides a dictionary (PropertyManager) of 
+        &quot;properties&quot;.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.SQLSystemPM-module.html">p4vasp.SQLSystemPM</a></strong>: <em class="summary">SQLSystemPM - access to the data stored in a SQL database</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.Selection-module.html">p4vasp.Selection</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.Structure-module.html">p4vasp.Structure</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.StructureWindow-module.html">p4vasp.StructureWindow</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.SystemPM-module.html">p4vasp.SystemPM</a></strong>: <em class="summary">This module encapsulates the access to informations in VASP calculations.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet-module.html">p4vasp.applet</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.Applet-module.html">p4vasp.applet.Applet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.AppletTree-module.html">p4vasp.applet.AppletTree</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.AppletTree_old-module.html">p4vasp.applet.AppletTree_old</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.BuilderApplet-module.html">p4vasp.applet.BuilderApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.CommitApplet-module.html">p4vasp.applet.CommitApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.DBApplet-module.html">p4vasp.applet.DBApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.DielectricApplet-module.html">p4vasp.applet.DielectricApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.EditSubZMatApplet-module.html">p4vasp.applet.EditSubZMatApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.ElectronicApplet-module.html">p4vasp.applet.ElectronicApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.ElectronicControlApplet-module.html">p4vasp.applet.ElectronicControlApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.EnergyConvergenceApplet-module.html">p4vasp.applet.EnergyConvergenceApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.ExportApplet-module.html">p4vasp.applet.ExportApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.ForcesConvergenceApplet-module.html">p4vasp.applet.ForcesConvergenceApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.GraphWindowApplet-module.html">p4vasp.applet.GraphWindowApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.InfoApplet-module.html">p4vasp.applet.InfoApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.KpointsViewerApplet-module.html">p4vasp.applet.KpointsViewerApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.LatticeApplet-module.html">p4vasp.applet.LatticeApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.LocalPotentialApplet-module.html">p4vasp.applet.LocalPotentialApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.MeasureApplet-module.html">p4vasp.applet.MeasureApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.MoveApplet-module.html">p4vasp.applet.MoveApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.MultiplyCellApplet-module.html">p4vasp.applet.MultiplyCellApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.NewApplet-module.html">p4vasp.applet.NewApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.RotateApplet-module.html">p4vasp.applet.RotateApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.STMWindowApplet-module.html">p4vasp.applet.STMWindowApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.STMWindowControlApplet-module.html">p4vasp.applet.STMWindowControlApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.SelForcesConvergenceApplet-module.html">p4vasp.applet.SelForcesConvergenceApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.SelectionApplet-module.html">p4vasp.applet.SelectionApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.ShowHideControlApplet-module.html">p4vasp.applet.ShowHideControlApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.StructureApplet-module.html">p4vasp.applet.StructureApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.StructureWindowApplet-module.html">p4vasp.applet.StructureWindowApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.StructureWindowControlApplet-module.html">p4vasp.applet.StructureWindowControlApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.VACApplet-module.html">p4vasp.applet.VACApplet</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.applet.appletlist-module.html">p4vasp.applet.appletlist</a></strong>    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.cStructure-module.html">p4vasp.cStructure</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.cmatrix-module.html">p4vasp.cmatrix</a></strong>: <em class="summary">Basic *Vector* and *Matrix* manipulation library.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.db-module.html">p4vasp.db</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.graph-module.html">p4vasp.graph</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.isosurface-module.html">p4vasp.isosurface</a></strong>: <em class="summary">Isosurface tools.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.matrix-module.html">p4vasp.matrix</a></strong>: <em class="summary">Basic *Vector* and *Matrix* manipulation library.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.message-module.html">p4vasp.message</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d-module.html">p4vasp.paint3d</a></strong>
+    <ul>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.ColladaPaint3D-module.html">p4vasp.paint3d.ColladaPaint3D</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.MeshTools-module.html">p4vasp.paint3d.MeshTools</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.OpenGLPaint3D-module.html">p4vasp.paint3d.OpenGLPaint3D</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.Paint3DInterface-module.html">p4vasp.paint3d.Paint3DInterface</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.PovrayPaint3D-module.html">p4vasp.paint3d.PovrayPaint3D</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.paint3d.data-module.html">p4vasp.paint3d.data</a></strong>    </li>
+    </ul>
+    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.repository-module.html">p4vasp.repository</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.schedule%27-module.html">p4vasp.schedule'</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.sellang-module.html">p4vasp.sellang</a></strong>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.setupstore-module.html">p4vasp.setupstore</a></strong>: <em class="summary">setupstore serves for creation of setup StoreProfile</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.setutils-module.html">p4vasp.setutils</a></strong>: <em class="summary">Set utilities.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.store-module.html">p4vasp.store</a></strong>: <em class="summary">Store module handles configurable xml persistance - i.e.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.util-module.html">p4vasp.util</a></strong>: <em class="summary">This module contains various utilities and functions that do not 
+        fit into other modules.</em>    </li>
+    <li> <strong class="uidlink"><a href="p4vasp.uuid-module.html">p4vasp.uuid</a></strong>: <em class="summary">handling RFC 4122 compatible UUIDs</em>    </li>
+  </ul></td></tr>
+</table>
+
+<br />
+<!-- ==================== FUNCTIONS ==================== -->
+<a name="section-Functions"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Functions</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Functions"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="msg"></a><span class="summary-sig-name">msg</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#msg">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="scheduler"></a><span class="summary-sig-name">scheduler</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#scheduler">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="schedule"></a><span class="summary-sig-name">schedule</span>(<span class="summary-sig-arg">x</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#schedule">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="scheduleFirst"></a><span class="summary-sig-name">scheduleFirst</span>(<span class="summary-sig-arg">x</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#scheduleFirst">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setMessageDriver"></a><span class="summary-sig-name">setMessageDriver</span>(<span class="summary-sig-arg">msgd</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#setMessageDriver">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getUserConfigurationDirectory"></a><span class="summary-sig-name">getUserConfigurationDirectory</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp-pysrc.html#getUserConfigurationDirectory">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== VARIABLES ==================== -->
+<a name="section-Variables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Variables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INDENT"></a><span class="summary-name">INDENT</span> = <code title="'  '"><code class="variable-quote">'</code><code class="variable-string">  </code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INT_TYPE"></a><span class="summary-name">INT_TYPE</span> = <code title="'int'"><code class="variable-quote">'</code><code class="variable-string">int</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="STRING_TYPE"></a><span class="summary-name">STRING_TYPE</span> = <code title="'string'"><code class="variable-quote">'</code><code class="variable-string">string</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LOGICAL_TYPE"></a><span class="summary-name">LOGICAL_TYPE</span> = <code title="'logical'"><code class="variable-quote">'</code><code class="variable-string">logical</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FLOAT_TYPE"></a><span class="summary-name">FLOAT_TYPE</span> = <code title="'float'"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="p4vasp_home"></a><span class="summary-name">p4vasp_home</span> = <code title="'/usr/lib/p4vasp'"><code class="variable-quote">'</code><code class="variable-string">/usr/lib/p4vasp</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="msg_"></a><span class="summary-name">msg_</span> = <code title="p4vasp.message.MessageDriver()">p4vasp.message.MessageDriver()</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="scheduler_"></a><span class="summary-name">scheduler_</span> = <code title="[]">[]</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="__package__"></a><span class="summary-name">__package__</span> = <code title="'p4vasp'"><code class="variable-quote">'</code><code class="variable-string">p4vasp</code><code class="variable-quote">'</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th bgcolor="#70b0f0" class="navbar-select"
+          >&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:06 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

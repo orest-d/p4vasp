@@ -1,0 +1,42 @@
+#!/usr/bin/python
+#  p4vasp is a GUI-program and a library for processing outputs of the
+#  Vienna Ab-inition Simulation Package (VASP)
+#  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+#
+#  Copyright (C) 2003  Orest Dubay <odubay@users.sourceforge.net>
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+########################################################################
+# DESCRIPTION:                                                         #
+########################################################################
+# Convert the initial structure from the vasprun.xml into              #
+# a .xyz file format. Save as the initial.xyz.                         #
+########################################################################
+
+from p4vasp.SystemPM import *
+s=XMLSystemPM('vasprun.xml')
+p=s.INITIAL_STRUCTURE
+p.setCarthesian()
+name=s.NAME
+if name is None:
+    name=""
+f=open("initial.xyz","w")
+f.write("%d\n"%(len(p)))
+f.write("%s\n"%(name))
+for i in range(len(p)):
+    f.write("%2s %+14.10f  %+14.10f  %+14.10f\n"%(p.getRecordForAtom(i).element,
+    p[i][0],p[i][1],p[i][2]))
+f.close()

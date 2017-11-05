@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Introduction to p4vasp</title>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+</head>
+<body>
+<h1><a name="intro"></a>Introduction to&nbsp;<img
+ src="p4vasp-small-w.png" alt="p4vasp" width="209" height="100"
+ align="middle"> </h1>
+<br>
+<b>Author: Orest Dubay <a href="mailto:dubay@ap.univie.ac.at">&lt;dubay@ap.univie.ac.at&gt;</a></b><br>
+<br>
+The<b> p4vasp</b> package is a set of tools for processing xml-formatted
+VASP output (i.e. <i>vasprun.xml</i> files).It comes with a gui
+environment,  that can be started from the command line by typing <b>p4v</b>.<br>
+<br>
+After starting <b>p4v</b>, a window similar to this will appear:<br>
+<br>
+<img src="basic-parts.png" alt="p4v window image" width="588"
+ height="542"> <br>
+<br>
+It has several parts:<br>
+<ul>
+  <li><b><font color="#ff0000">Menu</font></b> - the usual menu on top
+of the window with <b>File</b> and <b>Help</b>. In the <b>File</b> menu
+new systems can be loaded and the current setup can be stored.</li>
+  <li><b><font color="#ff0000">Applet tree</font></b> - used to start
+(activate)&nbsp; applets. It is a tree view of all available applets
+(subprograms) that take care of particular tasks - e.g. displaying <b>Energy
+convergence</b> (as shown in the picture). Applets are activated by
+clicking on the desired tree node. Tree nodes marked with <big>a +</big>
+contain sub-nodes, they can be expanded by clicking on the <big>+</big>
+symbol and collapsed by clicking  on <big>-</big>.</li>
+  <li><b><font color="#ff0000">System line</font></b> - an option bar
+showing  the actual system (name from the <i>SYSTEM</i> tag from the <i>INCAR</i>
+file and a path to the <i>vasprun.xml</i> file) In the system line it is
+possible to switch between loaded systems.</li>
+  <li><b><font color="#ff0000">Applet window</font></b> - shows the
+output  of the active applet and applet controls. The applet window is
+initially empty, it will contain active applets (activated in the
+applet tree).</li>
+</ul>
+Active applets are accessible as notebook-pages. Several applets can be
+opened at the same time.<br>
+This is especially useful for comparing two or more different graphs
+(e.g.  DOS and bandstructure).<br>
+<br>
+Most of the applets have several buttons at the bottom side of the
+applet  window:<br>
+<img src="bottom-buttons.png" alt="bottom buttons image" width="417"
+ height="35"> <br>
+<ul>
+  <li><font color="#ff0000"><b>New</b></font> - creates a new empty
+applet  (only in the <b>partial DOS</b> applet)</li>
+  <li><font color="#ff0000"><b>Clone</b></font> - creates a copy of the
+applet including all settings</li>
+  <li><font color="#ff0000"><b>Close</b></font> - removes the applet</li>
+  <li><b><font color="#ff0000">Graph in external window</font></b>&nbsp;
+- used in applets that show a graph in the applet window. After
+pressing this button a new window containing the same graph is opened.
+External <a href="#Graphs">graph</a> window has several advantages:
+value reading and  the possibility to export the data in different
+formats.</li>
+</ul>
+<small><b><font color="#3333ff">Note: </font></b>At startup <b>p4v</b>
+loads the <i>vasprun.xml</i> (if available)  from the directory where it
+was started. Additionally it tries to load <i>setup.xml</i> (from the
+same directory) which contains the configuration informations -  active
+applets and systems to open.<br>
+<br>
+Parsing of the desired information is performed only when it is
+required  and it is cached for later use. This prevents a long delay
+that would be required for parsing "everything" and it saves some
+memory too... On the other hand it causes delays when starting applets.
+If the requested information is not available, applets usually show
+nothing, which may lead to confusion. Check the <b>console</b> for
+messages if you are not sure what is going on. (The GDK errors can be
+safely ignored.)<br>
+</small>
+<h2><a name="Structure_viewer"></a>Structure viewer</h2>
+<img src="structure-applet.png" alt="Structure applet image" width="974"
+ height="480"> <br>
+<br>
+By clicking on <b>Structure</b> in the applet tree a structure viewer
+is invoked. In the applet window some controlling elements are visible
+and additionally  a new external window showing the structure is opened.<br>
+<small><br>
+<b><font color="#3333ff"> Note:</font></b> If no structure informations
+is available, the external window does  not open.</small><br>
+<small>By starting the <b>Structure</b> applet all structure
+information is parsed. This can take some time, especially for long
+relaxation runs. Check the console.<big><br>
+</big></small><small><big><br>
+In the external window the structure can be</big></small><br>
+<ul>
+  <li><small><big><font color="#ff0000"><b>Rotated</b></font> using the
+ <b>left </b>mouse button<b>;</b> use the <b>control + left </b>mouse
+button<b> </b></big></small>for rotation around the axis perpendicular
+to the screen plane.</li>
+  <li><b><font color="#ff0000">Translated</font></b> using the <b>middle</b>mouse
+button.</li>
+  <li><font color="#ff0000"><b>Scaled</b></font> using the <b>right</b>
+mouse button.</li>
+</ul>
+<small><b><font color="#3333ff">Note:</font></b> If the <b>p4v</b> is
+running over a slow network using an X11 terminal emulation (as is the
+case in the workshop), the structure viewer can be very slow. Making
+the viewer window smaller can help a bit.<br>
+</small><br>
+The button palette on the left side of the applet window controls
+different  views, perspective, zoom and atoms alignment within the cell.<br>
+In the <b>Selection</b> part chosen atoms (atom groups) can be hidden
+and shown again. Atoms are selected using a simple <a
+ href="#Selection_language">selection language</a>, e.g. <i>all</i>
+means all atoms, <i>Ca</i> means all calcium atoms.<br>
+Using the <b>Cell replication</b> the unit cell can be repeated several
+times to visualize periodic structures.<br>
+The <b>Sphere size</b> slider controls the size of atom balls.<br>
+Below the <b>Sphere size</b> slider there is a option where the final
+or  initial positions or a particular relaxation step can be chosen.<br>
+<br>
+<big><span style="text-decoration: underline;">Update:</span></big><br>
+<span style="color: rgb(51, 51, 255); font-weight: bold;">Note:</span>
+The picture above is outdated and does not show the <span
+ style="font-weight: bold;">Get</span>, <span
+ style="font-weight: bold;">Put</span>, <span
+ style="font-weight: bold;">Measure</span> buttons and the Arrows part.<br>
+The atoms can be selected and deselected by positioning mouse over atom
+in the viewer window and pressing <span style="font-weight: bold;">Space</span>.
+A black spiral will be shown around the selected atom.<br>
+Other possibility is making the atom selection in the Selection entry
+and pressing the <span style="font-weight: bold;">Put</span> button -
+this will select all atoms written out in the selection.<br>
+The get button will do the opposite - convert the selected atoms into a
+selection in the Selection entry.<br>
+Pressing <span style="font-weight: bold;">Measure</span> will write out
+the distances, angles and dihedral angles between the selected atoms
+(in the order of selection) in the separate window.<br>
+<br>
+In the "Arrows" part one can select what kind of arrows are shown (if
+any) and what is the size multiplication of arrows.<br>
+<h2><a name="DOS"></a>DOS</h2>
+There are two applets in the DOS applet group: <b>total DOS</b> and <b>projected
+DOS</b>. Displaying the total DOS is as simple as clicking on the <b>total
+DOS</b> node in the applet tree. (See the section <a href="#Graphs">Graphs</a>.)<br>
+<small><br>
+<font color="#3333ff"><b> Note:</b></font> When no information about the
+DOS or projected DOS is available, empty  graphs are shown and a message
+about missing information is printed out on the console. </small><small><big><br>
+</big></small><br>
+In the <b>projected DOS</b> applet it is possible to show the density
+of  states projected on selected atom groups and orbitals.<br>
+<small><br>
+<font color="#3333ff"><b> Note:</b></font> By starting the <b>projected
+DOS</b> applet the projected DOS information  is parsed, which can take
+some time. Be patient.<br>
+<br>
+</small><small><big><img src="projected-DOS.png"
+ alt="Projected DOS applet image" width="605" height="512"> <br>
+<br>
+Creating a new line:<br>
+</big></small>
+<ol>
+  <li>Select the desired atoms in the <b>Atom selection</b> entry using
+the <a href="#Selection_language">selection language</a> (e.g. <i>Ca</i>
+selects all calcium atoms, for more details see the section <a
+ href="#Selection_language">Selection language</a>).</li>
+  <li>You can put the description in the <b>Description</b> line. When
+the line is empty, the description is generated automatically.</li>
+  <li>Select the desired orbitals (and possible a spin projection).</li>
+  <li>Click <b>Add line</b>.<br>
+  </li>
+</ol>
+The line can be changed or removed by selecting it from the <b>Line</b>
+options and clicking on <b>Change line</b> or <b>Remove Line</b>.<br>
+<h2><a name="Bandstructure"></a>Bandstructure</h2>
+There are two applets in the Bandstructure applet group: <b>total
+bands. </b>and <b>projected bands</b>. Displaying the total
+bandstructure is performed  by clicking on the <b>total bands.</b>
+&nbsp;node in applet tree.<br>
+<font color="#3333ff"><b><small><br>
+</small></b></font><small><font color="#3333ff"><b>Note:</b></font> By
+starting the <b>total bands.</b> or <b>projected  bands.</b>&nbsp;
+applet the &nbsp;bandstructure information is parsed, which  can take
+some time. Be patient. Check the console for possible errors.<br>
+</small><small><big><br>
+Using the <b>projected bands.</b> applet localized states can be
+visualized.  Select the desired atoms in the <b>Atom selection</b></big></small><br>
+entry using the <a href="#Selection_language">selection language</a>,choose
+the desired orbitals (and spin projection) and press the <b>Update</b>
+button at the bottom of the window. Press the <b>Update</b> button after
+every change of settings.<br>
+<br>
+<img src="projected-bands.png" alt="Projected bands. applet image"
+ width="605" height="512"> <br>
+<br>
+The weights are shown on the graph as yellow circles with a diameter
+proportional  to the weight.<br>
+<i>K</i>-points on the <i>x</i>-axis are ordered in the same way as
+they  are found in the input file. The spacing between them is
+calculated as the  distance from the last shown <i>k</i>-point.<br>
+<h2><a name="Convergence"></a>Convergence</h2>
+The <b>convergence</b> applet group can be used to check the geometry
+convergence in relaxation runs. The <b>energy</b> applet<br>
+shows the energy convergence, the <b>forces</b> and <b>forces on
+selected</b> applets show the convergence of forces.<br>
+<br>
+On the graphs in the forces applets the average and maximal forces are
+shown. The applets <b>forces</b> and <b>forces on selected</b> applets
+are similar.  Where the first-one shows the average and maximum forces
+on all atoms, the  second-one shows the average and maximum of the <b>selected
+components</b> (in selective dynamics). This leads to different results
+also when selective  dynamics is not used because in the first case the
+force magnitude is evaluated,  while in the second case the absolute
+value of the X,Y,and Z components contribute  to the statistics.<br>
+<h2><a name="Selection_language"></a>Selection language</h2>
+The selection language is a simple mini-language used in several
+applets: in the&nbsp; <a href="#Structure_viewer">Structure viewer</a>
+for showing/hiding atoms and in the projected <a href="#DOS">DOS</a>
+and <a href="#Bandstructure">bandstructure</a>. It will be explained by
+examples:<br>
+<ul>
+  <li><i>Ca</i> - shows all calcium atoms. Warning: the case matters,
+thus <i>ca</i> or <i>CA</i> will not work.</li>
+  <li><i>2</i> - select the second atom in the structure.</li>
+  <li><i>2-5</i> - select the atoms in the range from second to fifth
+(i.e. 2,3,4,5).</li>
+  <li><i>2-</i> -select every atom from the second one (2,3,4,5,6,...).</li>
+  <li><i>-5</i> -select every atom up to the fifth (1,2,3,4,5).</li>
+  <li><i>all</i> - select all atoms.<br>
+  </li>
+  <li>#1 - select all atoms of the 1st specie.</li>
+  <li><i>Ca:1</i> - select the first calcium atom (terms like <i>Ca:2-5</i>,<i>Ca:2-</i>,<i>Ca:-5</i>
+are also legal).<br>
+  </li>
+  <li><i>#2:1</i> - select the first atom of the second specie (terms
+like <i>#2:2-5</i>, <i>#2:2-</i>, <i>#2:-5</i> work as well).</li>
+  <li><i>C:3- Sc</i>&nbsp; - select all carbon atoms starting from the
+third, and all scandium atoms. Terms can be joined together (separated
+by one or  more spaces).</li>
+</ul>
+<h2><a name="Graphs"></a>Graphs</h2>
+Graphs in external and internal window can be controlled in the
+following  way:<br>
+<ul>
+  <li>Operations are performed on that graph, which has the mouse
+cursor  within its bound.</li>
+  <li>Pressing the <b>arrow-keys</b> moves the graph view.</li>
+  <li>Pressing <b>+</b> and <b>-</b> zooms the graph. The same can be
+achieved with the mouse scroll button.<br>
+  </li>
+  <li>After pressing the <b>Pos_1-key</b> (<b>Home-key</b> on some
+keyboards), the graph is scaled so that everything is visible.</li>
+  <li>By pressing and draging the left mouse button one can select a
+rectangular zoom area.<br>
+  </li>
+</ul>
+<font color="#ff0000">In some cases the graph is not scaled properly.
+Pressing  the <b>Pos_1-key</b> fixes this problem.</font><br>
+<br>
+<small><font color="#3333ff"><b>Note:</b></font> Pressing <b>Graph in
+external window</b> below the internal graph will create a new window
+containing the same graph - external graph. Actions like reading values
+and exporting can be performed in external graphs only.<br>
+<br>
+</small>The values can be read using the mouse. A red circle appears in
+the graph around the data-point nearest to the mouse location. In the
+graph a status line (only in external graphs) is shown:<br>
+<b><br>
+G0: [1.2345 6.78910] set &nbsp;0: point 135, [0.120000 &nbsp;0.567890]<br>
+</b><br>
+The first bracket contains the mouse coordinates, the second bracket
+are  the coordinates of the data-point marked by the red circle.
+Further information  shows the graph number (G0), the set and the point
+number of the marked data-point.<br>
+<br>
+<small><font color="#3333ff"><b>Note:</b></font> If no data is shown or
+the mouse is moving, only the first bracket is shown.</small><br>
+<br>
+External graphs have the ability to export the data in different
+formats.  This is done by clicking on the <b>Graph/Export</b> menu.
+This opens a small  menu where the output file and format can be
+selected:<br>
+<ul>
+  <li><b>raw data</b> - data is stored in a simple two- or three-column
+format, that can be processed by other graphing utilities.</li>
+  <li><b>XmGrace</b> - output to <a
+ href="http://plasma-gate.weizmann.ac.il/Grace">XmGrace</a>. This is a
+preferable  format if the XmGrace program is available.</li>
+  <li><b>ps, eps, pdf</b> - output to standard printable formats. This
+can be used for quick printing, but it is not recommended for
+production, because  some graphs are not drawn correctly.</li>
+  <li><b>Xfig</b> - export to the standard Linux vector-drawing program
+ <a href="http://www.xfig.org">xfig</a>. This format can be read by
+some other vector-drawing programs, e.g. <a
+ href="http://sketch.sourceforge.net">sketch</a>.</li>
+  <li><b>svg</b> - <a
+ href="http://www.w3.org/Graphics/SVG/Overview.html">(Scalable Vector
+Graphics)</a> - currently not working properly.<br>
+  </li>
+</ul>
+<br>
+<br>
+</body>
+</html>

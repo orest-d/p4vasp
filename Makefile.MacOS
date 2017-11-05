@@ -1,0 +1,177 @@
+######################################################################
+# INSTALATION DIRECTORIES:                                           #
+######################################################################
+# ROOT          - root directory (need not be set, just for testing) #
+# P4VASP_HOME   - home directory of p4vasp distribution              #
+# PYTHON_PATH   - where th python-home is (usually /usr/lib/python)  #
+# SITE_PACKAGES - where python modules will go                       #
+#                 (usually /usr/lib/python/site-packages)            #
+# INCLUDEDIR    - where the headder-files will go                    #
+#                 (usually /usr/include)                             #
+# LIBDIR        - where the development libraries will go            #
+#                 (usually /usr/lib)                                 #
+# BINDIR        - where the executable will go (e.g. /usr/bin)       #
+######################################################################
+
+ROOT=/opt/local
+P4VASP_HOME   = $(ROOT)/lib/p4vasp
+PYTHON_HOME   = $(ROOT)/lib/python2.4
+SITE_PACKAGES = $(PYTHON_HOME)/site-packages
+INCLUDEDIR    = $(ROOT)/include
+LIBDIR        = $(ROOT)/lib
+BINDIR        = $(ROOT)/bin
+
+P4VCONFIG     = lib/p4vasp/config.py
+VINFO         = vinfo.py
+
+.PHONY: p4vasp
+.PHONY: doc
+.PHONY: clean_p4vasp
+.PHONY: clean_odpdom
+.PHONY: cleanall_doc
+.PHONY: cleanall_p4vasp
+.PHONY: cleanall_odpdom
+.PHONY: install_pythonpkg
+.PHONY: install_gui
+.PHONY: install_devel
+.PHONY: install
+.PHONY: uninstall_pythonpkg
+.PHONY: uninstall_gui
+.PHONY: uninstall_devel
+.PHONY: uninstall
+.PHONY: p4vasp_config
+
+
+all: p4vasp
+p4vasp: p4vasp_config uninstall.sh
+	cd odpdom && $(MAKE) libODP.a	
+	cd src && $(MAKE)
+p4vasp_config:
+	echo "p4vasp_home='$(P4VASP_HOME)'" >$(P4VCONFIG)
+	cat $(VINFO) >> $(P4VCONFIG)
+doc:
+	cd doc && $(MAKE)
+clean_p4vasp:
+	rm -f data/glade/*.bak
+	rm -f data/glade2/*.bak
+	rm -f data/glade2/*.gladep
+	cd src && $(MAKE) clean
+clean_odpdom:
+	cd odpdom && $(MAKE) clean
+cleanall_doc:
+	cd doc && $(MAKE) cleanall
+cleanall_p4vasp:
+	rm -f lib/p4vasp/config.py
+	rm -f lib/p4vasp/*.pyc
+	rm -f lib/p4vasp/*.pyo
+	rm -f lib/p4vasp/applet/*.pyc
+	rm -f lib/p4vasp/applet/*.pyo
+	rm -f lib/p4vasp/piddle/*.pyc
+	rm -f lib/p4vasp/piddle/*.pyo
+	rm -f lib/p4vasp/piddle/piddleGTKp4/*.pyc
+	rm -f lib/p4vasp/piddle/piddleGTKp4/*.pyo
+	rm -f log
+	rm -f p4vasp.log
+	cd src && $(MAKE) cleanall
+cleanall_odpdom:
+	cd odpdom && $(MAKE) cleanall
+clean: clean_p4vasp clean_odpdom
+cleanall: cleanall_p4vasp cleanall_odpdom cleanall_doc
+
+
+install_pythonpkg:p4vasp
+	mkdir -p $(SITE_PACKAGES)/p4vasp
+	cd lib; cp -R p4vasp $(SITE_PACKAGES); cd ..
+	chmod -R 755 $(SITE_PACKAGES)/p4vasp
+	chmod    644 $(SITE_PACKAGES)/p4vasp/*
+	chmod -R 755 $(SITE_PACKAGES)/p4vasp/applet
+	chmod -R 644 $(SITE_PACKAGES)/p4vasp/applet/*
+	chmod -R 755 $(SITE_PACKAGES)/p4vasp/piddle	
+	cd src; install -m755  cp4vasp.py _cp4vasp.so $(SITE_PACKAGES); cd ..
+
+	
+install_gui:install_pythonpkg uninstall.sh
+	mkdir -p     $(P4VASP_HOME)
+	
+	cp -R data   $(P4VASP_HOME)
+	cp -R utils  $(P4VASP_HOME)
+	chmod -R 755 $(P4VASP_HOME)/data
+	chmod    644 $(P4VASP_HOME)/data/*
+	chmod    755 $(P4VASP_HOME)/data/glade 
+	chmod    644 $(P4VASP_HOME)/data/glade/*
+	chmod    755 $(P4VASP_HOME)/data/glade/pixmaps
+	chmod    644 $(P4VASP_HOME)/data/glade/pixmaps/*
+	chmod    755 $(P4VASP_HOME)/data/glade2 
+	chmod    644 $(P4VASP_HOME)/data/glade2/*
+	chmod    755 $(P4VASP_HOME)/data/glade2/pixmaps
+	chmod    644 $(P4VASP_HOME)/data/glade2/pixmaps/*
+	chmod    755 $(P4VASP_HOME)/data/graphs
+	chmod    644 $(P4VASP_HOME)/data/graphs/*
+	chmod    755 $(P4VASP_HOME)/data/images
+	chmod    644 $(P4VASP_HOME)/data/images/*
+	chmod -R 755 $(P4VASP_HOME)/utils
+
+	install -m755 uninstall.sh $(P4VASP_HOME)/uninstall.sh
+	install -m755 diagnostic.py $(P4VASP_HOME)/diagnostic.py
+	
+	install -m644 BUGS FAQS LICENSE README Required.txt $(P4VASP_HOME)
+	install -d -m755     $(BINDIR)
+	install -m755 p4v.py $(BINDIR)/p4v.py
+	install -m755 p4v.py $(BINDIR)/p4v
+
+install_doc:
+	mkdir -p       $(P4VASP_HOME)	
+	cp -R doc      $(P4VASP_HOME)
+	chmod -R 755   $(P4VASP_HOME)/doc
+	chmod    644   $(P4VASP_HOME)/doc/*
+	chmod -R 755   $(P4VASP_HOME)/doc/api
+	chmod    644   $(P4VASP_HOME)/doc/api/*
+	chmod -R 755   $(P4VASP_HOME)/doc/api/c
+	chmod -R 755   $(P4VASP_HOME)/doc/api/python
+	chmod -R 755   $(P4VASP_HOME)/doc/intro
+	chmod    644   $(P4VASP_HOME)/doc/intro/*
+		
+install_devel:install_pythonpkg
+	mkdir -p $(INCLUDEDIR)/ODP
+	mkdir -p $(INCLUDEDIR)/p4vasp
+	cp -R odpdom/include/ODP $(INCLUDEDIR)	
+	cp -R src/include/p4vasp $(INCLUDEDIR)
+	chmod 755 $(INCLUDEDIR)/ODP
+	chmod 755 $(INCLUDEDIR)/p4vasp
+	chmod 644 $(INCLUDEDIR)/ODP/*
+	chmod 644 $(INCLUDEDIR)/p4vasp/*
+	cp src/libp4vasp.a $(LIBDIR)
+	chmod 644 $(LIBDIR)/libp4vasp.a	
+	cp odpdom/libODP.a $(LIBDIR)
+	chmod 644 $(LIBDIR)/libODP.a	
+install:install_gui install_devel install_doc
+
+uninstall.sh:
+	echo "#!/bin/sh" >uninstall.sh
+	echo "rm -Rf $(SITE_PACKAGES)/p4vasp" >>uninstall.sh
+	echo "rm -Rf $(SITE_PACKAGES)/cp4vasp.py" >>uninstall.sh
+	echo "rm -Rf $(SITE_PACKAGES)/_cp4vasp.so" >>uninstall.sh
+	echo "rm -f  $(BINDIR)/p4v.py" >>uninstall.sh
+	echo "rm -f  $(BINDIR)/p4v" >>uninstall.sh
+	echo "rm -Rf $(INCLUDEDIR)/ODP" >>uninstall.sh
+	echo "rm -Rf $(INCLUDEDIR)/p4vasp" >>uninstall.sh
+	echo "rm -Rf $(LIBDIR)/libp4vasp.a " >>uninstall.sh
+	echo "rm -Rf $(LIBDIR)/libODP.a" >>uninstall.sh
+	echo "rm -Rf $(P4VASP_HOME)" >>uninstall.sh
+uninstall_pythonpkg:
+	rm -Rf $(SITE_PACKAGES)/p4vasp
+	rm -Rf $(SITE_PACKAGES)/cp4vasp.py
+	rm -Rf $(SITE_PACKAGES)/_cp4vasp.so
+	
+uninstall_gui:
+	rm -Rf $(P4VASP_HOME)
+	rm -f  $(BINDIR)/p4v.py
+	rm -f  $(BINDIR)/p4v
+	
+uninstall_devel:
+	rm -Rf $(INCLUDEDIR)/ODP
+	rm -Rf $(INCLUDEDIR)/p4vasp
+	rm -Rf $(LIBDIR)/libp4vasp.a 
+	rm -Rf $(LIBDIR)/libODP.a
+uninstall:uninstall_gui uninstall_devel uninstall_pythonpkg
+

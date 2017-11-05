@@ -1,0 +1,72 @@
+Oversized Document Parser (ODPdom) v0.1
+
+ODPdom can be obtained from
+www: http://sourceforge.net/projects/odpdom/
+
+ODPdom is a simple non-validating DOM (Document Object Model)
+parser written in C++, that can handle
+relatively large XML files with the size in order of several 10 MB (pro file).
+Currently it is used to process large output files (~100MB) from scientific
+simulations (http://cms.mpi.univie.ac.at/vasp/Welcome.html).
+
+In a contrary to traditional DOM parsers, ODPdom does not create
+the whole DOM tree by reading, rather it parses the requested informations
+on demand. The objects occurring in DOM (Node, Element, NodeList...) are in
+ODPdom not much more, than a bit more intelligent pointers to a place
+in a (preprocessed) text.
+
+ODPdom has the following features and limitations:
+- LGPL license, see COPYING
+- it is platform independent
+- follows W3C DOM 1 specifications as closely as it was possible and reasonable,
+  however it is NOT fully compliant to DOM 1 specifications
+- no unicode support (can be added in the future), supports only plain ASCII
+  XML files
+- memory requirements for storing DOM are approximately
+  equal to the size of the XML file
+- the document tree can not be modified in any manner
+  (this will maybe change in the future)
+- XML file is read in and preprocessed very quickly,
+  but obtaining selected node from DOM-Document can be slower
+  (in some cases much slower) than obtaining a node from a pre-parsed tree
+- malformed (to some extent) and unterminated XML files can be processed
+  with ODPdom, the xml document is threated as if all the tags would be properly closed.
+
+ODPdom provides an interface to Python [through SWIG (www.swig.org)].
+(Support for other scripting languages can be added later with SWIG.)
+In most situations (excluding cases where Document modifications are needed)
+it can be used as a replacement for the minidom package.
+Due to the nature of ODPdom there are types of use, when it is slower
+than minidom, but *if used properly*, it is faster.
+
+The use of ODPdom is recommended in these cases:
+- if XML files are reasonably simple (ASCII, no validation)
+- if no modifications to DOM tree are needed
+
+
+-------------------------------------------------------------------------
+
+
+Here are some very breef instructions:
+
+  Requirements:
+
+    some c++ compiler (gcc)
+    python >=2.0      (www.python.org)
+    swig >=1.3.16     (www.swig.org)
+
+  Building:
+
+    Edit the Makefile.
+    make
+    Copy the _cODP.so and ODPdom.py to a place, where python can reach it.
+
+  Using in python:
+
+    import ODPdom
+    dom1=ODPdom.parseFile("file.xml")
+    dom2=ODPdom.parseString("<hello>world</hello>")
+
+  
+If there are any questions regarding ODPdom,
+please contact me at odubay@users.sourceforge.net

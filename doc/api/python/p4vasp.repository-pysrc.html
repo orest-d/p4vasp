@@ -1,0 +1,1393 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.repository</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        Module&nbsp;repository
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.repository-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="p4vasp.repository-module.html">Module p4vasp.repository</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># HappyDoc:docStringFormat='ClassicStructuredText'</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">#  p4vasp is a GUI-program and a library for processing outputs of the</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#  Vienna Ab-inition Simulation Package (VASP)</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#  Copyright (C) 2003  Orest Dubay &lt;odubay@users.sourceforge.net&gt;</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#  This program is free software; you can redistribute it and/or modify</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#  it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#  the Free Software Foundation; either version 2 of the License, or</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#  (at your option) any later version.</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#  This program is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">#  GNU General Public License for more details.</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#   You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-comment">#  along with this program; if not, write to the Free Software</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-comment">#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">UserDict</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">types</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">string</tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package p4vasp=p4vasp-module.html"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-0', 'p4vasp', 'link-0');">p4vasp</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-1', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module p4vasp.store=p4vasp.store-module.html"><a title="p4vasp.store" class="py-name" href="#" onclick="return doclink('link-2', 'store', 'link-2');">store</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"> </tt>
+<a name="Factory"></a><div id="Factory-def"><a name="L31"></a><tt class="py-lineno"> 31</tt> <a class="py-toggle" href="#" id="Factory-toggle" onclick="return toggle('Factory');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html">Factory</a><tt class="py-op">(</tt><tt class="py-base-class">UserDict</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Factory-expanded"><a name="Factory.__init__"></a><div id="Factory.__init__-def"><a name="L32"></a><tt class="py-lineno"> 32</tt> <a class="py-toggle" href="#" id="Factory.__init__-toggle" onclick="return toggle('Factory.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">d</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.__init__-expanded"><a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">        <tt class="py-name">UserDict</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method p4vasp.Array.Array.__init__()=p4vasp.Array.Array-class.html#__init__,Method p4vasp.Array.ArrayRecord.__init__()=p4vasp.Array.ArrayRecord-class.html#__init__,Method p4vasp.Array.LateList.__init__()=p4vasp.Array.LateList-class.html#__init__,Method p4vasp.Array.SetLateList.__init__()=p4vasp.Array.SetLateList-class.html#__init__,Method p4vasp.Array.VArray.__init__()=p4vasp.Array.VArray-class.html#__init__,Method p4vasp.Array.rRecordSetLateList.__init__()=p4vasp.Array.rRecordSetLateList-class.html#__init__,Method p4vasp.Array.rcRecordSetLateList.__init__()=p4vasp.Array.rcRecordSetLateList-class.html#__init__,Method p4vasp.ConvexShape.ConvexShape.__init__()=p4vasp.ConvexShape.ConvexShape-class.html#__init__,Method p4vasp.Dictionary.Dictionary.__init__()=p4vasp.Dictionary.Dictionary-class.html#__init__,Method p4vasp.Dictionary.Incar.__init__()=p4vasp.Dictionary.Incar-class.html#__init__,Method p4vasp.Dictionary.StructuredDictionary.__init__()=p4vasp.Dictionary.StructuredDictionary-class.html#__init__,Method p4vasp.FArray.FArray1D.__init__()=p4vasp.FArray.FArray1D-class.html#__init__,Method p4vasp.FArray.FArray2D.__init__()=p4vasp.FArray.FArray2D-class.html#__init__,Method p4vasp.GraphCanvas.Export.__init__()=p4vasp.GraphCanvas.Export-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvas.__init__()=p4vasp.GraphCanvas.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.Export.__init__()=p4vasp.GraphCanvas_gtk1.Export-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphPM.GraphPM.__init__()=p4vasp.GraphPM.GraphPM-class.html#__init__,Method p4vasp.GraphPM.GraphProperty.__init__()=p4vasp.GraphPM.GraphProperty-class.html#__init__,Method p4vasp.ODPdom.Attr.__init__()=p4vasp.ODPdom.Attr-class.html#__init__,Method p4vasp.ODPdom.AttributeList.__init__()=p4vasp.ODPdom.AttributeList-class.html#__init__,Method p4vasp.ODPdom.CharacterData.__init__()=p4vasp.ODPdom.CharacterData-class.html#__init__,Method p4vasp.ODPdom.ChildrenByTagNameList.__init__()=p4vasp.ODPdom.ChildrenByTagNameList-class.html#__init__,Method p4vasp.ODPdom.DOMException.__init__()=p4vasp.ODPdom.DOMException-class.html#__init__,Method p4vasp.ODPdom.Document.__init__()=p4vasp.ODPdom.Document-class.html#__init__,Method p4vasp.ODPdom.Element.__init__()=p4vasp.ODPdom.Element-class.html#__init__,Method p4vasp.ODPdom.NamedNodeMap.__init__()=p4vasp.ODPdom.NamedNodeMap-class.html#__init__,Method p4vasp.ODPdom.Node.__init__()=p4vasp.ODPdom.Node-class.html#__init__,Method p4vasp.ODPdom.NodeList.__init__()=p4vasp.ODPdom.NodeList-class.html#__init__,Method p4vasp.ODPdom.ProcessingInstruction.__init__()=p4vasp.ODPdom.ProcessingInstruction-class.html#__init__,Method p4vasp.Property.FilterPropertyManager.__init__()=p4vasp.Property.FilterPropertyManager-class.html#__init__,Method p4vasp.Property.Property.__init__()=p4vasp.Property.Property-class.html#__init__,Method p4vasp.Property.PropertyManager.__init__()=p4vasp.Property.PropertyManager-class.html#__init__,Method p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__()=p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#__init__,Method p4vasp.SQLSystemPM.SQLStructuresLL.__init__()=p4vasp.SQLSystemPM.SQLStructuresLL-class.html#__init__,Method p4vasp.SQLSystemPM.SQLSystemPM.__init__()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#__init__,Method p4vasp.Selection.Selection.__init__()=p4vasp.Selection.Selection-class.html#__init__,Method p4vasp.Structure.AtomInfo.__init__()=p4vasp.Structure.AtomInfo-class.html#__init__,Method p4vasp.Structure.AtomtypesArray.__init__()=p4vasp.Structure.AtomtypesArray-class.html#__init__,Method p4vasp.Structure.AtomtypesRecord.__init__()=p4vasp.Structure.AtomtypesRecord-class.html#__init__,Method p4vasp.Structure.Structure.__init__()=p4vasp.Structure.Structure-class.html#__init__,Method p4vasp.StructureWindow.StructureWindow.__init__()=p4vasp.StructureWindow.StructureWindow-class.html#__init__,Method p4vasp.SystemPM.ChgcarStatisticsLateList.__init__()=p4vasp.SystemPM.ChgcarStatisticsLateList-class.html#__init__,Method p4vasp.SystemPM.KpointGeneration.__init__()=p4vasp.SystemPM.KpointGeneration-class.html#__init__,Method p4vasp.SystemPM.KpointList.__init__()=p4vasp.SystemPM.KpointList-class.html#__init__,Method p4vasp.SystemPM.Kpoints.__init__()=p4vasp.SystemPM.Kpoints-class.html#__init__,Method p4vasp.SystemPM.OldSystemPM.__init__()=p4vasp.SystemPM.OldSystemPM-class.html#__init__,Method p4vasp.SystemPM.PoscarSystemPM.__init__()=p4vasp.SystemPM.PoscarSystemPM-class.html#__init__,Method p4vasp.SystemPM.SetupPM.__init__()=p4vasp.SystemPM.SetupPM-class.html#__init__,Method p4vasp.SystemPM.StructureSequenceLateList.__init__()=p4vasp.SystemPM.StructureSequenceLateList-class.html#__init__,Method p4vasp.SystemPM.SystemPM.__init__()=p4vasp.SystemPM.SystemPM-class.html#__init__,Method p4vasp.SystemPM.SystemPM_URL_Attribute.__init__()=p4vasp.SystemPM.SystemPM_URL_Attribute-class.html#__init__,Method p4vasp.SystemPM.SystemRepository.__init__()=p4vasp.SystemPM.SystemRepository-class.html#__init__,Method p4vasp.SystemPM.XMLSystemPM.__init__()=p4vasp.SystemPM.XMLSystemPM-class.html#__init__,Method p4vasp.SystemPM.cStructureSequenceLateList.__init__()=p4vasp.SystemPM.cStructureSequenceLateList-class.html#__init__,Method p4vasp.applet.Applet.Applet.__init__()=p4vasp.applet.Applet.Applet-class.html#__init__,Method p4vasp.applet.Applet.AppletProfile.__init__()=p4vasp.applet.Applet.AppletProfile-class.html#__init__,Method p4vasp.applet.Applet.GraphApplet.__init__()=p4vasp.applet.Applet.GraphApplet-class.html#__init__,Method p4vasp.applet.Applet.TextApplet.__init__()=p4vasp.applet.Applet.TextApplet-class.html#__init__,Method p4vasp.applet.Applet.Widgets.__init__()=p4vasp.applet.Applet.Widgets-class.html#__init__,Method p4vasp.applet.AppletRepositoryProfile.__init__()=p4vasp.applet.AppletRepositoryProfile-class.html#__init__,Method p4vasp.applet.AppletTree.AppletNode.__init__()=p4vasp.applet.AppletTree.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTree.__init__()=p4vasp.applet.AppletTree.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeModel.__init__()=p4vasp.applet.AppletTree.AppletTreeModel-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletNode.__init__()=p4vasp.applet.AppletTree_old.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTree.__init__()=p4vasp.applet.AppletTree_old.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree_old.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.BuilderApplet.BuilderApplet.__init__()=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#__init__,Method p4vasp.applet.BuilderApplet.StructureTreeModel.__init__()=p4vasp.applet.BuilderApplet.StructureTreeModel-class.html#__init__,Method p4vasp.applet.CommitApplet.CommitApplet.__init__()=p4vasp.applet.CommitApplet.CommitApplet-class.html#__init__,Method p4vasp.applet.DBApplet.DBApplet.__init__()=p4vasp.applet.DBApplet.DBApplet-class.html#__init__,Method p4vasp.applet.DBApplet.QueryTreeModel.__init__()=p4vasp.applet.DBApplet.QueryTreeModel-class.html#__init__,Method p4vasp.applet.DielectricApplet.DielectricApplet.__init__()=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#__init__,Method p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__()=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__()=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.Line.__init__()=p4vasp.applet.ElectronicApplet.Line-class.html#__init__,Method p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__()=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#__init__,Method p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__()=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#__init__,Method p4vasp.applet.ExportApplet.ExportApplet.__init__()=p4vasp.applet.ExportApplet.ExportApplet-class.html#__init__,Method p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__()=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#__init__,Method p4vasp.applet.InfoApplet.InfoApplet.__init__()=p4vasp.applet.InfoApplet.InfoApplet-class.html#__init__,Method p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__()=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#__init__,Method p4vasp.applet.LatticeApplet.LatticeApplet.__init__()=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#__init__,Method p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__()=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#__init__,Method p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__()=p4vasp.applet.MeasureApplet.DistanceTreeModel-class.html#__init__,Method p4vasp.applet.MeasureApplet.MeasureApplet.__init__()=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#__init__,Method p4vasp.applet.MoveApplet.MoveApplet.__init__()=p4vasp.applet.MoveApplet.MoveApplet-class.html#__init__,Method p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__()=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#__init__,Method p4vasp.applet.NewApplet.NewApplet.__init__()=p4vasp.applet.NewApplet.NewApplet-class.html#__init__,Method p4vasp.applet.RotateApplet.RotateApplet.__init__()=p4vasp.applet.RotateApplet.RotateApplet-class.html#__init__,Method p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__()=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#__init__,Method p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__()=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#__init__,Method p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__()=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.SelectionApplet.SelectionApplet.__init__()=p4vasp.applet.SelectionApplet.SelectionApplet-class.html#__init__,Method p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__()=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.Measure.__init__()=p4vasp.applet.StructureApplet.Measure-class.html#__init__,Method p4vasp.applet.StructureApplet.StructureApplet.__init__()=p4vasp.applet.StructureApplet.StructureApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.SubtrSequence.__init__()=p4vasp.applet.StructureApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__()=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__()=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__()=p4vasp.applet.StructureWindowControlApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.VACApplet.VACApplet.__init__()=p4vasp.applet.VACApplet.VACApplet-class.html#__init__,Method p4vasp.cStructure.AtomInfo.__init__()=p4vasp.cStructure.AtomInfo-class.html#__init__,Method p4vasp.cStructure.AtomtypesRecord.__init__()=p4vasp.cStructure.AtomtypesRecord-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayItemWrapper.__init__()=p4vasp.cStructure.SelectiveArrayItemWrapper-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayWrapper.__init__()=p4vasp.cStructure.SelectiveArrayWrapper-class.html#__init__,Method p4vasp.cStructure.Structure.__init__()=p4vasp.cStructure.Structure-class.html#__init__,Method p4vasp.cmatrix.Matrix.__init__()=p4vasp.cmatrix.Matrix-class.html#__init__,Method p4vasp.cmatrix.Vector.__init__()=p4vasp.cmatrix.Vector-class.html#__init__,Method p4vasp.db.DBI.__init__()=p4vasp.db.DBI-class.html#__init__,Method p4vasp.db.MySQLDBI.__init__()=p4vasp.db.MySQLDBI-class.html#__init__,Method p4vasp.db.Query.__init__()=p4vasp.db.Query-class.html#__init__,Method p4vasp.db.SQLiteDBI.__init__()=p4vasp.db.SQLiteDBI-class.html#__init__,Method p4vasp.graph.Axis.__init__()=p4vasp.graph.Axis-class.html#__init__,Method p4vasp.graph.Graph.__init__()=p4vasp.graph.Graph-class.html#__init__,Method p4vasp.graph.GraphLine.__init__()=p4vasp.graph.GraphLine-class.html#__init__,Method p4vasp.graph.Set.__init__()=p4vasp.graph.Set-class.html#__init__,Method p4vasp.graph.World.__init__()=p4vasp.graph.World-class.html#__init__,Method p4vasp.graph.XAxis.__init__()=p4vasp.graph.XAxis-class.html#__init__,Method p4vasp.graph.YAxis.__init__()=p4vasp.graph.YAxis-class.html#__init__,Method p4vasp.matrix.Matrix.__init__()=p4vasp.matrix.Matrix-class.html#__init__,Method p4vasp.matrix.Vector.__init__()=p4vasp.matrix.Vector-class.html#__init__,Method p4vasp.message.MessageDriver.__init__()=p4vasp.message.MessageDriver-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DInterface-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DRecorder-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.data.AmbientLight.__init__()=p4vasp.paint3d.data.AmbientLight-class.html#__init__,Method p4vasp.paint3d.data.Arrow.__init__()=p4vasp.paint3d.data.Arrow-class.html#__init__,Method p4vasp.paint3d.data.Background.__init__()=p4vasp.paint3d.data.Background-class.html#__init__,Method p4vasp.paint3d.data.ColorMaterial.__init__()=p4vasp.paint3d.data.ColorMaterial-class.html#__init__,Method p4vasp.paint3d.data.Cone.__init__()=p4vasp.paint3d.data.Cone-class.html#__init__,Method p4vasp.paint3d.data.Cylinder.__init__()=p4vasp.paint3d.data.Cylinder-class.html#__init__,Method p4vasp.paint3d.data.Frame.__init__()=p4vasp.paint3d.data.Frame-class.html#__init__,Method p4vasp.paint3d.data.Line.__init__()=p4vasp.paint3d.data.Line-class.html#__init__,Method p4vasp.paint3d.data.Mesh.__init__()=p4vasp.paint3d.data.Mesh-class.html#__init__,Method p4vasp.paint3d.data.OrthographicCamera.__init__()=p4vasp.paint3d.data.OrthographicCamera-class.html#__init__,Method p4vasp.paint3d.data.PerspectiveCamera.__init__()=p4vasp.paint3d.data.PerspectiveCamera-class.html#__init__,Method p4vasp.paint3d.data.PointLight.__init__()=p4vasp.paint3d.data.PointLight-class.html#__init__,Method p4vasp.paint3d.data.Sphere.__init__()=p4vasp.paint3d.data.Sphere-class.html#__init__,Method p4vasp.repository.Descriptor.__init__()=p4vasp.repository.Descriptor-class.html#__init__,Method p4vasp.repository.DescriptorProfile.__init__()=p4vasp.repository.DescriptorProfile-class.html#__init__,Method p4vasp.repository.Factory.__init__()=p4vasp.repository.Factory-class.html#__init__,Method p4vasp.repository.FactoryProfile.__init__()=p4vasp.repository.FactoryProfile-class.html#__init__,Method p4vasp.repository.Repository.__init__()=p4vasp.repository.Repository-class.html#__init__,Method p4vasp.repository.RepositoryProfile.__init__()=p4vasp.repository.RepositoryProfile-class.html#__init__,Method p4vasp.schedule'.Scheduler.__init__()=p4vasp.schedule%27.Scheduler-class.html#__init__,Method p4vasp.setupstore.SetupProfile.__init__()=p4vasp.setupstore.SetupProfile-class.html#__init__,Method p4vasp.setupstore.SetupProfile_old.__init__()=p4vasp.setupstore.SetupProfile_old-class.html#__init__,Method p4vasp.store.AttributeProfile.__init__()=p4vasp.store.AttributeProfile-class.html#__init__,Method p4vasp.store.ClassAttribute.__init__()=p4vasp.store.ClassAttribute-class.html#__init__,Method p4vasp.store.FloatAttribute.__init__()=p4vasp.store.FloatAttribute-class.html#__init__,Method p4vasp.store.FloatListAttribute.__init__()=p4vasp.store.FloatListAttribute-class.html#__init__,Method p4vasp.store.FloatTupleAttribute.__init__()=p4vasp.store.FloatTupleAttribute-class.html#__init__,Method p4vasp.store.HexMarshalAttribute.__init__()=p4vasp.store.HexMarshalAttribute-class.html#__init__,Method p4vasp.store.HexPickleAttribute.__init__()=p4vasp.store.HexPickleAttribute-class.html#__init__,Method p4vasp.store.IgnoreProfile.__init__()=p4vasp.store.IgnoreProfile-class.html#__init__,Method p4vasp.store.IntAttribute.__init__()=p4vasp.store.IntAttribute-class.html#__init__,Method p4vasp.store.IntListAttribute.__init__()=p4vasp.store.IntListAttribute-class.html#__init__,Method p4vasp.store.IntTupleAttribute.__init__()=p4vasp.store.IntTupleAttribute-class.html#__init__,Method p4vasp.store.ListAttribute.__init__()=p4vasp.store.ListAttribute-class.html#__init__,Method p4vasp.store.Profile.__init__()=p4vasp.store.Profile-class.html#__init__,Method p4vasp.store.StringAttribute.__init__()=p4vasp.store.StringAttribute-class.html#__init__,Method p4vasp.store.StringListAttribute.__init__()=p4vasp.store.StringListAttribute-class.html#__init__,Method p4vasp.util.ParseException.__init__()=p4vasp.util.ParseException-class.html#__init__,Method p4vasp.util.UnknownType.__init__()=p4vasp.util.UnknownType-class.html#__init__,Method p4vasp.util.XMLParseException.__init__()=p4vasp.util.XMLParseException-class.html#__init__,Method p4vasp.uuid.UuidGen.__init__()=p4vasp.uuid.UuidGen-class.html#__init__,Method p4vasp.uuid._GeneratorState.__init__()=p4vasp.uuid._GeneratorState-class.html#__init__"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-3', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">d</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sortedvalues</tt><tt class="py-op">=</tt><tt class="py-name">d</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method p4vasp.Dictionary.StructuredDictionary.values()=p4vasp.Dictionary.StructuredDictionary-class.html#values,Method p4vasp.ODPdom.AttributeList.values()=p4vasp.ODPdom.AttributeList-class.html#values,Method p4vasp.ODPdom.NamedNodeMap.values()=p4vasp.ODPdom.NamedNodeMap-class.html#values"><a title="p4vasp.Dictionary.StructuredDictionary.values
+p4vasp.ODPdom.AttributeList.values
+p4vasp.ODPdom.NamedNodeMap.values" class="py-name" href="#" onclick="return doclink('link-4', 'values', 'link-4');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+</div><a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"> </tt>
+<a name="Factory.add"></a><div id="Factory.add-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="Factory.add-toggle" onclick="return toggle('Factory.add');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#add">add</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.add-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.add-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">x</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">[</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method p4vasp.repository.Descriptor.getFullName()=p4vasp.repository.Descriptor-class.html#getFullName"><a title="p4vasp.repository.Descriptor.getFullName" class="py-name" href="#" onclick="return doclink('link-5', 'getFullName', 'link-5');">getFullName</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt class="py-name">x</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">sortedvalues</tt><tt class="py-op">.</tt><tt id="link-6" class="py-name" targets="Method p4vasp.Structure.AtomInfo.append()=p4vasp.Structure.AtomInfo-class.html#append,Method p4vasp.Structure.Structure.append()=p4vasp.Structure.Structure-class.html#append,Method p4vasp.cStructure.AtomInfo.append()=p4vasp.cStructure.AtomInfo-class.html#append,Method p4vasp.cStructure.Structure.append()=p4vasp.cStructure.Structure-class.html#append,Method p4vasp.graph.Graph.append()=p4vasp.graph.Graph-class.html#append,Method p4vasp.graph.World.append()=p4vasp.graph.World-class.html#append,Method p4vasp.repository.Repository.append()=p4vasp.repository.Repository-class.html#append"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-6', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+<a name="Factory.findDescriptor"></a><div id="Factory.findDescriptor-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="Factory.findDescriptor-toggle" onclick="return toggle('Factory.findDescriptor');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#findDescriptor">findDescriptor</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.findDescriptor-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.findDescriptor-expanded"><a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method p4vasp.Dictionary.StructuredDictionary.has_key()=p4vasp.Dictionary.StructuredDictionary-class.html#has_key"><a title="p4vasp.Dictionary.StructuredDictionary.has_key" class="py-name" href="#" onclick="return doclink('link-7', 'has_key', 'link-7');">has_key</a></tt><tt class="py-op">(</tt><tt id="link-8" class="py-name" targets="Variable p4vasp.SystemPM.c=p4vasp.SystemPM-module.html#c"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-8', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">[</tt><tt id="link-9" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-9', 'c', 'link-8');">c</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-10" class="py-name"><a title="p4vasp.Dictionary.StructuredDictionary.values
+p4vasp.ODPdom.AttributeList.values
+p4vasp.ODPdom.NamedNodeMap.values" class="py-name" href="#" onclick="return doclink('link-10', 'values', 'link-4');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-11" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-11', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">x</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line"> </tt>
+<a name="Factory.getClass"></a><div id="Factory.getClass-def"><a name="L50"></a><tt class="py-lineno"> 50</tt> <a class="py-toggle" href="#" id="Factory.getClass-toggle" onclick="return toggle('Factory.getClass');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#getClass">getClass</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.getClass-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.getClass-expanded"><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-12" class="py-name"><a title="p4vasp.Dictionary.StructuredDictionary.has_key" class="py-name" href="#" onclick="return doclink('link-12', 'has_key', 'link-7');">has_key</a></tt><tt class="py-op">(</tt><tt id="link-13" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-13', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">[</tt><tt id="link-14" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-14', 'c', 'link-8');">c</a></tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">v</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">strip</tt><tt class="py-op">,</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt id="link-15" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-15', 'c', 'link-8');">c</a></tt><tt class="py-op">,</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-16" class="py-name" targets="Method p4vasp.cStructure.Structure.len()=p4vasp.cStructure.Structure-class.html#len"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-16', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt id="link-17" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-17', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt id="link-18" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-18', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-19" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-19', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">                <tt id="link-20" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-20', 'c', 'link-8');">c</a></tt><tt class="py-op">=</tt><tt class="py-name">eval</tt><tt class="py-op">(</tt><tt id="link-21" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-21', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">                <tt class="py-keyword">exec</tt> <tt class="py-string">"import %s\nc=%s\n"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-22" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-22', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-23" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-23', 'c', 'link-8');">c</a></tt> </tt>
+</div><a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line"> </tt>
+<a name="Factory.create"></a><div id="Factory.create-def"><a name="L61"></a><tt class="py-lineno"> 61</tt> <a class="py-toggle" href="#" id="Factory.create-toggle" onclick="return toggle('Factory.create');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#create">create</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.create-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.create-expanded"><a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-24" class="py-name"><a title="p4vasp.Dictionary.StructuredDictionary.has_key" class="py-name" href="#" onclick="return doclink('link-24', 'has_key', 'link-7');">has_key</a></tt><tt class="py-op">(</tt><tt id="link-25" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-25', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">apply</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">[</tt><tt id="link-26" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-26', 'c', 'link-8');">c</a></tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt id="link-27" class="py-name" targets="Method p4vasp.applet.Applet.Applet.create()=p4vasp.applet.Applet.Applet-class.html#create,Method p4vasp.repository.Descriptor.create()=p4vasp.repository.Descriptor-class.html#create,Method p4vasp.repository.Factory.create()=p4vasp.repository.Factory-class.html#create"><a title="p4vasp.applet.Applet.Applet.create
+p4vasp.repository.Descriptor.create
+p4vasp.repository.Factory.create" class="py-name" href="#" onclick="return doclink('link-27', 'create', 'link-27');">create</a></tt><tt class="py-op">,</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-28" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-28', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">is</tt> <tt class="py-name">StringType</tt><tt class="py-op">:</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">apply</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-29" class="py-name" targets="Function p4vasp.applet.getClass()=p4vasp.applet-module.html#getClass,Method p4vasp.repository.Factory.getClass()=p4vasp.repository.Factory-class.html#getClass,Method p4vasp.repository.Repository.getClass()=p4vasp.repository.Repository-class.html#getClass"><a title="p4vasp.applet.getClass
+p4vasp.repository.Factory.getClass
+p4vasp.repository.Repository.getClass" class="py-name" href="#" onclick="return doclink('link-29', 'getClass', 'link-29');">getClass</a></tt><tt class="py-op">(</tt><tt id="link-30" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-30', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line"> </tt>
+<a name="Factory.getStoreProfile"></a><div id="Factory.getStoreProfile-def"><a name="L67"></a><tt class="py-lineno"> 67</tt> <a class="py-toggle" href="#" id="Factory.getStoreProfile-toggle" onclick="return toggle('Factory.getStoreProfile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Factory-class.html#getStoreProfile">getStoreProfile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Factory.getStoreProfile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Factory.getStoreProfile-expanded"><a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-31" class="py-name" targets="Class p4vasp.repository.FactoryProfile=p4vasp.repository.FactoryProfile-class.html"><a title="p4vasp.repository.FactoryProfile" class="py-name" href="#" onclick="return doclink('link-31', 'FactoryProfile', 'link-31');">FactoryProfile</a></tt><tt class="py-op">(</tt><tt class="py-name">factory</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line"> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line"> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line"> </tt>
+<a name="Repository"></a><div id="Repository-def"><a name="L72"></a><tt class="py-lineno"> 72</tt> <a class="py-toggle" href="#" id="Repository-toggle" onclick="return toggle('Repository');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html">Repository</a><tt class="py-op">:</tt> </tt>
+</div><div id="Repository-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Repository-expanded"><a name="Repository.__init__"></a><div id="Repository.__init__-def"><a name="L73"></a><tt class="py-lineno"> 73</tt> <a class="py-toggle" href="#" id="Repository.__init__-toggle" onclick="return toggle('Repository.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">l</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-param">factory</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.__init__-expanded"><a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Module p4vasp.paint3d.data=p4vasp.paint3d.data-module.html"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-32', 'data', 'link-32');">data</a></tt><tt class="py-op">=</tt><tt class="py-name">l</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">]</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factory</tt><tt class="py-op">=</tt><tt class="py-name">factory</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_append</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_remove</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_activate</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+</div><a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"> </tt>
+<a name="Repository.getClass"></a><div id="Repository.getClass-def"><a name="L81"></a><tt class="py-lineno"> 81</tt> <a class="py-toggle" href="#" id="Repository.getClass-toggle" onclick="return toggle('Repository.getClass');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#getClass">getClass</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.getClass-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.getClass-expanded"><a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">        <tt class="py-name">v</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">strip</tt><tt class="py-op">,</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt id="link-33" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-33', 'c', 'link-8');">c</a></tt><tt class="py-op">,</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt id="link-34" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-34', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt> <tt class="py-keyword">and</tt> <tt id="link-35" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-35', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt id="link-36" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-36', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-37" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-37', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-number">1</tt><tt class="py-op">:</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt id="link-38" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-38', 'c', 'link-8');">c</a></tt><tt class="py-op">=</tt><tt class="py-name">eval</tt><tt class="py-op">(</tt><tt id="link-39" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-39', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                <tt class="py-keyword">exec</tt> <tt class="py-string">"import %s\nc=%s\n"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">v</tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-string">"."</tt><tt class="py-op">)</tt><tt class="py-op">,</tt><tt id="link-40" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-40', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-41" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-41', 'c', 'link-8');">c</a></tt> </tt>
+</div><a name="Repository.__len__"></a><div id="Repository.__len__-def"><a name="L89"></a><tt class="py-lineno"> 89</tt> <a class="py-toggle" href="#" id="Repository.__len__-toggle" onclick="return toggle('Repository.__len__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#__len__">__len__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.__len__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.__len__-expanded"><a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-42" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-42', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-43', 'data', 'link-32');">data</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-44" class="py-name"><a title="p4vasp.cStructure.Structure.len" class="py-name" href="#" onclick="return doclink('link-44', 'len', 'link-16');">len</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-45', 'data', 'link-32');">data</a></tt><tt class="py-op">)</tt><tt class="py-op">+</tt><tt class="py-number">1</tt> </tt>
+</div><a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"> </tt>
+<a name="Repository.__getitem__"></a><div id="Repository.__getitem__-def"><a name="L95"></a><tt class="py-lineno"> 95</tt> <a class="py-toggle" href="#" id="Repository.__getitem__-toggle" onclick="return toggle('Repository.__getitem__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#__getitem__">__getitem__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">i</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.__getitem__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.__getitem__-expanded"><a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-46" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-46', 'data', 'link-32');">data</a></tt><tt class="py-op">[</tt><tt id="link-47" class="py-name" targets="Variable p4vasp.paint3d.OpenGLPaint3D.i=p4vasp.paint3d.OpenGLPaint3D-module.html#i"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-47', 'i', 'link-47');">i</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">            <tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-48" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-48', 'data', 'link-32');">data</a></tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">d</tt><tt class="py-op">[</tt><tt id="link-49" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-49', 'i', 'link-47');">i</a></tt><tt class="py-op">]</tt> </tt>
+</div><a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line"> </tt>
+<a name="Repository.append"></a><div id="Repository.append-def"><a name="L102"></a><tt class="py-lineno">102</tt> <a class="py-toggle" href="#" id="Repository.append-toggle" onclick="return toggle('Repository.append');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#append">append</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.append-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.append-expanded"><a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-50" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-50', 'data', 'link-32');">data</a></tt><tt class="py-op">.</tt><tt id="link-51" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-51', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_append</tt><tt class="py-op">:</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line"> </tt>
+<a name="Repository.insert"></a><div id="Repository.insert-def"><a name="L107"></a><tt class="py-lineno">107</tt> <a class="py-toggle" href="#" id="Repository.insert-toggle" onclick="return toggle('Repository.insert');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#insert">insert</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">i</tt><tt class="py-op">,</tt> <tt class="py-param">item</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.insert-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.insert-expanded"><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-52" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-52', 'data', 'link-32');">data</a></tt><tt class="py-op">.</tt><tt id="link-53" class="py-name" targets="Method p4vasp.repository.Repository.insert()=p4vasp.repository.Repository-class.html#insert"><a title="p4vasp.repository.Repository.insert" class="py-name" href="#" onclick="return doclink('link-53', 'insert', 'link-53');">insert</a></tt><tt class="py-op">(</tt><tt id="link-54" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-54', 'i', 'link-47');">i</a></tt><tt class="py-op">,</tt> <tt id="link-55" class="py-name" targets="Method p4vasp.ODPdom.AttributeList.item()=p4vasp.ODPdom.AttributeList-class.html#item,Method p4vasp.ODPdom.NamedNodeMap.item()=p4vasp.ODPdom.NamedNodeMap-class.html#item,Method p4vasp.ODPdom.NodeList.item()=p4vasp.ODPdom.NodeList-class.html#item"><a title="p4vasp.ODPdom.AttributeList.item
+p4vasp.ODPdom.NamedNodeMap.item
+p4vasp.ODPdom.NodeList.item" class="py-name" href="#" onclick="return doclink('link-55', 'item', 'link-55');">item</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-56" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-56', 'data', 'link-32');">data</a></tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="p4vasp.repository.Repository.insert" class="py-name" href="#" onclick="return doclink('link-57', 'insert', 'link-53');">insert</a></tt><tt class="py-op">(</tt><tt id="link-58" class="py-name"><a title="p4vasp.paint3d.OpenGLPaint3D.i" class="py-name" href="#" onclick="return doclink('link-58', 'i', 'link-47');">i</a></tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">,</tt> <tt id="link-59" class="py-name"><a title="p4vasp.ODPdom.AttributeList.item
+p4vasp.ODPdom.NamedNodeMap.item
+p4vasp.ODPdom.NodeList.item" class="py-name" href="#" onclick="return doclink('link-59', 'item', 'link-55');">item</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_append</tt><tt class="py-op">:</tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-60" class="py-name"><a title="p4vasp.ODPdom.AttributeList.item
+p4vasp.ODPdom.NamedNodeMap.item
+p4vasp.ODPdom.NodeList.item" class="py-name" href="#" onclick="return doclink('link-60', 'item', 'link-55');">item</a></tt><tt class="py-op">)</tt> </tt>
+</div><a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"> </tt>
+<a name="Repository.remove"></a><div id="Repository.remove-def"><a name="L115"></a><tt class="py-lineno">115</tt> <a class="py-toggle" href="#" id="Repository.remove-toggle" onclick="return toggle('Repository.remove');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#remove">remove</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.remove-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.remove-expanded"><a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-61" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-61', 'data', 'link-32');">data</a></tt><tt class="py-op">.</tt><tt id="link-62" class="py-name" targets="Method p4vasp.Structure.Structure.remove()=p4vasp.Structure.Structure-class.html#remove,Method p4vasp.repository.Repository.remove()=p4vasp.repository.Repository-class.html#remove"><a title="p4vasp.Structure.Structure.remove
+p4vasp.repository.Repository.remove" class="py-name" href="#" onclick="return doclink('link-62', 'remove', 'link-62');">remove</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_remove</tt><tt class="py-op">:</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt id="link-63" class="py-name" targets="Function p4vasp.msg()=p4vasp-module.html#msg"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-63', 'msg', 'link-63');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name" targets="Method p4vasp.message.MessageDriver.exception()=p4vasp.message.MessageDriver-class.html#exception"><a title="p4vasp.message.MessageDriver.exception" class="py-name" href="#" onclick="return doclink('link-64', 'exception', 'link-64');">exception</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line"> </tt>
+<a name="Repository.findActive"></a><div id="Repository.findActive-def"><a name="L125"></a><tt class="py-lineno">125</tt> <a class="py-toggle" href="#" id="Repository.findActive-toggle" onclick="return toggle('Repository.findActive');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#findActive">findActive</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.findActive-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.findActive-expanded"><a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-65" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-65', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">            <tt id="link-66" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-66', 'c', 'link-8');">c</a></tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="p4vasp.applet.getClass
+p4vasp.repository.Factory.getClass
+p4vasp.repository.Repository.getClass" class="py-name" href="#" onclick="return doclink('link-67', 'getClass', 'link-29');">getClass</a></tt><tt class="py-op">(</tt><tt id="link-68" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-68', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">            <tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">]</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-69" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-69', 'data', 'link-32');">data</a></tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt class="py-name">d</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-70" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-70', 'data', 'link-32');">data</a></tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt id="link-71" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-71', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-name">ListType</tt><tt class="py-op">,</tt><tt class="py-name">TupleType</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">            <tt class="py-name">l</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt id="link-72" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-72', 'c', 'link-8');">c</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-op">==</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-string">""</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">                    <tt class="py-name">x</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="p4vasp.applet.getClass
+p4vasp.repository.Factory.getClass
+p4vasp.repository.Repository.getClass" class="py-name" href="#" onclick="return doclink('link-73', 'getClass', 'link-29');">getClass</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">                <tt class="py-name">l</tt><tt class="py-op">.</tt><tt id="link-74" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-74', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">d</tt><tt class="py-op">:</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt id="link-75" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-75', 'c', 'link-8');">c</a></tt> <tt class="py-keyword">in</tt> <tt class="py-name">l</tt><tt class="py-op">:</tt> </tt>
+<a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-76" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-76', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">x</tt> </tt>
+<a name="L142"></a><tt class="py-lineno">142</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L143"></a><tt class="py-lineno">143</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">d</tt><tt class="py-op">:</tt> </tt>
+<a name="L144"></a><tt class="py-lineno">144</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">isinstance</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-77" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-77', 'c', 'link-8');">c</a></tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L145"></a><tt class="py-lineno">145</tt>  <tt class="py-line">                    <tt class="py-keyword">return</tt> <tt class="py-name">x</tt> </tt>
+<a name="L146"></a><tt class="py-lineno">146</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+</div><a name="L147"></a><tt class="py-lineno">147</tt>  <tt class="py-line"> </tt>
+<a name="Repository.activate"></a><div id="Repository.activate-def"><a name="L148"></a><tt class="py-lineno">148</tt> <a class="py-toggle" href="#" id="Repository.activate-toggle" onclick="return toggle('Repository.activate');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#activate">activate</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.activate-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.activate-expanded"><a name="L149"></a><tt class="py-lineno">149</tt>  <tt class="py-line"><tt class="py-comment">#    print "acrivate",x</tt> </tt>
+<a name="L150"></a><tt class="py-lineno">150</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">=</tt><tt class="py-name">None</tt> </tt>
+<a name="L151"></a><tt class="py-lineno">151</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">x</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L152"></a><tt class="py-lineno">152</tt>  <tt class="py-line">            <tt id="link-78" class="py-name" targets="Variable p4vasp.cmatrix.Matrix.m=p4vasp.cmatrix.Matrix-class.html#m"><a title="p4vasp.cmatrix.Matrix.m" class="py-name" href="#" onclick="return doclink('link-78', 'm', 'link-78');">m</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-79" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-79', 'data', 'link-32');">data</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L153"></a><tt class="py-lineno">153</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt id="link-80" class="py-name"><a title="p4vasp.cmatrix.Matrix.m" class="py-name" href="#" onclick="return doclink('link-80', 'm', 'link-78');">m</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L154"></a><tt class="py-lineno">154</tt>  <tt class="py-line">                <tt class="py-keyword">del</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-81" class="py-name"><a title="p4vasp.paint3d.data" class="py-name" href="#" onclick="return doclink('link-81', 'data', 'link-32');">data</a></tt><tt class="py-op">[</tt><tt id="link-82" class="py-name"><a title="p4vasp.cmatrix.Matrix.m" class="py-name" href="#" onclick="return doclink('link-82', 'm', 'link-78');">m</a></tt><tt class="py-op">.</tt><tt class="py-name">index</tt><tt class="py-op">(</tt><tt class="py-name">id</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">]</tt> </tt>
+<a name="L155"></a><tt class="py-lineno">155</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-83" class="py-name"><a title="p4vasp.repository.Repository.insert" class="py-name" href="#" onclick="return doclink('link-83', 'insert', 'link-53');">insert</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L156"></a><tt class="py-lineno">156</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L157"></a><tt class="py-lineno">157</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-84" class="py-name"><a title="p4vasp.repository.Repository.insert" class="py-name" href="#" onclick="return doclink('link-84', 'insert', 'link-53');">insert</a></tt><tt class="py-op">(</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L158"></a><tt class="py-lineno">158</tt>  <tt class="py-line">                <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_append</tt><tt class="py-op">:</tt> </tt>
+<a name="L159"></a><tt class="py-lineno">159</tt>  <tt class="py-line">                    <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L160"></a><tt class="py-lineno">160</tt>  <tt class="py-line"> </tt>
+<a name="L161"></a><tt class="py-lineno">161</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_activate</tt><tt class="py-op">:</tt> </tt>
+<a name="L162"></a><tt class="py-lineno">162</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L163"></a><tt class="py-lineno">163</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">x</tt> </tt>
+</div><a name="L164"></a><tt class="py-lineno">164</tt>  <tt class="py-line"> </tt>
+<a name="Repository.getActive"></a><div id="Repository.getActive-def"><a name="L165"></a><tt class="py-lineno">165</tt> <a class="py-toggle" href="#" id="Repository.getActive-toggle" onclick="return toggle('Repository.getActive');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#getActive">getActive</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.getActive-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.getActive-expanded"><a name="L166"></a><tt class="py-lineno">166</tt>  <tt class="py-line"><tt class="py-comment">#    print "getActive",x</tt> </tt>
+<a name="L167"></a><tt class="py-lineno">167</tt>  <tt class="py-line">        <tt class="py-name">r</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-85" class="py-name" targets="Method p4vasp.repository.Repository.findActive()=p4vasp.repository.Repository-class.html#findActive"><a title="p4vasp.repository.Repository.findActive" class="py-name" href="#" onclick="return doclink('link-85', 'findActive', 'link-85');">findActive</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L168"></a><tt class="py-lineno">168</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">r</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L169"></a><tt class="py-lineno">169</tt>  <tt class="py-line"><tt class="py-comment">#      print "  new"</tt> </tt>
+<a name="L170"></a><tt class="py-lineno">170</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factory</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L171"></a><tt class="py-lineno">171</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">None</tt> </tt>
+<a name="L172"></a><tt class="py-lineno">172</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> <tt class="py-keyword">in</tt> <tt class="py-op">[</tt><tt class="py-name">ListType</tt><tt class="py-op">,</tt><tt class="py-name">TupleType</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+<a name="L173"></a><tt class="py-lineno">173</tt>  <tt class="py-line">                <tt class="py-name">x</tt><tt class="py-op">=</tt><tt class="py-name">x</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+<a name="L174"></a><tt class="py-lineno">174</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-86" class="py-name" targets="Method p4vasp.repository.Repository.activate()=p4vasp.repository.Repository-class.html#activate"><a title="p4vasp.repository.Repository.activate" class="py-name" href="#" onclick="return doclink('link-86', 'activate', 'link-86');">activate</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factory</tt><tt class="py-op">.</tt><tt id="link-87" class="py-name"><a title="p4vasp.applet.Applet.Applet.create
+p4vasp.repository.Descriptor.create
+p4vasp.repository.Factory.create" class="py-name" href="#" onclick="return doclink('link-87', 'create', 'link-27');">create</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L175"></a><tt class="py-lineno">175</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">r</tt> </tt>
+</div><a name="L176"></a><tt class="py-lineno">176</tt>  <tt class="py-line"> </tt>
+<a name="Repository.setTemporaryActive"></a><div id="Repository.setTemporaryActive-def"><a name="L177"></a><tt class="py-lineno">177</tt> <a class="py-toggle" href="#" id="Repository.setTemporaryActive-toggle" onclick="return toggle('Repository.setTemporaryActive');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#setTemporaryActive">setTemporaryActive</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">x</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.setTemporaryActive-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.setTemporaryActive-expanded"><a name="L178"></a><tt class="py-lineno">178</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L179"></a><tt class="py-lineno">179</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_remove</tt><tt class="py-op">:</tt> </tt>
+<a name="L180"></a><tt class="py-lineno">180</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L181"></a><tt class="py-lineno">181</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">temporary_active</tt><tt class="py-op">=</tt><tt class="py-name">x</tt> </tt>
+<a name="L182"></a><tt class="py-lineno">182</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">x</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L183"></a><tt class="py-lineno">183</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_append</tt><tt class="py-op">:</tt> </tt>
+<a name="L184"></a><tt class="py-lineno">184</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+<a name="L185"></a><tt class="py-lineno">185</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">notify_on_activate</tt><tt class="py-op">:</tt> </tt>
+<a name="L186"></a><tt class="py-lineno">186</tt>  <tt class="py-line">                <tt class="py-name">f</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L187"></a><tt class="py-lineno">187</tt>  <tt class="py-line"> </tt>
+<a name="Repository.getStoreProfile"></a><div id="Repository.getStoreProfile-def"><a name="L188"></a><tt class="py-lineno">188</tt> <a class="py-toggle" href="#" id="Repository.getStoreProfile-toggle" onclick="return toggle('Repository.getStoreProfile');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Repository-class.html#getStoreProfile">getStoreProfile</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Repository.getStoreProfile-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Repository.getStoreProfile-expanded"><a name="L189"></a><tt class="py-lineno">189</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-88" class="py-name" targets="Class p4vasp.repository.RepositoryProfile=p4vasp.repository.RepositoryProfile-class.html"><a title="p4vasp.repository.RepositoryProfile" class="py-name" href="#" onclick="return doclink('link-88', 'RepositoryProfile', 'link-88');">RepositoryProfile</a></tt><tt class="py-op">(</tt><tt class="py-name">factoryprofile</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factory</tt><tt class="py-op">.</tt><tt id="link-89" class="py-name" targets="Method p4vasp.applet.AppletRepository.getStoreProfile()=p4vasp.applet.AppletRepository-class.html#getStoreProfile,Method p4vasp.repository.Factory.getStoreProfile()=p4vasp.repository.Factory-class.html#getStoreProfile,Method p4vasp.repository.Repository.getStoreProfile()=p4vasp.repository.Repository-class.html#getStoreProfile"><a title="p4vasp.applet.AppletRepository.getStoreProfile
+p4vasp.repository.Factory.getStoreProfile
+p4vasp.repository.Repository.getStoreProfile" class="py-name" href="#" onclick="return doclink('link-89', 'getStoreProfile', 'link-89');">getStoreProfile</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L190"></a><tt class="py-lineno">190</tt>  <tt class="py-line"> </tt>
+<a name="Descriptor"></a><div id="Descriptor-def"><a name="L191"></a><tt class="py-lineno">191</tt> <a class="py-toggle" href="#" id="Descriptor-toggle" onclick="return toggle('Descriptor');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.Descriptor-class.html">Descriptor</a><tt class="py-op">:</tt> </tt>
+</div><div id="Descriptor-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Descriptor-expanded"><a name="Descriptor.__init__"></a><div id="Descriptor.__init__-def"><a name="L192"></a><tt class="py-lineno">192</tt> <a class="py-toggle" href="#" id="Descriptor.__init__-toggle" onclick="return toggle('Descriptor.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Descriptor-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">Class</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">,</tt><tt class="py-param">keywords</tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-op">]</tt><tt class="py-op">,</tt><tt class="py-param">prototype</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Descriptor.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Descriptor.__init__-expanded"><a name="L193"></a><tt class="py-lineno">193</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">=</tt><tt class="py-name">Class</tt> </tt>
+<a name="L194"></a><tt class="py-lineno">194</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">type</tt><tt class="py-op">(</tt><tt class="py-name">keywords</tt><tt class="py-op">)</tt><tt class="py-op">==</tt><tt class="py-name">StringType</tt><tt class="py-op">:</tt> </tt>
+<a name="L195"></a><tt class="py-lineno">195</tt>  <tt class="py-line">            <tt class="py-name">keywords</tt><tt class="py-op">=</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-name">keywords</tt><tt class="py-op">)</tt> </tt>
+<a name="L196"></a><tt class="py-lineno">196</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">keywords</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-name">keywords</tt><tt class="py-op">)</tt> </tt>
+<a name="L197"></a><tt class="py-lineno">197</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-90" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.prototype=p4vasp.applet.Applet.Applet-class.html#prototype"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-90', 'prototype', 'link-90');">prototype</a></tt><tt class="py-op">=</tt><tt id="link-91" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-91', 'prototype', 'link-90');">prototype</a></tt> </tt>
+</div><a name="L198"></a><tt class="py-lineno">198</tt>  <tt class="py-line"> </tt>
+<a name="Descriptor.getFullName"></a><div id="Descriptor.getFullName-def"><a name="L199"></a><tt class="py-lineno">199</tt> <a class="py-toggle" href="#" id="Descriptor.getFullName-toggle" onclick="return toggle('Descriptor.getFullName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Descriptor-class.html#getFullName">getFullName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Descriptor.getFullName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Descriptor.getFullName-expanded"><a name="L200"></a><tt class="py-lineno">200</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">.</tt><tt class="py-name">__module__</tt><tt class="py-op">==</tt><tt class="py-string">"__main__"</tt><tt class="py-op">:</tt> </tt>
+<a name="L201"></a><tt class="py-lineno">201</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt> </tt>
+<a name="L202"></a><tt class="py-lineno">202</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L203"></a><tt class="py-lineno">203</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">.</tt><tt class="py-name">__module__</tt><tt class="py-op">+</tt><tt class="py-string">"."</tt><tt class="py-op">+</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt> </tt>
+</div><a name="L204"></a><tt class="py-lineno">204</tt>  <tt class="py-line"> </tt>
+<a name="Descriptor.getName"></a><div id="Descriptor.getName-def"><a name="L205"></a><tt class="py-lineno">205</tt> <a class="py-toggle" href="#" id="Descriptor.getName-toggle" onclick="return toggle('Descriptor.getName');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Descriptor-class.html#getName">getName</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Descriptor.getName-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Descriptor.getName-expanded"><a name="L206"></a><tt class="py-lineno">206</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">.</tt><tt class="py-name">__name__</tt> </tt>
+</div><a name="L207"></a><tt class="py-lineno">207</tt>  <tt class="py-line"> </tt>
+<a name="Descriptor.create"></a><div id="Descriptor.create-def"><a name="L208"></a><tt class="py-lineno">208</tt> <a class="py-toggle" href="#" id="Descriptor.create-toggle" onclick="return toggle('Descriptor.create');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.Descriptor-class.html#create">create</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Descriptor.create-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Descriptor.create-expanded"><a name="L209"></a><tt class="py-lineno">209</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-92" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-92', 'prototype', 'link-90');">prototype</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L210"></a><tt class="py-lineno">210</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">apply</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-93', 'prototype', 'link-90');">prototype</a></tt><tt class="py-op">.</tt><tt id="link-94" class="py-name"><a title="p4vasp.applet.Applet.Applet.create
+p4vasp.repository.Descriptor.create
+p4vasp.repository.Factory.create" class="py-name" href="#" onclick="return doclink('link-94', 'create', 'link-27');">create</a></tt><tt class="py-op">,</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+<a name="L211"></a><tt class="py-lineno">211</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L212"></a><tt class="py-lineno">212</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt class="py-name">apply</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">Class</tt><tt class="py-op">,</tt><tt class="py-name">arg</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L213"></a><tt class="py-lineno">213</tt>  <tt class="py-line"> </tt>
+<a name="L214"></a><tt class="py-lineno">214</tt>  <tt class="py-line"> </tt>
+<a name="L215"></a><tt class="py-lineno">215</tt>  <tt class="py-line"> </tt>
+<a name="DescriptorProfile"></a><div id="DescriptorProfile-def"><a name="L216"></a><tt class="py-lineno">216</tt> <a class="py-toggle" href="#" id="DescriptorProfile-toggle" onclick="return toggle('DescriptorProfile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.DescriptorProfile-class.html">DescriptorProfile</a><tt class="py-op">(</tt><tt class="py-base-class">Profile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DescriptorProfile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="DescriptorProfile-expanded"><a name="DescriptorProfile.__init__"></a><div id="DescriptorProfile.__init__-def"><a name="L217"></a><tt class="py-lineno">217</tt> <a class="py-toggle" href="#" id="DescriptorProfile.__init__-toggle" onclick="return toggle('DescriptorProfile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.DescriptorProfile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt id="link-95" class="py-name" targets="Class p4vasp.repository.Descriptor=p4vasp.repository.Descriptor-class.html"><a title="p4vasp.repository.Descriptor" class="py-name" href="#" onclick="return doclink('link-95', 'Descriptor', 'link-95');">Descriptor</a></tt><tt class="py-op">,</tt><tt class="py-param">tagname</tt><tt class="py-op">=</tt><tt class="py-string">"d"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="DescriptorProfile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="DescriptorProfile.__init__-expanded"><a name="L218"></a><tt class="py-lineno">218</tt>  <tt class="py-line">        <tt id="link-96" class="py-name" targets="Class p4vasp.store.Profile=p4vasp.store.Profile-class.html"><a title="p4vasp.store.Profile" class="py-name" href="#" onclick="return doclink('link-96', 'Profile', 'link-96');">Profile</a></tt><tt class="py-op">.</tt><tt id="link-97" class="py-name"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-97', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-98" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.name=p4vasp.applet.Applet.Applet-class.html#name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-98', 'name', 'link-98');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">tagname</tt><tt class="py-op">=</tt><tt class="py-name">tagname</tt><tt class="py-op">,</tt> </tt>
+<a name="L219"></a><tt class="py-lineno">219</tt>  <tt class="py-line">        <tt class="py-name">attr_setup</tt><tt class="py-op">=</tt><tt class="py-string">"stringlist keywords"</tt><tt class="py-op">)</tt> </tt>
+<a name="L220"></a><tt class="py-lineno">220</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-99" class="py-name" targets="Method p4vasp.store.Profile.addAttr()=p4vasp.store.Profile-class.html#addAttr"><a title="p4vasp.store.Profile.addAttr" class="py-name" href="#" onclick="return doclink('link-99', 'addAttr', 'link-99');">addAttr</a></tt><tt class="py-op">(</tt><tt id="link-100" class="py-name" targets="Class p4vasp.store.ClassAttribute=p4vasp.store.ClassAttribute-class.html"><a title="p4vasp.store.ClassAttribute" class="py-name" href="#" onclick="return doclink('link-100', 'ClassAttribute', 'link-100');">ClassAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"class"</tt><tt class="py-op">,</tt><tt class="py-string">"Class"</tt><tt class="py-op">,</tt><tt class="py-name">tag</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">,</tt><tt class="py-name">tagattr</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L221"></a><tt class="py-lineno">221</tt>  <tt class="py-line"> </tt>
+<a name="FactoryProfile"></a><div id="FactoryProfile-def"><a name="L222"></a><tt class="py-lineno">222</tt> <a class="py-toggle" href="#" id="FactoryProfile-toggle" onclick="return toggle('FactoryProfile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.FactoryProfile-class.html">FactoryProfile</a><tt class="py-op">(</tt><tt class="py-base-class">Profile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FactoryProfile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="FactoryProfile-expanded"><a name="FactoryProfile.__init__"></a><div id="FactoryProfile.__init__-def"><a name="L223"></a><tt class="py-lineno">223</tt> <a class="py-toggle" href="#" id="FactoryProfile.__init__-toggle" onclick="return toggle('FactoryProfile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.FactoryProfile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt id="link-101" class="py-name" targets="Class p4vasp.repository.Factory=p4vasp.repository.Factory-class.html"><a title="p4vasp.repository.Factory" class="py-name" href="#" onclick="return doclink('link-101', 'Factory', 'link-101');">Factory</a></tt><tt class="py-op">,</tt><tt class="py-param">tagname</tt><tt class="py-op">=</tt><tt class="py-string">"descriptors"</tt><tt class="py-op">,</tt><tt class="py-param">factory</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FactoryProfile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FactoryProfile.__init__-expanded"><a name="L224"></a><tt class="py-lineno">224</tt>  <tt class="py-line">        <tt id="link-102" class="py-name"><a title="p4vasp.store.Profile" class="py-name" href="#" onclick="return doclink('link-102', 'Profile', 'link-96');">Profile</a></tt><tt class="py-op">.</tt><tt id="link-103" class="py-name"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-103', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-104" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-104', 'name', 'link-98');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">tagname</tt><tt class="py-op">=</tt><tt class="py-name">tagname</tt><tt class="py-op">,</tt><tt class="py-name">disable_attr</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L225"></a><tt class="py-lineno">225</tt>  <tt class="py-line">        <tt class="py-name">dp</tt><tt class="py-op">=</tt><tt id="link-105" class="py-name" targets="Class p4vasp.repository.DescriptorProfile=p4vasp.repository.DescriptorProfile-class.html"><a title="p4vasp.repository.DescriptorProfile" class="py-name" href="#" onclick="return doclink('link-105', 'DescriptorProfile', 'link-105');">DescriptorProfile</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-106" class="py-name" targets="Method p4vasp.store.Profile.addClass()=p4vasp.store.Profile-class.html#addClass"><a title="p4vasp.store.Profile.addClass" class="py-name" href="#" onclick="return doclink('link-106', 'addClass', 'link-106');">addClass</a></tt><tt class="py-op">(</tt><tt class="py-name">dp</tt><tt class="py-op">)</tt> </tt>
+<a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">factory</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">f</tt> <tt class="py-keyword">in</tt> <tt class="py-name">factory</tt><tt class="py-op">.</tt><tt id="link-107" class="py-name"><a title="p4vasp.Dictionary.StructuredDictionary.values
+p4vasp.ODPdom.AttributeList.values
+p4vasp.ODPdom.NamedNodeMap.values" class="py-name" href="#" onclick="return doclink('link-107', 'values', 'link-4');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-108" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-108', 'prototype', 'link-90');">prototype</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                    <tt class="py-keyword">if</tt> <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-109" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-109', 'prototype', 'link-90');">prototype</a></tt><tt class="py-op">.</tt><tt class="py-name">setup_profile</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">                        <tt class="py-name">dp</tt><tt class="py-op">.</tt><tt id="link-110" class="py-name"><a title="p4vasp.store.Profile.addClass" class="py-name" href="#" onclick="return doclink('link-110', 'addClass', 'link-106');">addClass</a></tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-111" class="py-name"><a title="p4vasp.applet.Applet.Applet.prototype" class="py-name" href="#" onclick="return doclink('link-111', 'prototype', 'link-90');">prototype</a></tt><tt class="py-op">.</tt><tt class="py-name">setup_profile</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line"> </tt>
+<a name="FactoryProfile.retrieveObj"></a><div id="FactoryProfile.retrieveObj-def"><a name="L233"></a><tt class="py-lineno">233</tt> <a class="py-toggle" href="#" id="FactoryProfile.retrieveObj-toggle" onclick="return toggle('FactoryProfile.retrieveObj');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.FactoryProfile-class.html#retrieveObj">retrieveObj</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">elem</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FactoryProfile.retrieveObj-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FactoryProfile.retrieveObj-expanded"><a name="L234"></a><tt class="py-lineno">234</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-112" class="py-name" targets="Variable p4vasp.ODPdom.DocumentFragment.nodeType=p4vasp.ODPdom.DocumentFragment-class.html#nodeType"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-112', 'nodeType', 'link-112');">nodeType</a></tt> <tt class="py-op">==</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-113" class="py-name" targets="Variable p4vasp.ODPdom.Node.ELEMENT_NODE=p4vasp.ODPdom.Node-class.html#ELEMENT_NODE"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-113', 'ELEMENT_NODE', 'link-113');">ELEMENT_NODE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L235"></a><tt class="py-lineno">235</tt>  <tt class="py-line">            <tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-114" class="py-name" targets="Method p4vasp.ODPdom.Element.getAttribute()=p4vasp.ODPdom.Element-class.html#getAttribute"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-114', 'getAttribute', 'link-114');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"label"</tt><tt class="py-op">)</tt> </tt>
+<a name="L236"></a><tt class="py-lineno">236</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-115" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-115', 'c', 'link-8');">c</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L237"></a><tt class="py-lineno">237</tt>  <tt class="py-line">                <tt id="link-116" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-116', 'c', 'link-8');">c</a></tt><tt class="py-op">=</tt><tt id="link-117" class="py-name"><a title="p4vasp.repository.Factory" class="py-name" href="#" onclick="return doclink('link-117', 'Factory', 'link-101');">Factory</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L238"></a><tt class="py-lineno">238</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">label</tt><tt class="py-op">:</tt> </tt>
+<a name="L239"></a><tt class="py-lineno">239</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-118" class="py-name" targets="Method p4vasp.store.Profile.getRoot()=p4vasp.store.Profile-class.html#getRoot"><a title="p4vasp.store.Profile.getRoot" class="py-name" href="#" onclick="return doclink('link-118', 'getRoot', 'link-118');">getRoot</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">retrieve_reftable</tt><tt class="py-op">[</tt><tt class="py-name">label</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt id="link-119" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-119', 'c', 'link-8');">c</a></tt> </tt>
+<a name="L240"></a><tt class="py-lineno">240</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">childNodes</tt><tt class="py-op">:</tt> </tt>
+<a name="L241"></a><tt class="py-lineno">241</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-120" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-120', 'nodeType', 'link-112');">nodeType</a></tt><tt class="py-op">==</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-121" class="py-name"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-121', 'ELEMENT_NODE', 'link-113');">ELEMENT_NODE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L242"></a><tt class="py-lineno">242</tt>  <tt class="py-line">                    <tt id="link-122" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-122', 'c', 'link-8');">c</a></tt><tt class="py-op">.</tt><tt id="link-123" class="py-name" targets="Method p4vasp.Property.PropertyManager.add()=p4vasp.Property.PropertyManager-class.html#add,Method p4vasp.applet.AppletFactory.add()=p4vasp.applet.AppletFactory-class.html#add,Method p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add()=p4vasp.paint3d.Paint3DInterface.Paint3DRecorder-class.html#add,Method p4vasp.repository.Factory.add()=p4vasp.repository.Factory-class.html#add"><a title="p4vasp.Property.PropertyManager.add
+p4vasp.applet.AppletFactory.add
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.add
+p4vasp.repository.Factory.add" class="py-name" href="#" onclick="return doclink('link-123', 'add', 'link-123');">add</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-124" class="py-name" targets="Method p4vasp.store.AttributeProfile.retrieve()=p4vasp.store.AttributeProfile-class.html#retrieve,Method p4vasp.store.Profile.retrieve()=p4vasp.store.Profile-class.html#retrieve"><a title="p4vasp.store.AttributeProfile.retrieve
+p4vasp.store.Profile.retrieve" class="py-name" href="#" onclick="return doclink('link-124', 'retrieve', 'link-124');">retrieve</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L243"></a><tt class="py-lineno">243</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-125" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-125', 'c', 'link-8');">c</a></tt> </tt>
+</div><a name="L244"></a><tt class="py-lineno">244</tt>  <tt class="py-line"> </tt>
+<a name="FactoryProfile.writeObj"></a><div id="FactoryProfile.writeObj-def"><a name="L245"></a><tt class="py-lineno">245</tt> <a class="py-toggle" href="#" id="FactoryProfile.writeObj-toggle" onclick="return toggle('FactoryProfile.writeObj');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.FactoryProfile-class.html#writeObj">writeObj</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">f</tt><tt class="py-op">,</tt><tt class="py-param">obj</tt><tt class="py-op">,</tt><tt class="py-param">indent</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-param">label</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="FactoryProfile.writeObj-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="FactoryProfile.writeObj-expanded"><a name="L246"></a><tt class="py-lineno">246</tt>  <tt class="py-line">        <tt class="py-name">in0</tt><tt class="py-op">=</tt><tt id="link-126" class="py-name" targets="Function p4vasp.message.indent()=p4vasp.message-module.html#indent,Function p4vasp.util.indent()=p4vasp.util-module.html#indent"><a title="p4vasp.message.indent
+p4vasp.util.indent" class="py-name" href="#" onclick="return doclink('link-126', 'indent', 'link-126');">indent</a></tt><tt class="py-op">*</tt><tt id="link-127" class="py-name" targets="Variable p4vasp.Array.INDENT=p4vasp.Array-module.html#INDENT,Variable p4vasp.Dictionary.INDENT=p4vasp.Dictionary-module.html#INDENT,Variable p4vasp.GraphCanvas.INDENT=p4vasp.GraphCanvas-module.html#INDENT,Variable p4vasp.GraphPM.INDENT=p4vasp.GraphPM-module.html#INDENT,Variable p4vasp.INDENT=p4vasp-module.html#INDENT,Variable p4vasp.Property.INDENT=p4vasp.Property-module.html#INDENT,Variable p4vasp.Structure.INDENT=p4vasp.Structure-module.html#INDENT,Variable p4vasp.graph.INDENT=p4vasp.graph-module.html#INDENT,Variable p4vasp.repository.INDENT=p4vasp.repository-module.html#INDENT,Variable p4vasp.store.INDENT=p4vasp.store-module.html#INDENT,Variable p4vasp.util.INDENT=p4vasp.util-module.html#INDENT"><a title="p4vasp.Array.INDENT
+p4vasp.Dictionary.INDENT
+p4vasp.GraphCanvas.INDENT
+p4vasp.GraphPM.INDENT
+p4vasp.INDENT
+p4vasp.Property.INDENT
+p4vasp.Structure.INDENT
+p4vasp.graph.INDENT
+p4vasp.repository.INDENT
+p4vasp.store.INDENT
+p4vasp.util.INDENT" class="py-name" href="#" onclick="return doclink('link-127', 'INDENT', 'link-127');">INDENT</a></tt> </tt>
+<a name="L247"></a><tt class="py-lineno">247</tt>  <tt class="py-line">        <tt class="py-name">in1</tt><tt class="py-op">=</tt><tt class="py-name">in0</tt><tt class="py-op">+</tt><tt id="link-128" class="py-name"><a title="p4vasp.Array.INDENT
+p4vasp.Dictionary.INDENT
+p4vasp.GraphCanvas.INDENT
+p4vasp.GraphPM.INDENT
+p4vasp.INDENT
+p4vasp.Property.INDENT
+p4vasp.Structure.INDENT
+p4vasp.graph.INDENT
+p4vasp.repository.INDENT
+p4vasp.store.INDENT
+p4vasp.util.INDENT" class="py-name" href="#" onclick="return doclink('link-128', 'INDENT', 'link-127');">INDENT</a></tt> </tt>
+<a name="L248"></a><tt class="py-lineno">248</tt>  <tt class="py-line"> </tt>
+<a name="L249"></a><tt class="py-lineno">249</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-129" class="py-name" targets="Method p4vasp.Dictionary.Incar.write()=p4vasp.Dictionary.Incar-class.html#write,Method p4vasp.Structure.Structure.write()=p4vasp.Structure.Structure-class.html#write,Method p4vasp.SystemPM.SetupPM.write()=p4vasp.SystemPM.SetupPM-class.html#write,Method p4vasp.cStructure.Structure.write()=p4vasp.cStructure.Structure-class.html#write,Method p4vasp.cmatrix.Vector.write()=p4vasp.cmatrix.Vector-class.html#write,Method p4vasp.matrix.Vector.write()=p4vasp.matrix.Vector-class.html#write,Method p4vasp.message.DummyFile.write()=p4vasp.message.DummyFile-class.html#write,Method p4vasp.message.PrintFile.write()=p4vasp.message.PrintFile-class.html#write,Method p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write()=p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D-class.html#write,Method p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write()=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#write,Method p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write()=p4vasp.paint3d.Paint3DInterface.Paint3DInterface-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write()=p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D-class.html#write,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame-class.html#write,Method p4vasp.store.AttributeProfile.write()=p4vasp.store.AttributeProfile-class.html#write,Method p4vasp.store.Profile.write()=p4vasp.store.Profile-class.html#write"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-129', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'%s&lt;%s'</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">in0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tagname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L250"></a><tt class="py-lineno">250</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">label</tt><tt class="py-op">:</tt> </tt>
+<a name="L251"></a><tt class="py-lineno">251</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-130" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-130', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">' label="%s"'</tt><tt class="py-op">%</tt><tt class="py-name">label</tt><tt class="py-op">)</tt> </tt>
+<a name="L252"></a><tt class="py-lineno">252</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-131" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-131', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"&gt;\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L253"></a><tt class="py-lineno">253</tt>  <tt class="py-line"> </tt>
+<a name="L254"></a><tt class="py-lineno">254</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">obj</tt><tt class="py-op">.</tt><tt id="link-132" class="py-name"><a title="p4vasp.Dictionary.StructuredDictionary.values
+p4vasp.ODPdom.AttributeList.values
+p4vasp.ODPdom.NamedNodeMap.values" class="py-name" href="#" onclick="return doclink('link-132', 'values', 'link-4');">values</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L255"></a><tt class="py-lineno">255</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-133" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-133', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-134" class="py-name"><a title="p4vasp.message.indent
+p4vasp.util.indent" class="py-name" href="#" onclick="return doclink('link-134', 'indent', 'link-126');">indent</a></tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L256"></a><tt class="py-lineno">256</tt>  <tt class="py-line"> </tt>
+<a name="L257"></a><tt class="py-lineno">257</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-135" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-135', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"%s&lt;/%s&gt;\n"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">in0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tagname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L258"></a><tt class="py-lineno">258</tt>  <tt class="py-line"> </tt>
+<a name="RepositoryProfile"></a><div id="RepositoryProfile-def"><a name="L259"></a><tt class="py-lineno">259</tt> <a class="py-toggle" href="#" id="RepositoryProfile-toggle" onclick="return toggle('RepositoryProfile');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.repository.RepositoryProfile-class.html">RepositoryProfile</a><tt class="py-op">(</tt><tt class="py-base-class">Profile</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RepositoryProfile-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="RepositoryProfile-expanded"><a name="RepositoryProfile.__init__"></a><div id="RepositoryProfile.__init__-def"><a name="L260"></a><tt class="py-lineno">260</tt> <a class="py-toggle" href="#" id="RepositoryProfile.__init__-toggle" onclick="return toggle('RepositoryProfile.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.RepositoryProfile-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">name</tt><tt class="py-op">=</tt><tt id="link-136" class="py-name" targets="Class p4vasp.repository.Repository=p4vasp.repository.Repository-class.html"><a title="p4vasp.repository.Repository" class="py-name" href="#" onclick="return doclink('link-136', 'Repository', 'link-136');">Repository</a></tt><tt class="py-op">,</tt><tt class="py-param">tagname</tt><tt class="py-op">=</tt><tt class="py-string">"active"</tt><tt class="py-op">,</tt><tt class="py-param">factoryprofile</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RepositoryProfile.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RepositoryProfile.__init__-expanded"><a name="L261"></a><tt class="py-lineno">261</tt>  <tt class="py-line">        <tt id="link-137" class="py-name"><a title="p4vasp.store.Profile" class="py-name" href="#" onclick="return doclink('link-137', 'Profile', 'link-96');">Profile</a></tt><tt class="py-op">.</tt><tt id="link-138" class="py-name"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-138', '__init__', 'link-3');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt><tt id="link-139" class="py-name"><a title="p4vasp.applet.Applet.Applet.name" class="py-name" href="#" onclick="return doclink('link-139', 'name', 'link-98');">name</a></tt><tt class="py-op">,</tt><tt class="py-name">tagname</tt><tt class="py-op">=</tt><tt class="py-name">tagname</tt><tt class="py-op">,</tt><tt class="py-name">disable_attr</tt><tt class="py-op">=</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L262"></a><tt class="py-lineno">262</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factoryprofile</tt><tt class="py-op">=</tt><tt class="py-name">factoryprofile</tt> </tt>
+<a name="L263"></a><tt class="py-lineno">263</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">factoryprofile</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L264"></a><tt class="py-lineno">264</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-140" class="py-name"><a title="p4vasp.store.Profile.addClass" class="py-name" href="#" onclick="return doclink('link-140', 'addClass', 'link-106');">addClass</a></tt><tt class="py-op">(</tt><tt class="py-name">factoryprofile</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L265"></a><tt class="py-lineno">265</tt>  <tt class="py-line"> </tt>
+<a name="RepositoryProfile.retrieveObj"></a><div id="RepositoryProfile.retrieveObj-def"><a name="L266"></a><tt class="py-lineno">266</tt> <a class="py-toggle" href="#" id="RepositoryProfile.retrieveObj-toggle" onclick="return toggle('RepositoryProfile.retrieveObj');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.RepositoryProfile-class.html#retrieveObj">retrieveObj</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">elem</tt><tt class="py-op">,</tt><tt class="py-param">c</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RepositoryProfile.retrieveObj-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RepositoryProfile.retrieveObj-expanded"><a name="L267"></a><tt class="py-lineno">267</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-141" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-141', 'nodeType', 'link-112');">nodeType</a></tt> <tt class="py-op">==</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-142" class="py-name"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-142', 'ELEMENT_NODE', 'link-113');">ELEMENT_NODE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L268"></a><tt class="py-lineno">268</tt>  <tt class="py-line">            <tt class="py-name">label</tt><tt class="py-op">=</tt><tt class="py-name">elem</tt><tt class="py-op">.</tt><tt id="link-143" class="py-name"><a title="p4vasp.ODPdom.Element.getAttribute" class="py-name" href="#" onclick="return doclink('link-143', 'getAttribute', 'link-114');">getAttribute</a></tt><tt class="py-op">(</tt><tt class="py-string">"label"</tt><tt class="py-op">)</tt> </tt>
+<a name="L269"></a><tt class="py-lineno">269</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt id="link-144" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-144', 'c', 'link-8');">c</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L270"></a><tt class="py-lineno">270</tt>  <tt class="py-line">                <tt id="link-145" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-145', 'c', 'link-8');">c</a></tt><tt class="py-op">=</tt><tt id="link-146" class="py-name"><a title="p4vasp.repository.Repository" class="py-name" href="#" onclick="return doclink('link-146', 'Repository', 'link-136');">Repository</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L271"></a><tt class="py-lineno">271</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">label</tt><tt class="py-op">:</tt> </tt>
+<a name="L272"></a><tt class="py-lineno">272</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-147" class="py-name"><a title="p4vasp.store.Profile.getRoot" class="py-name" href="#" onclick="return doclink('link-147', 'getRoot', 'link-118');">getRoot</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt class="py-name">retrieve_reftable</tt><tt class="py-op">[</tt><tt class="py-name">label</tt><tt class="py-op">]</tt><tt class="py-op">=</tt><tt id="link-148" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-148', 'c', 'link-8');">c</a></tt> </tt>
+<a name="L273"></a><tt class="py-lineno">273</tt>  <tt class="py-line">            <tt class="py-name">fp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factoryprofile</tt> </tt>
+<a name="L274"></a><tt class="py-lineno">274</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">fp</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L275"></a><tt class="py-lineno">275</tt>  <tt class="py-line">                <tt class="py-name">fp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt> </tt>
+<a name="L276"></a><tt class="py-lineno">276</tt>  <tt class="py-line">            <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">elem</tt><tt class="py-op">.</tt><tt class="py-name">childNodes</tt><tt class="py-op">:</tt> </tt>
+<a name="L277"></a><tt class="py-lineno">277</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-149" class="py-name"><a title="p4vasp.ODPdom.DocumentFragment.nodeType" class="py-name" href="#" onclick="return doclink('link-149', 'nodeType', 'link-112');">nodeType</a></tt><tt class="py-op">==</tt><tt class="py-name">x</tt><tt class="py-op">.</tt><tt id="link-150" class="py-name"><a title="p4vasp.ODPdom.Node.ELEMENT_NODE" class="py-name" href="#" onclick="return doclink('link-150', 'ELEMENT_NODE', 'link-113');">ELEMENT_NODE</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L278"></a><tt class="py-lineno">278</tt>  <tt class="py-line">                    <tt id="link-151" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-151', 'c', 'link-8');">c</a></tt><tt class="py-op">.</tt><tt id="link-152" class="py-name"><a title="p4vasp.Structure.AtomInfo.append
+p4vasp.Structure.Structure.append
+p4vasp.cStructure.AtomInfo.append
+p4vasp.cStructure.Structure.append
+p4vasp.graph.Graph.append
+p4vasp.graph.World.append
+p4vasp.repository.Repository.append" class="py-name" href="#" onclick="return doclink('link-152', 'append', 'link-6');">append</a></tt><tt class="py-op">(</tt><tt class="py-name">fp</tt><tt class="py-op">.</tt><tt id="link-153" class="py-name"><a title="p4vasp.store.AttributeProfile.retrieve
+p4vasp.store.Profile.retrieve" class="py-name" href="#" onclick="return doclink('link-153', 'retrieve', 'link-124');">retrieve</a></tt><tt class="py-op">(</tt><tt class="py-name">x</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L279"></a><tt class="py-lineno">279</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> <tt id="link-154" class="py-name"><a title="p4vasp.SystemPM.c" class="py-name" href="#" onclick="return doclink('link-154', 'c', 'link-8');">c</a></tt> </tt>
+</div><a name="L280"></a><tt class="py-lineno">280</tt>  <tt class="py-line"> </tt>
+<a name="RepositoryProfile.writeObj"></a><div id="RepositoryProfile.writeObj-def"><a name="L281"></a><tt class="py-lineno">281</tt> <a class="py-toggle" href="#" id="RepositoryProfile.writeObj-toggle" onclick="return toggle('RepositoryProfile.writeObj');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.repository.RepositoryProfile-class.html#writeObj">writeObj</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">f</tt><tt class="py-op">,</tt><tt class="py-param">obj</tt><tt class="py-op">,</tt><tt class="py-param">indent</tt><tt class="py-op">=</tt><tt class="py-number">0</tt><tt class="py-op">,</tt><tt class="py-param">label</tt><tt class="py-op">=</tt><tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="RepositoryProfile.writeObj-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="RepositoryProfile.writeObj-expanded"><a name="L282"></a><tt class="py-lineno">282</tt>  <tt class="py-line">        <tt class="py-name">in0</tt><tt class="py-op">=</tt><tt id="link-155" class="py-name"><a title="p4vasp.message.indent
+p4vasp.util.indent" class="py-name" href="#" onclick="return doclink('link-155', 'indent', 'link-126');">indent</a></tt><tt class="py-op">*</tt><tt id="link-156" class="py-name"><a title="p4vasp.Array.INDENT
+p4vasp.Dictionary.INDENT
+p4vasp.GraphCanvas.INDENT
+p4vasp.GraphPM.INDENT
+p4vasp.INDENT
+p4vasp.Property.INDENT
+p4vasp.Structure.INDENT
+p4vasp.graph.INDENT
+p4vasp.repository.INDENT
+p4vasp.store.INDENT
+p4vasp.util.INDENT" class="py-name" href="#" onclick="return doclink('link-156', 'INDENT', 'link-127');">INDENT</a></tt> </tt>
+<a name="L283"></a><tt class="py-lineno">283</tt>  <tt class="py-line">        <tt class="py-name">in1</tt><tt class="py-op">=</tt><tt class="py-name">in0</tt><tt class="py-op">+</tt><tt id="link-157" class="py-name"><a title="p4vasp.Array.INDENT
+p4vasp.Dictionary.INDENT
+p4vasp.GraphCanvas.INDENT
+p4vasp.GraphPM.INDENT
+p4vasp.INDENT
+p4vasp.Property.INDENT
+p4vasp.Structure.INDENT
+p4vasp.graph.INDENT
+p4vasp.repository.INDENT
+p4vasp.store.INDENT
+p4vasp.util.INDENT" class="py-name" href="#" onclick="return doclink('link-157', 'INDENT', 'link-127');">INDENT</a></tt> </tt>
+<a name="L284"></a><tt class="py-lineno">284</tt>  <tt class="py-line"> </tt>
+<a name="L285"></a><tt class="py-lineno">285</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-158" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-158', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">'%s&lt;%s'</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">in0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tagname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L286"></a><tt class="py-lineno">286</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">label</tt><tt class="py-op">:</tt> </tt>
+<a name="L287"></a><tt class="py-lineno">287</tt>  <tt class="py-line">            <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-159" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-159', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">' label="%s"'</tt><tt class="py-op">%</tt><tt class="py-name">label</tt><tt class="py-op">)</tt> </tt>
+<a name="L288"></a><tt class="py-lineno">288</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-160" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-160', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"&gt;\n"</tt><tt class="py-op">)</tt> </tt>
+<a name="L289"></a><tt class="py-lineno">289</tt>  <tt class="py-line"><tt class="py-comment">#    print obj</tt> </tt>
+<a name="L290"></a><tt class="py-lineno">290</tt>  <tt class="py-line">        <tt class="py-name">fp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">factoryprofile</tt> </tt>
+<a name="L291"></a><tt class="py-lineno">291</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">fp</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L292"></a><tt class="py-lineno">292</tt>  <tt class="py-line">            <tt class="py-name">fp</tt><tt class="py-op">=</tt><tt class="py-name">self</tt> </tt>
+<a name="L293"></a><tt class="py-lineno">293</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt class="py-name">obj</tt><tt class="py-op">:</tt> </tt>
+<a name="L294"></a><tt class="py-lineno">294</tt>  <tt class="py-line">            <tt class="py-name">fp</tt><tt class="py-op">.</tt><tt id="link-161" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-161', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">f</tt><tt class="py-op">,</tt><tt class="py-name">x</tt><tt class="py-op">,</tt><tt id="link-162" class="py-name"><a title="p4vasp.message.indent
+p4vasp.util.indent" class="py-name" href="#" onclick="return doclink('link-162', 'indent', 'link-126');">indent</a></tt><tt class="py-op">+</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L295"></a><tt class="py-lineno">295</tt>  <tt class="py-line"> </tt>
+<a name="L296"></a><tt class="py-lineno">296</tt>  <tt class="py-line">        <tt class="py-name">f</tt><tt class="py-op">.</tt><tt id="link-163" class="py-name"><a title="p4vasp.Dictionary.Incar.write
+p4vasp.Structure.Structure.write
+p4vasp.SystemPM.SetupPM.write
+p4vasp.cStructure.Structure.write
+p4vasp.cmatrix.Vector.write
+p4vasp.matrix.Vector.write
+p4vasp.message.DummyFile.write
+p4vasp.message.PrintFile.write
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.write
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.write
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.write
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.write
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.write
+p4vasp.store.AttributeProfile.write
+p4vasp.store.Profile.write" class="py-name" href="#" onclick="return doclink('link-163', 'write', 'link-129');">write</a></tt><tt class="py-op">(</tt><tt class="py-string">"%s&lt;/%s&gt;\n"</tt><tt class="py-op">%</tt><tt class="py-op">(</tt><tt class="py-name">in0</tt><tt class="py-op">,</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">tagname</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L297"></a><tt class="py-lineno">297</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:14 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

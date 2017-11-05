@@ -1,0 +1,1154 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.Array.Array</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        <a href="p4vasp.Array-module.html">Module&nbsp;Array</a> ::
+        Class&nbsp;Array
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.Array.Array-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Array</h1><p class="nomargin-top"><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array">source&nbsp;code</a></span></p>
+<center>
+
+</center>
+<hr />
+<pre class="literalblock">
+
+Arbitrary (reasonably :-) dimensional array of
+records.
+
+Records are defined by *field* and *type* attributes.
+The *self.field* is a list of field names, while *self.type* is a list of
+field types.
+The *self.format* attribute is a list of formats for all fields.
+The Array can be acessed as a multidimensional python array
+(use a[i][j][k], a[i,j,k] only works if converted to *numpy* array.)
+The records are just lists of values ordered the same way as the *field* list is.
+The more convenient way to access records is to use *getRecord()* method,
+where the field can be acessed this way: my_array.getRecord(i,j,k).my_field.
+
+The *dimension* attribute is a list of names
+for every dimension (axis).
+
+Variable *name* contains the name attribute
+and *element* (optionaly) contains the element from which the VArray was constructed.
+
+When the attribute *rcmode* is true, the Array will be exported to xml
+by using the &lt;rc&gt; convention, &lt;r&gt; convention is used otherwise.
+
+Configure new Array example:
+
+  # Create array:
+  a=Array(name='example')
+  # Description of every dimension is required:
+  a.dimension=['point']
+  # Create fields x and y with types and formats:
+  a.setupFields(['x','y'],[INT_TYPE,FLOAT_TYPE],['%3d','%+14.10f'])
+  # Append new record:
+  a.append([0,0.5])
+  # Append new record using ArrayRecord:
+  r=ArrayRecord(a)
+  r.x=1
+  r.y=5.6
+  a.append(r.getRecord())
+  # print array:
+  print a
+  # Print array in xml representation:
+  print a.toxml()
+
+</pre>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Nested Classes</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-NestedClasses"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>_abcoll.Sized</code></b>:
+      <code><a href="abc.ABCMeta-class.html">__metaclass__</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Instance Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-InstanceMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>=<span class="summary-sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">fastflag</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Create the Array.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#__str__" class="summary-sig-name">__str__</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Represents VArray as a string.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.__str__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#addField" class="summary-sig-name">addField</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">t</span>=<span class="summary-sig-default"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></span>,
+        <span class="summary-sig-arg">format</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">value</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Add a new *field* of type *t* (optional).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.addField">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#addFieldIntoSet" class="summary-sig-name">addFieldIntoSet</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">set</span>,
+        <span class="summary-sig-arg">value</span>,
+        <span class="summary-sig-arg">level</span>)</span><br />
+      Internal function used to add a field into set.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.addFieldIntoSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#arrangeSet" class="summary-sig-name">arrangeSet</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">set</span>,
+        <span class="summary-sig-arg">indexes</span>,
+        <span class="summary-sig-arg">level</span>)</span><br />
+      Internal function for reordering fields in set.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.arrangeSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="defaultFormat"></a><span class="summary-sig-name">defaultFormat</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Reset *format* to default formats for particular types.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.defaultFormat">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="fieldIndex"></a><span class="summary-sig-name">fieldIndex</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>)</span><br />
+      Get index of *field* in record or *None* if not in *self.field* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.fieldIndex">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFieldType"></a><span class="summary-sig-name">getFieldType</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>)</span><br />
+      Return the type of *field*  or *None* if not in *self.field* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.getFieldType">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getFormatForField"></a><span class="summary-sig-name">getFormatForField</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>)</span><br />
+      Return the format for *field*  or *None* if not in *self.field* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.getFormatForField">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getRecord"></a><span class="summary-sig-name">getRecord</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*arg</span>)</span><br />
+      Gets a record specified by index(es) (or a list of indexes) as a 
+      *ArrayRecord*, which is a more convenient way of accessing records.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.getRecord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="getRecordFromSet"></a><span class="summary-sig-name">getRecordFromSet</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">set</span>,
+        <span class="summary-sig-arg">path</span>)</span><br />
+      Internal function used by *getRecord()* to get to the right record.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.getRecordFromSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#readFromNode" class="summary-sig-name">readFromNode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">data</span>,
+        <span class="summary-sig-arg">late</span>=<span class="summary-sig-default">-1</span>,
+        <span class="summary-sig-arg">fastflag</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Read the Array content from the XML element node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.readFromNode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="removeField"></a><span class="summary-sig-name">removeField</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>)</span><br />
+      Remove field *field* (field name).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.removeField">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="removeFields"></a><span class="summary-sig-name">removeFields</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>)</span><br />
+      Remove fields *fields* (list of field names).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.removeFields">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resolveRecordColumnedElement"></a><span class="summary-sig-name">resolveRecordColumnedElement</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>)</span><br />
+      Internal function used for parsing a &lt;rc&gt; node *e* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordColumnedElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resolveRecordElement"></a><span class="summary-sig-name">resolveRecordElement</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>)</span><br />
+      Internal function used for parsing a &lt;r&gt; node *e* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordElement">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#resolveRecordSet" class="summary-sig-name">resolveRecordSet</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>)</span><br />
+      Internal function used for parsing a &lt;set&gt; node *e* containing 
+      &lt;r&gt; or &lt;rc&gt; nodes .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#resolveRecordSet_F" class="summary-sig-name">resolveRecordSet_F</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>)</span><br />
+      Internal function used for parsing a &lt;set&gt; node *e* containing 
+      &lt;r&gt; or &lt;rc&gt; nodes .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet_F">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#resolveRecordSet_L" class="summary-sig-name">resolveRecordSet_L</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>)</span><br />
+      Internal function used for parsing a &lt;set&gt; node *e* containing 
+      &lt;r&gt; or &lt;rc&gt; nodes .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet_L">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resolveSet"></a><span class="summary-sig-name">resolveSet</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">e</span>,
+        <span class="summary-sig-arg">level</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">late</span>=<span class="summary-sig-default">-1</span>,
+        <span class="summary-sig-arg">fastflag</span>=<span class="summary-sig-default">0</span>)</span><br />
+      Internal function used for parsing a &lt;set&gt; node *e* of level 
+      *level* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveSet">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="retypeRecord"></a><span class="summary-sig-name">retypeRecord</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">r</span>)</span><br />
+      Retype record *r* to have the types as in *self.type* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.retypeRecord">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="setFormatForField"></a><span class="summary-sig-name">setFormatForField</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">field</span>,
+        <span class="summary-sig-arg">format</span>)</span><br />
+      Set the format for *field* .</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.setFormatForField">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#setupFields" class="summary-sig-name">setupFields</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fields</span>,
+        <span class="summary-sig-arg">types</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">formats</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">values</span>=<span class="summary-sig-default">None</span>)</span><br />
+      This function can be used for rearanging the ordering of fields, as 
+      well as for adding and removing of fields.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.setupFields">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#writeSetTag" class="summary-sig-name">writeSetTag</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">set</span>,
+        <span class="summary-sig-arg">level</span>,
+        <span class="summary-sig-arg">indent</span>,
+        <span class="summary-sig-arg">rcmode</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Internal function used to write a &lt;set&gt; node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.writeSetTag">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="p4vasp.Array.Array-class.html#writexml" class="summary-sig-name">writexml</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>,
+        <span class="summary-sig-arg">indent</span>=<span class="summary-sig-default">0</span>,
+        <span class="summary-sig-arg">rcmode</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Write in xml format to file *f* indentet by *indent* (integer).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.writexml">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="p4vasp.Array.TopArray-class.html">TopArray</a></code></b>:
+      <code><a href="p4vasp.Array.TopArray-class.html#convertToNumeric">convertToNumeric</a></code>,
+      <code><a href="p4vasp.Array.TopArray-class.html#shape">shape</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>UserList.UserList</code></b>:
+      <code>__add__</code>,
+      <code>__cmp__</code>,
+      <code>__contains__</code>,
+      <code>__delitem__</code>,
+      <code>__delslice__</code>,
+      <code>__eq__</code>,
+      <code>__ge__</code>,
+      <code>__getitem__</code>,
+      <code>__getslice__</code>,
+      <code>__gt__</code>,
+      <code>__iadd__</code>,
+      <code>__imul__</code>,
+      <code>__le__</code>,
+      <code>__len__</code>,
+      <code>__lt__</code>,
+      <code>__mul__</code>,
+      <code>__ne__</code>,
+      <code>__radd__</code>,
+      <code>__repr__</code>,
+      <code>__rmul__</code>,
+      <code>__setitem__</code>,
+      <code>__setslice__</code>,
+      <code>append</code>,
+      <code>count</code>,
+      <code>extend</code>,
+      <code>index</code>,
+      <code>insert</code>,
+      <code>pop</code>,
+      <code>remove</code>,
+      <code>reverse</code>,
+      <code>sort</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>_abcoll.Sequence</code></b>:
+      <code>__iter__</code>,
+      <code>__reversed__</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="p4vasp.util.ToXMLHelper-class.html">util.ToXMLHelper</a></code></b>:
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#getDefaultFormat">getDefaultFormat</a></code>,
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#toxml">toxml</a></code>,
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#xmlrepr">xmlrepr</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Methods</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassMethods"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>_abcoll.Sized</code></b>:
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Class Variables</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-ClassVariables"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="p4vasp.Array.TopArray-class.html">TopArray</a></code></b> (private):
+      <code><a href="p4vasp.Array.TopArray-class.html#_abc_cache" onclick="show_private();">_abc_cache</a></code>,
+      <code><a href="p4vasp.Array.TopArray-class.html#_abc_negative_cache" onclick="show_private();">_abc_negative_cache</a></code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>UserList.UserList</code></b>:
+      <code>__abstractmethods__</code>,
+      <code>__hash__</code>
+      </p>
+    <div class="private">    <p class="indent-wrapped-lines"><b>Inherited from <code>UserList.UserList</code></b> (private):
+      <code>_abc_negative_cache_version</code>,
+      <code>_abc_registry</code>
+      </p></div>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="p4vasp.util.ToXMLHelper-class.html">util.ToXMLHelper</a></code></b>:
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#float_format">float_format</a></code>,
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#int_format">int_format</a></code>,
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#logical_format">logical_format</a></code>,
+      <code><a href="p4vasp.util.ToXMLHelper-class.html#string_format">string_format</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Properties</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-Properties"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td colspan="2" class="table-header">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tr valign="top">
+        <td align="left"><span class="table-header">Method Details</span></td>
+        <td align="right" valign="top"
+         ><span class="options">[<a href="#section-MethodDetails"
+         class="privatelink" onclick="toggle_private();"
+         >hide private</a>]</span></td>
+      </tr>
+    </table>
+  </td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>=<span class="sig-default"><code class="variable-group">[</code><code class="variable-group">]</code></span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">fastflag</span>=<span class="sig-default">0</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Create the Array. *data* can be a python list, *Array*, *UserList* or 
+  *numpy* array instance, or XML element node.</p>
+  <p>*name* can specify the name attribute.</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="__str__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__str__</span>(<span class="sig-arg">self</span>)</span>
+    <br /><em class="fname">(Informal representation operator)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.__str__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Represents VArray as a string. All values are included, so this can be
+  a quite long string...</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__str__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="addField"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addField</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">field</span>,
+        <span class="sig-arg">t</span>=<span class="sig-default"><code class="variable-quote">'</code><code class="variable-string">float</code><code class="variable-quote">'</code></span>,
+        <span class="sig-arg">format</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">value</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.addField">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Add a new *field* of type *t* (optional). Optionaly a *format* for 
+  this type can be specified as well as the initial *value* .</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="addFieldIntoSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">addFieldIntoSet</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">set</span>,
+        <span class="sig-arg">value</span>,
+        <span class="sig-arg">level</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.addFieldIntoSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function used to add a field into set. Uset by *addField()* 
+  .</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="arrangeSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">arrangeSet</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">set</span>,
+        <span class="sig-arg">indexes</span>,
+        <span class="sig-arg">level</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.arrangeSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function for reordering fields in set. Used by 
+  *removeFields()* , *removeFields()* ,*removeField()* and *setupFields()* 
+  .</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="readFromNode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">readFromNode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">data</span>,
+        <span class="sig-arg">late</span>=<span class="sig-default">-1</span>,
+        <span class="sig-arg">fastflag</span>=<span class="sig-default">0</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.readFromNode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Read the Array content from the XML element node. Old data are 
+  replaced by the new content.</p>
+  <p>*late* attribute controlls the level of parsing: If *late* = -1 
+  (default) everything is parsed after immediately. If late has 
+  non-negative value, *late* outer dimmensions are parsed immediately and 
+  the rest dimmensions are accessed through the *LateLists* . If *fastflag*
+  is true, then nodes are parsed using FArray2D. the innermost set has to 
+  contain only &lt;r&gt; nodes with float numbers.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="resolveRecordSet"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">resolveRecordSet</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">e</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function used for parsing a &lt;set&gt; node *e* containing 
+  &lt;r&gt; or &lt;rc&gt; nodes . &lt;r&gt; and &lt;rc&gt; nodes must not 
+  be mixed !</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="resolveRecordSet_F"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">resolveRecordSet_F</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">e</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet_F">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function used for parsing a &lt;set&gt; node *e* containing 
+  &lt;r&gt; or &lt;rc&gt; nodes . This function parses the set into 
+  FArray2D. It is only able to parse &lt;r&gt; nodes containing float 
+  numbers. The *resolveRecordSet* is used as fallback.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="resolveRecordSet_L"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">resolveRecordSet_L</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">e</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.resolveRecordSet_L">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function used for parsing a &lt;set&gt; node *e* containing 
+  &lt;r&gt; or &lt;rc&gt; nodes . &lt;r&gt; and &lt;rc&gt; nodes must not 
+  be mixed ! (LateList version)</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="setupFields"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">setupFields</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">fields</span>,
+        <span class="sig-arg">types</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">formats</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">values</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.setupFields">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>This function can be used for rearanging the ordering of fields, as 
+  well as for adding and removing of fields.</p>
+  <p>Parameter *fields* contains the new *field* list.</p>
+  <p>Parameter *types* are the field types (optional, float by default). 
+  The *types* will not change the old type.</p>
+  <p>The *formats* parameter can specify the format. If not specified, the 
+  old format (or default format) will be used.</p>
+  <p>The *values* can be used the initial values of new fields.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="writeSetTag"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">writeSetTag</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">f</span>,
+        <span class="sig-arg">set</span>,
+        <span class="sig-arg">level</span>,
+        <span class="sig-arg">indent</span>,
+        <span class="sig-arg">rcmode</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.writeSetTag">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Internal function used to write a &lt;set&gt; node. Used in 
+  *writexml()* .</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="writexml"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">writexml</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">f</span>,
+        <span class="sig-arg">indent</span>=<span class="sig-default">0</span>,
+        <span class="sig-arg">rcmode</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="p4vasp.Array-pysrc.html#Array.writexml">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Write in xml format to file *f* indentet by *indent* (integer). If 
+  rcmode is true, &lt;rc&gt; convention will be used. If it is *None*, 
+  *self.rcmode* value will be used.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:08 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

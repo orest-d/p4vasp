@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>p4vasp.applet.MultiplyCellApplet</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="p4vasp-module.html">Package&nbsp;p4vasp</a> ::
+        <a href="p4vasp.applet-module.html">Package&nbsp;applet</a> ::
+        Module&nbsp;MultiplyCellApplet
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="p4vasp.applet.MultiplyCellApplet-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="p4vasp.applet.MultiplyCellApplet-module.html">Module p4vasp.applet.MultiplyCellApplet</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#!/usr/bin/python</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment">#  p4vasp is a GUI-program and a library for processing outputs of the</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment">#  Vienna Ab-inition Simulation Package (VASP)</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment">#  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment">#  Copyright (C) 2003  Orest Dubay &lt;odubay@users.sourceforge.net&gt;</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#  This program is free software; you can redistribute it and/or modify</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#  it under the terms of the GNU General Public License as published by</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#  the Free Software Foundation; either version 2 of the License, or</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment">#  (at your option) any later version.</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment">#  This program is distributed in the hope that it will be useful,</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment">#  but WITHOUT ANY WARRANTY; without even the implied warranty of</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment">#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment">#  GNU General Public License for more details.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"><tt class="py-comment">#   You should have received a copy of the GNU General Public License</tt> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-comment">#  along with this program; if not, write to the Free Software</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-comment">#  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Package p4vasp=p4vasp-module.html"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-0', 'p4vasp', 'link-0');">p4vasp</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-1', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Module p4vasp.store=p4vasp.store-module.html"><a title="p4vasp.store" class="py-name" href="#" onclick="return doclink('link-2', 'store', 'link-2');">store</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-3', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Package p4vasp.applet=p4vasp.applet-module.html"><a title="p4vasp.applet" class="py-name" href="#" onclick="return doclink('link-4', 'applet', 'link-4');">applet</a></tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Module p4vasp.applet.Applet=p4vasp.applet.Applet-module.html,Class p4vasp.applet.Applet.Applet=p4vasp.applet.Applet.Applet-class.html"><a title="p4vasp.applet.Applet
+p4vasp.applet.Applet.Applet" class="py-name" href="#" onclick="return doclink('link-5', 'Applet', 'link-5');">Applet</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-6" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-6', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Module p4vasp.Structure=p4vasp.Structure-module.html,Class p4vasp.Structure.Structure=p4vasp.Structure.Structure-class.html,Class p4vasp.cStructure.Structure=p4vasp.cStructure.Structure-class.html"><a title="p4vasp.Structure
+p4vasp.Structure.Structure
+p4vasp.cStructure.Structure" class="py-name" href="#" onclick="return doclink('link-7', 'Structure', 'link-7');">Structure</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-8" class="py-name"><a title="p4vasp" class="py-name" href="#" onclick="return doclink('link-8', 'p4vasp', 'link-0');">p4vasp</a></tt><tt class="py-op">.</tt><tt id="link-9" class="py-name" targets="Module p4vasp.SystemPM=p4vasp.SystemPM-module.html,Class p4vasp.SystemPM.SystemPM=p4vasp.SystemPM.SystemPM-class.html"><a title="p4vasp.SystemPM
+p4vasp.SystemPM.SystemPM" class="py-name" href="#" onclick="return doclink('link-9', 'SystemPM', 'link-9');">SystemPM</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gobject</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line"> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"> </tt>
+<a name="MultiplyCellApplet"></a><div id="MultiplyCellApplet-def"><a name="L33"></a><tt class="py-lineno"> 33</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet-toggle" onclick="return toggle('MultiplyCellApplet');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html">MultiplyCellApplet</a><tt class="py-op">(</tt><tt class="py-base-class">Applet</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="MultiplyCellApplet-expanded"><a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line">    <tt id="link-10" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.menupath=p4vasp.applet.Applet.Applet-class.html#menupath,Variable p4vasp.applet.BuilderApplet.BuilderApplet.menupath=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#menupath,Variable p4vasp.applet.CommitApplet.CommitApplet.menupath=p4vasp.applet.CommitApplet.CommitApplet-class.html#menupath,Variable p4vasp.applet.DBApplet.DBApplet.menupath=p4vasp.applet.DBApplet.DBApplet-class.html#menupath,Variable p4vasp.applet.DielectricApplet.DielectricApplet.menupath=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#menupath,Variable p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.menupath=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#menupath,Variable p4vasp.applet.ElectronicApplet.ElectronicApplet.menupath=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#menupath,Variable p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.menupath=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#menupath,Variable p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.menupath=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#menupath,Variable p4vasp.applet.ExportApplet.ExportApplet.menupath=p4vasp.applet.ExportApplet.ExportApplet-class.html#menupath,Variable p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.menupath=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#menupath,Variable p4vasp.applet.InfoApplet.InfoApplet.menupath=p4vasp.applet.InfoApplet.InfoApplet-class.html#menupath,Variable p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.menupath=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#menupath,Variable p4vasp.applet.LatticeApplet.LatticeApplet.menupath=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#menupath,Variable p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.menupath=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#menupath,Variable p4vasp.applet.MeasureApplet.MeasureApplet.menupath=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#menupath,Variable p4vasp.applet.MoveApplet.MoveApplet.menupath=p4vasp.applet.MoveApplet.MoveApplet-class.html#menupath,Variable p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.menupath=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#menupath,Variable p4vasp.applet.NewApplet.NewApplet.menupath=p4vasp.applet.NewApplet.NewApplet-class.html#menupath,Variable p4vasp.applet.RotateApplet.RotateApplet.menupath=p4vasp.applet.RotateApplet.RotateApplet-class.html#menupath,Variable p4vasp.applet.STMWindowApplet.STMWindowApplet.menupath=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#menupath,Variable p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.menupath=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#menupath,Variable p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.menupath=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#menupath,Variable p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.menupath=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#menupath,Variable p4vasp.applet.StructureApplet.StructureApplet.menupath=p4vasp.applet.StructureApplet.StructureApplet-class.html#menupath,Variable p4vasp.applet.StructureWindowApplet.StructureWindowApplet.menupath=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#menupath,Variable p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.menupath=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#menupath,Variable p4vasp.applet.VACApplet.VACApplet.menupath=p4vasp.applet.VACApplet.VACApplet-class.html#menupath"><a title="p4vasp.applet.Applet.Applet.menupath
+p4vasp.applet.BuilderApplet.BuilderApplet.menupath
+p4vasp.applet.CommitApplet.CommitApplet.menupath
+p4vasp.applet.DBApplet.DBApplet.menupath
+p4vasp.applet.DielectricApplet.DielectricApplet.menupath
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.menupath
+p4vasp.applet.ElectronicApplet.ElectronicApplet.menupath
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.menupath
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.menupath
+p4vasp.applet.ExportApplet.ExportApplet.menupath
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.menupath
+p4vasp.applet.InfoApplet.InfoApplet.menupath
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.menupath
+p4vasp.applet.LatticeApplet.LatticeApplet.menupath
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.menupath
+p4vasp.applet.MeasureApplet.MeasureApplet.menupath
+p4vasp.applet.MoveApplet.MoveApplet.menupath
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.menupath
+p4vasp.applet.NewApplet.NewApplet.menupath
+p4vasp.applet.RotateApplet.RotateApplet.menupath
+p4vasp.applet.STMWindowApplet.STMWindowApplet.menupath
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.menupath
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.menupath
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.menupath
+p4vasp.applet.StructureApplet.StructureApplet.menupath
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.menupath
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.menupath
+p4vasp.applet.VACApplet.VACApplet.menupath" class="py-name" href="#" onclick="return doclink('link-10', 'menupath', 'link-10');">menupath</a></tt><tt class="py-op">=</tt><tt class="py-op">[</tt><tt class="py-string">"Edit"</tt><tt class="py-op">,</tt><tt class="py-string">"Multiply cell"</tt><tt class="py-op">]</tt> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line">    <tt id="link-11" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.showmode=p4vasp.applet.Applet.Applet-class.html#showmode,Variable p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.showmode=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#showmode,Variable p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.showmode=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#showmode,Variable p4vasp.applet.ExportApplet.ExportApplet.showmode=p4vasp.applet.ExportApplet.ExportApplet-class.html#showmode,Variable p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.showmode=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#showmode,Variable p4vasp.applet.LatticeApplet.LatticeApplet.showmode=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#showmode,Variable p4vasp.applet.MoveApplet.MoveApplet.showmode=p4vasp.applet.MoveApplet.MoveApplet-class.html#showmode,Variable p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.showmode=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#showmode,Variable p4vasp.applet.RotateApplet.RotateApplet.showmode=p4vasp.applet.RotateApplet.RotateApplet-class.html#showmode,Variable p4vasp.applet.STMWindowApplet.STMWindowApplet.showmode=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#showmode,Variable p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.showmode=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#showmode,Variable p4vasp.applet.StructureWindowApplet.StructureWindowApplet.showmode=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#showmode"><a title="p4vasp.applet.Applet.Applet.showmode
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.showmode
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.showmode
+p4vasp.applet.ExportApplet.ExportApplet.showmode
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.showmode
+p4vasp.applet.LatticeApplet.LatticeApplet.showmode
+p4vasp.applet.MoveApplet.MoveApplet.showmode
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.showmode
+p4vasp.applet.RotateApplet.RotateApplet.showmode
+p4vasp.applet.STMWindowApplet.STMWindowApplet.showmode
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.showmode
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.showmode" class="py-name" href="#" onclick="return doclink('link-11', 'showmode', 'link-11');">showmode</a></tt><tt class="py-op">=</tt><tt id="link-12" class="py-name"><a title="p4vasp.applet.Applet
+p4vasp.applet.Applet.Applet" class="py-name" href="#" onclick="return doclink('link-12', 'Applet', 'link-5');">Applet</a></tt><tt class="py-op">.</tt><tt id="link-13" class="py-name" targets="Variable p4vasp.applet.Applet.Applet.EXTERNAL_ONLY_MODE=p4vasp.applet.Applet.Applet-class.html#EXTERNAL_ONLY_MODE"><a title="p4vasp.applet.Applet.Applet.EXTERNAL_ONLY_MODE" class="py-name" href="#" onclick="return doclink('link-13', 'EXTERNAL_ONLY_MODE', 'link-13');">EXTERNAL_ONLY_MODE</a></tt> </tt>
+<a name="MultiplyCellApplet.__init__"></a><div id="MultiplyCellApplet.__init__-def"><a name="L36"></a><tt class="py-lineno"> 36</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.__init__-toggle" onclick="return toggle('MultiplyCellApplet.__init__');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#__init__">__init__</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.__init__-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.__init__-expanded"><a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line">        <tt id="link-14" class="py-name"><a title="p4vasp.applet.Applet
+p4vasp.applet.Applet.Applet" class="py-name" href="#" onclick="return doclink('link-14', 'Applet', 'link-5');">Applet</a></tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Method p4vasp.Array.Array.__init__()=p4vasp.Array.Array-class.html#__init__,Method p4vasp.Array.ArrayRecord.__init__()=p4vasp.Array.ArrayRecord-class.html#__init__,Method p4vasp.Array.LateList.__init__()=p4vasp.Array.LateList-class.html#__init__,Method p4vasp.Array.SetLateList.__init__()=p4vasp.Array.SetLateList-class.html#__init__,Method p4vasp.Array.VArray.__init__()=p4vasp.Array.VArray-class.html#__init__,Method p4vasp.Array.rRecordSetLateList.__init__()=p4vasp.Array.rRecordSetLateList-class.html#__init__,Method p4vasp.Array.rcRecordSetLateList.__init__()=p4vasp.Array.rcRecordSetLateList-class.html#__init__,Method p4vasp.ConvexShape.ConvexShape.__init__()=p4vasp.ConvexShape.ConvexShape-class.html#__init__,Method p4vasp.Dictionary.Dictionary.__init__()=p4vasp.Dictionary.Dictionary-class.html#__init__,Method p4vasp.Dictionary.Incar.__init__()=p4vasp.Dictionary.Incar-class.html#__init__,Method p4vasp.Dictionary.StructuredDictionary.__init__()=p4vasp.Dictionary.StructuredDictionary-class.html#__init__,Method p4vasp.FArray.FArray1D.__init__()=p4vasp.FArray.FArray1D-class.html#__init__,Method p4vasp.FArray.FArray2D.__init__()=p4vasp.FArray.FArray2D-class.html#__init__,Method p4vasp.GraphCanvas.Export.__init__()=p4vasp.GraphCanvas.Export-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvas.__init__()=p4vasp.GraphCanvas.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.Export.__init__()=p4vasp.GraphCanvas_gtk1.Export-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvas-class.html#__init__,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#__init__,Method p4vasp.GraphPM.GraphPM.__init__()=p4vasp.GraphPM.GraphPM-class.html#__init__,Method p4vasp.GraphPM.GraphProperty.__init__()=p4vasp.GraphPM.GraphProperty-class.html#__init__,Method p4vasp.ODPdom.Attr.__init__()=p4vasp.ODPdom.Attr-class.html#__init__,Method p4vasp.ODPdom.AttributeList.__init__()=p4vasp.ODPdom.AttributeList-class.html#__init__,Method p4vasp.ODPdom.CharacterData.__init__()=p4vasp.ODPdom.CharacterData-class.html#__init__,Method p4vasp.ODPdom.ChildrenByTagNameList.__init__()=p4vasp.ODPdom.ChildrenByTagNameList-class.html#__init__,Method p4vasp.ODPdom.DOMException.__init__()=p4vasp.ODPdom.DOMException-class.html#__init__,Method p4vasp.ODPdom.Document.__init__()=p4vasp.ODPdom.Document-class.html#__init__,Method p4vasp.ODPdom.Element.__init__()=p4vasp.ODPdom.Element-class.html#__init__,Method p4vasp.ODPdom.NamedNodeMap.__init__()=p4vasp.ODPdom.NamedNodeMap-class.html#__init__,Method p4vasp.ODPdom.Node.__init__()=p4vasp.ODPdom.Node-class.html#__init__,Method p4vasp.ODPdom.NodeList.__init__()=p4vasp.ODPdom.NodeList-class.html#__init__,Method p4vasp.ODPdom.ProcessingInstruction.__init__()=p4vasp.ODPdom.ProcessingInstruction-class.html#__init__,Method p4vasp.Property.FilterPropertyManager.__init__()=p4vasp.Property.FilterPropertyManager-class.html#__init__,Method p4vasp.Property.Property.__init__()=p4vasp.Property.Property-class.html#__init__,Method p4vasp.Property.PropertyManager.__init__()=p4vasp.Property.PropertyManager-class.html#__init__,Method p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__()=p4vasp.SQLSystemPM.SQLForcesSequenceLateList-class.html#__init__,Method p4vasp.SQLSystemPM.SQLStructuresLL.__init__()=p4vasp.SQLSystemPM.SQLStructuresLL-class.html#__init__,Method p4vasp.SQLSystemPM.SQLSystemPM.__init__()=p4vasp.SQLSystemPM.SQLSystemPM-class.html#__init__,Method p4vasp.Selection.Selection.__init__()=p4vasp.Selection.Selection-class.html#__init__,Method p4vasp.Structure.AtomInfo.__init__()=p4vasp.Structure.AtomInfo-class.html#__init__,Method p4vasp.Structure.AtomtypesArray.__init__()=p4vasp.Structure.AtomtypesArray-class.html#__init__,Method p4vasp.Structure.AtomtypesRecord.__init__()=p4vasp.Structure.AtomtypesRecord-class.html#__init__,Method p4vasp.Structure.Structure.__init__()=p4vasp.Structure.Structure-class.html#__init__,Method p4vasp.StructureWindow.StructureWindow.__init__()=p4vasp.StructureWindow.StructureWindow-class.html#__init__,Method p4vasp.SystemPM.ChgcarStatisticsLateList.__init__()=p4vasp.SystemPM.ChgcarStatisticsLateList-class.html#__init__,Method p4vasp.SystemPM.KpointGeneration.__init__()=p4vasp.SystemPM.KpointGeneration-class.html#__init__,Method p4vasp.SystemPM.KpointList.__init__()=p4vasp.SystemPM.KpointList-class.html#__init__,Method p4vasp.SystemPM.Kpoints.__init__()=p4vasp.SystemPM.Kpoints-class.html#__init__,Method p4vasp.SystemPM.OldSystemPM.__init__()=p4vasp.SystemPM.OldSystemPM-class.html#__init__,Method p4vasp.SystemPM.PoscarSystemPM.__init__()=p4vasp.SystemPM.PoscarSystemPM-class.html#__init__,Method p4vasp.SystemPM.SetupPM.__init__()=p4vasp.SystemPM.SetupPM-class.html#__init__,Method p4vasp.SystemPM.StructureSequenceLateList.__init__()=p4vasp.SystemPM.StructureSequenceLateList-class.html#__init__,Method p4vasp.SystemPM.SystemPM.__init__()=p4vasp.SystemPM.SystemPM-class.html#__init__,Method p4vasp.SystemPM.SystemPM_URL_Attribute.__init__()=p4vasp.SystemPM.SystemPM_URL_Attribute-class.html#__init__,Method p4vasp.SystemPM.SystemRepository.__init__()=p4vasp.SystemPM.SystemRepository-class.html#__init__,Method p4vasp.SystemPM.XMLSystemPM.__init__()=p4vasp.SystemPM.XMLSystemPM-class.html#__init__,Method p4vasp.SystemPM.cStructureSequenceLateList.__init__()=p4vasp.SystemPM.cStructureSequenceLateList-class.html#__init__,Method p4vasp.applet.Applet.Applet.__init__()=p4vasp.applet.Applet.Applet-class.html#__init__,Method p4vasp.applet.Applet.AppletProfile.__init__()=p4vasp.applet.Applet.AppletProfile-class.html#__init__,Method p4vasp.applet.Applet.GraphApplet.__init__()=p4vasp.applet.Applet.GraphApplet-class.html#__init__,Method p4vasp.applet.Applet.TextApplet.__init__()=p4vasp.applet.Applet.TextApplet-class.html#__init__,Method p4vasp.applet.Applet.Widgets.__init__()=p4vasp.applet.Applet.Widgets-class.html#__init__,Method p4vasp.applet.AppletRepositoryProfile.__init__()=p4vasp.applet.AppletRepositoryProfile-class.html#__init__,Method p4vasp.applet.AppletTree.AppletNode.__init__()=p4vasp.applet.AppletTree.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTree.__init__()=p4vasp.applet.AppletTree.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeModel.__init__()=p4vasp.applet.AppletTree.AppletTreeModel-class.html#__init__,Method p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletNode.__init__()=p4vasp.applet.AppletTree_old.AppletNode-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTree.__init__()=p4vasp.applet.AppletTree_old.AppletTree-class.html#__init__,Method p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__()=p4vasp.applet.AppletTree_old.AppletTreeStoreProfile-class.html#__init__,Method p4vasp.applet.BuilderApplet.BuilderApplet.__init__()=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#__init__,Method p4vasp.applet.BuilderApplet.StructureTreeModel.__init__()=p4vasp.applet.BuilderApplet.StructureTreeModel-class.html#__init__,Method p4vasp.applet.CommitApplet.CommitApplet.__init__()=p4vasp.applet.CommitApplet.CommitApplet-class.html#__init__,Method p4vasp.applet.DBApplet.DBApplet.__init__()=p4vasp.applet.DBApplet.DBApplet-class.html#__init__,Method p4vasp.applet.DBApplet.QueryTreeModel.__init__()=p4vasp.applet.DBApplet.QueryTreeModel-class.html#__init__,Method p4vasp.applet.DielectricApplet.DielectricApplet.__init__()=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#__init__,Method p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__()=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__()=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#__init__,Method p4vasp.applet.ElectronicApplet.Line.__init__()=p4vasp.applet.ElectronicApplet.Line-class.html#__init__,Method p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__()=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#__init__,Method p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__()=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#__init__,Method p4vasp.applet.ExportApplet.ExportApplet.__init__()=p4vasp.applet.ExportApplet.ExportApplet-class.html#__init__,Method p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__()=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#__init__,Method p4vasp.applet.InfoApplet.InfoApplet.__init__()=p4vasp.applet.InfoApplet.InfoApplet-class.html#__init__,Method p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__()=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#__init__,Method p4vasp.applet.LatticeApplet.LatticeApplet.__init__()=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#__init__,Method p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__()=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#__init__,Method p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__()=p4vasp.applet.MeasureApplet.DistanceTreeModel-class.html#__init__,Method p4vasp.applet.MeasureApplet.MeasureApplet.__init__()=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#__init__,Method p4vasp.applet.MoveApplet.MoveApplet.__init__()=p4vasp.applet.MoveApplet.MoveApplet-class.html#__init__,Method p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__()=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#__init__,Method p4vasp.applet.NewApplet.NewApplet.__init__()=p4vasp.applet.NewApplet.NewApplet-class.html#__init__,Method p4vasp.applet.RotateApplet.RotateApplet.__init__()=p4vasp.applet.RotateApplet.RotateApplet-class.html#__init__,Method p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__()=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#__init__,Method p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__()=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#__init__,Method p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__()=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#__init__,Method p4vasp.applet.SelectionApplet.SelectionApplet.__init__()=p4vasp.applet.SelectionApplet.SelectionApplet-class.html#__init__,Method p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__()=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.Measure.__init__()=p4vasp.applet.StructureApplet.Measure-class.html#__init__,Method p4vasp.applet.StructureApplet.StructureApplet.__init__()=p4vasp.applet.StructureApplet.StructureApplet-class.html#__init__,Method p4vasp.applet.StructureApplet.SubtrSequence.__init__()=p4vasp.applet.StructureApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__()=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__()=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#__init__,Method p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__()=p4vasp.applet.StructureWindowControlApplet.SubtrSequence-class.html#__init__,Method p4vasp.applet.VACApplet.VACApplet.__init__()=p4vasp.applet.VACApplet.VACApplet-class.html#__init__,Method p4vasp.cStructure.AtomInfo.__init__()=p4vasp.cStructure.AtomInfo-class.html#__init__,Method p4vasp.cStructure.AtomtypesRecord.__init__()=p4vasp.cStructure.AtomtypesRecord-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayItemWrapper.__init__()=p4vasp.cStructure.SelectiveArrayItemWrapper-class.html#__init__,Method p4vasp.cStructure.SelectiveArrayWrapper.__init__()=p4vasp.cStructure.SelectiveArrayWrapper-class.html#__init__,Method p4vasp.cStructure.Structure.__init__()=p4vasp.cStructure.Structure-class.html#__init__,Method p4vasp.cmatrix.Matrix.__init__()=p4vasp.cmatrix.Matrix-class.html#__init__,Method p4vasp.cmatrix.Vector.__init__()=p4vasp.cmatrix.Vector-class.html#__init__,Method p4vasp.db.DBI.__init__()=p4vasp.db.DBI-class.html#__init__,Method p4vasp.db.MySQLDBI.__init__()=p4vasp.db.MySQLDBI-class.html#__init__,Method p4vasp.db.Query.__init__()=p4vasp.db.Query-class.html#__init__,Method p4vasp.db.SQLiteDBI.__init__()=p4vasp.db.SQLiteDBI-class.html#__init__,Method p4vasp.graph.Axis.__init__()=p4vasp.graph.Axis-class.html#__init__,Method p4vasp.graph.Graph.__init__()=p4vasp.graph.Graph-class.html#__init__,Method p4vasp.graph.GraphLine.__init__()=p4vasp.graph.GraphLine-class.html#__init__,Method p4vasp.graph.Set.__init__()=p4vasp.graph.Set-class.html#__init__,Method p4vasp.graph.World.__init__()=p4vasp.graph.World-class.html#__init__,Method p4vasp.graph.XAxis.__init__()=p4vasp.graph.XAxis-class.html#__init__,Method p4vasp.graph.YAxis.__init__()=p4vasp.graph.YAxis-class.html#__init__,Method p4vasp.matrix.Matrix.__init__()=p4vasp.matrix.Matrix-class.html#__init__,Method p4vasp.matrix.Vector.__init__()=p4vasp.matrix.Vector-class.html#__init__,Method p4vasp.message.MessageDriver.__init__()=p4vasp.message.MessageDriver-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D-class.html#__init__,Method p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__()=p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__()=p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__()=p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DInterface-class.html#__init__,Method p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__()=p4vasp.paint3d.Paint3DInterface.Paint3DRecorder-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D-class.html#__init__,Method p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__()=p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame-class.html#__init__,Method p4vasp.paint3d.data.AmbientLight.__init__()=p4vasp.paint3d.data.AmbientLight-class.html#__init__,Method p4vasp.paint3d.data.Arrow.__init__()=p4vasp.paint3d.data.Arrow-class.html#__init__,Method p4vasp.paint3d.data.Background.__init__()=p4vasp.paint3d.data.Background-class.html#__init__,Method p4vasp.paint3d.data.ColorMaterial.__init__()=p4vasp.paint3d.data.ColorMaterial-class.html#__init__,Method p4vasp.paint3d.data.Cone.__init__()=p4vasp.paint3d.data.Cone-class.html#__init__,Method p4vasp.paint3d.data.Cylinder.__init__()=p4vasp.paint3d.data.Cylinder-class.html#__init__,Method p4vasp.paint3d.data.Frame.__init__()=p4vasp.paint3d.data.Frame-class.html#__init__,Method p4vasp.paint3d.data.Line.__init__()=p4vasp.paint3d.data.Line-class.html#__init__,Method p4vasp.paint3d.data.Mesh.__init__()=p4vasp.paint3d.data.Mesh-class.html#__init__,Method p4vasp.paint3d.data.OrthographicCamera.__init__()=p4vasp.paint3d.data.OrthographicCamera-class.html#__init__,Method p4vasp.paint3d.data.PerspectiveCamera.__init__()=p4vasp.paint3d.data.PerspectiveCamera-class.html#__init__,Method p4vasp.paint3d.data.PointLight.__init__()=p4vasp.paint3d.data.PointLight-class.html#__init__,Method p4vasp.paint3d.data.Sphere.__init__()=p4vasp.paint3d.data.Sphere-class.html#__init__,Method p4vasp.repository.Descriptor.__init__()=p4vasp.repository.Descriptor-class.html#__init__,Method p4vasp.repository.DescriptorProfile.__init__()=p4vasp.repository.DescriptorProfile-class.html#__init__,Method p4vasp.repository.Factory.__init__()=p4vasp.repository.Factory-class.html#__init__,Method p4vasp.repository.FactoryProfile.__init__()=p4vasp.repository.FactoryProfile-class.html#__init__,Method p4vasp.repository.Repository.__init__()=p4vasp.repository.Repository-class.html#__init__,Method p4vasp.repository.RepositoryProfile.__init__()=p4vasp.repository.RepositoryProfile-class.html#__init__,Method p4vasp.schedule'.Scheduler.__init__()=p4vasp.schedule%27.Scheduler-class.html#__init__,Method p4vasp.setupstore.SetupProfile.__init__()=p4vasp.setupstore.SetupProfile-class.html#__init__,Method p4vasp.setupstore.SetupProfile_old.__init__()=p4vasp.setupstore.SetupProfile_old-class.html#__init__,Method p4vasp.store.AttributeProfile.__init__()=p4vasp.store.AttributeProfile-class.html#__init__,Method p4vasp.store.ClassAttribute.__init__()=p4vasp.store.ClassAttribute-class.html#__init__,Method p4vasp.store.FloatAttribute.__init__()=p4vasp.store.FloatAttribute-class.html#__init__,Method p4vasp.store.FloatListAttribute.__init__()=p4vasp.store.FloatListAttribute-class.html#__init__,Method p4vasp.store.FloatTupleAttribute.__init__()=p4vasp.store.FloatTupleAttribute-class.html#__init__,Method p4vasp.store.HexMarshalAttribute.__init__()=p4vasp.store.HexMarshalAttribute-class.html#__init__,Method p4vasp.store.HexPickleAttribute.__init__()=p4vasp.store.HexPickleAttribute-class.html#__init__,Method p4vasp.store.IgnoreProfile.__init__()=p4vasp.store.IgnoreProfile-class.html#__init__,Method p4vasp.store.IntAttribute.__init__()=p4vasp.store.IntAttribute-class.html#__init__,Method p4vasp.store.IntListAttribute.__init__()=p4vasp.store.IntListAttribute-class.html#__init__,Method p4vasp.store.IntTupleAttribute.__init__()=p4vasp.store.IntTupleAttribute-class.html#__init__,Method p4vasp.store.ListAttribute.__init__()=p4vasp.store.ListAttribute-class.html#__init__,Method p4vasp.store.Profile.__init__()=p4vasp.store.Profile-class.html#__init__,Method p4vasp.store.StringAttribute.__init__()=p4vasp.store.StringAttribute-class.html#__init__,Method p4vasp.store.StringListAttribute.__init__()=p4vasp.store.StringListAttribute-class.html#__init__,Method p4vasp.util.ParseException.__init__()=p4vasp.util.ParseException-class.html#__init__,Method p4vasp.util.UnknownType.__init__()=p4vasp.util.UnknownType-class.html#__init__,Method p4vasp.util.XMLParseException.__init__()=p4vasp.util.XMLParseException-class.html#__init__,Method p4vasp.uuid.UuidGen.__init__()=p4vasp.uuid.UuidGen-class.html#__init__,Method p4vasp.uuid._GeneratorState.__init__()=p4vasp.uuid._GeneratorState-class.html#__init__"><a title="p4vasp.Array.Array.__init__
+p4vasp.Array.ArrayRecord.__init__
+p4vasp.Array.LateList.__init__
+p4vasp.Array.SetLateList.__init__
+p4vasp.Array.VArray.__init__
+p4vasp.Array.rRecordSetLateList.__init__
+p4vasp.Array.rcRecordSetLateList.__init__
+p4vasp.ConvexShape.ConvexShape.__init__
+p4vasp.Dictionary.Dictionary.__init__
+p4vasp.Dictionary.Incar.__init__
+p4vasp.Dictionary.StructuredDictionary.__init__
+p4vasp.FArray.FArray1D.__init__
+p4vasp.FArray.FArray2D.__init__
+p4vasp.GraphCanvas.Export.__init__
+p4vasp.GraphCanvas.GraphCanvas.__init__
+p4vasp.GraphCanvas.GraphCanvasWindow.__init__
+p4vasp.GraphCanvas_gtk1.Export.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvas.__init__
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.__init__
+p4vasp.GraphPM.GraphPM.__init__
+p4vasp.GraphPM.GraphProperty.__init__
+p4vasp.ODPdom.Attr.__init__
+p4vasp.ODPdom.AttributeList.__init__
+p4vasp.ODPdom.CharacterData.__init__
+p4vasp.ODPdom.ChildrenByTagNameList.__init__
+p4vasp.ODPdom.DOMException.__init__
+p4vasp.ODPdom.Document.__init__
+p4vasp.ODPdom.Element.__init__
+p4vasp.ODPdom.NamedNodeMap.__init__
+p4vasp.ODPdom.Node.__init__
+p4vasp.ODPdom.NodeList.__init__
+p4vasp.ODPdom.ProcessingInstruction.__init__
+p4vasp.Property.FilterPropertyManager.__init__
+p4vasp.Property.Property.__init__
+p4vasp.Property.PropertyManager.__init__
+p4vasp.SQLSystemPM.SQLForcesSequenceLateList.__init__
+p4vasp.SQLSystemPM.SQLStructuresLL.__init__
+p4vasp.SQLSystemPM.SQLSystemPM.__init__
+p4vasp.Selection.Selection.__init__
+p4vasp.Structure.AtomInfo.__init__
+p4vasp.Structure.AtomtypesArray.__init__
+p4vasp.Structure.AtomtypesRecord.__init__
+p4vasp.Structure.Structure.__init__
+p4vasp.StructureWindow.StructureWindow.__init__
+p4vasp.SystemPM.ChgcarStatisticsLateList.__init__
+p4vasp.SystemPM.KpointGeneration.__init__
+p4vasp.SystemPM.KpointList.__init__
+p4vasp.SystemPM.Kpoints.__init__
+p4vasp.SystemPM.OldSystemPM.__init__
+p4vasp.SystemPM.PoscarSystemPM.__init__
+p4vasp.SystemPM.SetupPM.__init__
+p4vasp.SystemPM.StructureSequenceLateList.__init__
+p4vasp.SystemPM.SystemPM.__init__
+p4vasp.SystemPM.SystemPM_URL_Attribute.__init__
+p4vasp.SystemPM.SystemRepository.__init__
+p4vasp.SystemPM.XMLSystemPM.__init__
+p4vasp.SystemPM.cStructureSequenceLateList.__init__
+p4vasp.applet.Applet.Applet.__init__
+p4vasp.applet.Applet.AppletProfile.__init__
+p4vasp.applet.Applet.GraphApplet.__init__
+p4vasp.applet.Applet.TextApplet.__init__
+p4vasp.applet.Applet.Widgets.__init__
+p4vasp.applet.AppletRepositoryProfile.__init__
+p4vasp.applet.AppletTree.AppletNode.__init__
+p4vasp.applet.AppletTree.AppletTree.__init__
+p4vasp.applet.AppletTree.AppletTreeModel.__init__
+p4vasp.applet.AppletTree.AppletTreeStoreProfile.__init__
+p4vasp.applet.AppletTree_old.AppletNode.__init__
+p4vasp.applet.AppletTree_old.AppletTree.__init__
+p4vasp.applet.AppletTree_old.AppletTreeStoreProfile.__init__
+p4vasp.applet.BuilderApplet.BuilderApplet.__init__
+p4vasp.applet.BuilderApplet.StructureTreeModel.__init__
+p4vasp.applet.CommitApplet.CommitApplet.__init__
+p4vasp.applet.DBApplet.DBApplet.__init__
+p4vasp.applet.DBApplet.QueryTreeModel.__init__
+p4vasp.applet.DielectricApplet.DielectricApplet.__init__
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.__init__
+p4vasp.applet.ElectronicApplet.ElectronicApplet.__init__
+p4vasp.applet.ElectronicApplet.Line.__init__
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.__init__
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.__init__
+p4vasp.applet.ExportApplet.ExportApplet.__init__
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.__init__
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.__init__
+p4vasp.applet.InfoApplet.InfoApplet.__init__
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.__init__
+p4vasp.applet.LatticeApplet.LatticeApplet.__init__
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.__init__
+p4vasp.applet.MeasureApplet.DistanceTreeModel.__init__
+p4vasp.applet.MeasureApplet.MeasureApplet.__init__
+p4vasp.applet.MoveApplet.MoveApplet.__init__
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.__init__
+p4vasp.applet.NewApplet.NewApplet.__init__
+p4vasp.applet.RotateApplet.RotateApplet.__init__
+p4vasp.applet.STMWindowApplet.STMWindowApplet.__init__
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.__init__
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.__init__
+p4vasp.applet.SelectionApplet.SelectionApplet.__init__
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.__init__
+p4vasp.applet.StructureApplet.Measure.__init__
+p4vasp.applet.StructureApplet.StructureApplet.__init__
+p4vasp.applet.StructureApplet.SubtrSequence.__init__
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.__init__
+p4vasp.applet.StructureWindowControlApplet.SubtrSequence.__init__
+p4vasp.applet.VACApplet.VACApplet.__init__
+p4vasp.cStructure.AtomInfo.__init__
+p4vasp.cStructure.AtomtypesRecord.__init__
+p4vasp.cStructure.SelectiveArrayItemWrapper.__init__
+p4vasp.cStructure.SelectiveArrayWrapper.__init__
+p4vasp.cStructure.Structure.__init__
+p4vasp.cmatrix.Matrix.__init__
+p4vasp.cmatrix.Vector.__init__
+p4vasp.db.DBI.__init__
+p4vasp.db.MySQLDBI.__init__
+p4vasp.db.Query.__init__
+p4vasp.db.SQLiteDBI.__init__
+p4vasp.graph.Axis.__init__
+p4vasp.graph.Graph.__init__
+p4vasp.graph.GraphLine.__init__
+p4vasp.graph.Set.__init__
+p4vasp.graph.World.__init__
+p4vasp.graph.XAxis.__init__
+p4vasp.graph.YAxis.__init__
+p4vasp.matrix.Matrix.__init__
+p4vasp.matrix.Vector.__init__
+p4vasp.message.MessageDriver.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaEffectsPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaGeometriesPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaPaint3D.__init__
+p4vasp.paint3d.ColladaPaint3D.ColladaScenePaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.BasicOpenGLPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.GLUTPaint3D.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DFrame.__init__
+p4vasp.paint3d.OpenGLPaint3D.OpenGLPaint3DRecorder.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DInterface.__init__
+p4vasp.paint3d.Paint3DInterface.Paint3DRecorder.__init__
+p4vasp.paint3d.PovrayPaint3D.ExtendedPovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3D.__init__
+p4vasp.paint3d.PovrayPaint3D.PovrayPaint3DFrame.__init__
+p4vasp.paint3d.data.AmbientLight.__init__
+p4vasp.paint3d.data.Arrow.__init__
+p4vasp.paint3d.data.Background.__init__
+p4vasp.paint3d.data.ColorMaterial.__init__
+p4vasp.paint3d.data.Cone.__init__
+p4vasp.paint3d.data.Cylinder.__init__
+p4vasp.paint3d.data.Frame.__init__
+p4vasp.paint3d.data.Line.__init__
+p4vasp.paint3d.data.Mesh.__init__
+p4vasp.paint3d.data.OrthographicCamera.__init__
+p4vasp.paint3d.data.PerspectiveCamera.__init__
+p4vasp.paint3d.data.PointLight.__init__
+p4vasp.paint3d.data.Sphere.__init__
+p4vasp.repository.Descriptor.__init__
+p4vasp.repository.DescriptorProfile.__init__
+p4vasp.repository.Factory.__init__
+p4vasp.repository.FactoryProfile.__init__
+p4vasp.repository.Repository.__init__
+p4vasp.repository.RepositoryProfile.__init__
+p4vasp.schedule'.Scheduler.__init__
+p4vasp.setupstore.SetupProfile.__init__
+p4vasp.setupstore.SetupProfile_old.__init__
+p4vasp.store.AttributeProfile.__init__
+p4vasp.store.ClassAttribute.__init__
+p4vasp.store.FloatAttribute.__init__
+p4vasp.store.FloatListAttribute.__init__
+p4vasp.store.FloatTupleAttribute.__init__
+p4vasp.store.HexMarshalAttribute.__init__
+p4vasp.store.HexPickleAttribute.__init__
+p4vasp.store.IgnoreProfile.__init__
+p4vasp.store.IntAttribute.__init__
+p4vasp.store.IntListAttribute.__init__
+p4vasp.store.IntTupleAttribute.__init__
+p4vasp.store.ListAttribute.__init__
+p4vasp.store.Profile.__init__
+p4vasp.store.StringAttribute.__init__
+p4vasp.store.StringListAttribute.__init__
+p4vasp.util.ParseException.__init__
+p4vasp.util.UnknownType.__init__
+p4vasp.util.XMLParseException.__init__
+p4vasp.uuid.UuidGen.__init__
+p4vasp.uuid._GeneratorState.__init__" class="py-name" href="#" onclick="return doclink('link-15', '__init__', 'link-15');">__init__</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">)</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gladefile</tt><tt class="py-op">=</tt><tt class="py-string">"multcell.glade"</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">gladename</tt><tt class="py-op">=</tt><tt class="py-string">"applet_frame"</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">creation</tt><tt class="py-op">=</tt><tt id="link-16" class="py-name" targets="Class p4vasp.SystemPM.SetupPM=p4vasp.SystemPM.SetupPM-class.html"><a title="p4vasp.SystemPM.SetupPM" class="py-name" href="#" onclick="return doclink('link-16', 'SetupPM', 'link-16');">SetupPM</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"><tt class="py-comment">#    self.gladename="None"</tt> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"> </tt>
+<a name="MultiplyCellApplet.updateSystem"></a><div id="MultiplyCellApplet.updateSystem-def"><a name="L43"></a><tt class="py-lineno"> 43</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.updateSystem-toggle" onclick="return toggle('MultiplyCellApplet.updateSystem');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#updateSystem">updateSystem</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.updateSystem-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.updateSystem-expanded"><a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line">        <tt class="py-keyword">pass</tt> </tt>
+</div><a name="L45"></a><tt class="py-lineno"> 45</tt>  <tt class="py-line"> </tt>
+<a name="MultiplyCellApplet.initUI"></a><div id="MultiplyCellApplet.initUI-def"><a name="L46"></a><tt class="py-lineno"> 46</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.initUI-toggle" onclick="return toggle('MultiplyCellApplet.initUI');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#initUI">initUI</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.initUI-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.initUI-expanded"><a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simplemultiply</tt>   <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"simplemultiply"</tt><tt class="py-op">)</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">advancedmultiply</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"advancedmultiply"</tt><tt class="py-op">)</tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simple_button</tt>    <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"simple_button"</tt><tt class="py-op">)</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">advanced_button</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"advanced_button"</tt><tt class="py-op">)</tt> </tt>
+<a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">advancedmultiply</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method p4vasp.GraphCanvas.Export.hide()=p4vasp.GraphCanvas.Export-class.html#hide,Method p4vasp.GraphCanvas.GraphCanvasWindow.hide()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#hide,Method p4vasp.GraphCanvas_gtk1.Export.hide()=p4vasp.GraphCanvas_gtk1.Export-class.html#hide,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.hide()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#hide,Method p4vasp.StructureWindow.StructureWindow.hide()=p4vasp.StructureWindow.StructureWindow-class.html#hide,Method p4vasp.applet.Applet.Applet.hide()=p4vasp.applet.Applet.Applet-class.html#hide,Method p4vasp.applet.Applet.GraphApplet.hide()=p4vasp.applet.Applet.GraphApplet-class.html#hide,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.hide()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#hide,Method p4vasp.applet.StructureApplet.Measure.hide()=p4vasp.applet.StructureApplet.Measure-class.html#hide,Method p4vasp.applet.StructureApplet.StructureApplet.hide()=p4vasp.applet.StructureApplet.StructureApplet-class.html#hide"><a title="p4vasp.GraphCanvas.Export.hide
+p4vasp.GraphCanvas.GraphCanvasWindow.hide
+p4vasp.GraphCanvas_gtk1.Export.hide
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.hide
+p4vasp.StructureWindow.StructureWindow.hide
+p4vasp.applet.Applet.Applet.hide
+p4vasp.applet.Applet.GraphApplet.hide
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.hide
+p4vasp.applet.StructureApplet.Measure.hide
+p4vasp.applet.StructureApplet.StructureApplet.hide" class="py-name" href="#" onclick="return doclink('link-17', 'hide', 'link-17');">hide</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L52"></a><tt class="py-lineno"> 52</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n1e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n1entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n2e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n2entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n3e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n3entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n11e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n11entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n12e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n12entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n13e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n13entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L58"></a><tt class="py-lineno"> 58</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n21e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n21entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n22e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n22entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n23e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n23entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n31e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n31entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n32e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n32entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n33e</tt>  <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">xml</tt><tt class="py-op">.</tt><tt class="py-name">get_widget</tt><tt class="py-op">(</tt><tt class="py-string">"n33entry"</tt><tt class="py-op">)</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n1e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n2e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n3e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n11e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n12e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n13e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n21e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n22e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n23e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n31e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n32e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"0"</tt><tt class="py-op">)</tt> </tt>
+<a name="L75"></a><tt class="py-lineno"> 75</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n33e</tt><tt class="py-op">.</tt><tt class="py-name">set_text</tt><tt class="py-op">(</tt><tt class="py-string">"1"</tt><tt class="py-op">)</tt> </tt>
+<a name="L76"></a><tt class="py-lineno"> 76</tt>  <tt class="py-line"> </tt>
+<a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simplemultiply</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method p4vasp.GraphCanvas.Export.show()=p4vasp.GraphCanvas.Export-class.html#show,Method p4vasp.GraphCanvas.GraphCanvasWindow.show()=p4vasp.GraphCanvas.GraphCanvasWindow-class.html#show,Method p4vasp.GraphCanvas_gtk1.Export.show()=p4vasp.GraphCanvas_gtk1.Export-class.html#show,Method p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.show()=p4vasp.GraphCanvas_gtk1.GraphCanvasWindow-class.html#show,Method p4vasp.StructureWindow.StructureWindow.show()=p4vasp.StructureWindow.StructureWindow-class.html#show,Method p4vasp.applet.Applet.Applet.show()=p4vasp.applet.Applet.Applet-class.html#show,Method p4vasp.applet.Applet.GraphApplet.show()=p4vasp.applet.Applet.GraphApplet-class.html#show,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.show()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#show,Method p4vasp.applet.StructureApplet.Measure.show()=p4vasp.applet.StructureApplet.Measure-class.html#show,Method p4vasp.applet.StructureApplet.StructureApplet.show()=p4vasp.applet.StructureApplet.StructureApplet-class.html#show"><a title="p4vasp.GraphCanvas.Export.show
+p4vasp.GraphCanvas.GraphCanvasWindow.show
+p4vasp.GraphCanvas_gtk1.Export.show
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.show
+p4vasp.StructureWindow.StructureWindow.show
+p4vasp.applet.Applet.Applet.show
+p4vasp.applet.Applet.GraphApplet.show
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.show
+p4vasp.applet.StructureApplet.Measure.show
+p4vasp.applet.StructureApplet.StructureApplet.show" class="py-name" href="#" onclick="return doclink('link-18', 'show', 'link-18');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name" targets="Method p4vasp.applet.Applet.Applet.updateSystem()=p4vasp.applet.Applet.Applet-class.html#updateSystem,Method p4vasp.applet.Applet.GraphApplet.updateSystem()=p4vasp.applet.Applet.GraphApplet-class.html#updateSystem,Method p4vasp.applet.Applet.TextApplet.updateSystem()=p4vasp.applet.Applet.TextApplet-class.html#updateSystem,Method p4vasp.applet.BuilderApplet.BuilderApplet.updateSystem()=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#updateSystem,Method p4vasp.applet.CommitApplet.CommitApplet.updateSystem()=p4vasp.applet.CommitApplet.CommitApplet-class.html#updateSystem,Method p4vasp.applet.DBApplet.DBApplet.updateSystem()=p4vasp.applet.DBApplet.DBApplet-class.html#updateSystem,Method p4vasp.applet.DielectricApplet.DielectricApplet.updateSystem()=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#updateSystem,Method p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.updateSystem()=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#updateSystem,Method p4vasp.applet.ElectronicApplet.ElectronicApplet.updateSystem()=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#updateSystem,Method p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.updateSystem()=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#updateSystem,Method p4vasp.applet.ExportApplet.ExportApplet.updateSystem()=p4vasp.applet.ExportApplet.ExportApplet-class.html#updateSystem,Method p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.updateSystem()=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#updateSystem,Method p4vasp.applet.GraphWindowApplet.GraphWindowApplet.updateSystem()=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#updateSystem,Method p4vasp.applet.InfoApplet.InfoApplet.updateSystem()=p4vasp.applet.InfoApplet.InfoApplet-class.html#updateSystem,Method p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.updateSystem()=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#updateSystem,Method p4vasp.applet.LatticeApplet.LatticeApplet.updateSystem()=p4vasp.applet.LatticeApplet.LatticeApplet-class.html#updateSystem,Method p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.updateSystem()=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#updateSystem,Method p4vasp.applet.MeasureApplet.MeasureApplet.updateSystem()=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#updateSystem,Method p4vasp.applet.MoveApplet.MoveApplet.updateSystem()=p4vasp.applet.MoveApplet.MoveApplet-class.html#updateSystem,Method p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.updateSystem()=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#updateSystem,Method p4vasp.applet.NewApplet.NewApplet.updateSystem()=p4vasp.applet.NewApplet.NewApplet-class.html#updateSystem,Method p4vasp.applet.RotateApplet.RotateApplet.updateSystem()=p4vasp.applet.RotateApplet.RotateApplet-class.html#updateSystem,Method p4vasp.applet.STMWindowApplet.STMWindowApplet.updateSystem()=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#updateSystem,Method p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.updateSystem()=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#updateSystem,Method p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.updateSystem()=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#updateSystem,Method p4vasp.applet.StructureApplet.StructureApplet.updateSystem()=p4vasp.applet.StructureApplet.StructureApplet-class.html#updateSystem,Method p4vasp.applet.StructureWindowApplet.StructureWindowApplet.updateSystem()=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#updateSystem,Method p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.updateSystem()=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#updateSystem,Method p4vasp.applet.VACApplet.VACApplet.updateSystem()=p4vasp.applet.VACApplet.VACApplet-class.html#updateSystem"><a title="p4vasp.applet.Applet.Applet.updateSystem
+p4vasp.applet.Applet.GraphApplet.updateSystem
+p4vasp.applet.Applet.TextApplet.updateSystem
+p4vasp.applet.BuilderApplet.BuilderApplet.updateSystem
+p4vasp.applet.CommitApplet.CommitApplet.updateSystem
+p4vasp.applet.DBApplet.DBApplet.updateSystem
+p4vasp.applet.DielectricApplet.DielectricApplet.updateSystem
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.updateSystem
+p4vasp.applet.ElectronicApplet.ElectronicApplet.updateSystem
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.updateSystem
+p4vasp.applet.ExportApplet.ExportApplet.updateSystem
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.updateSystem
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.updateSystem
+p4vasp.applet.InfoApplet.InfoApplet.updateSystem
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.updateSystem
+p4vasp.applet.LatticeApplet.LatticeApplet.updateSystem
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.updateSystem
+p4vasp.applet.MeasureApplet.MeasureApplet.updateSystem
+p4vasp.applet.MoveApplet.MoveApplet.updateSystem
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.updateSystem
+p4vasp.applet.NewApplet.NewApplet.updateSystem
+p4vasp.applet.RotateApplet.RotateApplet.updateSystem
+p4vasp.applet.STMWindowApplet.STMWindowApplet.updateSystem
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.updateSystem
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.updateSystem
+p4vasp.applet.StructureApplet.StructureApplet.updateSystem
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.updateSystem
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.updateSystem
+p4vasp.applet.VACApplet.VACApplet.updateSystem" class="py-name" href="#" onclick="return doclink('link-19', 'updateSystem', 'link-19');">updateSystem</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line"> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line"><tt class="py-comment">#  def on_nameentry_activate_handler(self,w,*arg):</tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line"><tt class="py-comment">#    pass</tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line"><tt class="py-comment">##    print "name"</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line"> </tt>
+<a name="MultiplyCellApplet.on_simple_button_toggled_handler"></a><div id="MultiplyCellApplet.on_simple_button_toggled_handler-def"><a name="L84"></a><tt class="py-lineno"> 84</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.on_simple_button_toggled_handler-toggle" onclick="return toggle('MultiplyCellApplet.on_simple_button_toggled_handler');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#on_simple_button_toggled_handler">on_simple_button_toggled_handler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">w</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.on_simple_button_toggled_handler-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.on_simple_button_toggled_handler-expanded"><a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simple_button</tt><tt class="py-op">.</tt><tt class="py-name">get_active</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">advancedmultiply</tt><tt class="py-op">.</tt><tt id="link-20" class="py-name"><a title="p4vasp.GraphCanvas.Export.hide
+p4vasp.GraphCanvas.GraphCanvasWindow.hide
+p4vasp.GraphCanvas_gtk1.Export.hide
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.hide
+p4vasp.StructureWindow.StructureWindow.hide
+p4vasp.applet.Applet.Applet.hide
+p4vasp.applet.Applet.GraphApplet.hide
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.hide
+p4vasp.applet.StructureApplet.Measure.hide
+p4vasp.applet.StructureApplet.StructureApplet.hide" class="py-name" href="#" onclick="return doclink('link-20', 'hide', 'link-17');">hide</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simplemultiply</tt><tt class="py-op">.</tt><tt id="link-21" class="py-name"><a title="p4vasp.GraphCanvas.Export.show
+p4vasp.GraphCanvas.GraphCanvasWindow.show
+p4vasp.GraphCanvas_gtk1.Export.show
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.show
+p4vasp.StructureWindow.StructureWindow.show
+p4vasp.applet.Applet.Applet.show
+p4vasp.applet.Applet.GraphApplet.show
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.show
+p4vasp.applet.StructureApplet.Measure.show
+p4vasp.applet.StructureApplet.StructureApplet.show" class="py-name" href="#" onclick="return doclink('link-21', 'show', 'link-18');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">advancedmultiply</tt><tt class="py-op">.</tt><tt id="link-22" class="py-name"><a title="p4vasp.GraphCanvas.Export.show
+p4vasp.GraphCanvas.GraphCanvasWindow.show
+p4vasp.GraphCanvas_gtk1.Export.show
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.show
+p4vasp.StructureWindow.StructureWindow.show
+p4vasp.applet.Applet.Applet.show
+p4vasp.applet.Applet.GraphApplet.show
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.show
+p4vasp.applet.StructureApplet.Measure.show
+p4vasp.applet.StructureApplet.StructureApplet.show" class="py-name" href="#" onclick="return doclink('link-22', 'show', 'link-18');">show</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">            <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">simplemultiply</tt><tt class="py-op">.</tt><tt id="link-23" class="py-name"><a title="p4vasp.GraphCanvas.Export.hide
+p4vasp.GraphCanvas.GraphCanvasWindow.hide
+p4vasp.GraphCanvas_gtk1.Export.hide
+p4vasp.GraphCanvas_gtk1.GraphCanvasWindow.hide
+p4vasp.StructureWindow.StructureWindow.hide
+p4vasp.applet.Applet.Applet.hide
+p4vasp.applet.Applet.GraphApplet.hide
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.hide
+p4vasp.applet.StructureApplet.Measure.hide
+p4vasp.applet.StructureApplet.StructureApplet.hide" class="py-name" href="#" onclick="return doclink('link-23', 'hide', 'link-17');">hide</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line"> </tt>
+<a name="MultiplyCellApplet.on_simplemultiply_button_clicked_handler"></a><div id="MultiplyCellApplet.on_simplemultiply_button_clicked_handler-def"><a name="L92"></a><tt class="py-lineno"> 92</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.on_simplemultiply_button_clicked_handler-toggle" onclick="return toggle('MultiplyCellApplet.on_simplemultiply_button_clicked_handler');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#on_simplemultiply_button_clicked_handler">on_simplemultiply_button_clicked_handler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">w</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.on_simplemultiply_button_clicked_handler-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.on_simplemultiply_button_clicked_handler-expanded"><a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line"><tt class="py-comment">#    print "simplemultiply"</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line"><tt class="py-comment">#    print self.n1e.get_text(),self.n2e.get_text(),self.n3e.get_text()</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">            <tt class="py-name">n1</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n1e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line">            <tt class="py-name">n2</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n2e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L98"></a><tt class="py-lineno"> 98</tt>  <tt class="py-line">            <tt class="py-name">n3</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n3e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L99"></a><tt class="py-lineno"> 99</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">            <tt id="link-24" class="py-name" targets="Function p4vasp.msg()=p4vasp-module.html#msg"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-24', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-25" class="py-name" targets="Method p4vasp.message.MessageDriver.exception()=p4vasp.message.MessageDriver-class.html#exception"><a title="p4vasp.message.MessageDriver.exception" class="py-name" href="#" onclick="return doclink('link-25', 'exception', 'link-25');">exception</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt id="link-26" class="py-name" targets="Function p4vasp.SystemPM.getCurrentSystemPM()=p4vasp.SystemPM-module.html#getCurrentSystemPM"><a title="p4vasp.SystemPM.getCurrentSystemPM" class="py-name" href="#" onclick="return doclink('link-26', 'getCurrentSystemPM', 'link-26');">getCurrentSystemPM</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt id="link-27" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-27', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name" targets="Method p4vasp.message.MessageDriver.error()=p4vasp.message.MessageDriver-class.html#error,Method p4vasp.schedule'.Process.error()=p4vasp.schedule%27.Process-class.html#error"><a title="p4vasp.message.MessageDriver.error
+p4vasp.schedule'.Process.error" class="py-name" href="#" onclick="return doclink('link-28', 'error', 'link-28');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"No valid system was selected."</tt><tt class="py-op">)</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt class="py-name">INITIAL_STRUCTURE</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt id="link-29" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-29', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="p4vasp.message.MessageDriver.error
+p4vasp.schedule'.Process.error" class="py-name" href="#" onclick="return doclink('link-30', 'error', 'link-28');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"The selected system does not contain a valid initial structure."</tt><tt class="py-op">)</tt> </tt>
+<a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L109"></a><tt class="py-lineno">109</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-31" class="py-name" targets="Method p4vasp.Structure.Structure.setCarthesian()=p4vasp.Structure.Structure-class.html#setCarthesian,Method p4vasp.cStructure.Structure.setCarthesian()=p4vasp.cStructure.Structure-class.html#setCarthesian"><a title="p4vasp.Structure.Structure.setCarthesian
+p4vasp.cStructure.Structure.setCarthesian" class="py-name" href="#" onclick="return doclink('link-31', 'setCarthesian', 'link-31');">setCarthesian</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L110"></a><tt class="py-lineno">110</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Method p4vasp.Structure.Structure.replicateCell()=p4vasp.Structure.Structure-class.html#replicateCell"><a title="p4vasp.Structure.Structure.replicateCell" class="py-name" href="#" onclick="return doclink('link-32', 'replicateCell', 'link-32');">replicateCell</a></tt><tt class="py-op">(</tt><tt class="py-name">n1</tt><tt class="py-op">,</tt><tt class="py-name">n2</tt><tt class="py-op">,</tt><tt class="py-name">n3</tt><tt class="py-op">)</tt> </tt>
+<a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt id="link-33" class="py-name" targets="Function p4vasp.SystemPM.systemlist()=p4vasp.SystemPM-module.html#systemlist"><a title="p4vasp.SystemPM.systemlist" class="py-name" href="#" onclick="return doclink('link-33', 'systemlist', 'link-33');">systemlist</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-34" class="py-name" targets="Method p4vasp.SystemPM.SystemRepository.notifySystemChanged()=p4vasp.SystemPM.SystemRepository-class.html#notifySystemChanged"><a title="p4vasp.SystemPM.SystemRepository.notifySystemChanged" class="py-name" href="#" onclick="return doclink('link-34', 'notifySystemChanged', 'link-34');">notifySystemChanged</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="MultiplyCellApplet.on_advancedmultiply_button_clicked_handler"></a><div id="MultiplyCellApplet.on_advancedmultiply_button_clicked_handler-def"><a name="L112"></a><tt class="py-lineno">112</tt> <a class="py-toggle" href="#" id="MultiplyCellApplet.on_advancedmultiply_button_clicked_handler-toggle" onclick="return toggle('MultiplyCellApplet.on_advancedmultiply_button_clicked_handler');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#on_advancedmultiply_button_clicked_handler">on_advancedmultiply_button_clicked_handler</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt><tt class="py-param">w</tt><tt class="py-op">,</tt><tt class="py-op">*</tt><tt class="py-param">arg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="MultiplyCellApplet.on_advancedmultiply_button_clicked_handler-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="MultiplyCellApplet.on_advancedmultiply_button_clicked_handler-expanded"><a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line"><tt class="py-comment">#    print "advancedmultiply"</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line"><tt class="py-comment">#    print self.n11e.get_text(),self.n12e.get_text(),self.n13e.get_text()</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line"><tt class="py-comment">#    print self.n21e.get_text(),self.n22e.get_text(),self.n23e.get_text()</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line"><tt class="py-comment">#    print self.n31e.get_text(),self.n32e.get_text(),self.n33e.get_text()</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">        <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-name">n11</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n11e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">            <tt class="py-name">n21</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n21e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">            <tt class="py-name">n31</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n31e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">            <tt class="py-name">n12</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n12e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">            <tt class="py-name">n22</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n22e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">            <tt class="py-name">n32</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n32e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-name">n13</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n13e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">            <tt class="py-name">n23</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n23e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">n33</tt><tt class="py-op">=</tt><tt class="py-name">int</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">n33e</tt><tt class="py-op">.</tt><tt class="py-name">get_text</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt class="py-keyword">except</tt><tt class="py-op">:</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">            <tt id="link-35" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-35', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-36" class="py-name"><a title="p4vasp.message.MessageDriver.exception" class="py-name" href="#" onclick="return doclink('link-36', 'exception', 'link-25');">exception</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt id="link-37" class="py-name"><a title="p4vasp.SystemPM.getCurrentSystemPM" class="py-name" href="#" onclick="return doclink('link-37', 'getCurrentSystemPM', 'link-26');">getCurrentSystemPM</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line">            <tt id="link-38" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-38', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="p4vasp.message.MessageDriver.error
+p4vasp.schedule'.Process.error" class="py-name" href="#" onclick="return doclink('link-39', 'error', 'link-28');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"No valid system was selected."</tt><tt class="py-op">)</tt> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">=</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt class="py-name">INITIAL_STRUCTURE</tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">s</tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line">            <tt id="link-40" class="py-name"><a title="p4vasp.msg" class="py-name" href="#" onclick="return doclink('link-40', 'msg', 'link-24');">msg</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-41" class="py-name"><a title="p4vasp.message.MessageDriver.error
+p4vasp.schedule'.Process.error" class="py-name" href="#" onclick="return doclink('link-41', 'error', 'link-28');">error</a></tt><tt class="py-op">(</tt><tt class="py-string">"The selected system does not contain a valid initial structure."</tt><tt class="py-op">)</tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line">            <tt class="py-keyword">return</tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line">        <tt class="py-name">ns</tt><tt class="py-op">=</tt><tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-42" class="py-name" targets="Method p4vasp.Structure.Structure.createMultiplied()=p4vasp.Structure.Structure-class.html#createMultiplied"><a title="p4vasp.Structure.Structure.createMultiplied" class="py-name" href="#" onclick="return doclink('link-42', 'createMultiplied', 'link-42');">createMultiplied</a></tt><tt class="py-op">(</tt><tt class="py-name">n11</tt><tt class="py-op">,</tt><tt class="py-name">n12</tt><tt class="py-op">,</tt><tt class="py-name">n13</tt><tt class="py-op">,</tt><tt class="py-name">n21</tt><tt class="py-op">,</tt><tt class="py-name">n22</tt><tt class="py-op">,</tt><tt class="py-name">n23</tt><tt class="py-op">,</tt><tt class="py-name">n31</tt><tt class="py-op">,</tt><tt class="py-name">n32</tt><tt class="py-op">,</tt><tt class="py-name">n33</tt><tt class="py-op">)</tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line">        <tt class="py-name">s</tt><tt class="py-op">.</tt><tt id="link-43" class="py-name" targets="Method p4vasp.Structure.Structure.setStructure()=p4vasp.Structure.Structure-class.html#setStructure,Method p4vasp.StructureWindow.StructureWindow.setStructure()=p4vasp.StructureWindow.StructureWindow-class.html#setStructure,Method p4vasp.applet.BuilderApplet.StructureTreeModel.setStructure()=p4vasp.applet.BuilderApplet.StructureTreeModel-class.html#setStructure,Method p4vasp.applet.STMWindowApplet.STMWindowApplet.setStructure()=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#setStructure,Method p4vasp.applet.StructureApplet.StructureApplet.setStructure()=p4vasp.applet.StructureApplet.StructureApplet-class.html#setStructure,Method p4vasp.applet.StructureWindowApplet.StructureWindowApplet.setStructure()=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#setStructure,Method p4vasp.cStructure.Structure.setStructure()=p4vasp.cStructure.Structure-class.html#setStructure"><a title="p4vasp.Structure.Structure.setStructure
+p4vasp.StructureWindow.StructureWindow.setStructure
+p4vasp.applet.BuilderApplet.StructureTreeModel.setStructure
+p4vasp.applet.STMWindowApplet.STMWindowApplet.setStructure
+p4vasp.applet.StructureApplet.StructureApplet.setStructure
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.setStructure
+p4vasp.cStructure.Structure.setStructure" class="py-name" href="#" onclick="return doclink('link-43', 'setStructure', 'link-43');">setStructure</a></tt><tt class="py-op">(</tt><tt class="py-name">ns</tt><tt class="py-op">)</tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line">        <tt id="link-44" class="py-name"><a title="p4vasp.SystemPM.systemlist" class="py-name" href="#" onclick="return doclink('link-44', 'systemlist', 'link-33');">systemlist</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-45" class="py-name"><a title="p4vasp.SystemPM.SystemRepository.notifySystemChanged" class="py-name" href="#" onclick="return doclink('link-45', 'notifySystemChanged', 'link-34');">notifySystemChanged</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L140"></a><tt class="py-lineno">140</tt>  <tt class="py-line"><tt id="link-46" class="py-name" targets="Module p4vasp.applet.MultiplyCellApplet=p4vasp.applet.MultiplyCellApplet-module.html,Class p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html"><a title="p4vasp.applet.MultiplyCellApplet
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet" class="py-name" href="#" onclick="return doclink('link-46', 'MultiplyCellApplet', 'link-46');">MultiplyCellApplet</a></tt><tt class="py-op">.</tt><tt id="link-47" class="py-name" targets="Variable p4vasp.SystemPM.SystemRepository.store_profile=p4vasp.SystemPM.SystemRepository-class.html#store_profile,Variable p4vasp.applet.Applet.Applet.store_profile=p4vasp.applet.Applet.Applet-class.html#store_profile,Variable p4vasp.applet.AppletFactory.store_profile=p4vasp.applet.AppletFactory-class.html#store_profile,Variable p4vasp.applet.AppletRepository.store_profile=p4vasp.applet.AppletRepository-class.html#store_profile,Variable p4vasp.applet.BuilderApplet.BuilderApplet.store_profile=p4vasp.applet.BuilderApplet.BuilderApplet-class.html#store_profile,Variable p4vasp.applet.DielectricApplet.DielectricApplet.store_profile=p4vasp.applet.DielectricApplet.DielectricApplet-class.html#store_profile,Variable p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.store_profile=p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet-class.html#store_profile,Variable p4vasp.applet.ElectronicApplet.ElectronicApplet.store_profile=p4vasp.applet.ElectronicApplet.ElectronicApplet-class.html#store_profile,Variable p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.store_profile=p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet-class.html#store_profile,Variable p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.store_profile=p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet-class.html#store_profile,Variable p4vasp.applet.ExportApplet.ExportApplet.store_profile=p4vasp.applet.ExportApplet.ExportApplet-class.html#store_profile,Variable p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.store_profile=p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet-class.html#store_profile,Variable p4vasp.applet.GraphWindowApplet.GraphWindowApplet.store_profile=p4vasp.applet.GraphWindowApplet.GraphWindowApplet-class.html#store_profile,Variable p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.store_profile=p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet-class.html#store_profile,Variable p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.store_profile=p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet-class.html#store_profile,Variable p4vasp.applet.MeasureApplet.MeasureApplet.store_profile=p4vasp.applet.MeasureApplet.MeasureApplet-class.html#store_profile,Variable p4vasp.applet.MoveApplet.MoveApplet.store_profile=p4vasp.applet.MoveApplet.MoveApplet-class.html#store_profile,Variable p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.store_profile=p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet-class.html#store_profile,Variable p4vasp.applet.NewApplet.NewApplet.store_profile=p4vasp.applet.NewApplet.NewApplet-class.html#store_profile,Variable p4vasp.applet.RotateApplet.RotateApplet.store_profile=p4vasp.applet.RotateApplet.RotateApplet-class.html#store_profile,Variable p4vasp.applet.STMWindowApplet.STMWindowApplet.store_profile=p4vasp.applet.STMWindowApplet.STMWindowApplet-class.html#store_profile,Variable p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.store_profile=p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet-class.html#store_profile,Variable p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.store_profile=p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet-class.html#store_profile,Variable p4vasp.applet.SelectionApplet.SelectionApplet.store_profile=p4vasp.applet.SelectionApplet.SelectionApplet-class.html#store_profile,Variable p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.store_profile=p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet-class.html#store_profile,Variable p4vasp.applet.StructureApplet.StructureApplet.store_profile=p4vasp.applet.StructureApplet.StructureApplet-class.html#store_profile,Variable p4vasp.applet.StructureWindowApplet.StructureWindowApplet.store_profile=p4vasp.applet.StructureWindowApplet.StructureWindowApplet-class.html#store_profile,Variable p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.store_profile=p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet-class.html#store_profile,Variable p4vasp.applet.VACApplet.VACApplet.store_profile=p4vasp.applet.VACApplet.VACApplet-class.html#store_profile"><a title="p4vasp.SystemPM.SystemRepository.store_profile
+p4vasp.applet.Applet.Applet.store_profile
+p4vasp.applet.AppletFactory.store_profile
+p4vasp.applet.AppletRepository.store_profile
+p4vasp.applet.BuilderApplet.BuilderApplet.store_profile
+p4vasp.applet.DielectricApplet.DielectricApplet.store_profile
+p4vasp.applet.EditSubZMatApplet.EditSubZMatApplet.store_profile
+p4vasp.applet.ElectronicApplet.ElectronicApplet.store_profile
+p4vasp.applet.ElectronicControlApplet.ElectronicControlApplet.store_profile
+p4vasp.applet.EnergyConvergenceApplet.EnergyConvergenceApplet.store_profile
+p4vasp.applet.ExportApplet.ExportApplet.store_profile
+p4vasp.applet.ForcesConvergenceApplet.ForcesConvergenceApplet.store_profile
+p4vasp.applet.GraphWindowApplet.GraphWindowApplet.store_profile
+p4vasp.applet.KpointsViewerApplet.KpointsViewerApplet.store_profile
+p4vasp.applet.LocalPotentialApplet.LocalPotentialApplet.store_profile
+p4vasp.applet.MeasureApplet.MeasureApplet.store_profile
+p4vasp.applet.MoveApplet.MoveApplet.store_profile
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet.store_profile
+p4vasp.applet.NewApplet.NewApplet.store_profile
+p4vasp.applet.RotateApplet.RotateApplet.store_profile
+p4vasp.applet.STMWindowApplet.STMWindowApplet.store_profile
+p4vasp.applet.STMWindowControlApplet.STMWindowControlApplet.store_profile
+p4vasp.applet.SelForcesConvergenceApplet.SelForcesConvergenceApplet.store_profile
+p4vasp.applet.SelectionApplet.SelectionApplet.store_profile
+p4vasp.applet.ShowHideControlApplet.ShowHideControlApplet.store_profile
+p4vasp.applet.StructureApplet.StructureApplet.store_profile
+p4vasp.applet.StructureWindowApplet.StructureWindowApplet.store_profile
+p4vasp.applet.StructureWindowControlApplet.StructureWindowControlApplet.store_profile
+p4vasp.applet.VACApplet.VACApplet.store_profile" class="py-name" href="#" onclick="return doclink('link-47', 'store_profile', 'link-47');">store_profile</a></tt><tt class="py-op">=</tt><tt id="link-48" class="py-name" targets="Class p4vasp.applet.Applet.AppletProfile=p4vasp.applet.Applet.AppletProfile-class.html"><a title="p4vasp.applet.Applet.AppletProfile" class="py-name" href="#" onclick="return doclink('link-48', 'AppletProfile', 'link-48');">AppletProfile</a></tt><tt class="py-op">(</tt><tt id="link-49" class="py-name"><a title="p4vasp.applet.MultiplyCellApplet
+p4vasp.applet.MultiplyCellApplet.MultiplyCellApplet" class="py-name" href="#" onclick="return doclink('link-49', 'MultiplyCellApplet', 'link-46');">MultiplyCellApplet</a></tt><tt class="py-op">,</tt><tt class="py-name">tagname</tt><tt class="py-op">=</tt><tt class="py-string">"MultiplyCell"</tt><tt class="py-op">)</tt> </tt>
+<a name="L141"></a><tt class="py-lineno">141</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="p4vasp-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="../index.html">p4vasp</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Aug 16 22:08:13 2015
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+This directory contains utilities helping in the instalation process.
