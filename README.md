@@ -1,6 +1,5 @@
-******************************************************************
-*  p4vasp                                                        *
-******************************************************************
+p4vasp                                                        
+==========================
 
 Copyright notes:
 The p4vasp is distributed under the General Public License version 2 (GPL2).
