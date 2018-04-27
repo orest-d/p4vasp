@@ -1,9 +1,9 @@
-CPP=g++
-LD=gcc 
+-include Configuration.mk
 
-LIBS= -L. -lp4vasp -L../odpdom -lODP `fltk-config --use-gl --ldstaticflags` \
-	-lpthread /opt/local/lib/libpython.dylib /usr/lib/libc.dylib \
-	/usr/lib/libstdc++.6.dylib /usr/lib/libgcc_s.1.dylib
+CPP=g++-7
+LD=g++-7
+#CPP=icc
+#LD=icc
 
 FLAGS= -Wall -DPY_DOMEXC_MODULE="\"p4vasp.ODPdom.\"" \
        -DCHECK=1 \
@@ -11,15 +11,16 @@ FLAGS= -Wall -DPY_DOMEXC_MODULE="\"p4vasp.ODPdom.\"" \
        -DNO_GL_LISTS_S \
        -DNO_THREADS \
 
-CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `fltk-config --cxxflags` \
-	-I/opt/local/include/python2.4 -Iinclude -I../odpdom/include \
-	-I/usr/X11R6/include
-
+#       -DNO_THROW \
+#       -DSIMPLE_EXCEPTION \
+#       -DDRAWBUFFERHACK \
+#       -DNO_GL_LISTS \
+#       -DNO_GL_LISTS_S 
+#       -DNO_THREADS \
+       
 SWIGFLAGS= -python -c++  $(FLAGS) -I../odpdom/include -Iinclude
-
+      
 SWIG = swig
-
-LDFLAGS= -flat_namespace -undefined suppress
 
 OBJECTS= Exceptions.o \
 	 AtomtypesRecord.o \
@@ -47,7 +48,10 @@ OBJECTS= Exceptions.o \
 	 VisPrimitiveDrawer.o \
 	 VisBackEvent.o 
 
+
+
 PYLIBOBJECTS = $(OBJECTS) cp4vasp_wrap.o
+	 
 
 all: _cp4vasp.so
 
@@ -55,22 +59,28 @@ all: _cp4vasp.so
 	$(CPP) $(CFLAGS) -c $< -o $@
 %.o: %.c 
 	$(CPP) $(CFLAGS) -c $< -o $@
-#cp4vasp_wrap.cpp: cp4vasp.i
-#	$(SWIG) $(SWIGFLAGS) -o cp4vasp_wrap.cpp cp4vasp.i 
+cp4vasp_wrap.cpp: cp4vasp.i
+	$(SWIG) $(SWIGFLAGS) -o cp4vasp_wrap.cpp cp4vasp.i 
 	
+#_cp4vasp.so: $(PYLIBOBJECTS)
+#	$(LD) $(LDFLAGS) -o _cp4vasp.so $(PYLIBOBJECTS) $(LIBS) 
 _cp4vasp.so: libp4vasp.a cp4vasp_wrap.o
-	$(LD) $(LDFLAGS) -o _cp4vasp.so cp4vasp_wrap.o -bundle $(LIBS) 
+	$(LD) $(LDFLAGS) -o _cp4vasp.so cp4vasp_wrap.o -lp4vasp $(LIBS) -L/usr/local/opt/python@2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/config -lpython2.7 -ldl -framework CoreFoundation 
 
 testprog1: testprog1.o libp4vasp.a
-	$(LD) -o testprog1 testprog1.o $(LIBS)
+	$(LD) -o testprog1 testprog1.o -lp4vasp.a $(LIBS)
 testprog2: testprog2.o libp4vasp.a
-	$(LD) -o testprog2 testprog2.o $(LIBS)
+	$(LD) -o testprog2 testprog2.o -lp4vasp $(LIBS)
 viewer1: viewer1.o libp4vasp.a
-	$(LD) -o viewer1 viewer1.o $(LIBS)
+	$(LD) -o viewer1 viewer1.o -L. -lp4vasp $(LIBS)
 viewer2: viewer2.o libp4vasp.a
-	$(LD) -o viewer2 viewer2.o $(LIBS) -ldl
+	$(LD) -o viewer2 viewer2.o -L. -lp4vasp $(LIBS) -ldl
 viewer3: viewer3.o libp4vasp.a
-	$(LD) -o viewer3 viewer3.o $(LIBS)
+	$(LD) -o viewer3 viewer3.o -L. -lp4vasp $(LIBS)
+#testdombug: testdombug.o libp4vasp.a
+#	$(LD) -o testdombug testdombug.o -L. -lp4vasp $(LIBS)
+#viewer3: viewer3.o $(OBJECTS)
+#	$(LD) -static -o viewer3 viewer3.o $(OBJECTS) $(LIBS) -ldl
 
 libp4vasp.a: $(OBJECTS)
 	ar -r libp4vasp.a $(OBJECTS)
@@ -90,3 +100,7 @@ cleanall: clean
 	-rm testprog*
 	-rm viewer1
 	-rm viewer2
+	-rm *.tmp
+	-rm *.pyc
+	-rm *.pyo
+	-rm *~
