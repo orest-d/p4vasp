@@ -1,4 +1,4 @@
-p4vasp                                                        
+p4vasp
 ==========================
 
 Copyright notes:
@@ -64,6 +64,35 @@ x) If something goes wrong
    - Run the diagnostic.py script, it may provide you with some hints.
    - Check FAQ
    - We can try to help you if you visit forum at www.p4vasp.at, please provide us with the output from diagnostic.py.
+
+
+
+Installation (MacOs)
+--------------------------
+0) You will need X11 and the command-line tools for Xcode installed.
+   For Xquratz, visit: 			https://www.xquartz.org/
+   For command-line tools: 		$ xcode-select --install
+
+
+1) For FLTK installation, we use homebrew's fltk:
+   Install homebrew: 			$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+   Install fltk: 			$ brew install fltk
+
+2) Install other necessary library:	$ brew install python@2 pip gcc gtk+ pygtk —with-libglade && pip install pyopengl numpy
+
+3) Apply patch to the sourcefile:	$ patch -p0 -i MacOS.patch
+
+5) Copy the Makefile.MacOS to Makefile in the p4vasp root directory and in the src
+   directory:
+   cp Makefile.MacOS Makefile
+   cp src/Makefile.MacOS src/Makefile
+
+6) Run make and install:
+   make local; make; make install
+
+7) The executable should located at ~/p4vasp/bin
+
+
 
 
 Starting:
