@@ -1,5 +1,3 @@
-
-
 p4vasp compillation in MacOS:
 (Tested on Mac OS 10.13.4, all updates installed.)
 
@@ -18,11 +16,12 @@ p4vasp compillation in MacOS:
 
 5) Copy the Makefile.MacOS to Makefile in the p4vasp root directory and in the src
    directory:
-   cp Makefile.MacOS Makefile
-   cp src/Makefile.MacOS src/Makefile   
+   					$ cp Makefile.MacOS Makefile
+					$ cp odpdom/Makefile.MacOS odpdom/Makefile
+   					$ cp src/Makefile.MacOS src/Makefile   
 
 6) Run make and install:
-   make local; make; make install
+   make local && make && make install
 
 7) The executable should located at ~/p4vasp/bin
 
