@@ -37,7 +37,7 @@ Installation (local)
 1) Make sure you have all the dependencies.
    In Ubuntu you can do it with a supplied script: `install/install-ubuntu-dependencies.sh`
 2) If there are previous versions of p4vasp, uninstall them.
-   You can do it with the `uninstall.sh` residing in the P4VASP_HOME directory.
+   You can do it with the `uninstall.sh` residing in the `P4VASP_HOME` directory.
 3) Unpack the file:                
 ```
    $ tar -xvzf p4vasp-x.x.x.tgz
@@ -50,10 +50,7 @@ Installation (local)
 ```
    $ make local
 ```
-6) check and adjust the paths in
-```
-   $ install/Configuration.mk
-```
+6) check and adjust the paths in `install/Configuration.mk`
 7) Install:                        
 ```
    $ make install
@@ -90,7 +87,7 @@ Installation (global)
 ```
    $ make install
 ```
-x) If something goes wrong
+7) If something goes wrong
    - Run the diagnostic.py script, it may provide you with some hints.
    - Check FAQ
    - We can try to help you if you visit forum at www.p4vasp.at, please provide us with the output from diagnostic.py.
