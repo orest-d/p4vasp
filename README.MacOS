@@ -1,41 +1,28 @@
-NOTE, THIS DOCUMENT IS OUTDATED.
-THE PROCEDURE UNFORTUNATELY DOES NOT WORK AS DESCRIBED ANYMORE,
-THIS FILE IS PROVIDED IN A GOOD HOPE TO GIVE HINTS HOW TO INSTALL P4VASP ON OSX.
-PLEASE LET US KNOW IF YOU FIND A WAY HOW TO INSTALL ON OSX.
+p4vasp compillation in MacOS:
+(Tested on Mac OS 10.13.4, all updates installed.)
 
+0) You will need X11 and the command-line tools for Xcode installed.
+   For Xquratz, visit: 			https://www.xquartz.org/
+   For command-line tools: 		$ xcode-select --install
+   
 
-Thanks to Dr. Daniel Knapp, here is a method to install p4vasp in MacOS:
-(Tested on Mac OS 10.4.5, all updates installed.)
+1) For FLTK installation, we use homebrew's fltk:
+   Install homebrew: 			$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"   
+   Install fltk: 			$ brew install fltk
 
-0) You will need X11 and all of the developer tools for OS X installed which
-   are included on your Tiger install discs but which are NOT installed by default.
+2) Install other necessary library:	$ brew install python@2 pip gcc gtk+ pygtk —with-libglade && pip install pyopengl numpy
 
-
-1) Download and install FLTK (http://www.fltk.org, tested with v1.1.7):   
-   Simply download the tar.gz file and run make; make install. This will put a
-   working version of FLTK in /usr on my Mac.
-   (To be sure, try out the test programs.)
-
-2) Download and install the  DarwinPorts (http://darwinports.opendarwin.org)
-   This is a unix software installation program for the Mac. (DarwinPorts seems to be a bit
-   more up to date than Fink, but I did need to install the following in a particular
-   order in order for python to recognize all of the modules.)
-
-3) Use DarwinPorts to install gtk2 and glade libraries:
-   sudo port install gtk2 libglade2
-
-4) Used DarwinPorts to install py-gtk and python:
-   sudo port install py-gtk2
-   (Note that python2.4 will be installed along with py-gtk2)
+3) Apply patch to the sourcefile:	$ patch -p0 -i MacOS.patch
 
 5) Copy the Makefile.MacOS to Makefile in the p4vasp root directory and in the src
    directory:
-   cp Makefile.MacOS Makefile
-   cp src/Makefile.MacOS src/Makefile   
+   					$ cp Makefile.MacOS Makefile
+					$ cp odpdom/Makefile.MacOS odpdom/Makefile
+   					$ cp src/Makefile.MacOS src/Makefile   
 
 6) Run make and install:
-   make; make install
+   make local && make && make install
 
-7) Now p4v.py can then be run from any x-terminal (eg. xterm).
+7) The executable should located at ~/p4vasp/bin
 
 
