@@ -43,9 +43,9 @@ P4V           = p4v
 
 all: p4vasp
 local:
-	cd install && python configure.py local
+	cd install && python2 configure.py local
 config:
-	cd install && python configure.py
+	cd install && python2 configure.py
 p4vasp: p4vasp_config uninstallsh fltk appletlist
 	cd odpdom && $(MAKE) libODP.a	
 	cd src && $(MAKE)
@@ -67,9 +67,9 @@ launcher:
 	echo "#export APPMENU_DISPLAY_BOTH=1" >>$(P4V)
 	echo "export UBUNTU_MENUPROXY=0" >>$(P4V)
 	echo "export P4VASP_HOME="$(P4VASP_HOME) >> $(P4V)
-	echo "exec python "$(BINDIR)"/p4v.py \"\$$@\"" >>$(P4V)
+	echo "exec python2 "$(BINDIR)"/p4v.py \"\$$@\"" >>$(P4V)
 appletlist:
-	cd install && python makeappletlist.py
+	cd install && python2 makeappletlist.py
 bashrc:setenvironment
 	echo "" >> ~/.bashrc
 	cat $(SETENVIRONMENT) >> ~/.bashrc

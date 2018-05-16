@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #  This utility is a part of p4vasp package.
 #  p4vasp is a GUI-program and a library for processing outputs of the
 #  Vienna Ab-inition Simulation Package (VASP)

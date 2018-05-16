@@ -9,7 +9,7 @@ FLAGS   = -DPY_DOMEXC_MODULE="\"xml.dom.\""
 #          -DNO_POS_CACHE
 #	  -DNO_THROW
 
-PYINCLUDE=`python -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
 CFLAGS  += -fpic -g $(FLAGS) -I$(PYINCLUDE)  -Iinclude
 
 SWIGFLAGS = -python -c++ $(FLAGS)

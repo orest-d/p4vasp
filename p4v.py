@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 # Copyright (C) 2003 Orest Dubay <orest.dubay@univie.ac.at>
 
 from __future__ import generators

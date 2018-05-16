@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 import unittest
 from p4vasp.paint3d.ColladaPaint3D import *
 from p4vasp.matrix import Vector

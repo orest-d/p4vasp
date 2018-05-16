@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 """Slightly modified PIDDLE canvas implementations for PyGTK.
 
 The real documentation is in piddleGTK.
