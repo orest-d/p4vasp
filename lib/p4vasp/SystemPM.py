@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 #
 # HappyDoc:docStringFormat='ClassicStructuredText'
 #
@@ -99,7 +99,7 @@ Following calculation properties are available:
 
   example:
 
-    #!/usr/bin/python
+    #!/usr/bin/python2
     from p4vasp.SystemPM import *
     s=XMLSystemPM('vasprun.xml')
     poscar=s.INITIAL_STRUCTURE

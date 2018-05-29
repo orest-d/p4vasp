@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 from math import *
 from p4vasp.paint3d.OpenGLPaint3D import *
 from p4vasp.paint3d.PovrayPaint3D import *

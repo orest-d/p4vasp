@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 import p4vasp.matrix as p4m
 import numpy as np

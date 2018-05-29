@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 from string import *
 from glob import glob
 import os.path

@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 from p4vasp.SystemPM import *
 from glob import glob

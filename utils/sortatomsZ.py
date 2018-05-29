@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 from p4vasp.Structure import *
 from sys import argv

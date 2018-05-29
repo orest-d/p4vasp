@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 import unittest
 from p4vasp.isosurface import *
 from cp4vasp import *
