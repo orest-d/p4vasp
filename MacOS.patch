@@ -15,7 +15,7 @@ diff -c -r ./src/VisDrawer.cpp ../p4vasp-0.3.31/src/VisDrawer.cpp
   #include <p4vasp/Exceptions.h>
   #include <stdio.h>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   
   const char *VisDrawer::getClassName(){return "VisDrawer";}
   
@@ -35,7 +35,7 @@ diff -c -r ./src/VisIsosurfaceDrawer.cpp ../p4vasp-0.3.31/src/VisIsosurfaceDrawe
   #include <p4vasp/VisIsosurfaceDrawer.h>
   #include <math.h>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <stdio.h>
   #include <string.h>
   #include <p4vasp/vecutils.h>
@@ -55,7 +55,7 @@ diff -c -r ./src/VisMain.cpp ../p4vasp-0.3.31/src/VisMain.cpp
   #include <FL/Fl.H>
   #include <FL/Fl_Gl_Window.H>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <p4vasp/VisFLWindow.h>
   
   THREAD(Vis_thread);
@@ -75,7 +75,7 @@ diff -c -r ./src/VisNavDrawer.cpp ../p4vasp-0.3.31/src/VisNavDrawer.cpp
   #include <p4vasp/VisNavDrawer.h>
   #include <FL/Fl.H>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <p4vasp/vecutils.h>
   #include <p4vasp/Exceptions.h>
   
@@ -95,7 +95,7 @@ diff -c -r ./src/VisPrimitiveDrawer.cpp ../p4vasp-0.3.31/src/VisPrimitiveDrawer.
   #include <p4vasp/VisPrimitiveDrawer.h>
   #include <math.h>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <stdio.h>
   #include <p4vasp/Exceptions.h>
   
@@ -115,7 +115,7 @@ diff -c -r ./src/VisStructureArrowsDrawer.cpp ../p4vasp-0.3.31/src/VisStructureA
   #include <p4vasp/VisStructureArrowsDrawer.h>
   #include <math.h>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <stdio.h>
   #include <string.h>
   #include <p4vasp/vecutils.h>
@@ -135,7 +135,7 @@ diff -c -r ./src/VisStructureDrawer.cpp ../p4vasp-0.3.31/src/VisStructureDrawer.
   #include <p4vasp/VisStructureDrawer.h>
   #include <math.h>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include <stdio.h>
   #include <p4vasp/vecutils.h>
   #include <p4vasp/VisBackEvent.h>
@@ -183,7 +183,7 @@ diff -c -r ./src/include/p4vasp/VisFLWindow.h ../p4vasp-0.3.31/src/include/p4vas
   
   #include <FL/Fl_Gl_Window.H>
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include "VisWindow.h"
   
   class VisFLWindow : public Fl_Gl_Window{
@@ -203,7 +203,7 @@ diff -c -r ./src/include/p4vasp/VisIsosurfaceDrawer.h ../p4vasp-0.3.31/src/inclu
   #include "Chgcar.h"
   #include "threads.h"
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   
   #ifndef VisWindow
   class VisWindow;
@@ -223,7 +223,7 @@ diff -c -r ./src/include/p4vasp/VisPrimitiveDrawer.h ../p4vasp-0.3.31/src/includ
   #include "VisDrawer.h"
   #include "threads.h"
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   
   #ifndef VisWindow
   class VisWindow;
@@ -243,7 +243,7 @@ diff -c -r ./src/include/p4vasp/VisStructureArrowsDrawer.h ../p4vasp-0.3.31/src/
   #include "VisStructureDrawer.h"
   #include "threads.h"
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   
   #ifndef VisWindow
   class VisWindow;
@@ -263,7 +263,7 @@ diff -c -r ./src/include/p4vasp/VisStructureDrawer.h ../p4vasp-0.3.31/src/includ
   #include "VisPrimitiveDrawer.h"
   #include "threads.h"
   #include <FL/gl.h>
-! #include <openGL/glu.h>
+! #include <OpenGL/glu.h>
   #include "AtomInfo.h"
   #include "Structure.h"
   
