@@ -1,5 +1,8 @@
 p4vasp compillation in MacOS:
-(Tested on Mac OS 10.14.4, all updates installed.)
+(Tested on Mac OS 10.14.4 by Chengcheng-Xiao, all updates installed.	)
+(Contact me by E-mail : iconxicon@me.com 				)
+(	    or Github : https://github.com/orest-d/p4vasp/issues/	) 
+
 
 0) You will need X11 and the command-line tools for Xcode installed.
    For Xquratz, visit: 			https://www.xquartz.org/
@@ -9,6 +12,7 @@ p4vasp compillation in MacOS:
 
 1) For FLTK installation, we use homebrew's fltk:
    Install homebrew: 			$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"   
+   update homebrew:			$ brew update
    Install fltk: 			$ brew install fltk
 
 
@@ -16,9 +20,11 @@ p4vasp compillation in MacOS:
 					$ pip install pyopengl numpy
 					$ brew install gcc@7
 					$ brew install gtk+ 
-					$ bre install --build-from-source ./p4v_pygtk.rb —-with-libglade 
+					$ brew install --build-from-source ./brew_pygtk.rb —-with-libglade 
 
-(*)Note that homebrew team merged a pull request that deleted the pygtk with libglade support, please use provided p4v_pygtk.rb to install pygtk.
+(*)Note that homebrew team are deleting all formula options to avoid compilation. 
+(*)In one merged pull request (#35732) they deleted the pygtk with libglade support.
+(*)Please use provided brew_pygtk.rb to install pygtk.
 
 
 3) Apply patch to the sourcefile:	$ patch -p0 -i MacOS.patch
@@ -36,5 +42,9 @@ p4vasp compillation in MacOS:
 
 
 7) The executable should located at ~/p4vasp/bin
+   you can put it in your PATH by:
+					$ export PATH=~/p4vasp/bin:$PATH
 
-
+Known bugs:
+(1). Close window directly can causes froze-window. 	FIX: Uses exit option under Files.
+(2). Buttons can be unresponsive sometimes. 		FIX: try wait a while.....
