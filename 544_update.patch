@@ -1,0 +1,174 @@
+diff -bruN ./data/glade/lbandsapplet.glade ../p4vasp_mod/data/glade/lbandsapplet.glade
+--- ./data/glade/lbandsapplet.glade	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/data/glade/lbandsapplet.glade	2019-06-28 20:40:39.000000000 +0800
+@@ -444,14 +444,14 @@
+ 
+ 	      <widget>
+ 		<class>GtkCheckButton</class>
+-		<name>dx2</name>
++		<name>x2-y2</name>
+ 		<can_focus>True</can_focus>
+ 		<signal>
+ 		  <name>toggled</name>
+ 		  <handler>on_d_toggled</handler>
+ 		  <last_modification_time>Wed, 04 Dec 2002 15:42:50 GMT</last_modification_time>
+ 		</signal>
+-		<label>dx2</label>
++		<label>x2-y2</label>
+ 		<active>True</active>
+ 		<draw_indicator>True</draw_indicator>
+ 		<child>
+diff -bruN ./data/glade/ldosapplet.glade ../p4vasp_mod/data/glade/ldosapplet.glade
+--- ./data/glade/ldosapplet.glade	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/data/glade/ldosapplet.glade	2019-06-28 20:40:21.000000000 +0800
+@@ -511,14 +511,14 @@
+ 
+ 	      <widget>
+ 		<class>GtkCheckButton</class>
+-		<name>dx2</name>
++		<name>x2-y2</name>
+ 		<can_focus>True</can_focus>
+ 		<signal>
+ 		  <name>toggled</name>
+ 		  <handler>on_d_toggled</handler>
+ 		  <last_modification_time>Wed, 04 Dec 2002 15:42:50 GMT</last_modification_time>
+ 		</signal>
+-		<label>dx2</label>
++		<label>x2-y2</label>
+ 		<active>True</active>
+ 		<draw_indicator>True</draw_indicator>
+ 		<child>
+diff -bruN ./data/glade2/elcontrolapplet.glade ../p4vasp_mod/data/glade2/elcontrolapplet.glade
+--- ./data/glade2/elcontrolapplet.glade	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/data/glade2/elcontrolapplet.glade	2019-06-28 20:41:13.000000000 +0800
+@@ -695,10 +695,10 @@
+ 			  </child>
+ 
+ 			  <child>
+-			    <widget class="GtkCheckButton" id="dx2">
++			    <widget class="GtkCheckButton" id="x2-y2">
+ 			      <property name="visible">True</property>
+ 			      <property name="can_focus">True</property>
+-			      <property name="label" translatable="yes">dx2</property>
++			      <property name="label" translatable="yes">x2-y2</property>
+ 			      <property name="use_underline">True</property>
+ 			      <property name="relief">GTK_RELIEF_NORMAL</property>
+ 			      <property name="active">True</property>
+diff -bruN ./data/glade2/lbandsapplet.glade ../p4vasp_mod/data/glade2/lbandsapplet.glade
+--- ./data/glade2/lbandsapplet.glade	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/data/glade2/lbandsapplet.glade	2019-06-28 20:41:28.000000000 +0800
+@@ -409,10 +409,10 @@
+ 			  </child>
+ 
+ 			  <child>
+-			    <widget class="GtkCheckButton" id="dx2">
++			    <widget class="GtkCheckButton" id="x2-y2">
+ 			      <property name="visible">True</property>
+ 			      <property name="can_focus">True</property>
+-			      <property name="label" translatable="yes">dx2</property>
++			      <property name="label" translatable="yes">x2-y2</property>
+ 			      <property name="use_underline">True</property>
+ 			      <property name="relief">GTK_RELIEF_NORMAL</property>
+ 			      <property name="active">True</property>
+diff -bruN ./data/glade2/ldosapplet.glade ../p4vasp_mod/data/glade2/ldosapplet.glade
+--- ./data/glade2/ldosapplet.glade	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/data/glade2/ldosapplet.glade	2019-06-28 20:40:54.000000000 +0800
+@@ -454,10 +454,10 @@
+ 			  </child>
+ 
+ 			  <child>
+-			    <widget class="GtkCheckButton" id="dx2">
++			    <widget class="GtkCheckButton" id="x2-y2">
+ 			      <property name="visible">True</property>
+ 			      <property name="can_focus">True</property>
+-			      <property name="label" translatable="yes">dx2</property>
++			      <property name="label" translatable="yes">x2-y2</property>
+ 			      <property name="use_underline">True</property>
+ 			      <property name="relief">GTK_RELIEF_NORMAL</property>
+ 			      <property name="active">True</property>
+diff -bruN ./doc/api/python/p4vasp.SQLSystemPM-pysrc.html ../p4vasp_mod/doc/api/python/p4vasp.SQLSystemPM-pysrc.html
+--- ./doc/api/python/p4vasp.SQLSystemPM-pysrc.html	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/doc/api/python/p4vasp.SQLSystemPM-pysrc.html	2019-06-28 20:42:17.000000000 +0800
+@@ -1143,7 +1143,7 @@
+ <a name="L226"></a><tt class="py-lineno">226</tt>  <tt class="py-line">        <tt class="py-name">spins</tt><tt class="py-op">.</tt><tt class="py-name">sort</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+ <a name="L227"></a><tt class="py-lineno">227</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">spins</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt><tt class="py-op">&lt;</tt><tt class="py-number">0</tt><tt class="py-op">:</tt> </tt>
+ <a name="L228"></a><tt class="py-lineno">228</tt>  <tt class="py-line">            <tt class="py-name">spins</tt><tt class="py-op">.</tt><tt class="py-name">reverse</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+-<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-name">sorbitals</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"s"</tt><tt class="py-op">,</tt><tt class="py-string">"p"</tt><tt class="py-op">,</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">,</tt><tt class="py-string">"d"</tt><tt class="py-op">,</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"dx2"</tt><tt class="py-op">,</tt><tt class="py-string">"f"</tt><tt class="py-op">,</tt> </tt>
++<a name="L229"></a><tt class="py-lineno">229</tt>  <tt class="py-line">        <tt class="py-name">sorbitals</tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"s"</tt><tt class="py-op">,</tt><tt class="py-string">"p"</tt><tt class="py-op">,</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">,</tt><tt class="py-string">"d"</tt><tt class="py-op">,</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"x2-y2"</tt><tt class="py-op">,</tt><tt class="py-string">"f"</tt><tt class="py-op">,</tt> </tt>
+ <a name="L230"></a><tt class="py-lineno">230</tt>  <tt class="py-line">                           <tt class="py-string">"f1"</tt><tt class="py-op">,</tt><tt class="py-string">"f2"</tt><tt class="py-op">,</tt><tt class="py-string">"f3"</tt><tt class="py-op">,</tt><tt class="py-string">"f4"</tt><tt class="py-op">,</tt><tt class="py-string">"f5"</tt><tt class="py-op">,</tt><tt class="py-string">"f6"</tt><tt class="py-op">,</tt><tt class="py-string">"f7"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+ <a name="L231"></a><tt class="py-lineno">231</tt>  <tt class="py-line">        <tt class="py-keyword">for</tt> <tt class="py-name">x</tt> <tt class="py-keyword">in</tt> <tt id="link-178" class="py-name"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-178', 'orbitals', 'link-174');">orbitals</a></tt><tt class="py-op">[</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">:</tt> </tt>
+ <a name="L232"></a><tt class="py-lineno">232</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">x</tt> <tt class="py-keyword">not</tt> <tt class="py-keyword">in</tt> <tt class="py-name">sorbitals</tt><tt class="py-op">:</tt> </tt>
+diff -bruN ./doc/api/python/p4vasp.applet.ElectronicApplet-module.html ../p4vasp_mod/doc/api/python/p4vasp.applet.ElectronicApplet-module.html
+--- ./doc/api/python/p4vasp.applet.ElectronicApplet-module.html	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/doc/api/python/p4vasp.applet.ElectronicApplet-module.html	2019-06-28 20:41:57.000000000 +0800
+@@ -115,7 +115,7 @@
+     <td width="15%" align="right" valign="top" class="summary">
+       <span class="summary-type">&nbsp;</span>
+     </td><td class="summary">
+-        <a href="p4vasp.applet.ElectronicApplet-module.html#orbitals" class="summary-name">orbitals</a> = <code title="map(intern, [&quot;s&quot;, &quot;px&quot;, &quot;py&quot;, &quot;pz&quot;, &quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;dx2&quot;,\
++        <a href="p4vasp.applet.ElectronicApplet-module.html#orbitals" class="summary-name">orbitals</a> = <code title="map(intern, [&quot;s&quot;, &quot;px&quot;, &quot;py&quot;, &quot;pz&quot;, &quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;x2-y2&quot;,\
+  &quot;f1&quot;, &quot;f2&quot;, &quot;f3&quot;, &quot;f4&quot;, &quot;f5&quot;, &quot;f6&quot;, &quot;f7&quot;])">map(intern, [&quot;s&quot;, &quot;px&quot;, &quot;py&quot;, &quot;pz&quot;, &quot;dxy&quot;, &quot;dyz&quot;, &quot;<code class="variable-ellipsis">...</code></code>
+     </td>
+   </tr>
+@@ -130,7 +130,7 @@
+     <td width="15%" align="right" valign="top" class="summary">
+       <span class="summary-type">&nbsp;</span>
+     </td><td class="summary">
+-        <a name="orbitals_d"></a><span class="summary-name">orbitals_d</span> = <code title="map(intern, [&quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;dx2&quot;])">map(intern, [&quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;dx2&quot;])</code>
++        <a name="orbitals_d"></a><span class="summary-name">orbitals_d</span> = <code title="map(intern, [&quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;x2-y2&quot;])">map(intern, [&quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;x2-y2&quot;])</code>
+     </td>
+   </tr>
+ <tr>
+@@ -186,7 +186,7 @@
+   <dl class="fields">
+     <dt>Value:</dt>
+       <dd><table><tr><td><pre class="variable">
+-map(intern, [&quot;s&quot;, &quot;px&quot;, &quot;py&quot;, &quot;pz&quot;, &quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;dx2&quot;,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
++map(intern, [&quot;s&quot;, &quot;px&quot;, &quot;py&quot;, &quot;pz&quot;, &quot;dxy&quot;, &quot;dyz&quot;, &quot;dxz&quot;, &quot;dz2&quot;, &quot;x2-y2&quot;,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+  &quot;f1&quot;, &quot;f2&quot;, &quot;f3&quot;, &quot;f4&quot;, &quot;f5&quot;, &quot;f6&quot;, &quot;f7&quot;])
+ </pre></td></tr></table>
+ </dd>
+diff -bruN ./doc/api/python/p4vasp.applet.ElectronicApplet-pysrc.html ../p4vasp_mod/doc/api/python/p4vasp.applet.ElectronicApplet-pysrc.html
+--- ./doc/api/python/p4vasp.applet.ElectronicApplet-pysrc.html	2019-06-28 20:51:04.000000000 +0800
++++ ../p4vasp_mod/doc/api/python/p4vasp.applet.ElectronicApplet-pysrc.html	2019-06-28 20:42:33.000000000 +0800
+@@ -100,10 +100,10 @@
+ <a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">gtk</tt> </tt>
+ <a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line"> </tt>
+ <a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+-<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals=p4vasp.applet.ElectronicApplet-module.html#orbitals"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-14', 'orbitals', 'link-14');">orbitals</a></tt>  <tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"s"</tt><tt class="py-op">,</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"dx2"</tt><tt class="py-op">,</tt> </tt>
++<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt id="link-14" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals=p4vasp.applet.ElectronicApplet-module.html#orbitals"><a title="p4vasp.applet.ElectronicApplet.orbitals" class="py-name" href="#" onclick="return doclink('link-14', 'orbitals', 'link-14');">orbitals</a></tt>  <tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"s"</tt><tt class="py-op">,</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"x2-y2"</tt><tt class="py-op">,</tt> </tt>
+ <a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line">                       <tt class="py-string">"f1"</tt><tt class="py-op">,</tt><tt class="py-string">"f2"</tt><tt class="py-op">,</tt><tt class="py-string">"f3"</tt><tt class="py-op">,</tt><tt class="py-string">"f4"</tt><tt class="py-op">,</tt><tt class="py-string">"f5"</tt><tt class="py-op">,</tt><tt class="py-string">"f6"</tt><tt class="py-op">,</tt><tt class="py-string">"f7"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+ <a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt id="link-15" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals_p=p4vasp.applet.ElectronicApplet-module.html#orbitals_p"><a title="p4vasp.applet.ElectronicApplet.orbitals_p" class="py-name" href="#" onclick="return doclink('link-15', 'orbitals_p', 'link-15');">orbitals_p</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"px"</tt><tt class="py-op">,</tt><tt class="py-string">"py"</tt><tt class="py-op">,</tt><tt class="py-string">"pz"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+-<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals_d=p4vasp.applet.ElectronicApplet-module.html#orbitals_d"><a title="p4vasp.applet.ElectronicApplet.orbitals_d" class="py-name" href="#" onclick="return doclink('link-16', 'orbitals_d', 'link-16');">orbitals_d</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"dx2"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
++<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line"><tt id="link-16" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals_d=p4vasp.applet.ElectronicApplet-module.html#orbitals_d"><a title="p4vasp.applet.ElectronicApplet.orbitals_d" class="py-name" href="#" onclick="return doclink('link-16', 'orbitals_d', 'link-16');">orbitals_d</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"dxy"</tt><tt class="py-op">,</tt><tt class="py-string">"dyz"</tt><tt class="py-op">,</tt><tt class="py-string">"dxz"</tt><tt class="py-op">,</tt><tt class="py-string">"dz2"</tt><tt class="py-op">,</tt><tt class="py-string">"x2-y2"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+ <a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line"><tt id="link-17" class="py-name" targets="Variable p4vasp.applet.ElectronicApplet.orbitals_f=p4vasp.applet.ElectronicApplet-module.html#orbitals_f"><a title="p4vasp.applet.ElectronicApplet.orbitals_f" class="py-name" href="#" onclick="return doclink('link-17', 'orbitals_f', 'link-17');">orbitals_f</a></tt><tt class="py-op">=</tt><tt class="py-name">map</tt><tt class="py-op">(</tt><tt class="py-name">intern</tt><tt class="py-op">,</tt><tt class="py-op">[</tt><tt class="py-string">"f1"</tt><tt class="py-op">,</tt><tt class="py-string">"f2"</tt><tt class="py-op">,</tt><tt class="py-string">"f3"</tt><tt class="py-op">,</tt><tt class="py-string">"f4"</tt><tt class="py-op">,</tt><tt class="py-string">"f5"</tt><tt class="py-op">,</tt><tt class="py-string">"f6"</tt><tt class="py-op">,</tt><tt class="py-string">"f7"</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> </tt>
+ <a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"> </tt>
+ <a name="Line"></a><div id="Line-def"><a name="L41"></a><tt class="py-lineno"> 41</tt> <a class="py-toggle" href="#" id="Line-toggle" onclick="return toggle('Line');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="p4vasp.applet.ElectronicApplet.Line-class.html">Line</a><tt class="py-op">:</tt> </tt>
+diff -bruN ./lib/p4vasp/SQLSystemPM.py ../p4vasp_mod/lib/p4vasp/SQLSystemPM.py
+--- ./lib/p4vasp/SQLSystemPM.py	2019-06-28 20:51:03.000000000 +0800
++++ ../p4vasp_mod/lib/p4vasp/SQLSystemPM.py	2019-06-28 20:42:50.000000000 +0800
+@@ -226,7 +226,7 @@
+         spins.sort()
+         if spins[0]<0:
+             spins.reverse()
+-        sorbitals=map(intern,["s","p","px","py","pz","d","dxy","dyz","dxz","dz2","dx2","f",
++        sorbitals=map(intern,["s","p","px","py","pz","d","dxy","dyz","dxz","dz2","x2-y2","f",
+                            "f1","f2","f3","f4","f5","f6","f7"])
+         for x in orbitals[:]:
+             if x not in sorbitals:
+diff -bruN ./lib/p4vasp/applet/ElectronicApplet.py ../p4vasp_mod/lib/p4vasp/applet/ElectronicApplet.py
+--- ./lib/p4vasp/applet/ElectronicApplet.py	2019-06-28 20:51:03.000000000 +0800
++++ ../p4vasp_mod/lib/p4vasp/applet/ElectronicApplet.py	2019-06-28 20:43:03.000000000 +0800
+@@ -32,10 +32,10 @@
+ import gtk
+ 
+ 
+-orbitals  =map(intern,["s","px","py","pz","dxy","dyz","dxz","dz2","dx2",
++orbitals  =map(intern,["s","px","py","pz","dxy","dyz","dxz","dz2","x2-y2",
+                        "f1","f2","f3","f4","f5","f6","f7"])
+ orbitals_p=map(intern,["px","py","pz"])
+-orbitals_d=map(intern,["dxy","dyz","dxz","dz2","dx2"])
++orbitals_d=map(intern,["dxy","dyz","dxz","dz2","x2-y2"])
+ orbitals_f=map(intern,["f1","f2","f3","f4","f5","f6","f7"])
+ 
+ class Line:

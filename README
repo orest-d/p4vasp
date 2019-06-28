@@ -120,4 +120,3 @@ odpdom/COPYING).
 This package as well may contain other packages (in ext directory) under various open-source licenses:
 fltk (www.fltk.org), sqlite (www.sqlite.org) and pysqlite (code.google.com/p/pysqlite).
 These packages are provided for convenience only to make the installation easier.
-

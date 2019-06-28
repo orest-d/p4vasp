@@ -113,11 +113,11 @@ Installation (MacOS)
    $ brew install fltk
 ```
 
-3) Install other necessary library:	
+3) Install other necessary library:
 ```
    $ brew install python@2 pip gcc gtk+ pygtk —with-libglade && pip install pyopengl numpy
 ```
-4) Apply patch to the sourcefile:	
+4) Apply patch to the sourcefile:
 ```
    $ patch -p0 -i MacOS.patch
 ```
@@ -134,7 +134,14 @@ Installation (MacOS)
 7) The executable should located at `~/p4vasp/bin`
 
 
-
+VASP (version 5.4.4+) update
+--------------------------
+In VASP version 5.4.4, the projection label `dx2` for dx2-y2 orbital changed to `x2-y2`.
+(0) Apply patch to the source files:
+```
+    $ patch -p0 -i 544_update.patch
+```
+Note: This fix is not backward compatible.
 
 Starting:
 --------------------------
@@ -160,5 +167,3 @@ odpdom/COPYING).
 This package as well may contain other packages (in ext directory) under various open-source licenses:
 [fltk](www.fltk.org), [sqlite](www.sqlite.org) and [pysqlite](code.google.com/p/pysqlite).
 These packages are provided for convenience only to make the installation easier.
-
-

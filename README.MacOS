@@ -20,11 +20,11 @@ p4vasp compillation in MacOS:
 					$ pip install pyopengl numpy
 					$ brew install gcc@7
 					$ brew install gtk+ 
-					$ brew install --build-from-source ./brew_pygtk.rb —-with-libglade 
+					$ brew install --build-from-source ./pygtk.rb —-with-libglade 
 
 (*)Note that homebrew team are deleting all formula options to avoid compilation. 
-(*)In one merged pull request (#35732) they deleted the pygtk with libglade support.
-(*)Please use provided brew_pygtk.rb to install pygtk.
+(*)In one merged pull request (#35732) they deleted the libglade support.
+(*)Please use the provided formula file pygtk.rb to install pygtk.
 
 
 3) Apply patch to the sourcefile:	$ patch -p0 -i MacOS.patch
