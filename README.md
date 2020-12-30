@@ -108,6 +108,7 @@ patch -p0 < 544_update.patch
 
 Installation (macOS)
 --------------------------
+
 Check out [installation instructions](README_MacOS.md).
 
 

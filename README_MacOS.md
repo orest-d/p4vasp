@@ -34,8 +34,6 @@ pip install pyopengl numpy
 
 4) Apply patches:
 ```
-patch -p0 < MacOS.patch
-cp odpdom/Makefile.MacOS odpdom/Makefile
 cp src/Makefile.MacOS src/Makefile
 ```
 __OPTIONAL__: apply patch for VASP v5.4.4 and up:

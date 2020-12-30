@@ -41,6 +41,8 @@ Installation (local)
    You can do it with the uninstall.sh residing in the P4VASP_HOME directory.
 3) Unpack the file:                tar -xvzf p4vasp-x.x.x.tgz
 4) Change directory:               cd p4vasp-x.x.x
+__OPTIONAL__: Apply patch for VASP [v5.4.4+]:
+                                   patch -p0 < 544_update.patch
 5) Configure:                      make local
 6) check and adjust the paths in
    install/Configuration.mk
@@ -59,6 +61,8 @@ Installation (global)
                         sudo bash /usr/lib/p4vasp/uninstall.sh
 3) Unpack the file:     tar -xvzf p4vasp-x.x.x.tgz
 4) Change directory:    cd p4vasp-x.x.x
+__OPTIONAL__: Apply patch for VASP [v5.4.4+]:
+                                   patch -p0 < 544_update.patch
 5) Configure:           make config
 6) install (as root):   make install
 x) If something goes wrong
@@ -70,28 +74,7 @@ x) If something goes wrong
 
 Installation (MacOs)
 --------------------------
-0) You will need X11 and the command-line tools for Xcode installed.
-   For Xquratz, visit: 			https://www.xquartz.org/
-   For command-line tools: 		$ xcode-select --install
-
-
-1) For FLTK installation, we use homebrew's fltk:
-   Install homebrew: 			$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   Install fltk: 			$ brew install fltk
-
-2) Install other necessary library:	$ brew install python@2 pip gcc gtk+ pygtk —with-libglade && pip install pyopengl numpy
-
-3) Apply patch to the sourcefile:	$ patch -p0 -i MacOS.patch
-
-5) Copy the Makefile.MacOS to Makefile in the p4vasp root directory and in the src
-   directory:
-   cp Makefile.MacOS Makefile
-   cp src/Makefile.MacOS src/Makefile
-
-6) Run make and install:
-   make local; make; make install
-
-7) The executable should located at ~/p4vasp/bin
+Check out installation instructions - README_MacOS.md.
 
 
 
@@ -120,4 +103,3 @@ odpdom/COPYING).
 This package as well may contain other packages (in ext directory) under various open-source licenses:
 fltk (www.fltk.org), sqlite (www.sqlite.org) and pysqlite (code.google.com/p/pysqlite).
 These packages are provided for convenience only to make the installation easier.
-
