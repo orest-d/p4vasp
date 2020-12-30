@@ -9,7 +9,15 @@ def run(cmd):
     os.system("%s >fltk-config.tmp"%cmd)
     return open("fltk-config.tmp").read()
 
-if 0 and strip(run("fltk-config --version")) in ["1.1.5","1.1.6","1.1.7","1.1.8"]:
+# https://stackoverflow.com/questions/9877462/is-there-a-python-equivalent-to-the-which-command
+def which(pgm):
+    path=os.getenv('PATH')
+    for p in path.split(os.path.pathsep):
+        p=os.path.join(p,pgm)
+        if os.path.exists(p) and os.access(p,os.X_OK):
+            return p
+
+if which('fltk-config')!=None and strip(run("fltk-config --version")) in ["1.3.4","1.3.5"]:
     print run("fltk-config "+" ".join(sys.argv[1:]))
 else:
     if not os.path.exists("../ext/bin/fltk-config"):

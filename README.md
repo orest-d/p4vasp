@@ -46,6 +46,12 @@ Installation (local)
 ```
    $ cd p4vasp-x.x.x
 ```
+
+__OPTIONAL__: Apply patch for VASP [v5.4.4+]:
+```
+patch -p0 < 544_update.patch
+```
+
 5) Configure:                      
 ```
    $ make local
@@ -79,6 +85,12 @@ Installation (global)
 ```
    $ cd p4vasp-x.x.x
 ```
+
+__OPTIONAL__: Apply patch for VASP [v5.4.4+]:
+```
+patch -p0 < 544_update.patch
+```
+
 5) Configure:           
 ```
    $ make config
@@ -94,46 +106,10 @@ Installation (global)
 
 
 
-Installation (MacOS)
+Installation (macOS)
 --------------------------
-1) You will need X11 and the command-line tools for Xcode.
-   For Xquratz(X11), visit [their website](https://www.xquartz.org/)
-   For command-line tools: 		
-```
-   $ xcode-select --install
-```
 
-2) For FLTK installation, we use homebrew's fltk:
-   Install homebrew: 			
-```
-   $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-   Install fltk: 			
-```
-   $ brew install fltk
-```
-
-3) Install other necessary library:	
-```
-   $ brew install python@2 pip gcc gtk+ pygtk —with-libglade && pip install pyopengl numpy
-```
-4) Apply patch to the sourcefile:	
-```
-   $ patch -p0 -i MacOS.patch
-```
-5) Copy the Makefile.MacOS to Makefile in the p4vasp root directory and in the `src` and `odpdom` directory:
-```
-   $ cp Makefile.MacOS Makefile
-   $ cp odpdom/Makefile.MacOS odpdom/Makefile
-   $ cp src/Makefile.MacOS src/Makefile
-```
-6) Run make and install:
-```
-   $ make local && make && make install
-```
-7) The executable should located at `~/p4vasp/bin`
-
-
+Check out [installation instructions](README_MacOS.md).
 
 
 Starting:
@@ -160,5 +136,3 @@ odpdom/COPYING).
 This package as well may contain other packages (in ext directory) under various open-source licenses:
 [fltk](www.fltk.org), [sqlite](www.sqlite.org) and [pysqlite](code.google.com/p/pysqlite).
 These packages are provided for convenience only to make the installation easier.
-
-
