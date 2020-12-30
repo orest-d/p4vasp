@@ -1,5 +1,5 @@
-CPP     = g++-7
-LD      = g++-7
+CPP     = g++
+LD      = g++
 LIBS    =
 LDFLAGS += -shared -L.
 FLAGS   = -DPY_DOMEXC_MODULE="\"xml.dom.\""

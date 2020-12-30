@@ -1,7 +1,7 @@
 -include Configuration.mk
 
-CPP=g++-7
-LD=g++-7
+CPP=g++
+LD=g++
 #CPP=icc
 #LD=icc
 
@@ -65,7 +65,7 @@ cp4vasp_wrap.cpp: cp4vasp.i
 #_cp4vasp.so: $(PYLIBOBJECTS)
 #	$(LD) $(LDFLAGS) -o _cp4vasp.so $(PYLIBOBJECTS) $(LIBS) 
 _cp4vasp.so: libp4vasp.a cp4vasp_wrap.o
-	$(LD) $(LDFLAGS) -o _cp4vasp.so cp4vasp_wrap.o -lp4vasp $(LIBS) `python-config --ldflags`
+	$(LD) $(LDFLAGS) -o _cp4vasp.so cp4vasp_wrap.o -lp4vasp $(LIBS) -L/opt/local/lib `python-config --ldflags`
 
 testprog1: testprog1.o libp4vasp.a
 	$(LD) -o testprog1 testprog1.o -lp4vasp.a $(LIBS)
