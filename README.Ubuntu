@@ -14,6 +14,7 @@
     
 2) Install dependencies
     sudo apt-get update
+    sudo apt-get install build-essential
     sudo apt-get install python-dev g++ libx11-dev mesa-common-dev libglu1-mesa-dev python-opengl python-numpy python-glade2 doxygen
     sudo apt-get install libcanberra-gtk-module libcanberra-gtk3-module
     
