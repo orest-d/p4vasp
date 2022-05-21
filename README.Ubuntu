@@ -1,0 +1,35 @@
+# For installation in Ubuntu 18.04 LTS (or older), please follow the instructions in "README".
+
+# This instruction has been tested in Ubuntu 20.04 LTS and Ubuntu 22.04 LTS, with advice from @quenpsi and more.
+
+# To install p4vasp locally:
+
+1) Install GTK+ widget set and Glade support.
+    # Download   
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pygtk/python-gtk2_2.24.0-5.1ubuntu2_amd64.deb  
+    wget http://archive.ubuntu.com/ubuntu/pool/universe/p/pygtk/python-glade2_2.24.0-5.1ubuntu2_amd64.deb  
+    # Install 
+    sudo apt-get install ./python-gtk2_2.24.0-5.1ubuntu2_amd64.deb  
+    sudo apt-get install ./python-glade2_2.24.0-5.1ubuntu2_amd64.deb 
+    
+2) Install dependencies
+    sudo apt-get update
+    sudo apt-get install python-dev g++ libx11-dev mesa-common-dev libglu1-mesa-dev python-opengl python-numpy python-glade2 doxygen
+    sudo apt-get install libcanberra-gtk-module libcanberra-gtk3-module
+    
+3) Download p4vasp source code
+    cd ~/Downloads  # or wherever you hope to store the p4vasp source code
+    git clone https://github.com/orest-d/p4vasp.git
+    
+3) Download and Extract FLTK-1.3.0 source code 
+    cd p4vasp/ext  
+    wget https://www.fltk.org/pub/fltk/1.3.0/fltk-1.3.0-source.tar.gz
+    tar -zxvf fltk-1.3.0-source.tar.gz
+    cd ..
+    
+4) Compile and install
+    make local
+    # (Optional) Change the install location by modifying the "install/Configuration.mk" file
+    # Otherwise, p4vasp would be install to $HOME/p4vasp by default
+    make install && make bashrc
+    
