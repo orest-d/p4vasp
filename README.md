@@ -34,8 +34,9 @@ For global installation run:
 Installation (local)
 --------------------------
 
-1) Make sure you have all the dependencies.
-   In Ubuntu you can do it with a supplied script: `install/install-ubuntu-dependencies.sh`
+1) Make sure you have all the dependencies.  
+   In Ubuntu 18.04 LTS you can do it with a supplied script: `install/install-ubuntu-dependencies.sh`  
+   For **Ubuntu 20.04 LTS or higher** please check out the `README.Ubuntu` file.  
 2) If there are previous versions of p4vasp, uninstall them.
    You can do it with the `uninstall.sh` residing in the `P4VASP_HOME` directory.
 3) Unpack the file:                
